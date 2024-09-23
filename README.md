@@ -1,2 +1,2 @@
 # Hilet
-Proyectos y trabajos praticos.
+Proyecto final de segundo año de analista de sistemas.
