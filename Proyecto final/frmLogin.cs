@@ -14,33 +14,17 @@ namespace Proyecto_final
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            frmAlumno frmalumno = new frmAlumno();
-            frmProfesor frmprofesor = new frmProfesor();
-            frmAdministrativo frmadministrativo = new frmAdministrativo();
-            frmAdmin frmadmin = new frmAdmin();
+            FrmDashboard frmDashboard = new FrmDashboard();
 
-            string dato = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text);
-
+            // Consultamos el perfil del usuario en la BDD usando el método "consultarPerfil"
+            // Se le pasa el usuario y la contraseña que el usuario ingresó
+            string perfil = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text); 
             ConectarBDD.cerrar();
 
-            if (dato != "")
+            if (perfil != "")
             {
-                switch (dato)
-                {
-                    case "Alumno":
-                        DialogResult abrirAlumno = frmalumno.ShowDialog();
-                        break;
-                    case "Profesor":
-
-                        DialogResult abrirProfesor = frmprofesor.ShowDialog();
-                        break;
-                    case "Personal Administrativo":
-                        DialogResult abrirPersonalAdministrativo = frmadministrativo.ShowDialog();
-                        break;
-                    case "Administrador":
-                        DialogResult abrirAdministrador = frmadmin.ShowDialog();
-                        break;
-                }
+                frmDashboard.PerfilUsuario = perfil;  // Asignamos el perfil del usuario a la propiedad "PerfilUsuario" del frmDashboard
+                frmDashboard.ShowDialog();//Mostramos el formulario Dashboard
             }
             else
             {
