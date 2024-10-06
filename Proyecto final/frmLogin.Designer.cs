@@ -28,165 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            txtContraseña = new TextBox();
-            btnIngresar = new Button();
-            txtUsuario = new TextBox();
-            btnCancelar = new Button();
-            pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            btnXCruz = new Button();
+            lblTitulo = new Label();
+            panel4 = new Panel();
             panel3 = new Panel();
-            pictureBox3 = new PictureBox();
+            btnCancelar = new Button();
+            btnAcceder = new Button();
+            txtContraseña = new TextBox();
+            txtUsuario = new TextBox();
             panel2 = new Panel();
-            pictureBox2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label1 = new Label();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // txtContraseña
-            // 
-            txtContraseña.BorderStyle = BorderStyle.None;
-            txtContraseña.Font = new Font("Yu Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContraseña.Location = new Point(56, 15);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(209, 28);
-            txtContraseña.TabIndex = 2;
-            txtContraseña.Text = "Contraseña";
-            // 
-            // btnIngresar
-            // 
-            btnIngresar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnIngresar.BackColor = SystemColors.MenuHighlight;
-            btnIngresar.Font = new Font("Yu Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(77, 376);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(285, 38);
-            btnIngresar.TabIndex = 3;
-            btnIngresar.Text = "Acceder";
-            btnIngresar.UseVisualStyleBackColor = false;
-            btnIngresar.Click += btnIngresar_Click;
-            // 
-            // txtUsuario
-            // 
-            txtUsuario.BorderStyle = BorderStyle.None;
-            txtUsuario.Font = new Font("Yu Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(55, 15);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(211, 28);
-            txtUsuario.TabIndex = 1;
-            txtUsuario.Text = "Usuario";
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Font = new Font("Yu Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(77, 420);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(285, 34);
-            btnCancelar.TabIndex = 4;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.Window;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(148, 35);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(142, 130);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Window;
+            panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(btnXCruz);
+            panel1.Controls.Add(lblTitulo);
+            panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(btnIngresar);
+            panel1.Controls.Add(btnAcceder);
+            panel1.Controls.Add(txtContraseña);
+            panel1.Controls.Add(txtUsuario);
+            panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
+            panel1.Font = new Font("Century Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(442, 482);
+            panel1.Size = new Size(780, 330);
             panel1.TabIndex = 7;
+            // 
+            // btnXCruz
+            // 
+            btnXCruz.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnXCruz.ForeColor = Color.DimGray;
+            btnXCruz.Location = new Point(754, -2);
+            btnXCruz.Name = "btnXCruz";
+            btnXCruz.Size = new Size(24, 28);
+            btnXCruz.TabIndex = 8;
+            btnXCruz.Text = "X";
+            btnXCruz.UseVisualStyleBackColor = true;
+            btnXCruz.Click += btnXCruz_Click;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.DimGray;
+            lblTitulo.Location = new Point(477, 7);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(104, 34);
+            lblTitulo.TabIndex = 7;
+            lblTitulo.Text = "LOGIN";
+            // 
+            // panel4
+            // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Location = new Point(347, 166);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(308, 2);
+            panel4.TabIndex = 6;
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.Window;
-            panel3.Controls.Add(pictureBox3);
-            panel3.Controls.Add(txtContraseña);
-            panel3.Location = new Point(77, 285);
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Location = new Point(347, 102);
             panel3.Name = "panel3";
-            panel3.Size = new Size(285, 53);
-            panel3.TabIndex = 7;
+            panel3.Size = new Size(308, 2);
+            panel3.TabIndex = 5;
             // 
-            // pictureBox3
+            // btnCancelar
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(8, 6);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(42, 42);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 3;
-            pictureBox3.TabStop = false;
+            btnCancelar.BackColor = Color.Gainsboro;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(28, 28, 28);
+            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = Color.DimGray;
+            btnCancelar.Location = new Point(347, 261);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(308, 30);
+            btnCancelar.TabIndex = 4;
+            btnCancelar.Text = "CANCELAR";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnAcceder
+            // 
+            btnAcceder.BackColor = Color.Gainsboro;
+            btnAcceder.FlatAppearance.BorderSize = 0;
+            btnAcceder.FlatAppearance.MouseDownBackColor = Color.FromArgb(28, 28, 28);
+            btnAcceder.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnAcceder.FlatStyle = FlatStyle.Flat;
+            btnAcceder.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAcceder.ForeColor = Color.DimGray;
+            btnAcceder.Location = new Point(347, 208);
+            btnAcceder.Name = "btnAcceder";
+            btnAcceder.Size = new Size(308, 30);
+            btnAcceder.TabIndex = 3;
+            btnAcceder.Text = "ACCEDER";
+            btnAcceder.UseVisualStyleBackColor = false;
+            btnAcceder.Click += btnAcceder_Click;
+            // 
+            // txtContraseña
+            // 
+            txtContraseña.BackColor = Color.White;
+            txtContraseña.BorderStyle = BorderStyle.None;
+            txtContraseña.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtContraseña.Location = new Point(347, 144);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.PasswordChar = '*';
+            txtContraseña.PlaceholderText = "Contraseña";
+            txtContraseña.Size = new Size(267, 25);
+            txtContraseña.TabIndex = 2;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.BackColor = Color.White;
+            txtUsuario.BorderStyle = BorderStyle.None;
+            txtUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsuario.Location = new Point(347, 80);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.PlaceholderText = "Usuario";
+            txtUsuario.Size = new Size(267, 25);
+            txtUsuario.TabIndex = 1;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.Window;
-            panel2.Controls.Add(pictureBox2);
-            panel2.Controls.Add(txtUsuario);
-            panel2.Location = new Point(77, 219);
+            panel2.BackColor = Color.FromArgb(0, 0, 64);
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(285, 53);
-            panel2.TabIndex = 6;
+            panel2.Size = new Size(250, 326);
+            panel2.TabIndex = 0;
             // 
-            // pictureBox2
+            // label1
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(7, 6);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(42, 42);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(50, 118);
+            label1.Name = "label1";
+            label1.Size = new Size(124, 51);
+            label1.TabIndex = 0;
+            label1.Text = "HILET";
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(442, 482);
+            BackColor = Color.FromArgb(15, 15, 15);
+            ClientSize = new Size(780, 330);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmLogin";
+            Opacity = 0.85D;
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private TextBox txtContraseña;
-        private Button btnIngresar;
+        private Panel panel1;
+        private Panel panel2;
+        private Label label1;
         private TextBox txtUsuario;
         private Button btnCancelar;
-        private PictureBox pictureBox1;
-        private Panel panel1;
+        private Button btnAcceder;
+        private TextBox txtContraseña;
         private Panel panel3;
-        private Panel panel2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
+        private Panel panel4;
+        private Label lblTitulo;
+        private Button btnXCruz;
     }
 }

@@ -11,8 +11,7 @@ namespace Proyecto_final
     {
         //string cadena = "Data Source = LEOTOLUSSO\\SQLEXPRESS; Initial Catalog = tpFinalAnalistas2; Integrated Security = true";
         //string cadena = "Data Source = 192.168.0.100; Database =u13; User Id =u13; Password =u13";
-        string cadena = "Data Source = CAMI\\SQLEXPRESS; Database = TPFinal; Integrated Security = True;";
-
+        string cadena = "server = EVEE\\SQLEXPRESS; database = Conexionn; integrated security = true";
         public SqlConnection conectarbdd = new SqlConnection();
         public clsConexion()
         {

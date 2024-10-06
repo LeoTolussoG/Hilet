@@ -12,13 +12,12 @@ namespace Proyecto_final
             InitializeComponent();
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void btnAcceder_Click(object sender, EventArgs e)
         {
             FrmDashboard frmDashboard = new FrmDashboard();
-
             // Consultamos el perfil del usuario en la BDD usando el método "consultarPerfil"
             // Se le pasa el usuario y la contraseña que el usuario ingresó
-            string perfil = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text); 
+            string perfil = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text);
             ConectarBDD.cerrar();
 
             if (perfil != "")
@@ -30,12 +29,18 @@ namespace Proyecto_final
             {
                 MessageBox.Show("Usuario y contraseña incorrecto");
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtUsuario.Text = "";
             txtContraseña.Text = "";
+        }
+
+        private void btnXCruz_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
