@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("Técnico Superior en Publicidad");
-            TreeNode treeNode2 = new TreeNode("Analista de Sistemas");
-            TreeNode treeNode3 = new TreeNode("Carreras", new TreeNode[] { treeNode1, treeNode2 });
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -44,25 +41,38 @@
             examenesToolStripMenuItem = new ToolStripMenuItem();
             exámenesToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
-            panel2 = new Panel();
-            treeView1 = new TreeView();
             panel3 = new Panel();
             tabControl1 = new TabControl();
-            tabPageAlumnos = new TabPage();
-            tabPageMaterias = new TabPage();
-            tabPageExamenes = new TabPage();
-            tabPageReportes = new TabPage();
-            dataGridView1 = new DataGridView();
-            btnAgregar = new Button();
-            btnModificar = new Button();
-            btnEliminar = new Button();
+            tbpInicio = new TabPage();
+            dgvDashboard = new DataGridView();
+            lblTituloDashboard = new Label();
+            panel4 = new Panel();
+            lblTotalAsignaturas = new Label();
+            lblTotalAdministrativos = new Label();
+            lblTotalProfesores = new Label();
+            lblTotalAlumnos = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            panel2 = new Panel();
+            btnDashExamenes = new Button();
+            btnDashMaterias = new Button();
+            btnDashAsignaturas = new Button();
+            btnDashCarreras = new Button();
+            btnDashAdministrativos = new Button();
+            btnDashProfesores = new Button();
+            btnDashAlumnos = new Button();
+            tbpGestionAcademica = new TabPage();
+            tbpReporte = new TabPage();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
-            panel2.SuspendLayout();
             panel3.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPageAlumnos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tbpInicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDashboard).BeginInit();
+            panel4.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -152,129 +162,244 @@
             reportesToolStripMenuItem.Size = new Size(82, 24);
             reportesToolStripMenuItem.Text = "Reportes";
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(treeView1);
-            panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 43);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(174, 550);
-            panel2.TabIndex = 1;
-            // 
-            // treeView1
-            // 
-            treeView1.Location = new Point(0, 0);
-            treeView1.Name = "treeView1";
-            treeNode1.Name = "NodoPublicidad";
-            treeNode1.Text = "Técnico Superior en Publicidad";
-            treeNode2.Name = "NodoAnalista";
-            treeNode2.Text = "Analista de Sistemas";
-            treeNode3.Name = "NodoCarreras";
-            treeNode3.Text = "Carreras";
-            treeView1.Nodes.AddRange(new TreeNode[] { treeNode3 });
-            treeView1.Size = new Size(174, 550);
-            treeView1.TabIndex = 0;
-            // 
             // panel3
             // 
             panel3.Controls.Add(tabControl1);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(174, 43);
+            panel3.Location = new Point(0, 43);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1018, 550);
+            panel3.Size = new Size(1192, 550);
             panel3.TabIndex = 2;
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPageAlumnos);
-            tabControl1.Controls.Add(tabPageMaterias);
-            tabControl1.Controls.Add(tabPageExamenes);
-            tabControl1.Controls.Add(tabPageReportes);
-            tabControl1.Location = new Point(21, 18);
+            tabControl1.Controls.Add(tbpInicio);
+            tabControl1.Controls.Add(tbpGestionAcademica);
+            tabControl1.Controls.Add(tbpReporte);
+            tabControl1.Location = new Point(12, 29);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(964, 506);
+            tabControl1.Size = new Size(1148, 449);
             tabControl1.TabIndex = 0;
             // 
-            // tabPageAlumnos
+            // tbpInicio
             // 
-            tabPageAlumnos.Controls.Add(btnEliminar);
-            tabPageAlumnos.Controls.Add(btnModificar);
-            tabPageAlumnos.Controls.Add(btnAgregar);
-            tabPageAlumnos.Controls.Add(dataGridView1);
-            tabPageAlumnos.Location = new Point(4, 29);
-            tabPageAlumnos.Name = "tabPageAlumnos";
-            tabPageAlumnos.Padding = new Padding(3);
-            tabPageAlumnos.Size = new Size(956, 473);
-            tabPageAlumnos.TabIndex = 0;
-            tabPageAlumnos.Text = "Alumnos";
-            tabPageAlumnos.UseVisualStyleBackColor = true;
+            tbpInicio.Controls.Add(dgvDashboard);
+            tbpInicio.Controls.Add(lblTituloDashboard);
+            tbpInicio.Controls.Add(panel4);
+            tbpInicio.Controls.Add(panel2);
+            tbpInicio.Location = new Point(4, 29);
+            tbpInicio.Name = "tbpInicio";
+            tbpInicio.Padding = new Padding(3);
+            tbpInicio.Size = new Size(1140, 416);
+            tbpInicio.TabIndex = 0;
+            tbpInicio.Text = "Inicio";
+            tbpInicio.UseVisualStyleBackColor = true;
             // 
-            // tabPageMaterias
+            // dgvDashboard
             // 
-            tabPageMaterias.Location = new Point(4, 29);
-            tabPageMaterias.Name = "tabPageMaterias";
-            tabPageMaterias.Padding = new Padding(3);
-            tabPageMaterias.Size = new Size(956, 473);
-            tabPageMaterias.TabIndex = 1;
-            tabPageMaterias.Text = "Materias";
-            tabPageMaterias.UseVisualStyleBackColor = true;
+            dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDashboard.Location = new Point(239, 197);
+            dgvDashboard.Name = "dgvDashboard";
+            dgvDashboard.RowHeadersWidth = 51;
+            dgvDashboard.Size = new Size(870, 193);
+            dgvDashboard.TabIndex = 3;
             // 
-            // tabPageExamenes
+            // lblTituloDashboard
             // 
-            tabPageExamenes.Location = new Point(4, 29);
-            tabPageExamenes.Name = "tabPageExamenes";
-            tabPageExamenes.Padding = new Padding(3);
-            tabPageExamenes.Size = new Size(847, 412);
-            tabPageExamenes.TabIndex = 2;
-            tabPageExamenes.Text = "Exámenes";
-            tabPageExamenes.UseVisualStyleBackColor = true;
+            lblTituloDashboard.AutoSize = true;
+            lblTituloDashboard.Location = new Point(294, 152);
+            lblTituloDashboard.Name = "lblTituloDashboard";
+            lblTituloDashboard.Size = new Size(50, 20);
+            lblTituloDashboard.TabIndex = 2;
+            lblTituloDashboard.Text = "label5";
             // 
-            // tabPageReportes
+            // panel4
             // 
-            tabPageReportes.Location = new Point(4, 29);
-            tabPageReportes.Name = "tabPageReportes";
-            tabPageReportes.Padding = new Padding(3);
-            tabPageReportes.Size = new Size(847, 412);
-            tabPageReportes.TabIndex = 3;
-            tabPageReportes.Text = "Reportes";
-            tabPageReportes.UseVisualStyleBackColor = true;
+            panel4.Controls.Add(lblTotalAsignaturas);
+            panel4.Controls.Add(lblTotalAdministrativos);
+            panel4.Controls.Add(lblTotalProfesores);
+            panel4.Controls.Add(lblTotalAlumnos);
+            panel4.Controls.Add(label4);
+            panel4.Controls.Add(label3);
+            panel4.Controls.Add(label2);
+            panel4.Controls.Add(label1);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(209, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(928, 111);
+            panel4.TabIndex = 1;
             // 
-            // dataGridView1
+            // lblTotalAsignaturas
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(42, 34);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(729, 408);
-            dataGridView1.TabIndex = 0;
+            lblTotalAsignaturas.AutoSize = true;
+            lblTotalAsignaturas.Location = new Point(740, 66);
+            lblTotalAsignaturas.Name = "lblTotalAsignaturas";
+            lblTotalAsignaturas.Size = new Size(50, 20);
+            lblTotalAsignaturas.TabIndex = 7;
+            lblTotalAsignaturas.Text = "label8";
             // 
-            // btnAgregar
+            // lblTotalAdministrativos
             // 
-            btnAgregar.Location = new Point(825, 82);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(94, 29);
-            btnAgregar.TabIndex = 1;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            lblTotalAdministrativos.AutoSize = true;
+            lblTotalAdministrativos.Location = new Point(491, 66);
+            lblTotalAdministrativos.Name = "lblTotalAdministrativos";
+            lblTotalAdministrativos.Size = new Size(50, 20);
+            lblTotalAdministrativos.TabIndex = 6;
+            lblTotalAdministrativos.Text = "label7";
             // 
-            // btnModificar
+            // lblTotalProfesores
             // 
-            btnModificar.Location = new Point(825, 220);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(94, 29);
-            btnModificar.TabIndex = 2;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
+            lblTotalProfesores.AutoSize = true;
+            lblTotalProfesores.Location = new Point(281, 66);
+            lblTotalProfesores.Name = "lblTotalProfesores";
+            lblTotalProfesores.Size = new Size(50, 20);
+            lblTotalProfesores.TabIndex = 5;
+            lblTotalProfesores.Text = "label6";
             // 
-            // btnEliminar
+            // lblTotalAlumnos
             // 
-            btnEliminar.Location = new Point(825, 362);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 29);
-            btnEliminar.TabIndex = 3;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            lblTotalAlumnos.AutoSize = true;
+            lblTotalAlumnos.Location = new Point(85, 66);
+            lblTotalAlumnos.Name = "lblTotalAlumnos";
+            lblTotalAlumnos.Size = new Size(50, 20);
+            lblTotalAlumnos.TabIndex = 4;
+            lblTotalAlumnos.Text = "label5";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(740, 25);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 20);
+            label4.TabIndex = 3;
+            label4.Text = "Materias";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(491, 25);
+            label3.Name = "label3";
+            label3.Size = new Size(112, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Administrativos";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(281, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(78, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Profesores";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(85, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Alumnos";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnDashExamenes);
+            panel2.Controls.Add(btnDashMaterias);
+            panel2.Controls.Add(btnDashAsignaturas);
+            panel2.Controls.Add(btnDashCarreras);
+            panel2.Controls.Add(btnDashAdministrativos);
+            panel2.Controls.Add(btnDashProfesores);
+            panel2.Controls.Add(btnDashAlumnos);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(206, 410);
+            panel2.TabIndex = 0;
+            // 
+            // btnDashExamenes
+            // 
+            btnDashExamenes.Location = new Point(21, 358);
+            btnDashExamenes.Name = "btnDashExamenes";
+            btnDashExamenes.Size = new Size(164, 29);
+            btnDashExamenes.TabIndex = 8;
+            btnDashExamenes.Text = "Examenes";
+            btnDashExamenes.UseVisualStyleBackColor = true;
+            btnDashExamenes.Click += btnDashExamenes_Click;
+            // 
+            // btnDashMaterias
+            // 
+            btnDashMaterias.Location = new Point(21, 305);
+            btnDashMaterias.Name = "btnDashMaterias";
+            btnDashMaterias.Size = new Size(164, 29);
+            btnDashMaterias.TabIndex = 7;
+            btnDashMaterias.Text = "Materias";
+            btnDashMaterias.UseVisualStyleBackColor = true;
+            // 
+            // btnDashAsignaturas
+            // 
+            btnDashAsignaturas.Location = new Point(20, 253);
+            btnDashAsignaturas.Name = "btnDashAsignaturas";
+            btnDashAsignaturas.Size = new Size(164, 29);
+            btnDashAsignaturas.TabIndex = 6;
+            btnDashAsignaturas.Text = "Asignaruras";
+            btnDashAsignaturas.UseVisualStyleBackColor = true;
+            // 
+            // btnDashCarreras
+            // 
+            btnDashCarreras.Location = new Point(20, 194);
+            btnDashCarreras.Name = "btnDashCarreras";
+            btnDashCarreras.Size = new Size(164, 29);
+            btnDashCarreras.TabIndex = 5;
+            btnDashCarreras.Text = "Carreras";
+            btnDashCarreras.UseVisualStyleBackColor = true;
+            // 
+            // btnDashAdministrativos
+            // 
+            btnDashAdministrativos.Location = new Point(20, 140);
+            btnDashAdministrativos.Name = "btnDashAdministrativos";
+            btnDashAdministrativos.Size = new Size(164, 29);
+            btnDashAdministrativos.TabIndex = 4;
+            btnDashAdministrativos.Text = "Administrativos";
+            btnDashAdministrativos.UseVisualStyleBackColor = true;
+            // 
+            // btnDashProfesores
+            // 
+            btnDashProfesores.Location = new Point(20, 82);
+            btnDashProfesores.Name = "btnDashProfesores";
+            btnDashProfesores.Size = new Size(164, 29);
+            btnDashProfesores.TabIndex = 3;
+            btnDashProfesores.Text = "Profesores";
+            btnDashProfesores.UseVisualStyleBackColor = true;
+            // 
+            // btnDashAlumnos
+            // 
+            btnDashAlumnos.Location = new Point(20, 25);
+            btnDashAlumnos.Name = "btnDashAlumnos";
+            btnDashAlumnos.Size = new Size(164, 29);
+            btnDashAlumnos.TabIndex = 2;
+            btnDashAlumnos.Text = "Alumnos";
+            btnDashAlumnos.UseVisualStyleBackColor = true;
+            btnDashAlumnos.Click += btnDashAlumnos_Click;
+            // 
+            // tbpGestionAcademica
+            // 
+            tbpGestionAcademica.Location = new Point(4, 29);
+            tbpGestionAcademica.Name = "tbpGestionAcademica";
+            tbpGestionAcademica.Padding = new Padding(3);
+            tbpGestionAcademica.Size = new Size(1140, 416);
+            tbpGestionAcademica.TabIndex = 1;
+            tbpGestionAcademica.Text = "Gestion Academica";
+            tbpGestionAcademica.UseVisualStyleBackColor = true;
+            // 
+            // tbpReporte
+            // 
+            tbpReporte.Location = new Point(4, 29);
+            tbpReporte.Name = "tbpReporte";
+            tbpReporte.Size = new Size(1140, 416);
+            tbpReporte.TabIndex = 2;
+            tbpReporte.Text = "Reporte";
+            tbpReporte.UseVisualStyleBackColor = true;
             // 
             // FrmDashboard
             // 
@@ -282,7 +407,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1192, 593);
             Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             MainMenuStrip = menuStrip1;
             Name = "FrmDashboard";
@@ -292,26 +416,25 @@
             panel1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
-            tabPageAlumnos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tbpInicio.ResumeLayout(false);
+            tbpInicio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDashboard).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Panel panel2;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem gestionAcademicaToolStripMenuItem;
         private ToolStripMenuItem reportesToolStripMenuItem;
         private Panel panel3;
-        private TabControl tabControl1;
-        private TabPage tabPageAlumnos;
-        private TabPage tabPageMaterias;
         private ToolStripMenuItem abrirToolStripMenuItem;
         private ToolStripMenuItem guardarToolStripMenuItem;
         private ToolStripMenuItem exportarToolStripMenuItem;
@@ -320,12 +443,28 @@
         private ToolStripMenuItem materiasToolStripMenuItem;
         private ToolStripMenuItem examenesToolStripMenuItem;
         private ToolStripMenuItem exámenesToolStripMenuItem;
-        private TreeView treeView1;
-        private TabPage tabPageExamenes;
-        private TabPage tabPageReportes;
-        private Button btnEliminar;
-        private Button btnModificar;
-        private Button btnAgregar;
-        private DataGridView dataGridView1;
+        private TabControl tabControl1;
+        private TabPage tbpInicio;
+        private Panel panel4;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Panel panel2;
+        private TabPage tbpGestionAcademica;
+        private TabPage tbpReporte;
+        private Label lblTotalAsignaturas;
+        private Label lblTotalAdministrativos;
+        private Label lblTotalProfesores;
+        private Label lblTotalAlumnos;
+        private Button btnDashExamenes;
+        private Button btnDashMaterias;
+        private Button btnDashAsignaturas;
+        private Button btnDashCarreras;
+        private Button btnDashAdministrativos;
+        private Button btnDashProfesores;
+        private Button btnDashAlumnos;
+        private DataGridView dgvDashboard;
+        private Label lblTituloDashboard;
     }
 }

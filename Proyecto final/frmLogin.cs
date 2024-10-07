@@ -11,7 +11,6 @@ namespace Proyecto_final
         {
             InitializeComponent();
         }
-
         private void btnAcceder_Click(object sender, EventArgs e)
         {
             FrmDashboard frmDashboard = new FrmDashboard();
@@ -21,23 +20,22 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
 
             if (perfil != "")
-            {
+            {   
+                
                 frmDashboard.PerfilUsuario = perfil;  // Asignamos el perfil del usuario a la propiedad "PerfilUsuario" del frmDashboard
+                
                 frmDashboard.ShowDialog();//Mostramos el formulario Dashboard
             }
             else
             {
                 MessageBox.Show("Usuario y contraseña incorrecto");
             }
-
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtUsuario.Text = "";
             txtContraseña.Text = "";
         }
-
         private void btnXCruz_Click(object sender, EventArgs e)
         {
             this.Close();
