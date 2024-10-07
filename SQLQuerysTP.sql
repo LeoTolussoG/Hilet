@@ -1,6 +1,6 @@
 create database TPFinal;
 use TPFinal;
-use u13;
+use u26;
 
 -- Tabla Carreras
 CREATE TABLE Carreras(
@@ -176,10 +176,10 @@ INSERT INTO Asignatura (Nombre, Año_cursada) VALUES
 ('Algoritmos y estructuras de datos III', 3),
 ('Prácticas Profesionalizantes III', 3);
 
-
+select * from Asignatura;
 /*Asignaturas para Publicidad (ID_Carrera = 1)*/
 INSERT INTO AsignaturaXCarrera (Id_carrera,Id_asignatura) VALUES
-(1, 1), -- Marketing general
+(1, 2), -- Marketing general
 (1, 2), -- Psicología Comportamiento del Consumidor
 (1, 3), -- Fundamentos del diseño publicitario
 (1, 4), -- Computación 1
@@ -243,13 +243,13 @@ INSERT INTO Alumnos (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Emai
 ( 'Andrés', 'Torres', '78901234', 'Calle 10', 951, 'andres.torres@ejemplo.com', '0123-4567', '1993-10-10', 'alumno10', 'password123', 1);
 
 INSERT INTO AsignaturasXAlumnos(Id_alumno, Id_asignatura) VALUES
-(1, 1), -- Laura está en Marketing general
+(1, 2), -- Laura está en Marketing general
 (1, 2), -- Laura está en Psicología Comportamiento del Consumidor
 (1, 3), -- Laura está en Fundamentos del diseño publicitario
 (1, 4), -- Laura está en Computación 1
 (1, 5), -- Laura está en Introducción a la publicidad
 (2, 6), -- Pedro está en Producción gráfica
-(2, 1), -- Pedro está en Marketing general
+(2, 2), -- Pedro está en Marketing general
 (2, 7), -- Pedro está en Producción radial
 (1, 8), -- Laura está en Producción audiovisual
 ( 2, 9); -- Pedro está en Computación 2
@@ -260,11 +260,11 @@ INSERT INTO Instancias (Descripcion) VALUES
 ('Final');
 
 INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia) VALUES
-(8.5, '2024-05-01', 1, 4, 1), -- Laura en Marketing general (Parcial)
+(8.5, '2024-05-01', 2, 4, 1), -- Laura en Marketing general (Parcial)
 (7.0, '2024-05-02', 2, 5, 1), -- Laura en Psicología Comportamiento del Consumidor (Parcial)
 (9.0, '2024-05-03', 3, 2, 1), -- Pedro en Fundamentos del diseño publicitario (Parcial)
 (6.5, '2024-05-01', 4, 2, 1), -- Pedro en Computación 1 (Parcial)
-(8.0, '2024-06-01', 1, 6, 2), -- Laura en Marketing general (Recuperatorio)
+(8.0, '2024-06-01', 2, 6, 2), -- Laura en Marketing general (Recuperatorio)
 (5.5, '2024-06-02', 5, 2, 2), -- Pedro en Introducción a la publicidad (Recuperatorio)
 (9.5, '2024-07-01', 6, 7, 3), -- Laura en Producción gráfica (Final)
 (8.0, '2024-07-02', 7, 2, 3), -- Pedro en Producción radial (Final)
@@ -329,7 +329,6 @@ begin
 																																	from
 																																		Asignatura) as TotalMaterias;																													
 end;
-
 ---------------------------------
 create procedure sp_Acceso_Login
 @Usuario varchar(40),
