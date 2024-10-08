@@ -1,6 +1,6 @@
-create database TPFinal;
+/*create database TPFinal;*/
 use TPFinal;
-use u26;
+/*use u26;*/
 
 -- Tabla Carreras
 CREATE TABLE Carreras(
@@ -382,4 +382,28 @@ begin
 	desc
 end;
 
+----------------------------------------
+create procedure sp_Dash_Profesores
+as
+begin
+	select TOP 3
+	* from Empleados
+	where Id_empleado = 2
+	order by 
+		Id_empleado
+	desc
+end;
 
+-------------------------------------------
+
+create procedure sp_Dash_Asignaturas
+as
+begin
+	select TOP 3
+	* from Asignatura
+	order by 
+		Id_asignatura
+	desc
+end;
+
+-------------------------------------------
