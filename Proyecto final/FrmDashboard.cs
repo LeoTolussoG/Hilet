@@ -70,6 +70,40 @@ namespace Proyecto_final
             dgvDashboard.DataSource = dataTable;
             ConectarBDD.cerrar();
         }
+
+        private void btnDashProfesores_Click(object sender, EventArgs e)
+        {
+            lblTituloDashboard.Text = "Ultimos Profesores registrados";
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Dash_Profesores";
+            SqlDataAdapter comando = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dataTable = new DataTable();
+
+            comando.Fill(dataTable);
+            dgvDashboard.DataSource = dataTable;
+            ConectarBDD.cerrar();
+        }
+
+        private void btnDashAsignaturas_Click(object sender, EventArgs e)
+        {
+            lblTituloDashboard.Text = "Ultimas Asignaturas";
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Dash_Asignaturas";
+            SqlDataAdapter comando = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dataTable = new DataTable();
+
+            comando.Fill(dataTable);
+            dgvDashboard.DataSource = dataTable;
+            ConectarBDD.cerrar();
+        }
+
+
+
+
         /*ConfInterfazXperfil(); 
 }
 private void ConfInterfazXperfil()//Metodo que configura la interfaz segun el perfil (deshabilitando o habilitando botones) que haya ingresado
