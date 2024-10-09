@@ -101,6 +101,13 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
+        private void tbpInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
 
 
