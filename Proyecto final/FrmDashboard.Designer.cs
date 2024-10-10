@@ -98,15 +98,38 @@
             dataGridView1 = new DataGridView();
             tabPage2 = new TabPage();
             panel10 = new Panel();
-            panel8 = new Panel();
-            button1 = new Button();
-            textBox11 = new TextBox();
-            dataGridView2 = new DataGridView();
-            panel9 = new Panel();
-            panel6 = new Panel();
+            panel23 = new Panel();
+            btnAgregarProfesor = new Button();
             btnEliminarProfesor = new Button();
             btnModificarProfesor = new Button();
-            btnAgregarProfesor = new Button();
+            panel8 = new Panel();
+            btnBuscarProfesor = new Button();
+            txtBuscarProfesor = new TextBox();
+            dataGridViewProfesor = new DataGridView();
+            panel9Profesor = new Panel();
+            txtIDProfesor = new TextBox();
+            lblIdProfesor = new Label();
+            txtContraseñaProfesor = new TextBox();
+            txtUsuarioProfesor = new TextBox();
+            lblContraseñaProfesor = new Label();
+            lblUsuarioProfesor = new Label();
+            txtTelefonoProfesor = new TextBox();
+            txtEmailProfesor = new TextBox();
+            txtAlturaProfesor = new TextBox();
+            lblEmailProfesor = new Label();
+            txtDireccionProfesor = new TextBox();
+            lblTelefonoProfesor = new Label();
+            lblAlturaProfesor = new Label();
+            lblDireccionProfesor = new Label();
+            txtNombreProfesor = new TextBox();
+            txtApellidoProfesor = new TextBox();
+            txtDniProfesor = new TextBox();
+            lblFechaNacimientoProfesor = new Label();
+            lblDniProfesor = new Label();
+            lblApellidoProfesor = new Label();
+            lblNombreProfesor = new Label();
+            txtFechanacimientoProfesor = new TextBox();
+            panel6 = new Panel();
             tabPage3 = new TabPage();
             dataGridView3 = new DataGridView();
             panel11 = new Panel();
@@ -148,7 +171,7 @@
             tabPage5 = new TabPage();
             panel15 = new Panel();
             panel19 = new Panel();
-            dataGridView5 = new DataGridView();
+            dataGridView5Asignatura = new DataGridView();
             panel18 = new Panel();
             panel17 = new Panel();
             button10 = new Button();
@@ -178,9 +201,10 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
             panel10.SuspendLayout();
+            panel23.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProfesor).BeginInit();
+            panel9Profesor.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             panel11.SuspendLayout();
@@ -191,7 +215,7 @@
             tabPage5.SuspendLayout();
             panel15.SuspendLayout();
             panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5Asignatura).BeginInit();
             panel17.SuspendLayout();
             panel16.SuspendLayout();
             SuspendLayout();
@@ -313,7 +337,6 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dgvDashboard.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.GrayText;
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -876,7 +899,7 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(panel10);
-            tabPage2.Controls.Add(panel9);
+            tabPage2.Controls.Add(panel9Profesor);
             tabPage2.Controls.Add(panel6);
             tabPage2.Location = new Point(4, 32);
             tabPage2.Margin = new Padding(3, 4, 3, 4);
@@ -889,48 +912,99 @@
             // 
             // panel10
             // 
+            panel10.Controls.Add(panel23);
             panel10.Controls.Add(panel8);
-            panel10.Controls.Add(dataGridView2);
+            panel10.Controls.Add(dataGridViewProfesor);
             panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(3, 4);
             panel10.Name = "panel10";
-            panel10.Size = new Size(1114, 352);
+            panel10.Size = new Size(1252, 352);
             panel10.TabIndex = 3;
+            // 
+            // panel23
+            // 
+            panel23.BackColor = Color.FromArgb(0, 0, 64);
+            panel23.Controls.Add(btnAgregarProfesor);
+            panel23.Controls.Add(btnEliminarProfesor);
+            panel23.Controls.Add(btnModificarProfesor);
+            panel23.Location = new Point(1114, 41);
+            panel23.Name = "panel23";
+            panel23.Size = new Size(138, 311);
+            panel23.TabIndex = 3;
+            // 
+            // btnAgregarProfesor
+            // 
+            btnAgregarProfesor.FlatAppearance.MouseOverBackColor = Color.Gray;
+            btnAgregarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarProfesor.ForeColor = Color.DimGray;
+            btnAgregarProfesor.Location = new Point(12, 32);
+            btnAgregarProfesor.Name = "btnAgregarProfesor";
+            btnAgregarProfesor.Size = new Size(114, 58);
+            btnAgregarProfesor.TabIndex = 3;
+            btnAgregarProfesor.Text = "Agregar";
+            btnAgregarProfesor.UseVisualStyleBackColor = true;
+            btnAgregarProfesor.Click += btnAgregarProfesor_Click;
+            // 
+            // btnEliminarProfesor
+            // 
+            btnEliminarProfesor.FlatAppearance.MouseOverBackColor = Color.Gray;
+            btnEliminarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminarProfesor.ForeColor = Color.DimGray;
+            btnEliminarProfesor.Location = new Point(12, 216);
+            btnEliminarProfesor.Name = "btnEliminarProfesor";
+            btnEliminarProfesor.Size = new Size(114, 58);
+            btnEliminarProfesor.TabIndex = 2;
+            btnEliminarProfesor.Text = "Eliminar";
+            btnEliminarProfesor.UseVisualStyleBackColor = true;
+            btnEliminarProfesor.Click += btnEliminarProfesor_Click;
+            // 
+            // btnModificarProfesor
+            // 
+            btnModificarProfesor.FlatAppearance.MouseOverBackColor = Color.Gray;
+            btnModificarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnModificarProfesor.ForeColor = Color.DimGray;
+            btnModificarProfesor.Location = new Point(12, 126);
+            btnModificarProfesor.Name = "btnModificarProfesor";
+            btnModificarProfesor.Size = new Size(114, 58);
+            btnModificarProfesor.TabIndex = 1;
+            btnModificarProfesor.Text = "Modificar";
+            btnModificarProfesor.UseVisualStyleBackColor = true;
+            btnModificarProfesor.Click += btnModificarProfesor_Click;
             // 
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(0, 0, 64);
-            panel8.Controls.Add(button1);
-            panel8.Controls.Add(textBox11);
+            panel8.Controls.Add(btnBuscarProfesor);
+            panel8.Controls.Add(txtBuscarProfesor);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1114, 41);
+            panel8.Size = new Size(1252, 41);
             panel8.TabIndex = 2;
             // 
-            // button1
+            // btnBuscarProfesor
             // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.Location = new Point(909, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(39, 36);
-            button1.TabIndex = 4;
-            button1.UseVisualStyleBackColor = true;
+            btnBuscarProfesor.BackgroundImage = (Image)resources.GetObject("btnBuscarProfesor.BackgroundImage");
+            btnBuscarProfesor.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBuscarProfesor.Location = new Point(990, 3);
+            btnBuscarProfesor.Name = "btnBuscarProfesor";
+            btnBuscarProfesor.Size = new Size(39, 36);
+            btnBuscarProfesor.TabIndex = 4;
+            btnBuscarProfesor.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // txtBuscarProfesor
             // 
-            textBox11.BackColor = Color.WhiteSmoke;
-            textBox11.BorderStyle = BorderStyle.None;
-            textBox11.Location = new Point(617, 16);
-            textBox11.Name = "textBox11";
-            textBox11.PlaceholderText = "Buscar profesor";
-            textBox11.Size = new Size(286, 19);
-            textBox11.TabIndex = 1;
+            txtBuscarProfesor.BackColor = Color.WhiteSmoke;
+            txtBuscarProfesor.BorderStyle = BorderStyle.None;
+            txtBuscarProfesor.Location = new Point(698, 19);
+            txtBuscarProfesor.Name = "txtBuscarProfesor";
+            txtBuscarProfesor.PlaceholderText = "Buscar profesor";
+            txtBuscarProfesor.Size = new Size(286, 19);
+            txtBuscarProfesor.TabIndex = 1;
             // 
-            // dataGridView2
+            // dataGridViewProfesor
             // 
-            dataGridView2.BackgroundColor = Color.White;
+            dataGridViewProfesor.BackgroundColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.GrayText;
             dataGridViewCellStyle3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -938,69 +1012,275 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Bottom;
-            dataGridView2.EnableHeadersVisualStyles = false;
-            dataGridView2.Location = new Point(0, 41);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(1114, 311);
-            dataGridView2.TabIndex = 0;
+            dataGridViewProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewProfesor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProfesor.Dock = DockStyle.Fill;
+            dataGridViewProfesor.EnableHeadersVisualStyles = false;
+            dataGridViewProfesor.Location = new Point(0, 0);
+            dataGridViewProfesor.Name = "dataGridViewProfesor";
+            dataGridViewProfesor.RowHeadersWidth = 51;
+            dataGridViewProfesor.Size = new Size(1252, 352);
+            dataGridViewProfesor.TabIndex = 0;
+            dataGridViewProfesor.CellClick += dataGridViewProfesor_CellClick;
             // 
-            // panel9
+            // panel9Profesor
             // 
-            panel9.BackColor = Color.FromArgb(0, 0, 64);
-            panel9.Dock = DockStyle.Bottom;
-            panel9.Location = new Point(3, 356);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(1114, 219);
-            panel9.TabIndex = 2;
+            panel9Profesor.BackColor = Color.FromArgb(0, 0, 64);
+            panel9Profesor.Controls.Add(txtIDProfesor);
+            panel9Profesor.Controls.Add(lblIdProfesor);
+            panel9Profesor.Controls.Add(txtContraseñaProfesor);
+            panel9Profesor.Controls.Add(txtUsuarioProfesor);
+            panel9Profesor.Controls.Add(lblContraseñaProfesor);
+            panel9Profesor.Controls.Add(lblUsuarioProfesor);
+            panel9Profesor.Controls.Add(txtTelefonoProfesor);
+            panel9Profesor.Controls.Add(txtEmailProfesor);
+            panel9Profesor.Controls.Add(txtAlturaProfesor);
+            panel9Profesor.Controls.Add(lblEmailProfesor);
+            panel9Profesor.Controls.Add(txtDireccionProfesor);
+            panel9Profesor.Controls.Add(lblTelefonoProfesor);
+            panel9Profesor.Controls.Add(lblAlturaProfesor);
+            panel9Profesor.Controls.Add(lblDireccionProfesor);
+            panel9Profesor.Controls.Add(txtNombreProfesor);
+            panel9Profesor.Controls.Add(txtApellidoProfesor);
+            panel9Profesor.Controls.Add(txtDniProfesor);
+            panel9Profesor.Controls.Add(lblFechaNacimientoProfesor);
+            panel9Profesor.Controls.Add(lblDniProfesor);
+            panel9Profesor.Controls.Add(lblApellidoProfesor);
+            panel9Profesor.Controls.Add(lblNombreProfesor);
+            panel9Profesor.Controls.Add(txtFechanacimientoProfesor);
+            panel9Profesor.Dock = DockStyle.Bottom;
+            panel9Profesor.Location = new Point(3, 356);
+            panel9Profesor.Name = "panel9Profesor";
+            panel9Profesor.Size = new Size(1252, 219);
+            panel9Profesor.TabIndex = 2;
+            // 
+            // txtIDProfesor
+            // 
+            txtIDProfesor.BackColor = Color.Silver;
+            txtIDProfesor.BorderStyle = BorderStyle.None;
+            txtIDProfesor.Location = new Point(1009, 150);
+            txtIDProfesor.Name = "txtIDProfesor";
+            txtIDProfesor.Size = new Size(159, 19);
+            txtIDProfesor.TabIndex = 23;
+            // 
+            // lblIdProfesor
+            // 
+            lblIdProfesor.AutoSize = true;
+            lblIdProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIdProfesor.ForeColor = Color.White;
+            lblIdProfesor.Location = new Point(858, 142);
+            lblIdProfesor.Name = "lblIdProfesor";
+            lblIdProfesor.Size = new Size(35, 27);
+            lblIdProfesor.TabIndex = 22;
+            lblIdProfesor.Text = "ID";
+            // 
+            // txtContraseñaProfesor
+            // 
+            txtContraseñaProfesor.BackColor = Color.Silver;
+            txtContraseñaProfesor.BorderStyle = BorderStyle.None;
+            txtContraseñaProfesor.Location = new Point(1009, 78);
+            txtContraseñaProfesor.Name = "txtContraseñaProfesor";
+            txtContraseñaProfesor.Size = new Size(159, 19);
+            txtContraseñaProfesor.TabIndex = 20;
+            // 
+            // txtUsuarioProfesor
+            // 
+            txtUsuarioProfesor.BackColor = Color.Silver;
+            txtUsuarioProfesor.BorderStyle = BorderStyle.None;
+            txtUsuarioProfesor.Location = new Point(1009, 30);
+            txtUsuarioProfesor.Name = "txtUsuarioProfesor";
+            txtUsuarioProfesor.Size = new Size(159, 19);
+            txtUsuarioProfesor.TabIndex = 19;
+            // 
+            // lblContraseñaProfesor
+            // 
+            lblContraseñaProfesor.AutoSize = true;
+            lblContraseñaProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblContraseñaProfesor.ForeColor = Color.White;
+            lblContraseñaProfesor.Location = new Point(858, 73);
+            lblContraseñaProfesor.Name = "lblContraseñaProfesor";
+            lblContraseñaProfesor.Size = new Size(145, 27);
+            lblContraseñaProfesor.TabIndex = 18;
+            lblContraseñaProfesor.Text = "Contraseña";
+            // 
+            // lblUsuarioProfesor
+            // 
+            lblUsuarioProfesor.AutoSize = true;
+            lblUsuarioProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuarioProfesor.ForeColor = Color.White;
+            lblUsuarioProfesor.Location = new Point(858, 26);
+            lblUsuarioProfesor.Name = "lblUsuarioProfesor";
+            lblUsuarioProfesor.Size = new Size(95, 27);
+            lblUsuarioProfesor.TabIndex = 17;
+            lblUsuarioProfesor.Text = "Usuario";
+            // 
+            // txtTelefonoProfesor
+            // 
+            txtTelefonoProfesor.BackColor = Color.Silver;
+            txtTelefonoProfesor.BorderStyle = BorderStyle.None;
+            txtTelefonoProfesor.Location = new Point(650, 179);
+            txtTelefonoProfesor.Name = "txtTelefonoProfesor";
+            txtTelefonoProfesor.Size = new Size(159, 19);
+            txtTelefonoProfesor.TabIndex = 16;
+            // 
+            // txtEmailProfesor
+            // 
+            txtEmailProfesor.BackColor = Color.Silver;
+            txtEmailProfesor.BorderStyle = BorderStyle.None;
+            txtEmailProfesor.Location = new Point(650, 128);
+            txtEmailProfesor.Name = "txtEmailProfesor";
+            txtEmailProfesor.Size = new Size(159, 19);
+            txtEmailProfesor.TabIndex = 15;
+            // 
+            // txtAlturaProfesor
+            // 
+            txtAlturaProfesor.BackColor = Color.Silver;
+            txtAlturaProfesor.BorderStyle = BorderStyle.None;
+            txtAlturaProfesor.Location = new Point(650, 76);
+            txtAlturaProfesor.Name = "txtAlturaProfesor";
+            txtAlturaProfesor.Size = new Size(159, 19);
+            txtAlturaProfesor.TabIndex = 14;
+            // 
+            // lblEmailProfesor
+            // 
+            lblEmailProfesor.AutoSize = true;
+            lblEmailProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmailProfesor.ForeColor = Color.White;
+            lblEmailProfesor.Location = new Point(531, 123);
+            lblEmailProfesor.Name = "lblEmailProfesor";
+            lblEmailProfesor.Size = new Size(74, 27);
+            lblEmailProfesor.TabIndex = 13;
+            lblEmailProfesor.Text = "Email";
+            // 
+            // txtDireccionProfesor
+            // 
+            txtDireccionProfesor.BackColor = Color.Silver;
+            txtDireccionProfesor.BorderStyle = BorderStyle.None;
+            txtDireccionProfesor.Location = new Point(650, 31);
+            txtDireccionProfesor.Name = "txtDireccionProfesor";
+            txtDireccionProfesor.Size = new Size(159, 19);
+            txtDireccionProfesor.TabIndex = 12;
+            // 
+            // lblTelefonoProfesor
+            // 
+            lblTelefonoProfesor.AutoSize = true;
+            lblTelefonoProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTelefonoProfesor.ForeColor = Color.White;
+            lblTelefonoProfesor.Location = new Point(522, 171);
+            lblTelefonoProfesor.Name = "lblTelefonoProfesor";
+            lblTelefonoProfesor.Size = new Size(110, 27);
+            lblTelefonoProfesor.TabIndex = 11;
+            lblTelefonoProfesor.Text = "Teléfono";
+            // 
+            // lblAlturaProfesor
+            // 
+            lblAlturaProfesor.AutoSize = true;
+            lblAlturaProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlturaProfesor.ForeColor = Color.White;
+            lblAlturaProfesor.Location = new Point(531, 68);
+            lblAlturaProfesor.Name = "lblAlturaProfesor";
+            lblAlturaProfesor.Size = new Size(80, 27);
+            lblAlturaProfesor.TabIndex = 9;
+            lblAlturaProfesor.Text = "Altura";
+            // 
+            // lblDireccionProfesor
+            // 
+            lblDireccionProfesor.AutoSize = true;
+            lblDireccionProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDireccionProfesor.ForeColor = Color.White;
+            lblDireccionProfesor.Location = new Point(522, 26);
+            lblDireccionProfesor.Name = "lblDireccionProfesor";
+            lblDireccionProfesor.Size = new Size(122, 27);
+            lblDireccionProfesor.TabIndex = 8;
+            lblDireccionProfesor.Text = "Dirección";
+            // 
+            // txtNombreProfesor
+            // 
+            txtNombreProfesor.BackColor = Color.Silver;
+            txtNombreProfesor.BorderStyle = BorderStyle.None;
+            txtNombreProfesor.Location = new Point(270, 30);
+            txtNombreProfesor.Name = "txtNombreProfesor";
+            txtNombreProfesor.Size = new Size(159, 19);
+            txtNombreProfesor.TabIndex = 7;
+            // 
+            // txtApellidoProfesor
+            // 
+            txtApellidoProfesor.BackColor = Color.Silver;
+            txtApellidoProfesor.BorderStyle = BorderStyle.None;
+            txtApellidoProfesor.Location = new Point(270, 79);
+            txtApellidoProfesor.Name = "txtApellidoProfesor";
+            txtApellidoProfesor.Size = new Size(159, 19);
+            txtApellidoProfesor.TabIndex = 6;
+            // 
+            // txtDniProfesor
+            // 
+            txtDniProfesor.BackColor = Color.Silver;
+            txtDniProfesor.BorderStyle = BorderStyle.None;
+            txtDniProfesor.Location = new Point(270, 131);
+            txtDniProfesor.Name = "txtDniProfesor";
+            txtDniProfesor.Size = new Size(159, 19);
+            txtDniProfesor.TabIndex = 5;
+            // 
+            // lblFechaNacimientoProfesor
+            // 
+            lblFechaNacimientoProfesor.AutoSize = true;
+            lblFechaNacimientoProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFechaNacimientoProfesor.ForeColor = Color.White;
+            lblFechaNacimientoProfesor.Location = new Point(16, 176);
+            lblFechaNacimientoProfesor.Name = "lblFechaNacimientoProfesor";
+            lblFechaNacimientoProfesor.Size = new Size(257, 27);
+            lblFechaNacimientoProfesor.TabIndex = 4;
+            lblFechaNacimientoProfesor.Text = "Fecha de nacimiento";
+            // 
+            // lblDniProfesor
+            // 
+            lblDniProfesor.AutoSize = true;
+            lblDniProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDniProfesor.ForeColor = Color.White;
+            lblDniProfesor.Location = new Point(16, 124);
+            lblDniProfesor.Name = "lblDniProfesor";
+            lblDniProfesor.Size = new Size(52, 27);
+            lblDniProfesor.TabIndex = 3;
+            lblDniProfesor.Text = "DNI";
+            // 
+            // lblApellidoProfesor
+            // 
+            lblApellidoProfesor.AutoSize = true;
+            lblApellidoProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblApellidoProfesor.ForeColor = Color.White;
+            lblApellidoProfesor.Location = new Point(16, 73);
+            lblApellidoProfesor.Name = "lblApellidoProfesor";
+            lblApellidoProfesor.Size = new Size(109, 27);
+            lblApellidoProfesor.TabIndex = 2;
+            lblApellidoProfesor.Text = "Apellido";
+            // 
+            // lblNombreProfesor
+            // 
+            lblNombreProfesor.AutoSize = true;
+            lblNombreProfesor.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNombreProfesor.ForeColor = Color.White;
+            lblNombreProfesor.Location = new Point(16, 23);
+            lblNombreProfesor.Name = "lblNombreProfesor";
+            lblNombreProfesor.Size = new Size(104, 27);
+            lblNombreProfesor.TabIndex = 1;
+            lblNombreProfesor.Text = "Nombre";
+            // 
+            // txtFechanacimientoProfesor
+            // 
+            txtFechanacimientoProfesor.BackColor = Color.Silver;
+            txtFechanacimientoProfesor.BorderStyle = BorderStyle.None;
+            txtFechanacimientoProfesor.Location = new Point(270, 182);
+            txtFechanacimientoProfesor.Name = "txtFechanacimientoProfesor";
+            txtFechanacimientoProfesor.Size = new Size(159, 19);
+            txtFechanacimientoProfesor.TabIndex = 0;
             // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(0, 0, 64);
-            panel6.Controls.Add(btnEliminarProfesor);
-            panel6.Controls.Add(btnModificarProfesor);
-            panel6.Controls.Add(btnAgregarProfesor);
-            panel6.Dock = DockStyle.Right;
             panel6.Location = new Point(1117, 4);
             panel6.Name = "panel6";
             panel6.Size = new Size(138, 571);
             panel6.TabIndex = 0;
-            // 
-            // btnEliminarProfesor
-            // 
-            btnEliminarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEliminarProfesor.ForeColor = Color.DimGray;
-            btnEliminarProfesor.Location = new Point(20, 375);
-            btnEliminarProfesor.Name = "btnEliminarProfesor";
-            btnEliminarProfesor.Size = new Size(114, 53);
-            btnEliminarProfesor.TabIndex = 2;
-            btnEliminarProfesor.Text = "Eliminar";
-            btnEliminarProfesor.UseVisualStyleBackColor = true;
-            // 
-            // btnModificarProfesor
-            // 
-            btnModificarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnModificarProfesor.ForeColor = Color.DimGray;
-            btnModificarProfesor.Location = new Point(19, 248);
-            btnModificarProfesor.Name = "btnModificarProfesor";
-            btnModificarProfesor.Size = new Size(115, 53);
-            btnModificarProfesor.TabIndex = 1;
-            btnModificarProfesor.Text = "Modificar";
-            btnModificarProfesor.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarProfesor
-            // 
-            btnAgregarProfesor.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAgregarProfesor.ForeColor = Color.DimGray;
-            btnAgregarProfesor.Location = new Point(20, 121);
-            btnAgregarProfesor.Name = "btnAgregarProfesor";
-            btnAgregarProfesor.Size = new Size(114, 59);
-            btnAgregarProfesor.TabIndex = 0;
-            btnAgregarProfesor.Text = "Agregar";
-            btnAgregarProfesor.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -1409,22 +1689,22 @@
             // 
             // panel19
             // 
-            panel19.Controls.Add(dataGridView5);
+            panel19.Controls.Add(dataGridView5Asignatura);
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(0, 41);
             panel19.Name = "panel19";
             panel19.Size = new Size(1120, 320);
             panel19.TabIndex = 3;
             // 
-            // dataGridView5
+            // dataGridView5Asignatura
             // 
-            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Dock = DockStyle.Fill;
-            dataGridView5.Location = new Point(0, 0);
-            dataGridView5.Name = "dataGridView5";
-            dataGridView5.RowHeadersWidth = 51;
-            dataGridView5.Size = new Size(1120, 320);
-            dataGridView5.TabIndex = 0;
+            dataGridView5Asignatura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView5Asignatura.Dock = DockStyle.Fill;
+            dataGridView5Asignatura.Location = new Point(0, 0);
+            dataGridView5Asignatura.Name = "dataGridView5Asignatura";
+            dataGridView5Asignatura.RowHeadersWidth = 51;
+            dataGridView5Asignatura.Size = new Size(1120, 320);
+            dataGridView5Asignatura.TabIndex = 0;
             // 
             // panel18
             // 
@@ -1571,10 +1851,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             panel10.ResumeLayout(false);
+            panel23.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProfesor).EndInit();
+            panel9Profesor.ResumeLayout(false);
+            panel9Profesor.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
@@ -1588,7 +1870,7 @@
             tabPage5.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel19.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5Asignatura).EndInit();
             panel17.ResumeLayout(false);
             panel17.PerformLayout();
             panel16.ResumeLayout(false);
@@ -1664,14 +1946,11 @@
         private ToolStripMenuItem perfilToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem1;
-        private Panel panel9;
+        private Panel panel9Profesor;
         private Panel panel6;
         private Panel panel10;
-        private DataGridView dataGridView2;
-        private Button btnEliminarProfesor;
-        private Button btnModificarProfesor;
-        private Button btnAgregarProfesor;
-        private TextBox textBox11;
+        private DataGridView dataGridViewProfesor;
+        private TextBox txtBuscarProfesor;
         private Panel panel12;
         private Button button5;
         private Button button6;
@@ -1712,7 +1991,7 @@
         private Panel panel17;
         private Panel panel16;
         private Panel panel19;
-        private DataGridView dataGridView5;
+        private DataGridView dataGridView5Asignatura;
         private Panel panel18;
         private Button btnAgregarAsignatura;
         private Button btnEliminarAsignatura;
@@ -1723,6 +2002,32 @@
         private Panel panel21;
         private Button button10;
         private Panel panel8;
-        private Button button1;
+        private Button btnBuscarProfesor;
+        private Label lblNombreProfesor;
+        private TextBox txtFechanacimientoProfesor;
+        private Label lblFechaNacimientoProfesor;
+        private Label lblDniProfesor;
+        private Label lblApellidoProfesor;
+        private Label lblTelefonoProfesor;
+        private Label lblAlturaProfesor;
+        private Label lblDireccionProfesor;
+        private TextBox txtNombreProfesor;
+        private TextBox txtApellidoProfesor;
+        private TextBox txtDniProfesor;
+        private TextBox txtDireccionProfesor;
+        private TextBox txtTelefonoProfesor;
+        private TextBox txtEmailProfesor;
+        private TextBox txtAlturaProfesor;
+        private Label lblEmailProfesor;
+        private TextBox txtContraseñaProfesor;
+        private TextBox txtUsuarioProfesor;
+        private Label lblContraseñaProfesor;
+        private Label lblUsuarioProfesor;
+        private Panel panel23;
+        private Button btnAgregarProfesor;
+        private Button btnEliminarProfesor;
+        private Button btnModificarProfesor;
+        private Label lblIdProfesor;
+        private TextBox txtIDProfesor;
     }
 }
