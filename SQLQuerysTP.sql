@@ -509,3 +509,8 @@ BEGIN
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
+
+SELECT 1
+        FROM Empleados
+        WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
+            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
