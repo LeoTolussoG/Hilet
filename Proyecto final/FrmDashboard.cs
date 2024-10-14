@@ -42,7 +42,7 @@ namespace Proyecto_final
             CargarDashboard();
             Cargar_tabla_Empleado_Profesores();
             Cargar_tabla_Empleado_Administrativos();
-
+            Cargar_tabla_Alumno();
         }
 
         private void btnDashExamenes_Click(object sender, EventArgs e)
@@ -104,6 +104,18 @@ namespace Proyecto_final
             dgvDashboard.DataSource = dataTable;
             ConectarBDD.cerrar();
         }
+        public void Cargar_tabla_Alumno()
+        {
+            ConectarBDD.abrir();
+            string consulta = "select * from Alumnos";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvAlumnos.DataSource = dt;
+        }
 
         public void Cargar_tabla_Empleado_Administrativos()
         {
@@ -121,7 +133,7 @@ namespace Proyecto_final
         public void Cargar_tabla_Empleado_Profesores()
         {
             ConectarBDD.abrir();
-            string consulta = "select * from Empleados";
+            string consulta = "select * from Empleados ";
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
 
             DataTable dt = new DataTable();
@@ -129,22 +141,6 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dataGridViewProfesor.DataSource = dt;
-        }
-
-
-
-
-
-
-
-        private void tbpInicio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label26_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridViewProfesor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -159,7 +155,6 @@ namespace Proyecto_final
             txtTelefonoProfesor.Text = dataGridViewProfesor.SelectedCells[8].Value.ToString();
             txtUsuarioProfesor.Text = dataGridViewProfesor.SelectedCells[9].Value.ToString();
             txtContraseñaProfesor.Text = dataGridViewProfesor.SelectedCells[10].Value.ToString();
-
         }
 
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
@@ -243,41 +238,28 @@ namespace Proyecto_final
             txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
 
-
-
-
-
-
-
-
-
-
-
-        /*ConfInterfazXperfil(); 
-}
-private void ConfInterfazXperfil()//Metodo que configura la interfaz segun el perfil (deshabilitando o habilitando botones) que haya ingresado
-{
-if (PerfilUsuario == "Alumno")
-{
-btnAdmin.Enabled = false; // Por ejemplo, los alumnos no pueden ver el botón Admin
-btnProfesor.Enabled = false;
-// Otros botones según necesites
-}
-else if (RolUsuario == "Profesor")
-{
-btnAdmin.Enabled = false;
-btnAlumno.Enabled = false; // Los profesores no ven lo de alumnos
-}
-else if (RolUsuario == "Personal Administrativo")
-{
-btnAdmin.Enabled = false;
-btnAlumno.Enabled = false;
-btnProfesor.Enabled = false;
-}
-else if (RolUsuario == "Administrador")
-{
-// El administrador puede ver todo, así que no deshabilitamos nada
-}
-}*/
+        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAlumno.Text = dgvAlumnos.SelectedCells[1].Value.ToString();
+            txtApellidoAlumno.Text = dgvAlumnos.SelectedCells[2].Value.ToString();
+            txtDNIAlumno.Text = dgvAlumnos.SelectedCells[3].Value.ToString();
+            txtDireccionAlumno.Text = dgvAlumnos.SelectedCells[4].Value.ToString();
+            txtAlturaAlumno.Text = dgvAlumnos.SelectedCells[5].Value.ToString();
+            txtEmailAlumno.Text = dgvAlumnos.SelectedCells[6].Value.ToString();
+            txtNacimientoAlumno.Text = dgvAlumnos.SelectedCells[8].Value.ToString();
+            txtTelAlumno.Text = dgvAlumnos.SelectedCells[7].Value.ToString();
+            txtUsuarioAlumno.Text = dgvAlumnos.SelectedCells[9].Value.ToString();
+            txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+       
