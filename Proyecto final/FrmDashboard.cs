@@ -161,7 +161,7 @@ namespace Proyecto_final
         public void Cargar_tabla_Empleado_Administrativos()
         {
             ConectarBDD.abrir();
-            string consulta = "sp_Cargar_Tabla_Administrativos";
+            string consulta = "select * from Empleados";
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
 
             DataTable dt = new DataTable();
@@ -170,7 +170,19 @@ namespace Proyecto_final
 
             dgvAdministrativos.DataSource = dt;
         }
-
+        private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
+            txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
+            txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
+            txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
+            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
+            txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
+            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
+            txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
+            txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
+            txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
+        }
         public void Cargar_tabla_Empleado_Profesores()
         {
             ConectarBDD.abrir();
@@ -263,20 +275,6 @@ namespace Proyecto_final
 
             Cargar_tabla_Empleado_Profesores();
 
-        }
-
-        private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
-            txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
-            txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
-            txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
-            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
-            txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
-            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
-            txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
-            txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
-            txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
 
         
