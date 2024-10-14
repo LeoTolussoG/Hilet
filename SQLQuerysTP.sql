@@ -388,7 +388,7 @@ as
 begin
 	select TOP 3
 	* from Empleados
-	where Id_empleado = 2
+	where Id_perfil = 2
 	order by 
 		Id_empleado
 	desc
@@ -407,7 +407,27 @@ begin
 end;
 
 -------------------------------------------
-
+create procedure sp_Dash_Administrativos
+as
+begin
+	select TOP 3
+	* from Empleados
+	where Id_perfil = 3
+	order by 
+		Id_empleado
+	desc
+end;
+--------------------------------------------
+create procedure sp_Dash_Carreras
+as
+begin
+	select TOP 3
+	* from Carreras
+	order by 
+		Id_carrera
+	desc
+end;
+---------------------------------------------
 create procedure sp_AgregarProfesor
 @Nombre varchar(40),
 @Apellido varchar(40),
@@ -514,3 +534,4 @@ SELECT 1
         FROM Empleados
         WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
             SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+

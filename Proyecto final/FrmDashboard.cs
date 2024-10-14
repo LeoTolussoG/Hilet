@@ -104,6 +104,34 @@ namespace Proyecto_final
             dgvDashboard.DataSource = dataTable;
             ConectarBDD.cerrar();
         }
+        private void btnDashAdministrativos_Click(object sender, EventArgs e)
+        {
+            lblTituloDashboard.Text = "Ultimos administrativos registrados";
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Dash_Administrativos";
+            SqlDataAdapter comando = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dataTable = new DataTable();
+
+            comando.Fill(dataTable);
+            dgvDashboard.DataSource = dataTable;
+            ConectarBDD.cerrar();
+        }
+        private void btnDashCarreras_Click(object sender, EventArgs e)
+        {
+            lblTituloDashboard.Text = "Ultimas carreras";
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Dash_Carreras";
+            SqlDataAdapter comando = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dataTable = new DataTable();
+
+            comando.Fill(dataTable);
+            dgvDashboard.DataSource = dataTable;
+            ConectarBDD.cerrar();
+        }
         public void Cargar_tabla_Alumno()
         {
             ConectarBDD.abrir();
@@ -115,6 +143,19 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvAlumnos.DataSource = dt;
+        }
+        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAlumno.Text = dgvAlumnos.SelectedCells[1].Value.ToString();
+            txtApellidoAlumno.Text = dgvAlumnos.SelectedCells[2].Value.ToString();
+            txtDNIAlumno.Text = dgvAlumnos.SelectedCells[3].Value.ToString();
+            txtDireccionAlumno.Text = dgvAlumnos.SelectedCells[4].Value.ToString();
+            txtAlturaAlumno.Text = dgvAlumnos.SelectedCells[5].Value.ToString();
+            txtEmailAlumno.Text = dgvAlumnos.SelectedCells[6].Value.ToString();
+            txtNacimientoAlumno.Text = dgvAlumnos.SelectedCells[8].Value.ToString();
+            txtTelAlumno.Text = dgvAlumnos.SelectedCells[7].Value.ToString();
+            txtUsuarioAlumno.Text = dgvAlumnos.SelectedCells[9].Value.ToString();
+            txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
         }
 
         public void Cargar_tabla_Empleado_Administrativos()
@@ -238,19 +279,7 @@ namespace Proyecto_final
             txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
 
-        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreAlumno.Text = dgvAlumnos.SelectedCells[1].Value.ToString();
-            txtApellidoAlumno.Text = dgvAlumnos.SelectedCells[2].Value.ToString();
-            txtDNIAlumno.Text = dgvAlumnos.SelectedCells[3].Value.ToString();
-            txtDireccionAlumno.Text = dgvAlumnos.SelectedCells[4].Value.ToString();
-            txtAlturaAlumno.Text = dgvAlumnos.SelectedCells[5].Value.ToString();
-            txtEmailAlumno.Text = dgvAlumnos.SelectedCells[6].Value.ToString();
-            txtNacimientoAlumno.Text = dgvAlumnos.SelectedCells[8].Value.ToString();
-            txtTelAlumno.Text = dgvAlumnos.SelectedCells[7].Value.ToString();
-            txtUsuarioAlumno.Text = dgvAlumnos.SelectedCells[9].Value.ToString();
-            txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
-        }
+        
     }
 }
 
