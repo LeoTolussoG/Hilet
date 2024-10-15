@@ -36,15 +36,16 @@ namespace Proyecto_final
         {
             InitializeComponent();
         }
-
         private void FrmDashboard_Load(object sender, EventArgs e) //evento que se activa cuando se abre el formulario
         {
             CargarDashboard();
             Cargar_tabla_Empleado_Profesores();
             Cargar_tabla_Empleado_Administrativos();
             Cargar_tabla_Alumno();
+            Cargar_tabla_Examenes();
         }
 
+        //PESTAÑA INICIO: VISION GENERAL DE TODOS LOS DATOS
         private void btnDashExamenes_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos examenes";
@@ -132,6 +133,8 @@ namespace Proyecto_final
             dgvDashboard.DataSource = dataTable;
             ConectarBDD.cerrar();
         }
+
+        //PESTAÑA GESTION ACADEMICA: ALUMNOS
         public void Cargar_tabla_Alumno()
         {
             ConectarBDD.abrir();
@@ -158,6 +161,7 @@ namespace Proyecto_final
             txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
         }
 
+        //PESTAÑA GESTION ACADEMICA: ADMINISTRATIVOS
         public void Cargar_tabla_Empleado_Administrativos()
         {
             ConectarBDD.abrir();
@@ -170,7 +174,21 @@ namespace Proyecto_final
 
             dgvAdministrativos.DataSource = dt;
         }
+        private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
+            txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
+            txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
+            txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
+            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
+            txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
+            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
+            txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
+            txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
+            txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
+        }
 
+        //PESTAÑA GESTION ACADEMICA: PROFESOR
         public void Cargar_tabla_Empleado_Profesores()
         {
             ConectarBDD.abrir();
@@ -265,21 +283,33 @@ namespace Proyecto_final
 
         }
 
-        private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
-            txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
-            txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
-            txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
-            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
-            txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
-            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
-            txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
-            txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
-            txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
-        }
-
         
+        //PESTAÑA GESTION ACADEMICA: EXAMENES
+        public void Cargar_tabla_Examenes()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT E.Id_examenes, E.Nota, E.Fecha, " +
+                                      "A.Nombre AS Alumno, " +
+                                      "asg.Nombre AS Asignatura, " +
+                                      "I.Descripcion AS Instancia, " +
+                                      "emp.Nombre AS Profesor " +
+                              "FROM Examenes E " +
+                              "LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno " +
+                              "LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura " +
+                              "LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia " +
+                              "LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvExamenes.DataSource = dt;
+        }
+        private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Cargar_tabla_Examenes();
+        }
     }
 }
 
