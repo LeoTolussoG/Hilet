@@ -154,7 +154,6 @@ namespace Proyecto_final
             txtDireccionAlumno.Text = dgvAlumnos.SelectedCells[4].Value.ToString();
             txtAlturaAlumno.Text = dgvAlumnos.SelectedCells[5].Value.ToString();
             txtEmailAlumno.Text = dgvAlumnos.SelectedCells[6].Value.ToString();
-            txtNacimientoAlumno.Text = dgvAlumnos.SelectedCells[8].Value.ToString();
             txtTelAlumno.Text = dgvAlumnos.SelectedCells[7].Value.ToString();
             txtUsuarioAlumno.Text = dgvAlumnos.SelectedCells[9].Value.ToString();
             txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
@@ -314,7 +313,7 @@ namespace Proyecto_final
 
             cbAlumno.Items.Clear(); // Limpia antes de agregar
 
-            while (reader.Read()) 
+            while (reader.Read())
             {
                 cbAlumno.Items.Add(reader["Nombre"].ToString()); //Agrega en el comboBox
             }
@@ -326,7 +325,30 @@ namespace Proyecto_final
             Cargar_ComboBox_Alumnos();
         }
 
+        private void btnAgregarAlumno_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = " sp_AgregarAlumno";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("Matricula",txtIDAlumno.Text);
+            comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
+            comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
+            comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
+            comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
+            comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionAlumno.Text);
+            comando.Parameters.AddWithValue("@Direccion_num", txtAlturaAlumno.Text);
+            comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
+            comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
+            comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
+            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
 
+            comando.ExecuteNonQuery();
+
+            MessageBox.Show("Registro Agregado!");
+
+            Cargar_tabla_Alumno();
+        }
     }
 }
 
