@@ -428,7 +428,9 @@ begin
 	desc
 end;
 ---------------------------------------------
-create procedure sp_AgregarProfesor
+
+
+CREATE PROCEDURE sp_AgregarProfesor
 @Nombre varchar(40),
 @Apellido varchar(40),
 @Dni varchar(20),
@@ -438,23 +440,21 @@ create procedure sp_AgregarProfesor
 @Telefono varchar(30),
 @F_nacimiento date,
 @Usuario varchar(40),
-@Contraseña varchar(40),
-@Id_perfil int
-as
-begin 
-	if not exists ( 
-	select 1 
-	from Perfiles
-	where Id_perfil = @Id_perfil and Tipo_perfil = 'Profesor'
-	)
-	begin
-		 RAISERROR('El ID de perfil proporcionado no corresponde a un profesor.', 16, 1);
-        RETURN;
-	end
+@Contraseña varchar(40)
+AS
+BEGIN
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
 
-	insert into Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña,Id_perfil)
-	values(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil)
-end;
+    -- Insertar el nuevo profesor
+    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil);
+
+   
+END;
+
+
+
 
 -------------------------------------------------------------------
 
@@ -469,11 +469,13 @@ CREATE PROCEDURE sp_ModificarProfesor
     @Telefono VARCHAR(30),
     @F_nacimiento DATE,
     @Usuario VARCHAR(40),
-    @Contraseña VARCHAR(40),
-    @Id_perfil INT  -- ID del perfil del profesor
+    @Contraseña VARCHAR(40)
 AS
 BEGIN
-    -- Verificamos si el profesor existe en la tabla Empleados
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
+
+    -- Verificamos si el profesor existe en la tabla Empleados y pertenece al perfil 2 (profesor)
     IF NOT EXISTS (
         SELECT 1
         FROM Empleados
@@ -496,12 +498,13 @@ BEGIN
         Telefono = @Telefono,
         F_nacimiento = @F_nacimiento,
         Usuario = @Usuario,
-        Contraseña = @Contraseña,
-        Id_perfil = @Id_perfil  -- Asegúrate de que el perfil siga siendo válido
-    WHERE Id_empleado = @Id_empleado;  --  actualizamos solo el registro del profesor especificado
+        Contraseña = @Contraseña
+    WHERE Id_empleado = @Id_empleado 
+      AND Id_perfil = @Id_perfil;  -- Aseguramos que solo modificamos el registro de un profesor
 
     PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
 END;
+
 
 ------------------------------------------------------------------------------------------------------
 

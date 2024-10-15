@@ -199,27 +199,13 @@ namespace Proyecto_final
 
             adapter.Fill(dt);
 
-            dataGridViewProfesor.DataSource = dt;
+            dgvProfesor.DataSource = dt;
         }
 
-        private void dataGridViewProfesor_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreProfesor.Text = dataGridViewProfesor.SelectedCells[1].Value.ToString();
-            txtApellidoProfesor.Text = dataGridViewProfesor.SelectedCells[2].Value.ToString();
-            txtDniProfesor.Text = dataGridViewProfesor.SelectedCells[3].Value.ToString();
-            txtFechanacimientoProfesor.Text = dataGridViewProfesor.SelectedCells[4].Value.ToString();
-            txtDireccionProfesor.Text = dataGridViewProfesor.SelectedCells[5].Value.ToString();
-            txtAlturaProfesor.Text = dataGridViewProfesor.SelectedCells[6].Value.ToString();
-            txtEmailProfesor.Text = dataGridViewProfesor.SelectedCells[7].Value.ToString();
-            txtTelefonoProfesor.Text = dataGridViewProfesor.SelectedCells[8].Value.ToString();
-            txtUsuarioProfesor.Text = dataGridViewProfesor.SelectedCells[9].Value.ToString();
-            txtContraseñaProfesor.Text = dataGridViewProfesor.SelectedCells[10].Value.ToString();
-        }
-
-        private void btnAgregarProfesor_Click(object sender, EventArgs e)
+        /*private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
             ConectarBDD.abrir();
-            string consulta = " sp_AgregarProfesor";
+            string consulta = "sp_AgregarProfesor";
             SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
             comando.CommandType = CommandType.StoredProcedure;
 
@@ -281,9 +267,9 @@ namespace Proyecto_final
 
             Cargar_tabla_Empleado_Profesores();
 
-        }
+        }*/
 
-        
+
         //PESTAÑA GESTION ACADEMICA: EXAMENES
         public void Cargar_tabla_Examenes()
         {
@@ -309,6 +295,82 @@ namespace Proyecto_final
         private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Cargar_tabla_Examenes();
+        }
+
+        private void dgvProfesor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreProfesor.Text = dgvProfesor.SelectedCells[1].Value.ToString();
+            txtApellidoProfesor.Text = dgvProfesor.SelectedCells[2].Value.ToString();
+            txtDniProfesor.Text = dgvProfesor.SelectedCells[3].Value.ToString();
+            txtFechanacimientoProfesor.Text = dgvProfesor.SelectedCells[4].Value.ToString();
+            txtDireccionProfesor.Text = dgvProfesor.SelectedCells[5].Value.ToString();
+            txtAlturaProfesor.Text = dgvProfesor.SelectedCells[6].Value.ToString();
+            txtEmailProfesor.Text = dgvProfesor.SelectedCells[7].Value.ToString();
+            txtTelefonoProfesor.Text = dgvProfesor.SelectedCells[8].Value.ToString();
+            txtUsuarioProfesor.Text = dgvProfesor.SelectedCells[9].Value.ToString();
+            txtContraseñaProfesor.Text = dgvProfesor.SelectedCells[10].Value.ToString();
+        }
+
+        private void btnAgregarProfesor_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_AgregarProfesor";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
+            comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
+            comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
+            comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
+            comando.Parameters.AddWithValue("@Direccion_num", txtAlturaProfesor.Text);
+            comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
+            comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
+            comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
+            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
+
+            DateTime fechaNacimiento;
+            if (DateTime.TryParse(txtFechanacimientoProfesor.Text, out fechaNacimiento))
+            {
+                comando.Parameters.AddWithValue("@F_nacimiento", fechaNacimiento);
+            }
+
+            comando.ExecuteNonQuery();
+            ConectarBDD.cerrar();
+            MessageBox.Show("Registro Agregado!");
+
+            Cargar_tabla_Empleado_Profesores();
+        }
+
+        private void btnModificarProfesor_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_ModificarProfesor";
+
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            comando.Parameters.AddWithValue("@Id_empleado", Convert.ToInt32(txtIDProfesor.Text));
+            comando.Parameters.AddWithValue("@Id_perfil", 2);
+            comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
+            comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
+            comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
+            comando.Parameters.AddWithValue("@F_nacimiento", Convert.ToInt32(txtFechanacimientoProfesor.Text));
+            comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
+            comando.Parameters.AddWithValue("@Direccion_num", Convert.ToInt32(txtAlturaProfesor.Text));
+            comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
+            comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
+            comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
+            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
+
+            MessageBox.Show("Registro Actualizado!");
+
+            Cargar_tabla_Empleado_Profesores();
+
+        }
+
+        private void btnEliminarProfesor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
