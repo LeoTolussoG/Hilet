@@ -428,7 +428,7 @@ begin
 	desc
 end;
 ---------------------------------------------
-create procedure sp_AgregarProfesor
+CREATE PROCEDURE sp_AgregarProfesor
 @Nombre varchar(40),
 @Apellido varchar(40),
 @Dni varchar(20),
@@ -438,23 +438,18 @@ create procedure sp_AgregarProfesor
 @Telefono varchar(30),
 @F_nacimiento date,
 @Usuario varchar(40),
-@Contraseña varchar(40),
-@Id_perfil int
-as
-begin 
-	if not exists ( 
-	select 1 
-	from Perfiles
-	where Id_perfil = @Id_perfil and Tipo_perfil = 'Profesor'
-	)
-	begin
-		 RAISERROR('El ID de perfil proporcionado no corresponde a un profesor.', 16, 1);
-        RETURN;
-	end
+@Contraseña varchar(40)
+AS
+BEGIN
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
 
-	insert into Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña,Id_perfil)
-	values(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil)
-end;
+    -- Insertar el nuevo profesor
+    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil);
+
+END;
+
 
 -------------------------------------------------------------------
 
@@ -534,4 +529,6 @@ SELECT 1
         FROM Empleados
         WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
             SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+
+
 
