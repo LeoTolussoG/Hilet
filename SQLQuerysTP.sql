@@ -268,17 +268,17 @@ INSERT INTO Instancias (Descripcion) VALUES
 ('Recuperatorio'),
 ('Final');
 
-INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia) VALUES
-(8.5, '2024-05-01', 2, 4, 1), -- Laura en Marketing general (Parcial)
-(7.0, '2024-05-02', 2, 5, 1), -- Laura en Psicología Comportamiento del Consumidor (Parcial)
-(9.0, '2024-05-03', 3, 2, 1), -- Pedro en Fundamentos del diseño publicitario (Parcial)
-(6.5, '2024-05-01', 4, 2, 1), -- Pedro en Computación 1 (Parcial)
-(8.0, '2024-06-01', 2, 6, 2), -- Laura en Marketing general (Recuperatorio)
-(5.5, '2024-06-02', 5, 2, 2), -- Pedro en Introducción a la publicidad (Recuperatorio)
-(9.5, '2024-07-01', 6, 7, 3), -- Laura en Producción gráfica (Final)
-(8.0, '2024-07-02', 7, 2, 3), -- Pedro en Producción radial (Final)
-(10.0, '2024-07-03', 8, 9, 3), -- Laura en Producción audiovisual (Final)
-(7.5, '2024-07-01', 9, 2, 3); -- Pedro en Computación 2 (Final)
+INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_empleado) VALUES
+(8.5, '2024-05-01', 2, 4, 1, 2), -- Laura en Marketing general (Parcial)
+(7.0, '2024-05-02', 2, 5, 1, 2), -- Laura en Psicología Comportamiento del Consumidor (Parcial)
+(9.0, '2024-05-03', 3, 2, 1, 2), -- Pedro en Fundamentos del diseño publicitario (Parcial)
+(6.5, '2024-05-01', 4, 2, 1, 2), -- Pedro en Computación 1 (Parcial)
+(8.0, '2024-06-01', 2, 6, 2, 2), -- Laura en Marketing general (Recuperatorio)
+(5.5, '2024-06-02', 5, 2, 2, 2), -- Pedro en Introducción a la publicidad (Recuperatorio)
+(9.5, '2024-07-01', 6, 7, 3, 2), -- Laura en Producción gráfica (Final)
+(8.0, '2024-07-02', 7, 2, 3, 2), -- Pedro en Producción radial (Final)
+(10.0, '2024-07-03', 8, 9,3, 2), -- Laura en Producción audiovisual (Final)
+(7.5, '2024-07-01', 9, 2, 3, 2); -- Pedro en Computación 2 (Final)
 
 /*Ver bien que permisos tiene cada uno:*/
 INSERT INTO Permisos (Tipo_permiso) VALUES
@@ -527,4 +527,5 @@ SELECT 1
         FROM Empleados
         WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
             SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+
 

@@ -43,6 +43,8 @@ namespace Proyecto_final
             Cargar_tabla_Empleado_Profesores();
             Cargar_tabla_Empleado_Administrativos();
             Cargar_tabla_Alumno();
+            Cargar_tabla_Examenes();
+            Cargar_ComboBox_Alumnos();
         }
 
         private void btnDashExamenes_Click(object sender, EventArgs e)
@@ -277,16 +279,54 @@ namespace Proyecto_final
 
         }
 
-        
+        //PESTAÑA GESTION ACADEMICA: EXAMENES
+        public void Cargar_tabla_Examenes()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT E.Id_examenes, E.Nota, E.Fecha, " +
+                                      "A.Nombre AS Alumno, " +
+                                      "asg.Nombre AS Asignatura, " +
+                                      "I.Descripcion AS Instancia, " +
+                                      "emp.Nombre AS Profesor " +
+                              "FROM Examenes E " +
+                              "LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno " +
+                              "LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura " +
+                              "LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia " +
+                              "LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvExamenes.DataSource = dt;
+        }
+        private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Cargar_tabla_Examenes();
+        }
+        private void Cargar_ComboBox_Alumnos()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT Nombre FROM Alumnos";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            SqlDataReader reader = comando.ExecuteReader(); //Ejecuta la consulta
+
+            cbAlumno.Items.Clear(); // Limpia antes de agregar
+
+            while (reader.Read()) 
+            {
+                cbAlumno.Items.Add(reader["Nombre"].ToString()); //Agrega en el comboBox
+            }
+
+            ConectarBDD.cerrar();
+        }
+        private void cbAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cargar_ComboBox_Alumnos();
+        }
+
+
     }
 }
 
-
-
-
-
-
-
-
-
-       
