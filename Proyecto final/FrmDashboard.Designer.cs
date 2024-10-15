@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -105,8 +105,8 @@
             txtApellidoAlumno = new TextBox();
             txtDNIAlumno = new TextBox();
             panel24 = new Panel();
-            button2 = new Button();
-            textBox12 = new TextBox();
+            btnBuscarAlumno = new Button();
+            txtBuscarAlumno = new TextBox();
             tabPage2 = new TabPage();
             panel10 = new Panel();
             panel23 = new Panel();
@@ -379,23 +379,23 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.DimGray;
-            dataGridViewCellStyle6.SelectionBackColor = Color.CornflowerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.CornflowerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle2;
             dgvDashboard.EnableHeadersVisualStyles = false;
             dgvDashboard.Location = new Point(269, 197);
             dgvDashboard.Name = "dgvDashboard";
@@ -758,6 +758,7 @@
             btnEliminarAlumno.TabIndex = 2;
             btnEliminarAlumno.Text = "Eliminar";
             btnEliminarAlumno.UseVisualStyleBackColor = true;
+            btnEliminarAlumno.Click += btnEliminarAlumno_Click;
             // 
             // btnModificarAlumno
             // 
@@ -770,6 +771,7 @@
             btnModificarAlumno.TabIndex = 1;
             btnModificarAlumno.Text = "Modificar";
             btnModificarAlumno.UseVisualStyleBackColor = true;
+            btnModificarAlumno.Click += btnModificarAlumno_Click;
             // 
             // panel25
             // 
@@ -1063,36 +1065,37 @@
             // panel24
             // 
             panel24.BackColor = Color.FromArgb(0, 0, 64);
-            panel24.Controls.Add(button2);
-            panel24.Controls.Add(textBox12);
+            panel24.Controls.Add(btnBuscarAlumno);
+            panel24.Controls.Add(txtBuscarAlumno);
             panel24.Dock = DockStyle.Top;
             panel24.Location = new Point(0, 0);
             panel24.Name = "panel24";
             panel24.Size = new Size(1282, 41);
             panel24.TabIndex = 24;
             // 
-            // button2
+            // btnBuscarAlumno
             // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.ForeColor = Color.FromArgb(64, 64, 64);
-            button2.Location = new Point(990, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(39, 36);
-            button2.TabIndex = 4;
-            button2.UseVisualStyleBackColor = true;
+            btnBuscarAlumno.BackgroundImage = (Image)resources.GetObject("btnBuscarAlumno.BackgroundImage");
+            btnBuscarAlumno.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBuscarAlumno.ForeColor = Color.FromArgb(64, 64, 64);
+            btnBuscarAlumno.Location = new Point(990, 3);
+            btnBuscarAlumno.Name = "btnBuscarAlumno";
+            btnBuscarAlumno.Size = new Size(39, 36);
+            btnBuscarAlumno.TabIndex = 4;
+            btnBuscarAlumno.UseVisualStyleBackColor = true;
+            btnBuscarAlumno.Click += btnBuscarAlumno_Click;
             // 
-            // textBox12
+            // txtBuscarAlumno
             // 
-            textBox12.BackColor = Color.WhiteSmoke;
-            textBox12.BorderStyle = BorderStyle.None;
-            textBox12.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox12.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox12.Location = new Point(706, 12);
-            textBox12.Name = "textBox12";
-            textBox12.PlaceholderText = "Buscar alumno";
-            textBox12.Size = new Size(278, 23);
-            textBox12.TabIndex = 1;
+            txtBuscarAlumno.BackColor = Color.WhiteSmoke;
+            txtBuscarAlumno.BorderStyle = BorderStyle.None;
+            txtBuscarAlumno.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtBuscarAlumno.ForeColor = Color.FromArgb(64, 64, 64);
+            txtBuscarAlumno.Location = new Point(642, 12);
+            txtBuscarAlumno.Name = "txtBuscarAlumno";
+            txtBuscarAlumno.PlaceholderText = "Ingrese la matrícula del alumno";
+            txtBuscarAlumno.Size = new Size(342, 23);
+            txtBuscarAlumno.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -1204,14 +1207,14 @@
             // dataGridViewProfesor
             // 
             dataGridViewProfesor.BackgroundColor = Color.White;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridViewProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewProfesor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProfesor.Dock = DockStyle.Fill;
             dataGridViewProfesor.EnableHeadersVisualStyles = false;
@@ -1498,14 +1501,14 @@
             // dgvAdministrativos
             // 
             dgvAdministrativos.BackgroundColor = Color.White;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvAdministrativos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAdministrativos.Dock = DockStyle.Fill;
             dgvAdministrativos.EnableHeadersVisualStyles = false;
@@ -2181,7 +2184,6 @@
             cbAlumno.Name = "cbAlumno";
             cbAlumno.Size = new Size(151, 28);
             cbAlumno.TabIndex = 24;
-            cbAlumno.SelectedIndexChanged += cbAlumno_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -2514,8 +2516,8 @@
         private Label label28;
         private Label label29;
         private Label label30;
-        private Button button2;
-        private TextBox textBox12;
+        private Button btnBuscarAlumno;
+        private TextBox txtBuscarAlumno;
         private TabPage tabPage6;
         private Panel panel28;
         private TextBox textBox1;
