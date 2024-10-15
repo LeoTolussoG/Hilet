@@ -457,9 +457,8 @@ END;
 
 
 -------------------------------------------------------------------
-
 CREATE PROCEDURE sp_ModificarProfesor
-    @Id_empleado INT,  -- ID del profesor que queremos modificar
+    @Id_empleado INT,          -- ID del profesor que queremos modificar
     @Nombre VARCHAR(40),
     @Apellido VARCHAR(40),
     @Dni VARCHAR(20),
@@ -498,28 +497,23 @@ BEGIN
         Telefono = @Telefono,
         F_nacimiento = @F_nacimiento,
         Usuario = @Usuario,
-        Contraseña = @Contraseña
-    WHERE Id_empleado = @Id_empleado 
-      AND Id_perfil = @Id_perfil;  -- Aseguramos que solo modificamos el registro de un profesor
+        Contraseña = @Contraseña,
+        Id_perfil = @Id_perfil  -- Aseguramos que el perfil sigue siendo profesor (2)
+    WHERE Id_empleado = @Id_empleado;
 
     PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
 END;
 
-
 ------------------------------------------------------------------------------------------------------
-
 CREATE PROCEDURE sp_EliminarProfesor
-    @Id_empleado INT,  -- ID del profesor que queremos eliminar
-    @Id_perfil INT  -- ID del perfil del profesor
+    @Id_empleado INT  -- ID del profesor que queremos eliminar
 AS
 BEGIN
-    -- Verificamos si el ID de empleado corresponde a un profesor
+    -- Verificamos si el ID de empleado corresponde a un profesor (Id_perfil = 2)
     IF NOT EXISTS (
         SELECT 1
         FROM Empleados
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = @Id_perfil AND Id_perfil IN (
-            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor'
-        )
+        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
     )
     BEGIN
         RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
@@ -528,13 +522,7 @@ BEGIN
 
     -- Si el profesor existe, realizamos la eliminación
     DELETE FROM Empleados
-    WHERE Id_empleado = @Id_empleado;
+    WHERE Id_empleado = @Id_empleado AND Id_perfil = 2;
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
-
-SELECT 1
-        FROM Empleados
-        WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
-            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
-
