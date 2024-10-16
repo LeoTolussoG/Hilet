@@ -430,7 +430,9 @@ begin
 	desc
 end;
 ---------------------------------------------
-create procedure sp_AgregarProfesor
+
+
+CREATE PROCEDURE sp_AgregarProfesor
 @Nombre varchar(40),
 @Apellido varchar(40),
 @Dni varchar(20),
@@ -440,28 +442,25 @@ create procedure sp_AgregarProfesor
 @Telefono varchar(30),
 @F_nacimiento date,
 @Usuario varchar(40),
-@Contraseña varchar(40),
-@Id_perfil int
-as
-begin 
-	if not exists ( 
-	select 1 
-	from Perfiles
-	where Id_perfil = @Id_perfil and Tipo_perfil = 'Profesor'
-	)
-	begin
-		 RAISERROR('El ID de perfil proporcionado no corresponde a un profesor.', 16, 1);
-        RETURN;
-	end
+@Contraseña varchar(40)
+AS
+BEGIN
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
 
-	insert into Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña,Id_perfil)
-	values(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil)
-end;
+    -- Insertar el nuevo profesor
+    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil);
+
+   
+END;
+
+
+
 
 -------------------------------------------------------------------
-
 CREATE PROCEDURE sp_ModificarProfesor
-    @Id_empleado INT,  -- ID del profesor que queremos modificar
+    @Id_empleado INT,          -- ID del profesor que queremos modificar
     @Nombre VARCHAR(40),
     @Apellido VARCHAR(40),
     @Dni VARCHAR(20),
@@ -471,11 +470,13 @@ CREATE PROCEDURE sp_ModificarProfesor
     @Telefono VARCHAR(30),
     @F_nacimiento DATE,
     @Usuario VARCHAR(40),
-    @Contraseña VARCHAR(40),
-    @Id_perfil INT  -- ID del perfil del profesor
+    @Contraseña VARCHAR(40)
 AS
 BEGIN
-    -- Verificamos si el profesor existe en la tabla Empleados
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
+
+    -- Verificamos si el profesor existe en la tabla Empleados y pertenece al perfil 2 (profesor)
     IF NOT EXISTS (
         SELECT 1
         FROM Empleados
@@ -499,26 +500,22 @@ BEGIN
         F_nacimiento = @F_nacimiento,
         Usuario = @Usuario,
         Contraseña = @Contraseña,
-        Id_perfil = @Id_perfil  -- Asegúrate de que el perfil siga siendo válido
-    WHERE Id_empleado = @Id_empleado;  --  actualizamos solo el registro del profesor especificado
+        Id_perfil = @Id_perfil  -- Aseguramos que el perfil sigue siendo profesor (2)
+    WHERE Id_empleado = @Id_empleado;
 
     PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
 END;
 
 ------------------------------------------------------------------------------------------------------
-
 CREATE PROCEDURE sp_EliminarProfesor
-    @Id_empleado INT,  -- ID del profesor que queremos eliminar
-    @Id_perfil INT  -- ID del perfil del profesor
+    @Id_empleado INT  -- ID del profesor que queremos eliminar
 AS
 BEGIN
-    -- Verificamos si el ID de empleado corresponde a un profesor
+    -- Verificamos si el ID de empleado corresponde a un profesor (Id_perfil = 2)
     IF NOT EXISTS (
         SELECT 1
         FROM Empleados
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = @Id_perfil AND Id_perfil IN (
-            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor'
-        )
+        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
     )
     BEGIN
         RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
@@ -527,15 +524,98 @@ BEGIN
 
     -- Si el profesor existe, realizamos la eliminación
     DELETE FROM Empleados
-    WHERE Id_empleado = @Id_empleado;
+    WHERE Id_empleado = @Id_empleado AND Id_perfil = 2;
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
-
 SELECT 1
         FROM Empleados
         WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
             SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+-------------------------------------------------------------------------------
+--PROCEDIMIENTO PARA AGREGAR ALUMNO
+CREATE PROCEDURE sp_AgregarAlumno
+@Id_perfil INT,
+@Nombre NVARCHAR(50),
+@Apellido NVARCHAR(50),
+@DNI NVARCHAR(20),
+@F_nacimiento DATE,
+@Direccion NVARCHAR(100),
+@Altura INT,
+@Email NVARCHAR(50),
+@Telefono NVARCHAR(20),
+@Usuario NVARCHAR(50),
+@Contraseña NVARCHAR(50)
+AS
+BEGIN
+	IF not exists (
+		SELECT 1
+		FROM Perfiles
+		WHERE Id_perfil = @Id_perfil and Tipo_perfil = 'Alumno')
+		BEGIN
+			RAISERROR ('El Id de perfil no corresponde a un alumno', 16,1);
+			RETURN;
+		END
+		
+		INSERT INTO Alumnos ( Nombre, Apellido, DNI, F_nacimiento, Direccion_calle, Direccion_num, Email, Telefono, Usuario, Contraseña, Id_perfil)
+		VALUES (@Nombre, @Apellido, @DNI, @F_nacimiento, @Direccion, @Altura, @Email, @Telefono, @Usuario, @Contraseña, @Id_perfil);
+END;
+
+--PROCEDIMIENTO PARA MODIFICAR ALUMNO
+CREATE PROCEDURE sp_ModificarAlumno
+    @Id_alumno INT,
+    @Nombre VARCHAR(40),
+    @Apellido VARCHAR(40),
+    @Dni VARCHAR(20),
+    @Direccion VARCHAR(50),
+    @Altura INT,
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(30),
+    @F_nacimiento DATE,
+    @Usuario VARCHAR(40),
+    @Contraseña VARCHAR(40),
+    @Id_perfil INT
+AS
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Alumnos
+        WHERE Id_alumno = @Id_alumno AND Id_perfil = @Id_perfil
+    )
+    BEGIN
+        RAISERROR('El alumno no existe.', 16, 1);
+        RETURN; 
+    END
+
+  
+    UPDATE Alumnos
+    SET 
+        Nombre = @Nombre,Apellido = @Apellido, Dni = @Dni, Direccion_calle = 
+		@Direccion,Direccion_num = @Altura,Email = @Email,Telefono = @Telefono, 
+		F_nacimiento = @F_nacimiento,Usuario = @Usuario,Contraseña = @Contraseña, Id_perfil = @Id_perfil  
+    WHERE Id_alumno = @Id_alumno;  
+END;
+
+---------------------------------------------------------------------------------------------------
+--PROCEDIMIENTO PARA ELIMINAR UN ALUMNO
+CREATE PROCEDURE sp_EliminarAlumno
+    @Id_alumno INT, 
+	@Id_perfil INT  
+AS
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Alumnos
+        WHERE Id_alumno = @Id_alumno AND Id_perfil = @Id_perfil)
+    BEGIN
+        RAISERROR('El alumno no existe.', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM Alumnos
+    WHERE Id_alumno = @Id_alumno;
+END;
+drop procedure sp_EliminarAlumno
 
 use TPFinal
 
