@@ -148,6 +148,64 @@ namespace Proyecto_final
             dgvAlumnos.DataSource = dt;
             ConectarBDD.cerrar();
         }
+        private bool Validar_Datos_Alumno()             //Verifico que los campos cumplan con los requisitos
+        {
+            errorProviderDatosVacios.Clear();
+            bool valido = true;
+
+            if (txtNombreAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtNombreAlumno, "El nombre está vacío");
+                valido = false;
+            }
+            if (txtApellidoAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtApellidoAlumno, "El apellido está vacío");
+                valido = false;
+            }
+            if (txtDNIAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDNIAlumno, "El DNI está vacío");
+                valido = false;
+            }
+            if (txtDireccionAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDireccionAlumno, "La Dirección está vacía");
+                valido = false;
+            }
+            if (txtAlturaAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtAlturaAlumno, "La altura está vacía");
+                valido = false;
+            }
+            if (txtEmailAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtEmailAlumno, "El email está vacío");
+                valido = false;
+            }
+            if (dateTimeAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(dateTimeAlumno, "La fecha de nacimiento está vacáa");
+                valido = false;
+            }
+            if (txtTelAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtTelAlumno, "El teléfono está vacío");
+                valido = false;
+            }
+            if (txtUsuarioAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtUsuarioAlumno, "El usuario está vacío");
+                valido = false;
+            }
+            if (txtContraseñaAlumno.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtContraseñaAlumno, "La contraseña está vacía");
+                valido = false;
+            }
+            return valido;
+
+        }
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) //Me fijo que haya un reglon seleccionado
@@ -168,70 +226,79 @@ namespace Proyecto_final
         }
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
-            ConectarBDD.abrir();
-            string consulta = "sp_AgregarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
-            comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
-            comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
-            comando.Parameters.AddWithValue("@Altura", txtAlturaAlumno.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
+            if (Validar_Datos_Alumno())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_AgregarAlumno";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@Id_perfil", 1);
+                comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
+                comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
+                comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
+                comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
+                comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
+                comando.Parameters.AddWithValue("@Altura", txtAlturaAlumno.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
+                comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
+                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
 
-            comando.ExecuteNonQuery();
+                comando.ExecuteNonQuery();
 
-            MessageBox.Show("Registro Agregado!");
+                MessageBox.Show("Registro Agregado!");
 
-            Cargar_tabla_Alumno();
+                Cargar_tabla_Alumno();
+            }
         }
         private void btnModificarAlumno_Click(object sender, EventArgs e)
         {
-            ConectarBDD.abrir();
-            string consulta = "sp_ModificarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
+            if (Validar_Datos_Alumno())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_ModificarAlumno";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
 
 
-            comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
-            comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
-            comando.Parameters.AddWithValue("@DNI", txtDNIAlumno.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
-            comando.Parameters.AddWithValue("@Altura", Convert.ToInt32(txtAlturaAlumno.Text));
-            comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
+                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_perfil", 1);
+                comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
+                comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
+                comando.Parameters.AddWithValue("@DNI", txtDNIAlumno.Text);
+                comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
+                comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
+                comando.Parameters.AddWithValue("@Altura", Convert.ToInt32(txtAlturaAlumno.Text));
+                comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
+                comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
+                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
 
 
-            comando.ExecuteNonQuery();
+                comando.ExecuteNonQuery();
 
-            MessageBox.Show("Registro Modificado!");
+                MessageBox.Show("Registro Modificado!");
 
-            Cargar_tabla_Alumno();
+                Cargar_tabla_Alumno();
+            }
         }
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
         {
-            ConectarBDD.abrir();
-            string consulta = "sp_EliminarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
+            if (Validar_Datos_Alumno())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_EliminarAlumno";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
 
-            comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
+                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_perfil", 1);
 
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Alumno Eliminado exitosamente!");
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Alumno Eliminado exitosamente!");
 
-            Cargar_tabla_Alumno();
+                Cargar_tabla_Alumno();
+            }
         }
         private void btnBuscarAlumno_Click(object sender, EventArgs e)
         {
