@@ -526,3 +526,92 @@ BEGIN
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
+SELECT 1
+        FROM Empleados
+        WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
+            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+-------------------------------------------------------------------------------
+--PROCEDIMIENTO PARA AGREGAR ALUMNO
+CREATE PROCEDURE sp_AgregarAlumno
+@Id_perfil INT,
+@Nombre NVARCHAR(50),
+@Apellido NVARCHAR(50),
+@DNI NVARCHAR(20),
+@F_nacimiento DATE,
+@Direccion NVARCHAR(100),
+@Altura INT,
+@Email NVARCHAR(50),
+@Telefono NVARCHAR(20),
+@Usuario NVARCHAR(50),
+@Contraseña NVARCHAR(50)
+AS
+BEGIN
+	IF not exists (
+		SELECT 1
+		FROM Perfiles
+		WHERE Id_perfil = @Id_perfil and Tipo_perfil = 'Alumno')
+		BEGIN
+			RAISERROR ('El Id de perfil no corresponde a un alumno', 16,1);
+			RETURN;
+		END
+		
+		INSERT INTO Alumnos ( Nombre, Apellido, DNI, F_nacimiento, Direccion_calle, Direccion_num, Email, Telefono, Usuario, Contraseña, Id_perfil)
+		VALUES (@Nombre, @Apellido, @DNI, @F_nacimiento, @Direccion, @Altura, @Email, @Telefono, @Usuario, @Contraseña, @Id_perfil);
+END;
+
+--PROCEDIMIENTO PARA MODIFICAR ALUMNO
+CREATE PROCEDURE sp_ModificarAlumno
+    @Id_alumno INT,
+    @Nombre VARCHAR(40),
+    @Apellido VARCHAR(40),
+    @Dni VARCHAR(20),
+    @Direccion VARCHAR(50),
+    @Altura INT,
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(30),
+    @F_nacimiento DATE,
+    @Usuario VARCHAR(40),
+    @Contraseña VARCHAR(40),
+    @Id_perfil INT
+AS
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Alumnos
+        WHERE Id_alumno = @Id_alumno AND Id_perfil = @Id_perfil
+    )
+    BEGIN
+        RAISERROR('El alumno no existe.', 16, 1);
+        RETURN; 
+    END
+
+  
+    UPDATE Alumnos
+    SET 
+        Nombre = @Nombre,Apellido = @Apellido, Dni = @Dni, Direccion_calle = 
+		@Direccion,Direccion_num = @Altura,Email = @Email,Telefono = @Telefono, 
+		F_nacimiento = @F_nacimiento,Usuario = @Usuario,Contraseña = @Contraseña, Id_perfil = @Id_perfil  
+    WHERE Id_alumno = @Id_alumno;  
+END;
+
+---------------------------------------------------------------------------------------------------
+--PROCEDIMIENTO PARA ELIMINAR UN ALUMNO
+CREATE PROCEDURE sp_EliminarAlumno
+    @Id_alumno INT, 
+	@Id_perfil INT  
+AS
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Alumnos
+        WHERE Id_alumno = @Id_alumno AND Id_perfil = @Id_perfil)
+    BEGIN
+        RAISERROR('El alumno no existe.', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM Alumnos
+    WHERE Id_alumno = @Id_alumno;
+END;
+drop procedure sp_EliminarAlumno
+
