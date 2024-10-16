@@ -113,28 +113,13 @@ FOREIGN KEY (Id_instancia) REFERENCES Instancias(Id_instancia),
 FOREIGN KEY (Id_empleado) REFERENCES Empleados(Id_empleado)
 );
 
+
+
+
 --Registro de Carreras
 INSERT INTO Carreras (Nombre, Num_res, Año_PlanEstudio) VALUES
 ('Técnico Superior en Publicidad', '3805/06', 3),
 ('Analista de Sistemas', '6790/19', 3);
-
-INSERT INTO Perfiles (Tipo_perfil) VALUES
-('Alumno'),
-('Profesor'),
-('Personal Administrativo'),
-('Administrador');
-
-INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
-('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
-('María', 'Gómez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
-('Carlos', 'López', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
-('Ana', 'Martínez', '22334455', 'Calle Nueva', 321, 'ana.martinez@ejemplo.com', '4444-5555', '1982-11-30', 'profesor3', 'password123', 2),
-('Luis', 'Ramírez', '33445566', 'Calle Vieja', 654, 'luis.ramirez@ejemplo.com', '5555-6666', '1990-01-01', 'admin2', 'adminpass', 3),
-('Sofía', 'Cruz', '44556677', 'Calle 12', 159, 'sofia.cruz@ejemplo.com', '6666-7777', '1988-03-15', 'profesor4', 'password123', 2),
-('Pedro', 'Fernández', '55667788', 'Calle 34', 753, 'pedro.fernandez@ejemplo.com', '7777-8888', '1995-04-20', 'profesor5', 'password123', 2),
-('Isabella', 'Cano', '66778899', 'Calle 56', 258, 'isabella.cano@ejemplo.com', '8888-9999', '1983-05-10', 'admin3', 'adminpass', 3),
-('Andrés', 'Torres', '77889900', 'Calle 78', 369, 'andres.torres@ejemplo.com', '9999-0000', '1992-06-30', 'profesor6', 'password123', 2),
-( 'Laura', 'Molina', '88990011', 'Calle 90', 951, 'laura.molina@ejemplo.com', '0000-1111', '1990-07-15', 'admin4', 'adminpass', 3);
 
 /*Asignaturas para Publicidad:*/
 INSERT INTO Asignatura (Nombre, Año_cursada, Id_empleado) VALUES
@@ -191,6 +176,7 @@ INSERT INTO Asignatura (Nombre, Año_cursada) VALUES
 ('Algoritmos y estructuras de datos III', 3),
 ('Prácticas Profesionalizantes III', 3);
 
+select * from Asignatura;
 /*Asignaturas para Publicidad (ID_Carrera = 1)*/
 INSERT INTO AsignaturaXCarrera (Id_carrera,Id_asignatura) VALUES
 (1, 2), -- Marketing general
@@ -238,6 +224,11 @@ INSERT INTO AsignaturaXCarrera (Id_carrera, Id_asignatura) VALUES
 (2, 48), -- Algoritmos y estructuras de datos III
 (2, 49); -- Prácticas Profesionalizantes III
 
+INSERT INTO Perfiles (Tipo_perfil) VALUES
+('Alumno'),
+('Profesor'),
+('Personal Administrativo'),
+('Administrador');
 
 INSERT INTO Alumnos (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
 ('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leo', '12345', 1),
@@ -280,6 +271,20 @@ INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_em
 (10.0, '2024-07-03', 8, 9,3, 2), -- Laura en Producción audiovisual (Final)
 (7.5, '2024-07-01', 9, 2, 3, 2); -- Pedro en Computación 2 (Final)
 
+select * from Alumnos
+
+INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
+('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
+('María', 'Gómez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
+('Carlos', 'López', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
+('Ana', 'Martínez', '22334455', 'Calle Nueva', 321, 'ana.martinez@ejemplo.com', '4444-5555', '1982-11-30', 'profesor3', 'password123', 2),
+('Luis', 'Ramírez', '33445566', 'Calle Vieja', 654, 'luis.ramirez@ejemplo.com', '5555-6666', '1990-01-01', 'admin2', 'adminpass', 3),
+('Sofía', 'Cruz', '44556677', 'Calle 12', 159, 'sofia.cruz@ejemplo.com', '6666-7777', '1988-03-15', 'profesor4', 'password123', 2),
+('Pedro', 'Fernández', '55667788', 'Calle 34', 753, 'pedro.fernandez@ejemplo.com', '7777-8888', '1995-04-20', 'profesor5', 'password123', 2),
+('Isabella', 'Cano', '66778899', 'Calle 56', 258, 'isabella.cano@ejemplo.com', '8888-9999', '1983-05-10', 'admin3', 'adminpass', 3),
+('Andrés', 'Torres', '77889900', 'Calle 78', 369, 'andres.torres@ejemplo.com', '9999-0000', '1992-06-30', 'profesor6', 'password123', 2),
+( 'Laura', 'Molina', '88990011', 'Calle 90', 951, 'laura.molina@ejemplo.com', '0000-1111', '1990-07-15', 'admin4', 'adminpass', 3);
+
 /*Ver bien que permisos tiene cada uno:*/
 INSERT INTO Permisos (Tipo_permiso) VALUES
 ('Gestionar Alumnos'),
@@ -299,6 +304,7 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (3, 4), -- Administrador puede gestionar notas
 (4, 4); -- Administrador puede gestionar exámenes
 
+select * from Perfiles
 --------------Procedimientos Almacenados----------------------------
 
 create procedure sp_Estado
@@ -347,6 +353,8 @@ begin
     WHERE 
 		E.Usuario = @Usuario AND E.Contraseña = @Contraseña
 end;
+
+
 ---------------------------------------
 
 create procedure sp_Dash_Examenes
@@ -420,7 +428,9 @@ begin
 	desc
 end;
 ---------------------------------------------
-create procedure sp_AgregarProfesor
+
+
+CREATE PROCEDURE sp_AgregarProfesor
 @Nombre varchar(40),
 @Apellido varchar(40),
 @Dni varchar(20),
@@ -430,23 +440,21 @@ create procedure sp_AgregarProfesor
 @Telefono varchar(30),
 @F_nacimiento date,
 @Usuario varchar(40),
-@Contraseña varchar(40),
-@Id_perfil int
-as
-begin 
-	if not exists ( 
-	select 1 
-	from Perfiles
-	where Id_perfil = @Id_perfil and Tipo_perfil = 'Profesor'
-	)
-	begin
-		 RAISERROR('El ID de perfil proporcionado no corresponde a un profesor.', 16, 1);
-        RETURN;
-	end
+@Contraseña varchar(40)
+AS
+BEGIN
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
 
-	insert into Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña,Id_perfil)
-	values(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil)
-end;
+    -- Insertar el nuevo profesor
+    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil);
+
+   
+END;
+
+
+
 
 -------------------------------------------------------------------
 
@@ -461,11 +469,13 @@ CREATE PROCEDURE sp_ModificarProfesor
     @Telefono VARCHAR(30),
     @F_nacimiento DATE,
     @Usuario VARCHAR(40),
-    @Contraseña VARCHAR(40),
-    @Id_perfil INT  -- ID del perfil del profesor
+    @Contraseña VARCHAR(40)
 AS
 BEGIN
-    -- Verificamos si el profesor existe en la tabla Empleados
+    -- El Id_perfil será siempre 2 para los profesores
+    DECLARE @Id_perfil INT = 2;
+
+    -- Verificamos si el profesor existe en la tabla Empleados y pertenece al perfil 2 (profesor)
     IF NOT EXISTS (
         SELECT 1
         FROM Empleados
@@ -488,12 +498,13 @@ BEGIN
         Telefono = @Telefono,
         F_nacimiento = @F_nacimiento,
         Usuario = @Usuario,
-        Contraseña = @Contraseña,
-        Id_perfil = @Id_perfil  -- Asegúrate de que el perfil siga siendo válido
-    WHERE Id_empleado = @Id_empleado;  --  actualizamos solo el registro del profesor especificado
+        Contraseña = @Contraseña
+    WHERE Id_empleado = @Id_empleado 
+      AND Id_perfil = @Id_perfil;  -- Aseguramos que solo modificamos el registro de un profesor
 
     PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
 END;
+
 
 ------------------------------------------------------------------------------------------------------
 
@@ -521,7 +532,6 @@ BEGIN
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
-----------------------------------------------------------------------------------------------
 
 SELECT 1
         FROM Empleados
@@ -611,3 +621,4 @@ BEGIN
     WHERE Id_alumno = @Id_alumno;
 END;
 drop procedure sp_EliminarAlumno
+
