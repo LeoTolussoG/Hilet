@@ -188,22 +188,7 @@ namespace Proyecto_final
             txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
 
-        //PESTAÑA GESTION ACADEMICA: PROFESOR
-        public void Cargar_tabla_Empleado_Profesores()
-        {
-            ConectarBDD.abrir();
-            // Solo seleccionamos los empleados con Id_perfil = 2, es decir, profesores
-            string consulta = "SELECT * FROM Empleados WHERE Id_perfil = 2";
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
 
-            DataTable dt = new DataTable();
-
-            adapter.Fill(dt);
-
-            dgvProfesor.DataSource = dt;
-        }
-
-       
         //PESTAÑA GESTION ACADEMICA: EXAMENES
         public void Cargar_tabla_Examenes()
         {
@@ -231,6 +216,7 @@ namespace Proyecto_final
             Cargar_tabla_Examenes();
         }
 
+        //PESTAÑA GESTION ACADEMICA: PROFESORES
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
             ConectarBDD.abrir();
@@ -369,6 +355,57 @@ namespace Proyecto_final
             txtTelefonoProfesor.Text = dgvProfesor.SelectedCells[8].Value.ToString();
             txtUsuarioProfesor.Text = dgvProfesor.SelectedCells[9].Value.ToString();
             txtContraseñaProfesor.Text = dgvProfesor.SelectedCells[10].Value.ToString();
+        }
+
+        public void Cargar_tabla_Empleado_Profesores()
+        {
+            ConectarBDD.abrir();
+            // Solo seleccionamos los empleados con Id_perfil = 2, es decir, profesores
+            string consulta = "SELECT * FROM Empleados WHERE Id_perfil = 2";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvProfesor.DataSource = dt;
+        }
+
+        //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
+
+        public void Cargar_tabla_Asignaturas()
+        {
+            ConectarBDD.abrir();
+            string consulta = "Select * from Asignatura";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvAsignatura.DataSource = dt;
+
+        }
+
+        private void dgvAsignatura_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAsignatura.Text = dgvAsignatura.SelectedCells[1].Value.ToString();
+            txtAñoCursadaAsignatura.Text = dgvAsignatura.SelectedCells[2].Value.ToString();
+        }
+
+        private void btnAgregarAsignatura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModificarAsignatura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminarAsignatura_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
