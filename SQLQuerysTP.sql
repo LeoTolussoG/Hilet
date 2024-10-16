@@ -305,6 +305,8 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (4, 4); -- Administrador puede gestionar exámenes
 
 select * from Perfiles
+
+
 --------------Procedimientos Almacenados----------------------------
 
 create procedure sp_Estado
@@ -535,3 +537,73 @@ SELECT 1
         WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
             SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
 
+use TPFinal
+
+
+---------------------------------------------------------------------------
+
+create procedure sp_Agregar_Administrativo
+@Nombre varchar(40),
+@Apellido varchar(40),
+@Dni varchar(20),
+@Direccion_calle varchar(50),
+@Direccion_num int,
+@Email varchar(100),
+@Telefono varchar(30),
+@F_nacimiento date,
+@Usuario varchar(40),
+@Contraseña varchar(40)
+as
+begin 
+	insert into Empleados (
+		Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+	values
+		(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, 3)
+end;
+
+exec sp_Agregar_Administrativo @Nombre = 'Martin', @Apellido = 'M', @Dni = '1111111', @Direccion_calle = 'balcarce', @Direccion_num = 1111, @Email = 'hola@hotmail.com', @Telefono = '444444', @F_nacimiento = '2024-01-01', @Usuario = 'martin', @Contraseña = '12345';
+
+
+--------------------------------------------------------------------------------------
+create procedure sp_Modificar_Administrativo
+@Nombre varchar(40),
+@Apellido varchar(40),
+@Dni varchar(20),
+@Direccion_calle varchar(50),
+@Direccion_num int,
+@Email varchar(100),
+@Telefono varchar(30),
+@F_nacimiento date,
+@Usuario varchar(40),
+@Contraseña varchar(40)
+as
+begin
+	update Empleados
+	set
+		Nombre = @Nombre, 
+		Apellido = @Apellido, 
+		Dni = @Dni, 
+		Direccion_calle = @Direccion_calle, 
+		Direccion_num = @Direccion_num, 
+		Email = @Email, 
+		Telefono = @Telefono, 
+		F_nacimiento = @F_nacimiento, 
+		Usuario = @Usuario, 
+		Contraseña = @Contraseña,
+		Id_perfil = 3;
+end;
+
+--------------------------------------------------------------------------------------
+
+create procedure sp_Cargar_Tabla_Administrativos
+as
+begin
+	select
+		*
+	from
+		Empleados
+	where
+		Id_perfil = 3
+end;
+
+exec sp_Cargar_Tabla_Administrativos;

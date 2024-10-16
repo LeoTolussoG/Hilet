@@ -146,6 +146,7 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvAlumnos.DataSource = dt;
+            ConectarBDD.cerrar();
         }
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -162,7 +163,7 @@ namespace Proyecto_final
         }
 
         //PESTAÑA GESTION ACADEMICA: ADMINISTRATIVOS
-        public void Cargar_tabla_Empleado_Administrativos()
+        public void Cargar_tabla_Empleado_Administrativos()         //Carga de registros el datagridview de Administrativos
         {
             ConectarBDD.abrir();
             string consulta = "sp_Cargar_Tabla_Administrativos";
@@ -173,21 +174,163 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvAdministrativos.DataSource = dt;
+            ConectarBDD.cerrar();
         }
+
+        private bool Validar_Datos_Administrativo()             //Verifico que los campos cumplan con los requisitos
+        {
+            errorProviderDatosVacios.Clear();
+            bool valido = true;
+
+            if (txtNombreAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtNombreAdministrativo, "Nombre esta vacio");
+                valido = false;
+            }
+            if (txtApellidoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtApellidoAdministrativo, "Apellido vacio");
+                valido = false;
+            }
+            if (txtDniAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDniAdministrativo, "DNI vacio");
+                valido = false;
+            }
+            if (txtDireccionCalleAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDireccionCalleAdministrativo, "Direccion vacia");
+                valido = false;
+            }
+            if (txtAlturaAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtAlturaAdministrativo, "Altura vacia");
+                valido = false;
+            }
+            if (txtEmailAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtEmailAdministrativo, "Email vacio");
+                valido = false;
+            }
+            if (dtpFechaNacimientoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(dtpFechaNacimientoAdministrativo, "Fecha de nacimiento vacia");
+                valido = false;
+            }
+            if (txtTelefonoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtTelefonoAdministrativo, "telefono vacio");
+                valido = false;
+            }
+            if (txtUsuarioAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtUsuarioAdministrativo, "Usuario vacio");
+                valido = false;
+            }
+            if (txtContraseñaAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtContraseñaAdministrativo, "Contraseña vacia");
+                valido = false;
+            }
+            return valido;
+
+        }
+
         private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
             txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
             txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
             txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
-            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
+            txtAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
             txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
-            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
+            dtpFechaNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
             txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
             txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
             txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
+        private void btnAgregarAdministrativo_Click(object sender, EventArgs e)
+        {
+            if (Validar_Datos_Administrativo())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_Agregar_Administrativo";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
 
+                comando.Parameters.AddWithValue("@Nombre", txtNombreAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Apellido", txtApellidoAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Dni", txtDniAdministrativo.Text);
+                comando.Parameters.AddWithValue("@F_nacimiento", dtpFechaNacimientoAdministrativo.Value);
+                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionCalleAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Direccion_num", txtAlturaAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmailAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Telefono", txtTelefonoAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAdministrativo.Text);
+
+                comando.ExecuteNonQuery();
+
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Registro Agregado!");
+
+                Cargar_tabla_Empleado_Administrativos();
+            }
+            
+        }
+        private void btnModificarAdministrativo_Click(object sender, EventArgs e)
+        {
+            if (!Validar_Datos_Administrativo())
+            {
+                MessageBox.Show("Seleccione un empleado de la lista");
+            }
+            else
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_Modificar_Administrativo";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@Id_empleado", dgvAdministrativos.SelectedCells[0].Value.ToString());
+                comando.Parameters.AddWithValue("@Nombre", txtNombreAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Apellido", txtApellidoAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Dni", txtDniAdministrativo.Text);
+                comando.Parameters.AddWithValue("@F_nacimiento", dtpFechaNacimientoAdministrativo.Value);
+                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionCalleAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Direccion_num", txtAlturaAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmailAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Telefono", txtTelefonoAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAdministrativo.Text);
+                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAdministrativo.Text);
+
+                comando.ExecuteNonQuery();
+
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Registro Modificado!");
+
+                Cargar_tabla_Empleado_Administrativos();
+            }
+                
+        }
+        private void btnEliminarAdministrativo_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_Eliminar_Administrativo";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            comando.Parameters.AddWithValue("@Id_empleado", dgvAdministrativos.SelectedCells[0].Value.ToString());
+
+            comando.ExecuteNonQuery();
+
+            ConectarBDD.cerrar();
+
+            MessageBox.Show("Registro Eliminado!");
+
+            Cargar_tabla_Empleado_Administrativos();
+        }
         //PESTAÑA GESTION ACADEMICA: PROFESOR
         public void Cargar_tabla_Empleado_Profesores()
         {
@@ -200,6 +343,7 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dataGridViewProfesor.DataSource = dt;
+            ConectarBDD.cerrar();
         }
 
         private void dataGridViewProfesor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -283,7 +427,7 @@ namespace Proyecto_final
 
         }
 
-        
+
         //PESTAÑA GESTION ACADEMICA: EXAMENES
         public void Cargar_tabla_Examenes()
         {
@@ -305,11 +449,14 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvExamenes.DataSource = dt;
+            ConectarBDD.cerrar();
         }
         private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Cargar_tabla_Examenes();
         }
+
+        
     }
 }
 

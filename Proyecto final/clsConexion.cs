@@ -10,8 +10,8 @@ namespace Proyecto_final
 {
     internal class clsConexion
     {
-        //string cadena = "Data Source = LEOTOLUSSO\\SQLEXPRESS; Initial Catalog = TPFinal; Integrated Security = true";
-        string cadena = "Data Source = 192.168.0.100; Database =u26; User Id =u26; Password =u26";
+        string cadena = "Data Source = LEOTOLUSSO\\SQLEXPRESS; Initial Catalog = TPFinal; Integrated Security = true";
+        //string cadena = "Data Source = 192.168.0.100; Database =u26; User Id =u26; Password =u26";
         //string cadena = "server = EVEE\\SQLEXPRESS; database = TPFinal; integrated security = true";
         public SqlConnection conectarbdd = new SqlConnection();
         public clsConexion()
