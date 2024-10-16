@@ -615,10 +615,6 @@ BEGIN
     DELETE FROM Alumnos
     WHERE Id_alumno = @Id_alumno;
 END;
-drop procedure sp_EliminarAlumno
-
-use TPFinal
-
 
 ---------------------------------------------------------------------------
 
