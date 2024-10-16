@@ -352,7 +352,68 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvAdministrativos.DataSource = dt;
+            ConectarBDD.cerrar();
         }
+        /*fdjs*/
+        private bool Validar_Datos_Administrativo()             //Verifico que los campos cumplan con los requisitos
+        {
+            errorProviderDatosVacios.Clear();
+            bool valido = true;
+
+            if (txtNombreAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtNombreAdministrativo, "Nombre esta vacio");
+                valido = false;
+            }
+            if (txtApellidoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtApellidoAdministrativo, "Apellido vacio");
+                valido = false;
+            }
+            if (txtDniAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDniAdministrativo, "DNI vacio");
+                valido = false;
+            }
+            if (txtDireccionCalleAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtDireccionCalleAdministrativo, "Direccion vacia");
+                valido = false;
+            }
+            if (txtAlturaAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtAlturaAdministrativo, "Altura vacia");
+                valido = false;
+            }
+            if (txtEmailAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtEmailAdministrativo, "Email vacio");
+                valido = false;
+            }
+            if (dtpFechaNacimientoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(dtpFechaNacimientoAdministrativo, "Fecha de nacimiento vacia");
+                valido = false;
+            }
+            if (txtTelefonoAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtTelefonoAdministrativo, "telefono vacio");
+                valido = false;
+            }
+            if (txtUsuarioAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtUsuarioAdministrativo, "Usuario vacio");
+                valido = false;
+            }
+            if (txtContraseñaAdministrativo.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtContraseñaAdministrativo, "Contraseña vacia");
+                valido = false;
+            }
+            return valido;
+
+        }
+
         private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
