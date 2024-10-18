@@ -11,7 +11,25 @@ namespace Proyecto_final
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmLogin());
+
+            frmLogin main = new frmLogin();
+            main.FormClosed += MainForm_Closed; // agrega esto aquí
+            main.Show();
+            Application.Run();
+        }
+        // Metodo que cierra la aplicación cuando las todas las ventanas estan cerradas
+        private static void MainForm_Closed(object sender, FormClosedEventArgs e)
+        {
+            ((Form)sender).FormClosed -= MainForm_Closed;
+
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.ExitThread();
+            }
+            else
+            {
+                Application.OpenForms[0].FormClosed += MainForm_Closed;
+            }
         }
     }
 }

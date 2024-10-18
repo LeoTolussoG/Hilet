@@ -24,7 +24,8 @@ namespace Proyecto_final
                 
                 frmDashboard.PerfilUsuario = perfil;  // Asignamos el perfil del usuario a la propiedad "PerfilUsuario" del frmDashboard
                 
-                frmDashboard.ShowDialog();//Mostramos el formulario Dashboard
+                frmDashboard.Show();//Mostramos el formulario Dashboard
+                this.Close();
             }
             else
             {
