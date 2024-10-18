@@ -385,6 +385,22 @@ begin
 end;
 
 ----------------------------------------
+
+CREATE PROCEDURE sp_Dash_Profesores
+AS
+BEGIN
+    SELECT
+        e.Nombre,
+        e.Apellido,
+        e.Email,
+        a.Nombre AS Asignatura  -- Mostrar cada asignatura en su propia fila
+    FROM Empleados e
+    JOIN Asignatura a ON e.Id_empleado = a.Id_empleado
+    WHERE e.Id_perfil = 2  -- Solo profesores
+    ORDER BY e.Id_empleado DESC, a.Nombre;  -- Ordenar por Id_empleado y Asignatura
+END;
+
+/*
 create procedure sp_Dash_Profesores
 as
 begin
@@ -395,18 +411,23 @@ begin
 		Id_empleado
 	desc
 end;
-
+*/
 -------------------------------------------
 
-create procedure sp_Dash_Asignaturas
-as
-begin
-	select TOP 3
-	* from Asignatura
-	order by 
-		Id_asignatura
-	desc
-end;
+CREATE PROCEDURE sp_Dash_Asignaturas
+AS
+BEGIN
+    SELECT TOP 3
+        a.Nombre AS Nombre_Asignatura,
+        a.Año_cursada,
+        e.Nombre AS Nombre_Profesor,
+        e.Apellido AS Apellido_Profesor
+    FROM Asignatura a
+    JOIN Empleados e ON a.Id_empleado = e.Id_empleado
+    WHERE e.Id_perfil = 2  -- Asegurarse de que solo se seleccionen profesores
+    ORDER BY 
+        a.Id_asignatura DESC;
+END;
 
 -------------------------------------------
 create procedure sp_Dash_Administrativos
@@ -528,11 +549,97 @@ BEGIN
 
     PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
 END;
-SELECT 1
-        FROM Empleados
-        WHERE Id_empleado = 1 AND Id_perfil = 2 AND Id_perfil IN (
-            SELECT Id_perfil FROM Perfiles WHERE Tipo_perfil = 'Profesor');
+
 -------------------------------------------------------------------------------
+
+CREATE PROCEDURE sp_AgregarAsignatura
+    @Nombre VARCHAR(50),
+    @Año_cursada INT,
+    @Id_empleado INT
+AS
+BEGIN
+    -- Verificar si el ID de empleado corresponde a un profesor
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM Empleados 
+        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
+    )
+    BEGIN
+        -- Si no es un profesor, lanzar un error
+        RAISERROR('El ID de empleado no corresponde a un profesor.', 16, 1);
+        RETURN;
+    END
+
+    -- Insertar la nueva asignatura
+    INSERT INTO Asignatura (Nombre, Año_cursada, Id_empleado)
+    VALUES (@Nombre, @Año_cursada, @Id_empleado);
+END;
+-------------------------------------------------------------------------------
+
+CREATE PROCEDURE sp_ModificarAsignatura
+    @Id_asignatura INT,
+    @Nombre VARCHAR(50),
+    @Año_cursada INT,
+    @Id_empleado INT
+AS
+BEGIN
+    -- Verificar si el ID de asignatura existe
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM Asignatura 
+        WHERE Id_asignatura = @Id_asignatura
+    )
+    BEGIN
+        -- Si no existe, lanzar un error
+        RAISERROR('El ID de asignatura no existe.', 16, 1);
+        RETURN;
+    END
+
+    -- Verificar si el ID de empleado corresponde a un profesor
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM Empleados 
+        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
+    )
+    BEGIN
+        -- Si no es un profesor, lanzar un error
+        RAISERROR('El ID de empleado no corresponde a un profesor.', 16, 1);
+        RETURN;
+    END
+
+    -- Actualizar la asignatura
+    UPDATE Asignatura
+    SET 
+        Nombre = @Nombre,
+        Año_cursada = @Año_cursada,
+        Id_empleado = @Id_empleado
+    WHERE Id_asignatura = @Id_asignatura;
+END;
+-----------------------------------------------------------------------------------------
+
+CREATE PROCEDURE sp_EliminarAsignatura
+    @Id_asignatura INT
+AS
+BEGIN
+    -- Verificar si el ID de asignatura existe
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM Asignatura 
+        WHERE Id_asignatura = @Id_asignatura
+    )
+    BEGIN
+        -- Si no existe, lanzar un error
+        RAISERROR('El ID de asignatura no existe.', 16, 1);
+        RETURN;
+    END
+
+    -- Eliminar la asignatura
+    DELETE FROM Asignatura
+    WHERE Id_asignatura = @Id_asignatura;
+END;
+----------------------------------------------------------------
+
+
 --PROCEDIMIENTO PARA AGREGAR ALUMNO
 CREATE PROCEDURE sp_AgregarAlumno
 @Id_perfil INT,
@@ -687,3 +794,6 @@ begin
 end;
 
 exec sp_Cargar_Tabla_Administrativos;
+
+
+select * from Asignatura
