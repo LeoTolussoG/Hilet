@@ -45,8 +45,8 @@ namespace Proyecto_final
             Cargar_tabla_Examenes();
             
         }
-        //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
 
+        //PESTAÑA INICIO: VISION GENERAL DE TODOS LOS DATOS
         private void btnDashExamenes_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos examenes";
@@ -147,126 +147,23 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvAlumnos.DataSource = dt;
-            ConectarBDD.cerrar();
         }
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) //Me fijo que haya un reglon seleccionado
-            {
-                DataGridViewRow row = dgvAlumnos.Rows[e.RowIndex];//asigno los valores a los textbox
-                txtIDAlumno.Text = row.Cells["Id_alumno"].Value.ToString();
-                txtNombreAlumno.Text = row.Cells["Nombre"].Value.ToString();
-                txtApellidoAlumno.Text = row.Cells["Apellido"].Value.ToString();
-                txtDNIAlumno.Text = row.Cells["Dni"].Value.ToString();
-                txtDireccionAlumno.Text = row.Cells["Direccion_calle"].Value.ToString();
-                txtAlturaAlumno.Text = row.Cells["Direccion_num"].Value.ToString();
-                txtEmailAlumno.Text = row.Cells["Email"].Value.ToString();
-                txtTelAlumno.Text = row.Cells["Telefono"].Value.ToString();
-                dateTimeAlumno.Value = Convert.ToDateTime(row.Cells["F_nacimiento"].Value);
-                txtUsuarioAlumno.Text = row.Cells["Usuario"].Value.ToString();
-                txtContraseñaAlumno.Text = row.Cells["Contraseña"].Value.ToString();
-            }
-        }
-        private void btnAgregarAlumno_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_AgregarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
-            comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
-            comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
-            comando.Parameters.AddWithValue("@Altura", txtAlturaAlumno.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
-
-            comando.ExecuteNonQuery();
-
-            MessageBox.Show("Registro Agregado!");
-
-            Cargar_tabla_Alumno();
-        }
-        private void btnModificarAlumno_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_ModificarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-
-            comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
-            comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
-            comando.Parameters.AddWithValue("@DNI", txtDNIAlumno.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", dateTimeAlumno.Value);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccionAlumno.Text);
-            comando.Parameters.AddWithValue("@Altura", Convert.ToInt32(txtAlturaAlumno.Text));
-            comando.Parameters.AddWithValue("@Email", txtEmailAlumno.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelAlumno.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioAlumno.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAlumno.Text);
-
-
-            comando.ExecuteNonQuery();
-
-            MessageBox.Show("Registro Modificado!");
-
-            Cargar_tabla_Alumno();
-        }
-        private void btnEliminarAlumno_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_EliminarAlumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-            comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
-            comando.Parameters.AddWithValue("@Id_perfil", 1);
-
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Alumno Eliminado exitosamente!");
-
-            Cargar_tabla_Alumno();
-        }
-        private void btnBuscarAlumno_Click(object sender, EventArgs e)
-        {
-            //Me fijo que el usuario ingrese un ID válido
-            int IDAlumno;
-            if (!int.TryParse(txtBuscarAlumno.Text, out IDAlumno))
-            {
-                MessageBox.Show("Ingrese una matricula válida");
-                return;
-            }
-
-            ConectarBDD.abrir();
-
-            string consulta = "SELECT * FROM Alumnos WHERE Id_alumno = @Id_alumno";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.Parameters.AddWithValue("@Id_alumno", IDAlumno);
-
-            SqlDataAdapter adapter = new SqlDataAdapter(comando);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            dgvAlumnos.DataSource = dt;
-
-            ConectarBDD.cerrar();
-
-            if (dt.Rows.Count == 0) //Acá verifica si el dgvAlumnos tiene filas, si es = 0 entonces no encontró ningún alumno 
-            {
-                MessageBox.Show("No se encontró ningún alumno con ese ID.");
-            }
-
+            txtNombreAlumno.Text = dgvAlumnos.SelectedCells[1].Value.ToString();
+            txtApellidoAlumno.Text = dgvAlumnos.SelectedCells[2].Value.ToString();
+            txtDNIAlumno.Text = dgvAlumnos.SelectedCells[3].Value.ToString();
+            txtDireccionAlumno.Text = dgvAlumnos.SelectedCells[4].Value.ToString();
+            txtAlturaAlumno.Text = dgvAlumnos.SelectedCells[5].Value.ToString();
+            txtEmailAlumno.Text = dgvAlumnos.SelectedCells[6].Value.ToString();
+            txtNacimientoAlumno.Text = dgvAlumnos.SelectedCells[8].Value.ToString();
+            txtTelAlumno.Text = dgvAlumnos.SelectedCells[7].Value.ToString();
+            txtUsuarioAlumno.Text = dgvAlumnos.SelectedCells[9].Value.ToString();
+            txtContraseñaAlumno.Text = dgvAlumnos.SelectedCells[10].Value.ToString();
         }
 
         //PESTAÑA GESTION ACADEMICA: ADMINISTRATIVOS
-        public void Cargar_tabla_Empleado_Administrativos()         //Carga de registros el datagridview de Administrativos
+        public void Cargar_tabla_Empleado_Administrativos()
         {
             ConectarBDD.abrir();
             string consulta = "sp_Cargar_Tabla_Administrativos";
@@ -279,7 +176,7 @@ namespace Proyecto_final
             dgvAdministrativos.DataSource = dt;
             ConectarBDD.cerrar();
         }
-
+        /*fdjs*/
         private bool Validar_Datos_Administrativo()             //Verifico que los campos cumplan con los requisitos
         {
             errorProviderDatosVacios.Clear();
@@ -345,195 +242,15 @@ namespace Proyecto_final
             txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
             txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
             txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
-            txtAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
+            txtDireccionAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
             txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
-            dtpFechaNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
+            txtFNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
             txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
             txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
             txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
         }
-        private void btnAgregarAdministrativo_Click(object sender, EventArgs e)
-        {
-            if (Validar_Datos_Administrativo())
-            {
-                ConectarBDD.abrir();
-                string consulta = "sp_Agregar_Administrativo";
-                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-                comando.CommandType = CommandType.StoredProcedure;
-
-                comando.Parameters.AddWithValue("@Nombre", txtNombreAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Apellido", txtApellidoAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Dni", txtDniAdministrativo.Text);
-                comando.Parameters.AddWithValue("@F_nacimiento", dtpFechaNacimientoAdministrativo.Value);
-                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionCalleAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Direccion_num", txtAlturaAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Email", txtEmailAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Telefono", txtTelefonoAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAdministrativo.Text);
-
-                comando.ExecuteNonQuery();
-
-                ConectarBDD.cerrar();
-
-                MessageBox.Show("Registro Agregado!");
-
-                Cargar_tabla_Empleado_Administrativos();
-            }
-            
-        }
-        private void btnModificarAdministrativo_Click(object sender, EventArgs e)
-        {
-            if (!Validar_Datos_Administrativo())
-            {
-                MessageBox.Show("Seleccione un empleado de la lista");
-            }
-            else
-            {
-                ConectarBDD.abrir();
-                string consulta = "sp_Modificar_Administrativo";
-                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-                comando.CommandType = CommandType.StoredProcedure;
-
-                comando.Parameters.AddWithValue("@Id_empleado", dgvAdministrativos.SelectedCells[0].Value.ToString());
-                comando.Parameters.AddWithValue("@Nombre", txtNombreAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Apellido", txtApellidoAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Dni", txtDniAdministrativo.Text);
-                comando.Parameters.AddWithValue("@F_nacimiento", dtpFechaNacimientoAdministrativo.Value);
-                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionCalleAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Direccion_num", txtAlturaAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Email", txtEmailAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Telefono", txtTelefonoAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Usuario", txtUsuarioAdministrativo.Text);
-                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaAdministrativo.Text);
-
-                comando.ExecuteNonQuery();
-
-                ConectarBDD.cerrar();
-
-                MessageBox.Show("Registro Modificado!");
-
-                Cargar_tabla_Empleado_Administrativos();
-            }
-                
-        }
-        private void btnEliminarAdministrativo_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_Eliminar_Administrativo";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-            comando.Parameters.AddWithValue("@Id_empleado", dgvAdministrativos.SelectedCells[0].Value.ToString());
-
-            comando.ExecuteNonQuery();
-
-            ConectarBDD.cerrar();
-
-            MessageBox.Show("Registro Eliminado!");
-
-            Cargar_tabla_Empleado_Administrativos();
-        }
-
-        //PESTAÑA GESTION ACADEMICA: PROFESORES
-
-        public void Cargar_tabla_Empleado_Profesores()
-        {
-            ConectarBDD.abrir();
-            // Solo seleccionamos los empleados con Id_perfil = 2, es decir, profesores
-            string consulta = "SELECT * FROM Empleados WHERE Id_perfil = 2";
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
-
-            DataTable dt = new DataTable();
-
-            adapter.Fill(dt);
-            
-            dgvProfesor.DataSource = dt;
-            ConectarBDD.cerrar();
-        }
-
-        private void dataGridViewProfesor_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreProfesor.Text = dgvProfesor.SelectedCells[1].Value.ToString();
-            txtApellidoProfesor.Text = dgvProfesor.SelectedCells[2].Value.ToString();
-            txtDniProfesor.Text = dgvProfesor.SelectedCells[3].Value.ToString();
-            txtFechanacimientoProfesor.Text = dgvProfesor.SelectedCells[4].Value.ToString();
-            txtDireccionProfesor.Text = dgvProfesor.SelectedCells[5].Value.ToString();
-            txtAlturaProfesor.Text = dgvProfesor.SelectedCells[6].Value.ToString();
-            txtEmailProfesor.Text = dgvProfesor.SelectedCells[7].Value.ToString();
-            txtTelefonoProfesor.Text = dgvProfesor.SelectedCells[8].Value.ToString();
-            txtUsuarioProfesor.Text = dgvProfesor.SelectedCells[9].Value.ToString();
-            txtContraseñaProfesor.Text = dgvProfesor.SelectedCells[10].Value.ToString();
-        }
-
-        /*private void btnAgregarProfesor_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = " sp_AgregarProfesor";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-            comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
-            comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", txtFechanacimientoProfesor.Text);
-            comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
-            comando.Parameters.AddWithValue("@Direccion_num", txtAlturaProfesor.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
-
-            MessageBox.Show("Registro Agregado!");
-
-            Cargar_tabla_Empleado_Profesores();
 
 
-        }
-        */
-        /*private void btnModificarProfesor_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_ModificarProfesor";
-
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-            comando.Parameters.AddWithValue("@Id_empleado", Convert.ToInt32(txtIDProfesor.Text));
-            comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
-            comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
-            comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
-            comando.Parameters.AddWithValue("@F_nacimiento", txtFechanacimientoProfesor.Text);
-            comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
-            comando.Parameters.AddWithValue("@Direccion_num", txtAlturaProfesor.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
-            comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
-            comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
-
-            MessageBox.Show("Registro Actualizado!");
-
-            Cargar_tabla_Empleado_Profesores();
-
-        }
-*/
-        /*private void btnEliminarProfesor_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-            string consulta = "sp_EliminarProfesor";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.CommandType = CommandType.StoredProcedure;
-
-            comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtIDProfesor.Text));
-
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Registro Eliminado!");
-
-            Cargar_tabla_Empleado_Profesores();
-
-        }
-
-*/
         //PESTAÑA GESTION ACADEMICA: EXAMENES
         public void Cargar_tabla_Examenes()
         {
@@ -555,27 +272,13 @@ namespace Proyecto_final
             adapter.Fill(dt);
 
             dgvExamenes.DataSource = dt;
-            ConectarBDD.cerrar();
         }
         private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Cargar_tabla_Examenes();
         }
 
-        private void dgvProfesor_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombreProfesor.Text = dgvProfesor.SelectedCells[1].Value.ToString();
-            txtApellidoProfesor.Text = dgvProfesor.SelectedCells[2].Value.ToString();
-            txtDniProfesor.Text = dgvProfesor.SelectedCells[3].Value.ToString();
-            txtFechanacimientoProfesor.Text = dgvProfesor.SelectedCells[4].Value.ToString();
-            txtDireccionProfesor.Text = dgvProfesor.SelectedCells[5].Value.ToString();
-            txtAlturaProfesor.Text = dgvProfesor.SelectedCells[6].Value.ToString();
-            txtEmailProfesor.Text = dgvProfesor.SelectedCells[7].Value.ToString();
-            txtTelefonoProfesor.Text = dgvProfesor.SelectedCells[8].Value.ToString();
-            txtUsuarioProfesor.Text = dgvProfesor.SelectedCells[9].Value.ToString();
-            txtContraseñaProfesor.Text = dgvProfesor.SelectedCells[10].Value.ToString();
-        }
-
+        //PESTAÑA GESTION ACADEMICA: PROFESORES
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
             ConectarBDD.abrir();
@@ -716,13 +419,58 @@ namespace Proyecto_final
             txtContraseñaProfesor.Text = dgvProfesor.SelectedCells[10].Value.ToString();
         }
 
+        public void Cargar_tabla_Empleado_Profesores()
+        {
+            ConectarBDD.abrir();
+            // Solo seleccionamos los empleados con Id_perfil = 2, es decir, profesores
+            string consulta = "SELECT * FROM Empleados WHERE Id_perfil = 2";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvProfesor.DataSource = dt;
+        }
+
+        //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
+
+        public void Cargar_tabla_Asignaturas()
+        {
+            ConectarBDD.abrir();
+            string consulta = "Select * from Asignatura";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            dgvAsignatura.DataSource = dt;
+
+        }
+
+        private void dgvAsignatura_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreAsignatura.Text = dgvAsignatura.SelectedCells[1].Value.ToString();
+            txtAñoCursadaAsignatura.Text = dgvAsignatura.SelectedCells[2].Value.ToString();
+        }
+
+        private void btnAgregarAsignatura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModificarAsignatura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminarAsignatura_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
-
-
-
-
 
 
 
