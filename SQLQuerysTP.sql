@@ -1,6 +1,6 @@
 /*create database TPFinal;*/
 use TPFinal;
-/*use u26;*/
+use u26;
 
 -- Tabla Carreras
 CREATE TABLE Carreras(
