@@ -43,6 +43,7 @@ namespace Proyecto_final
             Cargar_tabla_Empleado_Administrativos();
             Cargar_tabla_Alumno();
             Cargar_tabla_Examenes();
+            
         }
         //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
 

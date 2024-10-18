@@ -674,6 +674,16 @@ begin
 end;
 
 --------------------------------------------------------------------------------------
+use TPFinal
+create procedure sp_eliminar_Administrativo
+@Id_empleado int
+as
+begin
+	delete from 
+		empleados 
+	where 
+		Id_empleado = @Id_empleado
+end;
 
 create procedure sp_Cargar_Tabla_Administrativos
 as
