@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -382,23 +382,23 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle11.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle12.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle12.ForeColor = Color.DimGray;
-            dataGridViewCellStyle12.SelectionBackColor = Color.CornflowerBlue;
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.DimGray;
+            dataGridViewCellStyle7.SelectionBackColor = Color.CornflowerBlue;
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle7;
             dgvDashboard.EnableHeadersVisualStyles = false;
             dgvDashboard.Location = new Point(269, 197);
             dgvDashboard.Name = "dgvDashboard";
@@ -1148,14 +1148,14 @@
             // dgvProfesor
             // 
             dgvProfesor.BackgroundColor = Color.White;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle13.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle13.ForeColor = Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dgvProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvProfesor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfesor.Dock = DockStyle.Fill;
             dgvProfesor.EnableHeadersVisualStyles = false;
@@ -1503,14 +1503,14 @@
             // dgvAdministrativos
             // 
             dgvAdministrativos.BackgroundColor = Color.White;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle14.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle14.ForeColor = Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle14.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvAdministrativos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAdministrativos.Dock = DockStyle.Fill;
             dgvAdministrativos.EnableHeadersVisualStyles = false;
@@ -2072,14 +2072,14 @@
             // dgvExamenes
             // 
             dgvExamenes.BackgroundColor = Color.White;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = SystemColors.Control;
-            dataGridViewCellStyle15.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dgvExamenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvExamenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvExamenes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExamenes.Location = new Point(3, 44);
             dgvExamenes.Name = "dgvExamenes";

@@ -332,32 +332,47 @@ begin
 																																		Asignatura) as TotalMaterias;																													
 end;
 ---------------------------------
-create procedure sp_Acceso_Login
-@Usuario varchar(40),
-@Contraseña varchar(40)
-as
-begin
+CREATE PROCEDURE sp_Acceso_Login
+    @Usuario varchar(40),
+    @Contraseña varchar(40)
+AS
+BEGIN
+    --para Alumnos
     SELECT 
-		P.Tipo_perfil 
+        A.Id_perfil, 
+        P.Tipo_perfil  
     FROM 
-		Perfiles P 
+        Perfiles P
     JOIN 
-		Alumnos A ON P.Id_perfil = A.Id_perfil 
+        Alumnos A ON P.Id_perfil = A.Id_perfil
     WHERE 
-		A.Usuario = @Usuario AND A.Contraseña = @Contraseña
+        A.Usuario = @Usuario AND A.Contraseña = @Contraseña
+    
     UNION
+    
+    --para Empleados
     SELECT 
-		P.Tipo_perfil 
+        E.Id_perfil,
+        P.Tipo_perfil
     FROM 
-		Perfiles P 
+        Perfiles P
     JOIN 
-		Empleados E ON P.Id_perfil = E.Id_perfil 
+        Empleados E ON P.Id_perfil = E.Id_perfil
     WHERE 
-		E.Usuario = @Usuario AND E.Contraseña = @Contraseña
-end;
-
-
----------------------------------------
+        E.Usuario = @Usuario AND E.Contraseña = @Contraseña
+END;
+------------------------------------------------------------------
+--PROCEDIMIENTO PARA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
+CREATE PROCEDURE sp_ObtenerPermisosPorPerfil
+    @Id_perfil INT 
+AS
+BEGIN
+    SELECT P.Tipo_permiso
+    FROM Permisos P
+    INNER JOIN PermisosXPerfil PP ON P.Id_permisos = PP.Id_permisos
+    WHERE PP.Id_perfil = @Id_perfil  --filtra por el id de perfil
+END;
+------------------------------------------------------------------------------
 
 create procedure sp_Dash_Examenes
 as

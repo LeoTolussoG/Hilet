@@ -35,9 +35,11 @@ namespace Proyecto_final
         {
             conectarbdd.Close();
         }
-        public string consultarPerfil(string usuario, string contraseña)
+        public int consultarPerfil(string usuario, string contraseña)
         {
             conectarbdd.Open();
+            int idPerfil = -1; //valor por si no encuentra ningun perfil
+
             //Busca en alumnos y luego en empleados:
             string consulta = "sp_Acceso_Login";
 
@@ -47,14 +49,14 @@ namespace Proyecto_final
             comando.Parameters.AddWithValue("@Contraseña", contraseña);
 
             SqlDataReader registro = comando.ExecuteReader();
+
             if (registro.Read())
             {
-                return registro["Tipo_perfil"].ToString(); //Devuelve el perfil encontrado
+                idPerfil = Convert.ToInt32(registro["Id_perfil"]); //Devuelve el perfil encontrado
             }
-            else
-            {
-                return ""; //No se encontró ningún perfil
-            }
+            registro.Close();
+            conectarbdd.Close();
+            return idPerfil; // retorna el id del perfil o -1 si no lo encontró
         }
     }
 }
