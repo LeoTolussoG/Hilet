@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -72,7 +71,7 @@
             tbpGestionAcademica = new TabPage();
             panel5 = new Panel();
             tabControl2 = new TabControl();
-            tbpAlumno = new TabPage();
+            tabPage1 = new TabPage();
             panel7 = new Panel();
             dgvAlumnos = new DataGridView();
             panel26 = new Panel();
@@ -103,9 +102,9 @@
             label30 = new Label();
             txtNacimientoAlumno = new TextBox();
             panel24 = new Panel();
-            btnBuscarAlumno = new Button();
-            txtBuscarAlumno = new TextBox();
-            tbpProfesor = new TabPage();
+            button2 = new Button();
+            textBox12 = new TextBox();
+            tabPage2 = new TabPage();
             panel10 = new Panel();
             panel30 = new Panel();
             dgvProfesor = new DataGridView();
@@ -138,7 +137,7 @@
             lblNombreProfesor = new Label();
             txtFechanacimientoProfesor = new TextBox();
             panel6 = new Panel();
-            tbpAdministrativos = new TabPage();
+            tabPage3 = new TabPage();
             dgvAdministrativos = new DataGridView();
             panel12 = new Panel();
             btnAgregarAdministrativo = new Button();
@@ -168,7 +167,7 @@
             panel9 = new Panel();
             button1 = new Button();
             textBox11 = new TextBox();
-            tbpCarreras = new TabPage();
+            tabPage4 = new TabPage();
             dataGridView4 = new DataGridView();
             button9 = new Button();
             textBox13 = new TextBox();
@@ -177,7 +176,7 @@
             button3 = new Button();
             button4 = new Button();
             button8 = new Button();
-            tbpAsignaturas = new TabPage();
+            tabPage5 = new TabPage();
             panel15 = new Panel();
             panel19 = new Panel();
             panel31 = new Panel();
@@ -187,7 +186,6 @@
             btnEliminarAsignatura = new Button();
             btnModificarAsignatura = new Button();
             btnAgregarAsignatura = new Button();
-            tbpExamenes = new TabPage();
             panel18 = new Panel();
             txtAñoCursadaAsignatura = new TextBox();
             lblAñoCursadaAsignatura = new Label();
@@ -214,7 +212,6 @@
             textBox14 = new TextBox();
             panel27 = new Panel();
             tbpReporte = new TabPage();
-            errorProviderDatosVacios = new ErrorProvider(components);
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel3.SuspendLayout();
@@ -229,37 +226,37 @@
             tbpGestionAcademica.SuspendLayout();
             panel5.SuspendLayout();
             tabControl2.SuspendLayout();
-            tbpAlumno.SuspendLayout();
+            tabPage1.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
             panel26.SuspendLayout();
             panel25.SuspendLayout();
             panel24.SuspendLayout();
-            tbpProfesor.SuspendLayout();
+            tabPage2.SuspendLayout();
             panel10.SuspendLayout();
             panel30.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProfesor).BeginInit();
             panel23.SuspendLayout();
             panel9Profesor.SuspendLayout();
-            tbpAdministrativos.SuspendLayout();
+            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAdministrativos).BeginInit();
             panel12.SuspendLayout();
             panel11.SuspendLayout();
             panel9.SuspendLayout();
-            tbpCarreras.SuspendLayout();
+            tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             panel13.SuspendLayout();
-            tbpAsignaturas.SuspendLayout();
+            tabPage5.SuspendLayout();
             panel15.SuspendLayout();
             panel19.SuspendLayout();
             panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAsignatura).BeginInit();
             panel16.SuspendLayout();
-            tbpExamenes.SuspendLayout();
+            panel18.SuspendLayout();
+            tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExamenes).BeginInit();
             panel29.SuspendLayout();
             panel28.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -379,23 +376,6 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.DimGray;
-            dataGridViewCellStyle8.SelectionBackColor = Color.CornflowerBlue;
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.GrayText;
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -550,7 +530,6 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(0, 0, 64);
             panel2.Controls.Add(btnDashExamenes);
             panel2.Controls.Add(btnDashAsignaturas);
             panel2.Controls.Add(btnDashCarreras);
@@ -689,12 +668,12 @@
             // tabControl2
             // 
             tabControl2.Appearance = TabAppearance.FlatButtons;
-            tabControl2.Controls.Add(tbpAlumno);
-            tabControl2.Controls.Add(tbpProfesor);
-            tabControl2.Controls.Add(tbpAdministrativos);
-            tabControl2.Controls.Add(tbpCarreras);
-            tabControl2.Controls.Add(tbpAsignaturas);
-            tabControl2.Controls.Add(tbpExamenes);
+            tabControl2.Controls.Add(tabPage1);
+            tabControl2.Controls.Add(tabPage2);
+            tabControl2.Controls.Add(tabPage3);
+            tabControl2.Controls.Add(tabPage4);
+            tabControl2.Controls.Add(tabPage5);
+            tabControl2.Controls.Add(tabPage6);
             tabControl2.Location = new Point(3, 4);
             tabControl2.Margin = new Padding(3, 4, 3, 4);
             tabControl2.Multiline = true;
@@ -703,17 +682,17 @@
             tabControl2.Size = new Size(1266, 615);
             tabControl2.TabIndex = 0;
             // 
-            // tbpAlumno
+            // tabPage1
             // 
-            tbpAlumno.Controls.Add(panel7);
-            tbpAlumno.Location = new Point(4, 32);
-            tbpAlumno.Margin = new Padding(3, 4, 3, 4);
-            tbpAlumno.Name = "tbpAlumno";
-            tbpAlumno.Padding = new Padding(3, 4, 3, 4);
-            tbpAlumno.Size = new Size(1288, 635);
-            tbpAlumno.TabIndex = 0;
-            tbpAlumno.Text = "Alumnos";
-            tbpAlumno.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(panel7);
+            tabPage1.Location = new Point(4, 32);
+            tabPage1.Margin = new Padding(3, 4, 3, 4);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3, 4, 3, 4);
+            tabPage1.Size = new Size(1258, 579);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Alumnos";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
@@ -820,20 +799,12 @@
             // 
             // txtIDAlumno
             // 
-            groupBox3.Controls.Add(label10);
-            groupBox3.Controls.Add(txtIDAlumno);
-            groupBox3.Controls.Add(label21);
-            groupBox3.Controls.Add(txtUsuarioAlumno);
-            groupBox3.Controls.Add(txtContraseñaAlumno);
-            groupBox3.Controls.Add(label22);
-            groupBox3.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(862, 26);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(400, 236);
-            groupBox3.TabIndex = 26;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Información de acceso";
+            txtIDAlumno.BackColor = Color.Silver;
+            txtIDAlumno.BorderStyle = BorderStyle.None;
+            txtIDAlumno.Location = new Point(1009, 150);
+            txtIDAlumno.Name = "txtIDAlumno";
+            txtIDAlumno.Size = new Size(159, 19);
+            txtIDAlumno.TabIndex = 23;
             // 
             // label10
             // 
@@ -842,18 +813,12 @@
             label10.ForeColor = Color.White;
             label10.Location = new Point(858, 142);
             label10.Name = "label10";
-            label10.Size = new Size(28, 21);
+            label10.Size = new Size(35, 27);
             label10.TabIndex = 22;
             label10.Text = "ID";
             // 
             // txtContraseñaAlumno
-            //  
-            txtIDAlumno.BackColor = Color.Silver;
-            txtIDAlumno.BorderStyle = BorderStyle.None;
-            txtIDAlumno.Location = new Point(186, 169);
-            txtIDAlumno.Name = "txtIDAlumno";
-            txtIDAlumno.Size = new Size(177, 23);
-            txtIDAlumno.TabIndex = 23;
+            // 
             txtContraseñaAlumno.BackColor = Color.Silver;
             txtContraseñaAlumno.BorderStyle = BorderStyle.None;
             txtContraseñaAlumno.Location = new Point(1009, 78);
@@ -877,7 +842,7 @@
             label21.ForeColor = Color.White;
             label21.Location = new Point(858, 73);
             label21.Name = "label21";
-            label21.Size = new Size(114, 21);
+            label21.Size = new Size(145, 27);
             label21.TabIndex = 18;
             label21.Text = "Contraseña";
             // 
@@ -888,28 +853,12 @@
             label22.ForeColor = Color.White;
             label22.Location = new Point(858, 26);
             label22.Name = "label22";
-            label22.Size = new Size(72, 21);
+            label22.Size = new Size(95, 27);
             label22.TabIndex = 17;
             label22.Text = "Usuario";
             // 
             // txtTelAlumno
             // 
-            groupBox2.Controls.Add(label26);
-            groupBox2.Controls.Add(txtDireccionAlumno);
-            groupBox2.Controls.Add(label25);
-            groupBox2.Controls.Add(txtAlturaAlumno);
-            groupBox2.Controls.Add(label23);
-            groupBox2.Controls.Add(txtEmailAlumno);
-            groupBox2.Controls.Add(label24);
-            groupBox2.Controls.Add(txtTelAlumno);
-            groupBox2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(439, 26);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(400, 236);
-            groupBox2.TabIndex = 25;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Información de contacto"
             txtTelAlumno.BackColor = Color.Silver;
             txtTelAlumno.BorderStyle = BorderStyle.None;
             txtTelAlumno.Location = new Point(650, 179);
@@ -984,152 +933,9 @@
             label26.ForeColor = Color.White;
             label26.Location = new Point(522, 26);
             label26.Name = "label26";
-            label26.Size = new Size(93, 21);
+            label26.Size = new Size(122, 27);
             label26.TabIndex = 8;
             label26.Text = "Dirección";
-            // 
-            // txtDireccionAlumno
-            // 
-            txtDireccionAlumno.BackColor = Color.Silver;
-            txtDireccionAlumno.BorderStyle = BorderStyle.None;
-            txtDireccionAlumno.Location = new Point(169, 42);
-            txtDireccionAlumno.Name = "txtDireccionAlumno";
-            txtDireccionAlumno.Size = new Size(187, 23);
-            txtDireccionAlumno.TabIndex = 12;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label25.ForeColor = Color.White;
-            label25.Location = new Point(45, 86);
-            label25.Name = "label25";
-            label25.Size = new Size(63, 21);
-            label25.TabIndex = 9;
-            label25.Text = "Altura";
-            // 
-            // txtAlturaAlumno
-            // 
-            txtAlturaAlumno.BackColor = Color.Silver;
-            txtAlturaAlumno.BorderStyle = BorderStyle.None;
-            txtAlturaAlumno.Location = new Point(169, 87);
-            txtAlturaAlumno.Name = "txtAlturaAlumno";
-            txtAlturaAlumno.Size = new Size(118, 23);
-            txtAlturaAlumno.TabIndex = 14;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.White;
-            label23.Location = new Point(45, 135);
-            label23.Name = "label23";
-            label23.Size = new Size(55, 21);
-            label23.TabIndex = 13;
-            label23.Text = "Email";
-            // 
-            // txtEmailAlumno
-            // 
-            txtEmailAlumno.BackColor = Color.Silver;
-            txtEmailAlumno.BorderStyle = BorderStyle.None;
-            txtEmailAlumno.Location = new Point(169, 135);
-            txtEmailAlumno.Name = "txtEmailAlumno";
-            txtEmailAlumno.Size = new Size(187, 23);
-            txtEmailAlumno.TabIndex = 15;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label24.ForeColor = Color.White;
-            label24.Location = new Point(45, 185);
-            label24.Name = "label24";
-            label24.Size = new Size(86, 21);
-            label24.TabIndex = 11;
-            label24.Text = "Teléfono";
-            // 
-            // txtTelAlumno
-            // 
-            txtTelAlumno.BackColor = Color.Silver;
-            txtTelAlumno.BorderStyle = BorderStyle.None;
-            txtTelAlumno.Location = new Point(169, 185);
-            txtTelAlumno.Name = "txtTelAlumno";
-            txtTelAlumno.Size = new Size(187, 23);
-            txtTelAlumno.TabIndex = 16;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(dateTimeAlumno);
-            groupBox1.Controls.Add(label30);
-            groupBox1.Controls.Add(label29);
-            groupBox1.Controls.Add(label28);
-            groupBox1.Controls.Add(label27);
-            groupBox1.Controls.Add(txtNombreAlumno);
-            groupBox1.Controls.Add(txtApellidoAlumno);
-            groupBox1.Controls.Add(txtDNIAlumno);
-            groupBox1.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(15, 26);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(400, 236);
-            groupBox1.TabIndex = 24;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Información personal";
-            // 
-            // dateTimeAlumno
-            // 
-            dateTimeAlumno.CalendarFont = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimeAlumno.CalendarMonthBackground = Color.White;
-            dateTimeAlumno.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimeAlumno.Format = DateTimePickerFormat.Short;
-            dateTimeAlumno.Location = new Point(251, 193);
-            dateTimeAlumno.Name = "dateTimeAlumno";
-            dateTimeAlumno.Size = new Size(132, 28);
-            dateTimeAlumno.TabIndex = 8;
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label30.ForeColor = Color.White;
-            label30.Location = new Point(16, 23);
-            label30.Name = "label30";
-            label30.Size = new Size(104, 27);
-            label30.TabIndex = 1;
-            label30.Text = "Nombre";
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.ForeColor = Color.White;
-            label29.Location = new Point(16, 73);
-            label29.Name = "label29";
-            label29.Size = new Size(109, 27);
-            label29.TabIndex = 2;
-            label29.Text = "Apellido";
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.ForeColor = Color.White;
-            label28.Location = new Point(16, 124);
-            label28.Name = "label28";
-            label28.Size = new Size(52, 27);
-            label28.TabIndex = 3;
-            label28.Text = "DNI";
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = Color.White;
-            label27.Location = new Point(16, 176);
-            label27.Name = "label27";
-            label27.Size = new Size(257, 27);
-            label27.TabIndex = 4;
-            label27.Text = "Fecha de nacimiento";
             // 
             // txtNombreAlumno
             // 
@@ -1155,8 +961,62 @@
             txtDNIAlumno.BorderStyle = BorderStyle.None;
             txtDNIAlumno.Location = new Point(270, 131);
             txtDNIAlumno.Name = "txtDNIAlumno";
-            txtDNIAlumno.Size = new Size(185, 23);
+            txtDNIAlumno.Size = new Size(159, 19);
             txtDNIAlumno.TabIndex = 5;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.ForeColor = Color.White;
+            label27.Location = new Point(16, 176);
+            label27.Name = "label27";
+            label27.Size = new Size(257, 27);
+            label27.TabIndex = 4;
+            label27.Text = "Fecha de nacimiento";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label28.ForeColor = Color.White;
+            label28.Location = new Point(16, 124);
+            label28.Name = "label28";
+            label28.Size = new Size(52, 27);
+            label28.TabIndex = 3;
+            label28.Text = "DNI";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label29.ForeColor = Color.White;
+            label29.Location = new Point(16, 73);
+            label29.Name = "label29";
+            label29.Size = new Size(109, 27);
+            label29.TabIndex = 2;
+            label29.Text = "Apellido";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label30.ForeColor = Color.White;
+            label30.Location = new Point(16, 23);
+            label30.Name = "label30";
+            label30.Size = new Size(104, 27);
+            label30.TabIndex = 1;
+            label30.Text = "Nombre";
+            // 
+            // txtNacimientoAlumno
+            // 
+            txtNacimientoAlumno.BackColor = Color.Silver;
+            txtNacimientoAlumno.BorderStyle = BorderStyle.None;
+            txtNacimientoAlumno.Location = new Point(270, 182);
+            txtNacimientoAlumno.Name = "txtNacimientoAlumno";
+            txtNacimientoAlumno.Size = new Size(159, 19);
+            txtNacimientoAlumno.TabIndex = 0;
+            // 
             // panel24
             // 
             panel24.BackColor = Color.FromArgb(0, 0, 64);
@@ -1189,19 +1049,19 @@
             textBox12.Size = new Size(286, 23);
             textBox12.TabIndex = 1;
             // 
-            // tbpProfesor
+            // tabPage2
             // 
-            tbpProfesor.Controls.Add(panel10);
-            tbpProfesor.Controls.Add(panel9Profesor);
-            tbpProfesor.Controls.Add(panel6);
-            tbpProfesor.Location = new Point(4, 32);
-            tbpProfesor.Margin = new Padding(3, 4, 3, 4);
-            tbpProfesor.Name = "tbpProfesor";
-            tbpProfesor.Padding = new Padding(3, 4, 3, 4);
-            tbpProfesor.Size = new Size(1288, 635);
-            tbpProfesor.TabIndex = 1;
-            tbpProfesor.Text = "Profesor";
-            tbpProfesor.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(panel10);
+            tabPage2.Controls.Add(panel9Profesor);
+            tabPage2.Controls.Add(panel6);
+            tabPage2.Location = new Point(4, 32);
+            tabPage2.Margin = new Padding(3, 4, 3, 4);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3, 4, 3, 4);
+            tabPage2.Size = new Size(1258, 579);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Profesor";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
@@ -1220,29 +1080,19 @@
             panel30.Dock = DockStyle.Fill;
             panel30.Location = new Point(0, 41);
             panel30.Name = "panel30";
-            panel30.Size = new Size(1144, 367);
+            panel30.Size = new Size(1114, 311);
             panel30.TabIndex = 5;
             // 
             // dgvProfesor
             // 
             dgvProfesor.BackgroundColor = Color.White;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvProfesor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvProfesor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfesor.Dock = DockStyle.Fill;
-            dgvProfesor.EnableHeadersVisualStyles = false;
             dgvProfesor.Location = new Point(0, 0);
             dgvProfesor.Name = "dgvProfesor";
             dgvProfesor.RowHeadersWidth = 51;
-            dgvProfesor.Size = new Size(1144, 367);
+            dgvProfesor.Size = new Size(1114, 311);
             dgvProfesor.TabIndex = 0;
-            dgvProfesor.CellClick += dataGridViewProfesor_CellClick;
             dgvProfesor.Click += dgvProfesor_Click;
             // 
             // panel8
@@ -1251,7 +1101,7 @@
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1144, 41);
+            panel8.Size = new Size(1114, 41);
             panel8.TabIndex = 4;
             // 
             // panel23
@@ -1261,9 +1111,9 @@
             panel23.Controls.Add(btnEliminarProfesor);
             panel23.Controls.Add(btnModificarProfesor);
             panel23.Dock = DockStyle.Right;
-            panel23.Location = new Point(1144, 0);
+            panel23.Location = new Point(1114, 0);
             panel23.Name = "panel23";
-            panel23.Size = new Size(138, 408);
+            panel23.Size = new Size(138, 352);
             panel23.TabIndex = 3;
             // 
             // btnAgregarProfesor
@@ -1564,31 +1414,31 @@
             panel6.Size = new Size(138, 571);
             panel6.TabIndex = 0;
             // 
-            // tbpAdministrativos
+            // tabPage3
             // 
-            tbpAdministrativos.Controls.Add(dgvAdministrativos);
-            tbpAdministrativos.Controls.Add(panel12);
-            tbpAdministrativos.Controls.Add(panel11);
-            tbpAdministrativos.Controls.Add(panel9);
-            tbpAdministrativos.Location = new Point(4, 32);
-            tbpAdministrativos.Margin = new Padding(3, 4, 3, 4);
-            tbpAdministrativos.Name = "tbpAdministrativos";
-            tbpAdministrativos.Size = new Size(1288, 635);
-            tbpAdministrativos.TabIndex = 2;
-            tbpAdministrativos.Text = "Administrativos";
-            tbpAdministrativos.UseVisualStyleBackColor = true;
+            tabPage3.Controls.Add(dgvAdministrativos);
+            tabPage3.Controls.Add(panel12);
+            tabPage3.Controls.Add(panel11);
+            tabPage3.Controls.Add(panel9);
+            tabPage3.Location = new Point(4, 32);
+            tabPage3.Margin = new Padding(3, 4, 3, 4);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1258, 579);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Administrativos";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // dgvAdministrativos
             // 
             dgvAdministrativos.BackgroundColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvAdministrativos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAdministrativos.Dock = DockStyle.Fill;
             dgvAdministrativos.EnableHeadersVisualStyles = false;
@@ -1909,20 +1759,20 @@
             textBox11.Size = new Size(286, 23);
             textBox11.TabIndex = 1;
             // 
-            // tbpCarreras
+            // tabPage4
             // 
-            tbpCarreras.Controls.Add(dataGridView4);
-            tbpCarreras.Controls.Add(button9);
-            tbpCarreras.Controls.Add(textBox13);
-            tbpCarreras.Controls.Add(panel14);
-            tbpCarreras.Controls.Add(panel13);
-            tbpCarreras.Location = new Point(4, 32);
-            tbpCarreras.Margin = new Padding(3, 4, 3, 4);
-            tbpCarreras.Name = "tbpCarreras";
-            tbpCarreras.Size = new Size(1288, 635);
-            tbpCarreras.TabIndex = 3;
-            tbpCarreras.Text = "Carreras";
-            tbpCarreras.UseVisualStyleBackColor = true;
+            tabPage4.Controls.Add(dataGridView4);
+            tabPage4.Controls.Add(button9);
+            tabPage4.Controls.Add(textBox13);
+            tabPage4.Controls.Add(panel14);
+            tabPage4.Controls.Add(panel13);
+            tabPage4.Location = new Point(4, 32);
+            tabPage4.Margin = new Padding(3, 4, 3, 4);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(1258, 579);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Carreras";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // dataGridView4
             // 
@@ -1969,7 +1819,7 @@
             panel13.Dock = DockStyle.Right;
             panel13.Location = new Point(1106, 0);
             panel13.Name = "panel13";
-            panel13.Size = new Size(152, 635);
+            panel13.Size = new Size(152, 579);
             panel13.TabIndex = 5;
             // 
             // button3
@@ -2005,16 +1855,16 @@
             button8.Text = "Agregar";
             button8.UseVisualStyleBackColor = true;
             // 
-            // tbpAsignaturas
+            // tabPage5
             // 
-            tbpAsignaturas.Controls.Add(panel15);
-            tbpAsignaturas.Location = new Point(4, 32);
-            tbpAsignaturas.Margin = new Padding(3, 4, 3, 4);
-            tbpAsignaturas.Name = "tbpAsignaturas";
-            tbpAsignaturas.Size = new Size(1288, 635);
-            tbpAsignaturas.TabIndex = 4;
-            tbpAsignaturas.Text = "Asignaturas";
-            tbpAsignaturas.UseVisualStyleBackColor = true;
+            tabPage5.Controls.Add(panel15);
+            tabPage5.Location = new Point(4, 32);
+            tabPage5.Margin = new Padding(3, 4, 3, 4);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(1258, 579);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Asignaturas";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // panel15
             // 
@@ -2023,7 +1873,7 @@
             panel15.Dock = DockStyle.Fill;
             panel15.Location = new Point(0, 0);
             panel15.Name = "panel15";
-            panel15.Size = new Size(1288, 635);
+            panel15.Size = new Size(1258, 579);
             panel15.TabIndex = 0;
             // 
             // panel19
@@ -2034,10 +1884,17 @@
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(0, 0);
             panel19.Name = "panel19";
-            panel19.Size = new Size(1150, 376);
+            panel19.Size = new Size(1258, 361);
             panel19.TabIndex = 3;
             // 
             // panel31
+            // 
+            panel31.Controls.Add(dgvAsignatura);
+            panel31.Dock = DockStyle.Fill;
+            panel31.Location = new Point(0, 41);
+            panel31.Name = "panel31";
+            panel31.Size = new Size(1120, 320);
+            panel31.TabIndex = 2;
             // 
             // dgvAsignatura
             // 
@@ -2069,9 +1926,7 @@
             panel16.Dock = DockStyle.Right;
             panel16.Location = new Point(1120, 0);
             panel16.Name = "panel16";
-
-            panel16.Size = new Size(138, 635);
-
+            panel16.Size = new Size(138, 361);
             panel16.TabIndex = 0;
             // 
             // btnEliminarAsignatura
@@ -2163,19 +2018,19 @@
             lblNombreAsignatura.TabIndex = 8;
             lblNombreAsignatura.Text = "Nombre";
             // 
-            // tbpExamenes
+            // tabPage6
             // 
-            tbpExamenes.Controls.Add(dgvExamenes);
-            tbpExamenes.Controls.Add(panel29);
-            tbpExamenes.Controls.Add(panel28);
-            tbpExamenes.Controls.Add(panel27);
-            tbpExamenes.Location = new Point(4, 32);
-            tbpExamenes.Name = "tbpExamenes";
-            tbpExamenes.Padding = new Padding(3);
-            tbpExamenes.Size = new Size(1288, 635);
-            tbpExamenes.TabIndex = 5;
-            tbpExamenes.Text = "Exámenes";
-            tbpExamenes.UseVisualStyleBackColor = true;
+            tabPage6.Controls.Add(dgvExamenes);
+            tabPage6.Controls.Add(panel29);
+            tabPage6.Controls.Add(panel28);
+            tabPage6.Controls.Add(panel27);
+            tabPage6.Location = new Point(4, 32);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(1258, 579);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "Exámenes";
+            tabPage6.UseVisualStyleBackColor = true;
             // 
             // dgvExamenes
             // 
@@ -2202,11 +2057,9 @@
             panel29.Controls.Add(button6);
             panel29.Controls.Add(button7);
             panel29.Dock = DockStyle.Right;
-
-            panel29.Location = new Point(1138, 44);
-
+            panel29.Location = new Point(1108, 44);
             panel29.Name = "panel29";
-            panel29.Size = new Size(147, 369);
+            panel29.Size = new Size(147, 313);
             panel29.TabIndex = 27;
             // 
             // button5
@@ -2261,7 +2114,7 @@
             panel28.Controls.Add(label36);
             panel28.Controls.Add(textBox14);
             panel28.Dock = DockStyle.Bottom;
-            panel28.Location = new Point(3, 413);
+            panel28.Location = new Point(3, 357);
             panel28.Name = "panel28";
             panel28.Size = new Size(1252, 219);
             panel28.TabIndex = 26;
@@ -2397,17 +2250,11 @@
             // 
             tbpReporte.Location = new Point(4, 29);
             tbpReporte.Name = "tbpReporte";
-            tbpReporte.Size = new Size(1308, 685);
+            tbpReporte.Size = new Size(1282, 634);
             tbpReporte.TabIndex = 2;
             tbpReporte.Text = "Reporte";
             tbpReporte.UseVisualStyleBackColor = true;
             // 
-
-            // errorProviderDatosVacios
-            // 
-            errorProviderDatosVacios.ContainerControl = this;
-            // 
-
             // FrmDashboard
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -2443,7 +2290,7 @@
             tbpGestionAcademica.ResumeLayout(false);
             panel5.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
-            tbpAlumno.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).EndInit();
             panel26.ResumeLayout(false);
@@ -2451,39 +2298,37 @@
             panel25.PerformLayout();
             panel24.ResumeLayout(false);
             panel24.PerformLayout();
-            tbpProfesor.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel30.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProfesor).EndInit();
             panel23.ResumeLayout(false);
             panel9Profesor.ResumeLayout(false);
             panel9Profesor.PerformLayout();
-            tbpAdministrativos.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAdministrativos).EndInit();
             panel12.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            tbpCarreras.ResumeLayout(false);
-            tbpCarreras.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             panel13.ResumeLayout(false);
-            tbpAsignaturas.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel19.ResumeLayout(false);
             panel31.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAsignatura).EndInit();
             panel16.ResumeLayout(false);
-            tbpExamenes.ResumeLayout(false);
-
+            panel18.ResumeLayout(false);
+            panel18.PerformLayout();
+            tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvExamenes).EndInit();
             panel29.ResumeLayout(false);
             panel28.ResumeLayout(false);
             panel28.PerformLayout();
-
-            ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).EndInit();
-
             ResumeLayout(false);
         }
 
@@ -2521,12 +2366,12 @@
         private Label lblTituloDashboard;
         private Panel panel5;
         private TabControl tabControl2;
-        private TabPage tbpAlumno;
-        private TabPage tbpProfesor;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private Panel panel7;
-        private TabPage tbpAdministrativos;
-        private TabPage tbpCarreras;
-        private TabPage tbpAsignaturas;
+        private TabPage tabPage3;
+        private TabPage tabPage4;
+        private TabPage tabPage5;
         private ToolStripMenuItem usuarioToolStripMenuItem;
         private ToolStripMenuItem perfilToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
@@ -2632,9 +2477,10 @@
         private Label label28;
         private Label label29;
         private Label label30;
-        private Button btnBuscarAlumno;
-        private TextBox txtBuscarAlumno;
-        private TabPage tbpExamenes;
+        private TextBox txtNacimientoAlumno;
+        private Button button2;
+        private TextBox textBox12;
+        private TabPage tabPage6;
         private Panel panel28;
         private TextBox txtNotaExamen;
         private Label label31;
