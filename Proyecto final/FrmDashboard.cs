@@ -15,6 +15,7 @@ namespace Proyecto_final
     {
         clsConexion ConectarBDD = new clsConexion();
         public string PerfilUsuario { get; set; }// la propiedad va a recibir el perfil desde el login
+        public int IdPerfilUsuario { get; set; }
         public void CargarDashboard()       // metodo que encuentra el total de registros de las tablas
         {
             ConectarBDD.abrir();
@@ -32,9 +33,10 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
-        public FrmDashboard() //constructor del formulario
+        public FrmDashboard(int idPerfil) //constructor del formulario
         {
             InitializeComponent();
+            IdPerfilUsuario = idPerfil;//recibe el id del perfil del usuario
         }
         private void FrmDashboard_Load(object sender, EventArgs e) //evento que se activa cuando se abre el formulario
         {
@@ -44,9 +46,50 @@ namespace Proyecto_final
             Cargar_tabla_Alumno();
             Cargar_tabla_Examenes();
             Cargar_tabla_Asignatura();
+            CargarPermisos(IdPerfilUsuario);
         }
-        //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
+        //METODO PATA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
+        public void CargarPermisos(int idPerfil)
+        {
+            ConectarBDD.abrir();
 
+            string consulta = "sp_ObtenerPermisosPorPerfil";
+
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            comando.Parameters.AddWithValue("@Id_perfil", idPerfil);
+
+            SqlDataReader reader = comando.ExecuteReader(); //ejecuto el comando
+
+            List<string> permisos = new List<string>();
+
+            while (reader.Read())
+            {
+                permisos.Add(reader["Tipo_permiso"].ToString()); //agrega el permiso a la lista
+            }
+            ConectarBDD.cerrar();
+
+            AplicarPermisos(permisos);
+        }
+
+        public void AplicarPermisos(List<string> permisos)
+        {
+            //Si el permiso para gestionar alumnos no está en la lista entonces deshabilita el boton
+            if (!permisos.Contains("Gestionar Alumnos"))
+            { 
+                btnAgregarAlumno.Enabled = false;
+                btnModificarAlumno.Enabled = false;
+                btnEliminarAlumno.Enabled = false;
+            }
+            if (!permisos.Contains("Gestionar Asignaturas"))
+            {
+                btnAgregarAsignatura.Enabled = false;
+            }
+        }
+
+
+        //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
         private void btnDashExamenes_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos examenes";

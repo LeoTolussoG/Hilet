@@ -1,13 +1,13 @@
 /*create database TPFinal;*/
 use TPFinal;
-/*use u26;*/
+use u26;
 
 -- Tabla Carreras
 CREATE TABLE Carreras(
 Id_carrera INT PRIMARY KEY IDENTITY (1,1),
 Nombre VARCHAR (30),
 Num_res VARCHAR (10),
-AÒo_PlanEstudio INT,
+A√±o_PlanEstudio INT,
 );
 
 --Tabla Perfiles
@@ -34,7 +34,7 @@ Email VARCHAR (100),
 Telefono VARCHAR (30),
 F_nacimiento DATE,
 Usuario VARCHAR (40),
-ContraseÒa VARCHAR (40),
+Contrase√±a VARCHAR (40),
 Id_perfil INT,
 FOREIGN KEY (Id_perfil) REFERENCES Perfiles (Id_perfil)
 );
@@ -51,7 +51,7 @@ Email VARCHAR (100),
 Telefono VARCHAR (30),
 F_nacimiento DATE,
 Usuario VARCHAR (40),
-ContraseÒa VARCHAR (40),
+Contrase√±a VARCHAR (40),
 Id_perfil INT,
 FOREIGN KEY (Id_perfil) REFERENCES Perfiles (Id_perfil)
 );
@@ -75,7 +75,7 @@ FOREIGN KEY (Id_permisos) REFERENCES Permisos(Id_permisos)
 CREATE TABLE Asignatura(
 Id_asignatura INT PRIMARY KEY IDENTITY (1,1),
 Nombre VARCHAR (50),
-AÒo_cursada INT,
+A√±o_cursada INT,
 Id_empleado INT,
 FOREIGN KEY (Id_empleado) REFERENCES Empleados (Id_Empleado)
 );
@@ -117,112 +117,112 @@ FOREIGN KEY (Id_empleado) REFERENCES Empleados(Id_empleado)
 
 
 --Registro de Carreras
-INSERT INTO Carreras (Nombre, Num_res, AÒo_PlanEstudio) VALUES
-('TÈcnico Superior en Publicidad', '3805/06', 3),
+INSERT INTO Carreras (Nombre, Num_res, A√±o_PlanEstudio) VALUES
+('T√©cnico Superior en Publicidad', '3805/06', 3),
 ('Analista de Sistemas', '6790/19', 3);
 
 /*Asignaturas para Publicidad:*/
-INSERT INTO Asignatura (Nombre, AÒo_cursada, Id_empleado) VALUES
+INSERT INTO Asignatura (Nombre, A√±o_cursada, Id_empleado) VALUES
 ('Marketing general', 1, 2),
-('PsicologÌa Comportamiento del Consumidor', 1, 2),
-('Fundamentos del diseÒo publicitario', 1, 2),
-('ComputaciÛn 1', 1, 2),
-('IntroducciÛn a la publicidad', 1, 2),
-('ProducciÛn gr·fica', 1, 2),
-('ProducciÛn radial', 1, 2),
-('ProducciÛn audiovisual', 1, 2),
-('ComputaciÛn 2', 2, 2),
-( 'InglÈs 1', 2, 2),
-( 'PsicologÌa social', 2, 2),
+('Psicolog√≠a Comportamiento del Consumidor', 1, 2),
+('Fundamentos del dise√±o publicitario', 1, 2),
+('Computaci√≥n 1', 1, 2),
+('Introducci√≥n a la publicidad', 1, 2),
+('Producci√≥n gr√°fica', 1, 2),
+('Producci√≥n radial', 1, 2),
+('Producci√≥n audiovisual', 1, 2),
+('Computaci√≥n 2', 2, 2),
+( 'Ingl√©s 1', 2, 2),
+( 'Psicolog√≠a social', 2, 2),
 ( 'Marketing directo', 2, 2),
 ( 'Arte, cine, literatura e historia de la publicidad', 2, 2),
-( 'RedacciÛn creativa 1', 2, 2),
-( 'DirecciÛn de arte 1', 2, 2),
-( 'PlanificaciÛn estratÈgica de medios', 2, 2),
-( 'SemiologÌa publicitaria', 2, 2),
-( 'TÈcnica promocional y pop', 2, 2),
-( 'InglÈs 2', 3, 2),
-( 'InvestigaciÛn de mercados', 3, 2),
-( 'RedacciÛn creativa 2', 3, 2),
-( 'DirecciÛn de arte 2', 3, 2),
-( 'Pr·ctica profesional', 3, 2),
-( 'AtenciÛn de cuentas', 3, 2),
-( 'OrganizaciÛn y administraciÛn de la agencia', 3, 2),
-( 'Derecho y legislaciÛn publicitaria', 3, 2);
+( 'Redacci√≥n creativa 1', 2, 2),
+( 'Direcci√≥n de arte 1', 2, 2),
+( 'Planificaci√≥n estrat√©gica de medios', 2, 2),
+( 'Semiolog√≠a publicitaria', 2, 2),
+( 'T√©cnica promocional y pop', 2, 2),
+( 'Ingl√©s 2', 3, 2),
+( 'Investigaci√≥n de mercados', 3, 2),
+( 'Redacci√≥n creativa 2', 3, 2),
+( 'Direcci√≥n de arte 2', 3, 2),
+( 'Pr√°ctica profesional', 3, 2),
+( 'Atenci√≥n de cuentas', 3, 2),
+( 'Organizaci√≥n y administraci√≥n de la agencia', 3, 2),
+( 'Derecho y legislaci√≥n publicitaria', 3, 2);
 
 -- Asignaturas para Analista de Sistemas
-INSERT INTO Asignatura (Nombre, AÒo_cursada) VALUES
-('InglÈs I', 1),
-('Ciencia, TecnologÌa y Sociedad', 1),
-('An·lisis Matem·tico I', 1),
-('¡lgebra', 1),
+INSERT INTO Asignatura (Nombre, A√±o_cursada) VALUES
+('Ingl√©s I', 1),
+('Ciencia, Tecnolog√≠a y Sociedad', 1),
+('An√°lisis Matem√°tico I', 1),
+('√Ålgebra', 1),
 ('Algoritmos y estructuras de datos I', 1),
 ('Sistemas y Organizaciones', 1),
 ('Arquitectura de Computadores', 1),
-('Pr·cticas Profesionalizantes I', 1),
-('InglÈs II', 2),
-('An·lisis Matem·tico II', 2),
-('EstadÌstica', 2),
-('IngenierÌa de Software I', 2),
+('Pr√°cticas Profesionalizantes I', 1),
+('Ingl√©s II', 2),
+('An√°lisis Matem√°tico II', 2),
+('Estad√≠stica', 2),
+('Ingenier√≠a de Software I', 2),
 ('Algoritmos y estructuras de datos II', 2),
 ('Sistemas Operativos', 2),
 ('Base de Datos', 2),
-('Pr·cticas Profesionalizantes II', 2),
-('InglÈs III', 3),
-('Aspectos legales de la profesiÛn', 3),
-('Seminario de actualizaciÛn', 3),
+('Pr√°cticas Profesionalizantes II', 2),
+('Ingl√©s III', 3),
+('Aspectos legales de la profesi√≥n', 3),
+('Seminario de actualizaci√≥n', 3),
 ('Redes y comunicaciones', 3),
-('IngenierÌa de Software II', 3),
+('Ingenier√≠a de Software II', 3),
 ('Algoritmos y estructuras de datos III', 3),
-('Pr·cticas Profesionalizantes III', 3);
+('Pr√°cticas Profesionalizantes III', 3);
 
 select * from Asignatura;
 /*Asignaturas para Publicidad (ID_Carrera = 1)*/
 INSERT INTO AsignaturaXCarrera (Id_carrera,Id_asignatura) VALUES
 (1, 2), -- Marketing general
-(1, 2), -- PsicologÌa Comportamiento del Consumidor
-(1, 3), -- Fundamentos del diseÒo publicitario
-(1, 4), -- ComputaciÛn 1
-(1, 5), -- IntroducciÛn a la publicidad
-(1, 6), -- ProducciÛn gr·fica
-(1, 7), -- ProducciÛn radial
-(1, 8), -- ProducciÛn audiovisual
-(1, 9), -- ComputaciÛn 2
-( 1, 10), -- InglÈs 1
-( 1, 11), -- PsicologÌa social
+(1, 2), -- Psicolog√≠a Comportamiento del Consumidor
+(1, 3), -- Fundamentos del dise√±o publicitario
+(1, 4), -- Computaci√≥n 1
+(1, 5), -- Introducci√≥n a la publicidad
+(1, 6), -- Producci√≥n gr√°fica
+(1, 7), -- Producci√≥n radial
+(1, 8), -- Producci√≥n audiovisual
+(1, 9), -- Computaci√≥n 2
+( 1, 10), -- Ingl√©s 1
+( 1, 11), -- Psicolog√≠a social
 ( 1, 12), -- Marketing directo
 ( 1, 13), -- Arte, cine, literatura e historia de la publicidad
-( 1, 14), -- RedacciÛn creativa 1
-( 1, 15), -- DirecciÛn de arte 1
-( 1, 16), -- PlanificaciÛn estratÈgica de medios
-( 1, 17), -- SemiologÌa publicitaria
-( 1, 18); -- TÈcnica promocional y pop
+( 1, 14), -- Redacci√≥n creativa 1
+( 1, 15), -- Direcci√≥n de arte 1
+( 1, 16), -- Planificaci√≥n estrat√©gica de medios
+( 1, 17), -- Semiolog√≠a publicitaria
+( 1, 18); -- T√©cnica promocional y pop
 
 -- Asignaturas para Analista de Sistemas (ID_Carrera = 2)
 INSERT INTO AsignaturaXCarrera (Id_carrera, Id_asignatura) VALUES
-(2, 27), -- InglÈs I
-(2, 28), -- Ciencia, TecnologÌa y Sociedad
-(2, 29), -- An·lisis Matem·tico I
-(2, 30), -- ¡lgebra
+(2, 27), -- Ingl√©s I
+(2, 28), -- Ciencia, Tecnolog√≠a y Sociedad
+(2, 29), -- An√°lisis Matem√°tico I
+(2, 30), -- √Ålgebra
 (2, 31), -- Algoritmos y estructuras de datos I
 (2, 32), -- Sistemas y Organizaciones
 (2, 33), -- Arquitectura de Computadores
-(2, 34), -- Pr·cticas Profesionalizantes I
-(2, 35), -- InglÈs II
-(2, 36), -- An·lisis Matem·tico II
-(2, 37), -- EstadÌstica
-(2, 38), -- IngenierÌa de Software I
+(2, 34), -- Pr√°cticas Profesionalizantes I
+(2, 35), -- Ingl√©s II
+(2, 36), -- An√°lisis Matem√°tico II
+(2, 37), -- Estad√≠stica
+(2, 38), -- Ingenier√≠a de Software I
 (2, 39), -- Algoritmos y estructuras de datos II
 (2, 40), -- Sistemas Operativos
 (2, 41), -- Base de datos
-(2, 42), -- Pr·cticas Profesionalizantes II
-(2, 43), -- InglÈs III
-(2, 44), -- Aspectos legales de la profesiÛn
-(2, 45), -- Seminario de actualizaciÛn
+(2, 42), -- Pr√°cticas Profesionalizantes II
+(2, 43), -- Ingl√©s III
+(2, 44), -- Aspectos legales de la profesi√≥n
+(2, 45), -- Seminario de actualizaci√≥n
 (2, 46), -- Redes y comunicaciones
-(2, 47), -- IngenierÌa de Software II
+(2, 47), -- Ingenier√≠a de Software II
 (2, 48), -- Algoritmos y estructuras de datos III
-(2, 49); -- Pr·cticas Profesionalizantes III
+(2, 49); -- Pr√°cticas Profesionalizantes III
 
 INSERT INTO Perfiles (Tipo_perfil) VALUES
 ('Alumno'),
@@ -230,29 +230,29 @@ INSERT INTO Perfiles (Tipo_perfil) VALUES
 ('Personal Administrativo'),
 ('Administrador');
 
-INSERT INTO Alumnos (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, ContraseÒa, Id_perfil) VALUES
+INSERT INTO Alumnos (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contrase√±a, Id_perfil) VALUES
 ('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leo', '12345', 1),
-('Pedro', 'RodrÌguez', '87654321', 'Calle 2', 456, 'pedro.rodriguez@ejemplo.com', '2345-6789', '1999-02-02', 'alumno2', 'password123', 1),
-('Ana', 'GÛmez', '45678901', 'Calle 3', 789, 'ana.gomez@ejemplo.com', '3456-7890', '2001-03-03', 'alumno3', 'password123', 1),
-('Javier', 'S·nchez', '65432109', 'Calle 4', 321, 'javier.sanchez@ejemplo.com', '4567-8901', '1998-04-04', 'alumno4', 'password123', 1),
-('MarÌa', 'Fern·ndez', '12345678', 'Calle 5', 654, 'maria.fernandez@ejemplo.com', '5678-9012', '1997-05-05', 'alumno5', 'password123', 1),
-('Luis', 'PÈrez', '98765432', 'Calle 6', 159, 'luis.perez@ejemplo.com', '6789-0123', '1996-06-06', 'alumno6', 'password123', 1),
-('SofÌa', 'Cruz', '87654321', 'Calle 7', 753, 'sofia.cruz@ejemplo.com', '7890-1234', '2002-07-07', 'alumno7', 'password123', 1),
-('Carlos', 'Hern·ndez', '65432109', 'Calle 8', 258, 'carlos.hernandez@ejemplo.com', '8901-2345', '1995-08-08', 'alumno8', 'password123', 1),
-('Isabella', 'GarcÌa', '12345678', 'Calle 9', 369, 'isabella.garcia@ejemplo.com', '9012-3456', '1994-09-09', 'alumno9', 'password123', 1),
-( 'AndrÈs', 'Torres', '78901234', 'Calle 10', 951, 'andres.torres@ejemplo.com', '0123-4567', '1993-10-10', 'alumno10', 'password123', 1);
+('Pedro', 'Rodr√≠guez', '87654321', 'Calle 2', 456, 'pedro.rodriguez@ejemplo.com', '2345-6789', '1999-02-02', 'alumno2', 'password123', 1),
+('Ana', 'G√≥mez', '45678901', 'Calle 3', 789, 'ana.gomez@ejemplo.com', '3456-7890', '2001-03-03', 'alumno3', 'password123', 1),
+('Javier', 'S√°nchez', '65432109', 'Calle 4', 321, 'javier.sanchez@ejemplo.com', '4567-8901', '1998-04-04', 'alumno4', 'password123', 1),
+('Mar√≠a', 'Fern√°ndez', '12345678', 'Calle 5', 654, 'maria.fernandez@ejemplo.com', '5678-9012', '1997-05-05', 'alumno5', 'password123', 1),
+('Luis', 'P√©rez', '98765432', 'Calle 6', 159, 'luis.perez@ejemplo.com', '6789-0123', '1996-06-06', 'alumno6', 'password123', 1),
+('Sof√≠a', 'Cruz', '87654321', 'Calle 7', 753, 'sofia.cruz@ejemplo.com', '7890-1234', '2002-07-07', 'alumno7', 'password123', 1),
+('Carlos', 'Hern√°ndez', '65432109', 'Calle 8', 258, 'carlos.hernandez@ejemplo.com', '8901-2345', '1995-08-08', 'alumno8', 'password123', 1),
+('Isabella', 'Garc√≠a', '12345678', 'Calle 9', 369, 'isabella.garcia@ejemplo.com', '9012-3456', '1994-09-09', 'alumno9', 'password123', 1),
+( 'Andr√©s', 'Torres', '78901234', 'Calle 10', 951, 'andres.torres@ejemplo.com', '0123-4567', '1993-10-10', 'alumno10', 'password123', 1);
 
 INSERT INTO AsignaturasXAlumnos(Id_alumno, Id_asignatura) VALUES
-(1, 2), -- Laura est· en Marketing general
-(1, 2), -- Laura est· en PsicologÌa Comportamiento del Consumidor
-(1, 3), -- Laura est· en Fundamentos del diseÒo publicitario
-(1, 4), -- Laura est· en ComputaciÛn 1
-(1, 5), -- Laura est· en IntroducciÛn a la publicidad
-(2, 6), -- Pedro est· en ProducciÛn gr·fica
-(2, 2), -- Pedro est· en Marketing general
-(2, 7), -- Pedro est· en ProducciÛn radial
-(1, 8), -- Laura est· en ProducciÛn audiovisual
-( 2, 9); -- Pedro est· en ComputaciÛn 2
+(1, 2), -- Laura est√° en Marketing general
+(1, 2), -- Laura est√° en Psicolog√≠a Comportamiento del Consumidor
+(1, 3), -- Laura est√° en Fundamentos del dise√±o publicitario
+(1, 4), -- Laura est√° en Computaci√≥n 1
+(1, 5), -- Laura est√° en Introducci√≥n a la publicidad
+(2, 6), -- Pedro est√° en Producci√≥n gr√°fica
+(2, 2), -- Pedro est√° en Marketing general
+(2, 7), -- Pedro est√° en Producci√≥n radial
+(1, 8), -- Laura est√° en Producci√≥n audiovisual
+( 2, 9); -- Pedro est√° en Computaci√≥n 2
 
 INSERT INTO Instancias (Descripcion) VALUES
 ('Parcial'),
@@ -261,28 +261,28 @@ INSERT INTO Instancias (Descripcion) VALUES
 
 INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_empleado) VALUES
 (8.5, '2024-05-01', 2, 4, 1, 2), -- Laura en Marketing general (Parcial)
-(7.0, '2024-05-02', 2, 5, 1, 2), -- Laura en PsicologÌa Comportamiento del Consumidor (Parcial)
-(9.0, '2024-05-03', 3, 2, 1, 2), -- Pedro en Fundamentos del diseÒo publicitario (Parcial)
-(6.5, '2024-05-01', 4, 2, 1, 2), -- Pedro en ComputaciÛn 1 (Parcial)
+(7.0, '2024-05-02', 2, 5, 1, 2), -- Laura en Psicolog√≠a Comportamiento del Consumidor (Parcial)
+(9.0, '2024-05-03', 3, 2, 1, 2), -- Pedro en Fundamentos del dise√±o publicitario (Parcial)
+(6.5, '2024-05-01', 4, 2, 1, 2), -- Pedro en Computaci√≥n 1 (Parcial)
 (8.0, '2024-06-01', 2, 6, 2, 2), -- Laura en Marketing general (Recuperatorio)
-(5.5, '2024-06-02', 5, 2, 2, 2), -- Pedro en IntroducciÛn a la publicidad (Recuperatorio)
-(9.5, '2024-07-01', 6, 7, 3, 2), -- Laura en ProducciÛn gr·fica (Final)
-(8.0, '2024-07-02', 7, 2, 3, 2), -- Pedro en ProducciÛn radial (Final)
-(10.0, '2024-07-03', 8, 9,3, 2), -- Laura en ProducciÛn audiovisual (Final)
-(7.5, '2024-07-01', 9, 2, 3, 2); -- Pedro en ComputaciÛn 2 (Final)
+(5.5, '2024-06-02', 5, 2, 2, 2), -- Pedro en Introducci√≥n a la publicidad (Recuperatorio)
+(9.5, '2024-07-01', 6, 7, 3, 2), -- Laura en Producci√≥n gr√°fica (Final)
+(8.0, '2024-07-02', 7, 2, 3, 2), -- Pedro en Producci√≥n radial (Final)
+(10.0, '2024-07-03', 8, 9,3, 2), -- Laura en Producci√≥n audiovisual (Final)
+(7.5, '2024-07-01', 9, 2, 3, 2); -- Pedro en Computaci√≥n 2 (Final)
 
 select * from Alumnos
 
-INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, ContraseÒa, Id_perfil) VALUES
-('Juan', 'PÈrez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
-('MarÌa', 'GÛmez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
-('Carlos', 'LÛpez', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
-('Ana', 'MartÌnez', '22334455', 'Calle Nueva', 321, 'ana.martinez@ejemplo.com', '4444-5555', '1982-11-30', 'profesor3', 'password123', 2),
-('Luis', 'RamÌrez', '33445566', 'Calle Vieja', 654, 'luis.ramirez@ejemplo.com', '5555-6666', '1990-01-01', 'admin2', 'adminpass', 3),
-('SofÌa', 'Cruz', '44556677', 'Calle 12', 159, 'sofia.cruz@ejemplo.com', '6666-7777', '1988-03-15', 'profesor4', 'password123', 2),
-('Pedro', 'Fern·ndez', '55667788', 'Calle 34', 753, 'pedro.fernandez@ejemplo.com', '7777-8888', '1995-04-20', 'profesor5', 'password123', 2),
+INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contrase√±a, Id_perfil) VALUES
+('Juan', 'P√©rez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
+('Mar√≠a', 'G√≥mez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
+('Carlos', 'L√≥pez', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
+('Ana', 'Mart√≠nez', '22334455', 'Calle Nueva', 321, 'ana.martinez@ejemplo.com', '4444-5555', '1982-11-30', 'profesor3', 'password123', 2),
+('Luis', 'Ram√≠rez', '33445566', 'Calle Vieja', 654, 'luis.ramirez@ejemplo.com', '5555-6666', '1990-01-01', 'admin2', 'adminpass', 3),
+('Sof√≠a', 'Cruz', '44556677', 'Calle 12', 159, 'sofia.cruz@ejemplo.com', '6666-7777', '1988-03-15', 'profesor4', 'password123', 2),
+('Pedro', 'Fern√°ndez', '55667788', 'Calle 34', 753, 'pedro.fernandez@ejemplo.com', '7777-8888', '1995-04-20', 'profesor5', 'password123', 2),
 ('Isabella', 'Cano', '66778899', 'Calle 56', 258, 'isabella.cano@ejemplo.com', '8888-9999', '1983-05-10', 'admin3', 'adminpass', 3),
-('AndrÈs', 'Torres', '77889900', 'Calle 78', 369, 'andres.torres@ejemplo.com', '9999-0000', '1992-06-30', 'profesor6', 'password123', 2),
+('Andr√©s', 'Torres', '77889900', 'Calle 78', 369, 'andres.torres@ejemplo.com', '9999-0000', '1992-06-30', 'profesor6', 'password123', 2),
 ( 'Laura', 'Molina', '88990011', 'Calle 90', 951, 'laura.molina@ejemplo.com', '0000-1111', '1990-07-15', 'admin4', 'adminpass', 3);
 
 /*Ver bien que permisos tiene cada uno:*/
@@ -290,70 +290,54 @@ INSERT INTO Permisos (Tipo_permiso) VALUES
 ('Gestionar Alumnos'),
 ('Gestionar Asignaturas'),
 ('Gestionar Notas'),
-('Gestionar Ex·menes'),
+('Gestionar Ex√°menes'),
 ('Gestionar Usuarios');
 
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (1, 2), -- Profesor puede gestionar alumnos
 (2, 2), -- Profesor puede gestionar asignaturas
 (3, 2), -- Profesor puede gestionar notas
-(4, 2), -- Profesor puede gestionar ex·menes
+(4, 2), -- Profesor puede gestionar ex√°menes
 (5, 4), -- Administrador puede gestionar usuarios
 (1, 4), -- Administrador puede gestionar alumnos
 (2, 4), -- Administrador puede gestionar asignaturas
 (3, 4), -- Administrador puede gestionar notas
-(4, 4); -- Administrador puede gestionar ex·menes
+(4, 4); -- Administrador puede gestionar ex√°menes
 
 select * from Perfiles
 
 
 --------------Procedimientos Almacenados----------------------------
 
-create procedure sp_Estado
-as
-begin
-	select
-		(select 
-			COUNT (Id_alumno)
-		from
-			Alumnos) as TotalAlumnos, (select
-											COUNT (Id_empleado)
-										from
-											Empleados
-										where
-											Id_perfil = 2) as TotalProfesores, (select
-																						COUNT (Id_empleado)
-																					from
-																						Empleados
-																					where
-																						Id_perfil = 3) as TotalAdministrativos, (select
-																																		COUNT (Id_asignatura)
-																																	from
-																																		Asignatura) as TotalMaterias;																													
-end;
 ---------------------------------
-create procedure sp_Acceso_Login
-@Usuario varchar(40),
-@ContraseÒa varchar(40)
-as
-begin
+CREATE PROCEDURE sp_Acceso_Login
+    @Usuario varchar(40),
+    @Contrase√±a varchar(40)
+AS
+BEGIN
+    --para Alumnos
     SELECT 
-		P.Tipo_perfil 
+        A.Id_perfil, 
+        P.Tipo_perfil  
     FROM 
-		Perfiles P 
+        Perfiles P
     JOIN 
-		Alumnos A ON P.Id_perfil = A.Id_perfil 
+        Alumnos A ON P.Id_perfil = A.Id_perfil
     WHERE 
-		A.Usuario = @Usuario AND A.ContraseÒa = @ContraseÒa
+        A.Usuario = @Usuario AND A.Contrase√±a = @Contrase√±a
+    
     UNION
+    
+    --para Empleados
     SELECT 
-		P.Tipo_perfil 
+        E.Id_perfil,
+        P.Tipo_perfil
     FROM 
-		Perfiles P 
+        Perfiles P
     JOIN 
-		Empleados E ON P.Id_perfil = E.Id_perfil 
+        Empleados E ON P.Id_perfil = E.Id_perfil
     WHERE 
-		E.Usuario = @Usuario AND E.ContraseÒa = @ContraseÒa
+		E.Usuario = @Usuario AND E.Contrase√±a = @Contrase√±a
 end;
 
 
@@ -419,7 +403,7 @@ AS
 BEGIN
     SELECT TOP 3
         a.Nombre AS Nombre_Asignatura,
-        a.AÒo_cursada,
+        a.A√±o_cursada,
         e.Nombre AS Nombre_Profesor,
         e.Apellido AS Apellido_Profesor
     FROM Asignatura a
@@ -450,6 +434,21 @@ begin
 		Id_carrera
 	desc
 end;
+        E.Usuario = @Usuario AND E.Contrase√±a = @Contrase√±a
+END;
+------------------------------------------------------------------
+--PROCEDIMIENTO PARA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
+CREATE PROCEDURE sp_ObtenerPermisosPorPerfil
+    @Id_perfil INT 
+AS
+BEGIN
+    SELECT P.Tipo_permiso
+    FROM Permisos P
+    INNER JOIN PermisosXPerfil PP ON P.Id_permisos = PP.Id_permisos
+    WHERE PP.Id_perfil = @Id_perfil  --filtra por el id de perfil
+END;
+------------------------------------------------------------------------------
+
 ---------------------------------------------
 
 
@@ -463,15 +462,15 @@ CREATE PROCEDURE sp_AgregarProfesor
 @Telefono varchar(30),
 @F_nacimiento date,
 @Usuario varchar(40),
-@ContraseÒa varchar(40)
+@Contrase√±a varchar(40)
 AS
 BEGIN
-    -- El Id_perfil ser· siempre 2 para los profesores
+    -- El Id_perfil ser√° siempre 2 para los profesores
     DECLARE @Id_perfil INT = 2;
 
     -- Insertar el nuevo profesor
-    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, ContraseÒa, Id_perfil)
-    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @ContraseÒa, @Id_perfil);
+    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contrase√±a, Id_perfil)
+    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contrase√±a, @Id_perfil);
 
    
 END;
@@ -491,10 +490,10 @@ CREATE PROCEDURE sp_ModificarProfesor
     @Telefono VARCHAR(30),
     @F_nacimiento DATE,
     @Usuario VARCHAR(40),
-    @ContraseÒa VARCHAR(40)
+    @Contrase√±a VARCHAR(40)
 AS
 BEGIN
-    -- El Id_perfil ser· siempre 2 para los profesores
+    -- El Id_perfil ser√° siempre 2 para los profesores
     DECLARE @Id_perfil INT = 2;
 
     -- Verificamos si el profesor existe en la tabla Empleados y pertenece al perfil 2 (profesor)
@@ -505,10 +504,10 @@ BEGIN
     )
     BEGIN
         RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
-        RETURN;  -- Terminamos la ejecuciÛn del procedimiento si no es v·lido
+        RETURN;  -- Terminamos la ejecuci√≥n del procedimiento si no es v√°lido
     END
 
-    -- Si el profesor existe, realizamos la actualizaciÛn
+    -- Si el profesor existe, realizamos la actualizaci√≥n
     UPDATE Empleados
     SET 
         Nombre = @Nombre,
@@ -520,11 +519,11 @@ BEGIN
         Telefono = @Telefono,
         F_nacimiento = @F_nacimiento,
         Usuario = @Usuario,
-        ContraseÒa = @ContraseÒa,
+        Contrase√±a = @Contrase√±a,
         Id_perfil = @Id_perfil  -- Aseguramos que el perfil sigue siendo profesor (2)
     WHERE Id_empleado = @Id_empleado;
 
-    PRINT 'Profesor modificado exitosamente.';  -- Mensaje de Èxito
+    PRINT 'Profesor modificado exitosamente.';  -- Mensaje de √©xito
 END;
 
 ------------------------------------------------------------------------------------------------------
@@ -540,21 +539,21 @@ BEGIN
     )
     BEGIN
         RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
-        RETURN;  -- Terminamos la ejecuciÛn del procedimiento si no es v·lido
+        RETURN;  -- Terminamos la ejecuci√≥n del procedimiento si no es v√°lido
     END
 
-    -- Si el profesor existe, realizamos la eliminaciÛn
+    -- Si el profesor existe, realizamos la eliminaci√≥n
     DELETE FROM Empleados
     WHERE Id_empleado = @Id_empleado AND Id_perfil = 2;
 
-    PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de Èxito
+    PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de √©xito
 END;
 
 -------------------------------------------------------------------------------
 
 CREATE PROCEDURE sp_AgregarAsignatura
     @Nombre VARCHAR(50),
-    @AÒo_cursada INT,
+    @A√±o_cursada INT,
     @Id_empleado INT
 AS
 BEGIN
@@ -571,15 +570,15 @@ BEGIN
     END
 
     -- Insertar la nueva asignatura
-    INSERT INTO Asignatura (Nombre, AÒo_cursada, Id_empleado)
-    VALUES (@Nombre, @AÒo_cursada, @Id_empleado);
+    INSERT INTO Asignatura (Nombre, A√±o_cursada, Id_empleado)
+    VALUES (@Nombre, @A√±o_cursada, @Id_empleado);
 END;
 -------------------------------------------------------------------------------
 
 CREATE PROCEDURE sp_ModificarAsignatura
     @Id_asignatura INT,
     @Nombre VARCHAR(50),
-    @AÒo_cursada INT,
+    @A√±o_cursada INT,
     @Id_empleado INT
 AS
 BEGIN
@@ -611,7 +610,7 @@ BEGIN
     UPDATE Asignatura
     SET 
         Nombre = @Nombre,
-        AÒo_cursada = @AÒo_cursada,
+        A√±o_cursada = @A√±o_cursada,
         Id_empleado = @Id_empleado
     WHERE Id_asignatura = @Id_asignatura;
 END;
@@ -652,7 +651,7 @@ CREATE PROCEDURE sp_AgregarAlumno
 @Email NVARCHAR(50),
 @Telefono NVARCHAR(20),
 @Usuario NVARCHAR(50),
-@ContraseÒa NVARCHAR(50)
+@Contrase√±a NVARCHAR(50)
 AS
 BEGIN
 	IF not exists (
@@ -664,8 +663,8 @@ BEGIN
 			RETURN;
 		END
 		
-		INSERT INTO Alumnos ( Nombre, Apellido, DNI, F_nacimiento, Direccion_calle, Direccion_num, Email, Telefono, Usuario, ContraseÒa, Id_perfil)
-		VALUES (@Nombre, @Apellido, @DNI, @F_nacimiento, @Direccion, @Altura, @Email, @Telefono, @Usuario, @ContraseÒa, @Id_perfil);
+		INSERT INTO Alumnos ( Nombre, Apellido, DNI, F_nacimiento, Direccion_calle, Direccion_num, Email, Telefono, Usuario, Contrase√±a, Id_perfil)
+		VALUES (@Nombre, @Apellido, @DNI, @F_nacimiento, @Direccion, @Altura, @Email, @Telefono, @Usuario, @Contrase√±a, @Id_perfil);
 END;
 
 --PROCEDIMIENTO PARA MODIFICAR ALUMNO
@@ -680,7 +679,7 @@ CREATE PROCEDURE sp_ModificarAlumno
     @Telefono VARCHAR(30),
     @F_nacimiento DATE,
     @Usuario VARCHAR(40),
-    @ContraseÒa VARCHAR(40),
+    @Contrase√±a VARCHAR(40),
     @Id_perfil INT
 AS
 BEGIN
@@ -699,7 +698,7 @@ BEGIN
     SET 
         Nombre = @Nombre,Apellido = @Apellido, Dni = @Dni, Direccion_calle = 
 		@Direccion,Direccion_num = @Altura,Email = @Email,Telefono = @Telefono, 
-		F_nacimiento = @F_nacimiento,Usuario = @Usuario,ContraseÒa = @ContraseÒa, Id_perfil = @Id_perfil  
+		F_nacimiento = @F_nacimiento,Usuario = @Usuario,Contrase√±a = @Contrase√±a, Id_perfil = @Id_perfil  
     WHERE Id_alumno = @Id_alumno;  
 END;
 
@@ -723,8 +722,6 @@ BEGIN
     WHERE Id_alumno = @Id_alumno;
 END;
 drop procedure sp_EliminarAlumno
-
-use TPFinal
 
 
 ---------------------------------------------------------------------------
@@ -797,4 +794,5 @@ exec sp_Cargar_Tabla_Administrativos;
 
 
 select * from Asignatura
+
 
