@@ -194,6 +194,8 @@
             btnModificarAsignatura = new Button();
             panel18 = new Panel();
             groupBox9 = new GroupBox();
+            txtIDprofesorAsignatura = new TextBox();
+            lblIDprofesorAsignatura = new Label();
             lblIDasignatura = new Label();
             txtIDasignatura = new TextBox();
             lblNombreAsignatura = new Label();
@@ -2036,7 +2038,7 @@
             // 
             panel31.BackColor = Color.FromArgb(0, 0, 64);
             panel31.Controls.Add(dgvAsignatura);
-            panel31.Dock = DockStyle.Fill;
+            panel31.Dock = DockStyle.Right;
             panel31.Location = new Point(0, 41);
             panel31.Name = "panel31";
             panel31.Size = new Size(1114, 320);
@@ -2046,13 +2048,12 @@
             // 
             dgvAsignatura.BackgroundColor = Color.White;
             dgvAsignatura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAsignatura.Dock = DockStyle.Right;
-            dgvAsignatura.Location = new Point(21, 0);
+            dgvAsignatura.Location = new Point(21, 6);
             dgvAsignatura.Name = "dgvAsignatura";
             dgvAsignatura.RowHeadersWidth = 51;
-            dgvAsignatura.Size = new Size(1093, 320);
+            dgvAsignatura.Size = new Size(1090, 311);
             dgvAsignatura.TabIndex = 0;
-            dgvAsignatura.CellClick += dgvAsignatura_CellClick;
+            dgvAsignatura.CellClick += dgvAsignatura_CellClick_1;
             // 
             // panel17
             // 
@@ -2117,6 +2118,8 @@
             // 
             // groupBox9
             // 
+            groupBox9.Controls.Add(txtIDprofesorAsignatura);
+            groupBox9.Controls.Add(lblIDprofesorAsignatura);
             groupBox9.Controls.Add(lblIDasignatura);
             groupBox9.Controls.Add(txtIDasignatura);
             groupBox9.Controls.Add(lblNombreAsignatura);
@@ -2132,6 +2135,27 @@
             groupBox9.TabStop = false;
             groupBox9.Text = "Información personal";
             // 
+            // txtIDprofesorAsignatura
+            // 
+            txtIDprofesorAsignatura.BackColor = Color.Silver;
+            txtIDprofesorAsignatura.BorderStyle = BorderStyle.None;
+            txtIDprofesorAsignatura.ForeColor = Color.FromArgb(64, 64, 64);
+            txtIDprofesorAsignatura.Location = new Point(204, 182);
+            txtIDprofesorAsignatura.Name = "txtIDprofesorAsignatura";
+            txtIDprofesorAsignatura.Size = new Size(185, 23);
+            txtIDprofesorAsignatura.TabIndex = 11;
+            // 
+            // lblIDprofesorAsignatura
+            // 
+            lblIDprofesorAsignatura.AutoSize = true;
+            lblIDprofesorAsignatura.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIDprofesorAsignatura.ForeColor = Color.White;
+            lblIDprofesorAsignatura.Location = new Point(45, 184);
+            lblIDprofesorAsignatura.Name = "lblIDprofesorAsignatura";
+            lblIDprofesorAsignatura.Size = new Size(103, 21);
+            lblIDprofesorAsignatura.TabIndex = 10;
+            lblIDprofesorAsignatura.Text = "ID Profesor";
+            // 
             // lblIDasignatura
             // 
             lblIDasignatura.AutoSize = true;
@@ -2139,9 +2163,9 @@
             lblIDasignatura.ForeColor = Color.White;
             lblIDasignatura.Location = new Point(45, 133);
             lblIDasignatura.Name = "lblIDasignatura";
-            lblIDasignatura.Size = new Size(28, 21);
+            lblIDasignatura.Size = new Size(128, 21);
             lblIDasignatura.TabIndex = 8;
-            lblIDasignatura.Text = "ID";
+            lblIDasignatura.Text = "ID Asignatura";
             // 
             // txtIDasignatura
             // 
@@ -2736,7 +2760,6 @@
         private Panel panel18;
         private Panel panel17;
         private Panel panel31;
-        private DataGridView dgvAsignatura;
         private Button btnAgregarAsignatura;
         private Button btnEliminarAsignatura;
         private Button btnModificarAsignatura;
@@ -2749,5 +2772,8 @@
         private TextBox txtBuscarAsignatura;
         private Label lblIDasignatura;
         private TextBox txtIDasignatura;
+        private TextBox txtIDprofesorAsignatura;
+        private Label lblIDprofesorAsignatura;
+        private DataGridView dgvAsignatura;
     }
 }

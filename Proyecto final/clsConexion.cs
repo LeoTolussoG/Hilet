@@ -31,6 +31,7 @@ namespace Proyecto_final
                 Console.WriteLine("Error al conectar con la base de datos" + ex.Message);
             }
         }
+
         public void cerrar()
         {
             conectarbdd.Close();

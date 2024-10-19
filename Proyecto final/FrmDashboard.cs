@@ -777,6 +777,7 @@ namespace Proyecto_final
 
         public void Cargar_tabla_Asignatura()
         {
+           
             ConectarBDD.abrir();
 
             string consulta = "select * from Asignatura";
@@ -795,6 +796,11 @@ namespace Proyecto_final
             errorProviderDatosVacios.Clear();
             bool valido = true;
 
+            if (txtIDasignatura.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtIDasignatura, "El ID está vacío");
+                valido = false;
+            }
             if (txtNombreAsignatura.Text == "")
             {
                 errorProviderDatosVacios.SetError(txtNombreAsignatura, "El nombre está vacío");
@@ -802,20 +808,22 @@ namespace Proyecto_final
             }
             if (txtAñoCursadaAsignatura.Text == "")
             {
-                errorProviderDatosVacios.SetError(txtAñoCursadaAsignatura, "El apellido está vacío");
+                errorProviderDatosVacios.SetError(txtAñoCursadaAsignatura, "El año está vacío");
                 valido = false;
             }
             return valido;
         }
 
-        private void dgvAsignatura_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAsignatura_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvAsignatura.Rows[e.RowIndex];
                 txtIDasignatura.Text = row.Cells["Id_asignatura"].Value.ToString();
                 txtNombreAsignatura.Text = row.Cells["Nombre"].Value.ToString();
                 txtAñoCursadaAsignatura.Text = row.Cells["Año_cursada"].Value.ToString();
+
             }
         }
 
@@ -842,7 +850,7 @@ namespace Proyecto_final
 
             // Agregar parámetros para el procedimiento
             comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
-            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text)); 
+            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text));
             comando.Parameters.AddWithValue("@Id_empleado", idEmpleadoProfesor);
 
             try
@@ -935,7 +943,9 @@ namespace Proyecto_final
                 // Cerrar la conexión a la base de datos
                 ConectarBDD.cerrar();
             }
+
         }
+
     }
 }
 

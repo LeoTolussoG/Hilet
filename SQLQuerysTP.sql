@@ -797,3 +797,4 @@ exec sp_Cargar_Tabla_Administrativos;
 
 
 select * from Asignatura
+
