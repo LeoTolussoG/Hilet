@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -908,23 +911,6 @@
         XwAAwHgpG8oVzU16VL4nMxf476b/AgAAxk9ZX86X9KY9LN+X5Rf6b7YLAABg/JQ5coykN+/pepcs8Df/
         e/57rggAAPJQXiZXSnoj79dv5Snuf38eWwQAAPkoy8jrpN9nA34ne8ks97+bskUAAFAGZUs5WL4rv5Rr
         5HaJNwdnyzfl1fIg9//v/bv3/wFnaQEpbG0ZDAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="button9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJmSURBVEhLrZW5
-        a1VREIeva+FWCIKpRATFBQVxCZaigkUEsVCxkEBsxP/BwgXcICpiq4WdFv4BgoWF2gS0EewETQhBTIzB
-        Xb/v+Abm3dz3Xgj+4Ctm5t5zzp2ZM7fqoh1wEV7AB/gOo/ASLsNOmJc2wCP4DX968Bg2wpx1CD6CL0/D
-        bTgAfbAE1sJ+GIYp8LlJGICecvEf4EsPwcW6aQ08AJ//Bcego0xLnPwKLICsdbAb1herXefB977AZh1N
-        8sRx8rz4SXgDxoK3cBqy7oGxJ8WqyW6xoOY8p+UGxKKfYQTMd/juQmg1TID+PTqyLoABCxry5PpmYBAW
-        gvLrToEbGh+C0FWor1P0HAwcLNY/RVpcvEnHwfg7iJTuA32vipXk5TEQ6bGg2rbhIh0NctFx8LktOtBy
-        0LbYbfoGBpYWq6r2grY576Zn4HPei9BP0Le4WC2Ngc74AltR24JG7psU720rVlWtBG3r1iZni4F8EltR
-        nwVt0lEw/h7iEP2g73Wxki6BAa9/yD7XZ7dY0Hw3XPwTGD+royUHoL47xUpyKhqwqF7/kH2uXyyoOY+0
-        yH2IjS1w3AO7aZacigadLVlnwFaMRcW0ePL8VdvBmBe2cfBtgrilzpYsF7IVnapboVPhr4Pv25WNm+h0
-        KvqQs8Xr303LwJNn5U2O6KjLketF8SFzeg3MqYupFWC3WNDIuYtm5U126ajLketU9KFexF+vvslN0P+0
-        WB3kVHRwOVviq7xE9rmt6JeZ1pgEeZNVoM+6zlm5a7LyJrfAxc+17FmDb746DF/BRTMn4L/Jgppz0+LJ
-        +adU1V/QucsmI4UqJQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnBuscarAsignatura.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
