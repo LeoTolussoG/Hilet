@@ -21,7 +21,7 @@ namespace Proyecto_final
             {
                 FrmDashboard frmDashboard = new FrmDashboard(idPerfil); // Pasa el IdPerfil al dashboard
                 frmDashboard.Show();
-                this.close();
+                this.Close();
             }
             else
             {

@@ -225,9 +225,7 @@
             panel27 = new Panel();
             tbpReporte = new TabPage();
             errorProviderDatosVacios = new ErrorProvider(components);
-            groupBox4 = new GroupBox();
-            textBox1 = new TextBox();
-            button2 = new Button();
+            groupBox4 = new GroupBox();           
             groupBox5 = new GroupBox();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -2440,8 +2438,6 @@
             // panel27
             // 
             panel27.BackColor = Color.FromArgb(0, 0, 64);
-            panel27.Controls.Add(button2);
-            panel27.Controls.Add(textBox1);
             panel27.Dock = DockStyle.Top;
             panel27.Location = new Point(3, 3);
             panel27.Name = "panel27";
@@ -2479,29 +2475,7 @@
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
             groupBox4.Text = "Información principal";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.WhiteSmoke;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox1.Location = new Point(642, 12);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Ingrese la matrícula del alumno";
-            textBox1.Size = new Size(342, 18);
-            textBox1.TabIndex = 2;
-            // 
-            // button2
-            // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.ForeColor = Color.FromArgb(64, 64, 64);
-            button2.Location = new Point(990, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(39, 36);
-            button2.TabIndex = 5;
-            button2.UseVisualStyleBackColor = true;
+            
             // 
             // groupBox5
             // 
