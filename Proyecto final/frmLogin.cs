@@ -12,19 +12,16 @@ namespace Proyecto_final
             InitializeComponent();
         }
         private void btnAcceder_Click(object sender, EventArgs e)
-        {
-            FrmDashboard frmDashboard = new FrmDashboard();
-            // Consultamos el perfil del usuario en la BDD usando el método "consultarPerfil"
-            // Se le pasa el usuario y la contraseña que el usuario ingresó
-            string perfil = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text);
+        { 
+
+            int idPerfil = ConectarBDD.consultarPerfil(txtUsuario.Text, txtContraseña.Text);
             ConectarBDD.cerrar();
 
-            if (perfil != "")
-            {   
-                
-                frmDashboard.PerfilUsuario = perfil;  // Asignamos el perfil del usuario a la propiedad "PerfilUsuario" del frmDashboard
-                
-                frmDashboard.ShowDialog();//Mostramos el formulario Dashboard
+            if (idPerfil > 0) // Si el IdPerfil es mayor que 0, el usuario existe
+            {
+                FrmDashboard frmDashboard = new FrmDashboard(idPerfil); // Pasa el IdPerfil al dashboard
+                frmDashboard.Show();
+                this.close();
             }
             else
             {
