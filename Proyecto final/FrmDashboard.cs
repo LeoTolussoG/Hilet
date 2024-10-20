@@ -77,7 +77,7 @@ namespace Proyecto_final
         {
             //Si el permiso para gestionar alumnos no está en la lista entonces deshabilita el boton
             if (!permisos.Contains("Gestionar Alumnos"))
-            { 
+            {
                 btnAgregarAlumno.Enabled = false;
                 btnModificarAlumno.Enabled = false;
                 btnEliminarAlumno.Enabled = false;
@@ -551,30 +551,37 @@ namespace Proyecto_final
         public void Cargar_tabla_Examenes()
         {
             ConectarBDD.abrir();
-            string consulta = "SELECT E.Id_examenes, E.Nota, E.Fecha, " +
-                                      "A.Nombre AS Alumno, " +
-                                      "asg.Nombre AS Asignatura, " +
-                                      "I.Descripcion AS Instancia, " +
-                                      "emp.Nombre AS Profesor " +
-                              "FROM Examenes E " +
-                              "LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno " +
-                              "LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura " +
-                              "LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia " +
-                              "LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado";
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+            string consulta = "sp_CargarExamenes";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
 
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
 
             adapter.Fill(dt);
-
             dgvExamenes.DataSource = dt;
+
             ConectarBDD.cerrar();
         }
         private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Cargar_tabla_Examenes();
+                if (e.RowIndex >= 0) 
+                {
+                    DataGridViewRow row = dgvExamenes.Rows[e.RowIndex];
+
+                    txtNotaExamen.Text = row.Cells["Nota"].Value.ToString();
+                    dateTimeExamen.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                    txtAlumnoExamen.Text = row.Cells["Alumno"].Value.ToString();
+                    txtAsignaturaExamen.Text = row.Cells["Asignatura"].Value.ToString();
+                    txtInstanciaExamen.Text = row.Cells["Instancia"].Value.ToString();
+                    txtProfesorExamen.Text = row.Cells["Profesor"].Value.ToString();
+                } 
         }
 
+        private void btnAgregarExamen_Click(object sender, EventArgs e)
+        {
+
+        }
         //PESTAÑA GESTION ACADEMICA: PROFESORES
 
         public void Cargar_tabla_Empleado_Profesores()
@@ -885,7 +892,7 @@ namespace Proyecto_final
 
             // Agregar parámetros para el procedimiento
             comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
-            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text)); 
+            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text));
             comando.Parameters.AddWithValue("@Id_empleado", idEmpleadoProfesor);
 
             try
@@ -979,6 +986,8 @@ namespace Proyecto_final
                 ConectarBDD.cerrar();
             }
         }
+
+        
     }
 }
 

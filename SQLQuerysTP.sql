@@ -726,4 +726,18 @@ drop procedure sp_EliminarAlumno
 
 
 ---------------------------------------------------------------------------
-
+/*PROCEDIMIENTO PARA CARGAR LA TABLA DE EXÁMENES*/
+CREATE PROCEDURE sp_CargarExamenes
+AS
+BEGIN
+    SELECT E.Id_examenes, E.Nota, E.Fecha, 
+           A.Nombre AS Alumno, 
+           asg.Nombre AS Asignatura, 
+           I.Descripcion AS Instancia, 
+           emp.Nombre AS Profesor
+    FROM Examenes E
+    LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno
+    LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura
+    LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia
+    LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado;
+END;
