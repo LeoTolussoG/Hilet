@@ -448,19 +448,24 @@ namespace Proyecto_final
             return valido;
 
         }
-
+        string IdAdministrativo;
         private void dgvAdministrativos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtNombreAdministrativo.Text = dgvAdministrativos.SelectedCells[1].Value.ToString();
-            txtApellidoAdministrativo.Text = dgvAdministrativos.SelectedCells[2].Value.ToString();
-            txtDniAdministrativo.Text = dgvAdministrativos.SelectedCells[3].Value.ToString();
-            txtDireccionCalleAdministrativo.Text = dgvAdministrativos.SelectedCells[4].Value.ToString();
-            txtAlturaAdministrativo.Text = dgvAdministrativos.SelectedCells[5].Value.ToString();
-            txtEmailAdministrativo.Text = dgvAdministrativos.SelectedCells[6].Value.ToString();
-            dtpFechaNacimientoAdministrativo.Text = dgvAdministrativos.SelectedCells[8].Value.ToString();
-            txtTelefonoAdministrativo.Text = dgvAdministrativos.SelectedCells[7].Value.ToString();
-            txtUsuarioAdministrativo.Text = dgvAdministrativos.SelectedCells[9].Value.ToString();
-            txtContraseñaAdministrativo.Text = dgvAdministrativos.SelectedCells[10].Value.ToString();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvAdministrativos.Rows[e.RowIndex];
+                IdAdministrativo = row.Cells["Id_empleado"].Value.ToString();
+                txtNombreAdministrativo.Text = row.Cells["Nombre"].Value.ToString();
+                txtApellidoAdministrativo.Text = row.Cells["Apellido"].Value.ToString();
+                txtDniAdministrativo.Text = row.Cells["Dni"].Value.ToString();
+                txtDireccionCalleAdministrativo.Text = row.Cells["Direccion_calle"].Value.ToString();
+                txtAlturaAdministrativo.Text = row.Cells["Direccion_num"].Value.ToString();
+                txtEmailAdministrativo.Text = row.Cells["Email"].Value.ToString();
+                dtpFechaNacimientoAdministrativo.Text = row.Cells["F_nacimiento"].Value.ToString();
+                txtTelefonoAdministrativo.Text = row.Cells["Telefono"].Value.ToString();
+                txtUsuarioAdministrativo.Text = row.Cells["usuario"].Value.ToString();
+                txtContraseñaAdministrativo.Text = row.Cells["Contraseña"].Value.ToString();
+            }
         }
         private void btnAgregarAdministrativo_Click(object sender, EventArgs e)
         {
@@ -534,7 +539,8 @@ namespace Proyecto_final
             SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
             comando.CommandType = CommandType.StoredProcedure;
 
-            comando.Parameters.AddWithValue("@Id_empleado", dgvAdministrativos.SelectedCells[0].Value.ToString());
+
+            comando.Parameters.AddWithValue("@Id_empleado", IdAdministrativo);
 
             comando.ExecuteNonQuery();
 

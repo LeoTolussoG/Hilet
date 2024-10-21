@@ -23,10 +23,6 @@
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\hilet.hilet\\documents\\github\\hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -38,20 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
-              "RelativeDocumentMoniker": "Proyecto final\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs [Design]",
-              "RelativeToolTip": "Proyecto final\\frmLogin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T16:39:51.931Z",
-              "EditorCaption": " [Design]"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -60,7 +44,7 @@
               "RelativeDocumentMoniker": "Proyecto final\\clsConexion.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\clsConexion.cs",
               "RelativeToolTip": "Proyecto final\\clsConexion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T16:33:39.501Z",
               "EditorCaption": ""
@@ -86,7 +70,7 @@
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.Designer.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.Designer.cs",
               "RelativeToolTip": "Proyecto final\\FrmDashboard.Designer.cs",
-              "ViewState": "AQIAAG8EAAAAAAAAAAAawH0EAAAvAAAA",
+              "ViewState": "AQIAAG8EAAAAAAAAAAAawH8EAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T16:31:12.426Z",
               "EditorCaption": ""
@@ -99,7 +83,7 @@
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.cs",
               "RelativeToolTip": "Proyecto final\\FrmDashboard.cs",
-              "ViewState": "AQIAAOUDAAAAAAAAAAAnwPEDAAAkAAAA",
+              "ViewState": "AQIAAFgBAAAAAAAAAAAgwCICAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T15:26:22.57Z",
               "EditorCaption": ""
@@ -118,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\Program.cs",
               "RelativeDocumentMoniker": "Proyecto final\\Program.cs",

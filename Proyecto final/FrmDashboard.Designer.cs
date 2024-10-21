@@ -1620,10 +1620,10 @@
             tabPage3.Controls.Add(panel12);
             tabPage3.Controls.Add(panel11);
             tabPage3.Controls.Add(panel9);
-            tabPage3.Location = new Point(4, 27);
+            tabPage3.Location = new Point(4, 29);
             tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1288, 640);
+            tabPage3.Size = new Size(1288, 638);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Administrativos";
             tabPage3.UseVisualStyleBackColor = true;
@@ -1635,7 +1635,7 @@
             panel34.Dock = DockStyle.Fill;
             panel34.Location = new Point(0, 41);
             panel34.Name = "panel34";
-            panel34.Size = new Size(1116, 347);
+            panel34.Size = new Size(1116, 345);
             panel34.TabIndex = 7;
             // 
             // dgvAdministrativos
@@ -1667,7 +1667,7 @@
             panel12.Dock = DockStyle.Right;
             panel12.Location = new Point(1116, 41);
             panel12.Name = "panel12";
-            panel12.Size = new Size(172, 347);
+            panel12.Size = new Size(172, 345);
             panel12.TabIndex = 5;
             // 
             // btnAgregarAdministrativo
@@ -1716,7 +1716,7 @@
             panel11.Controls.Add(groupBox12);
             panel11.Controls.Add(groupBox13);
             panel11.Dock = DockStyle.Bottom;
-            panel11.Location = new Point(0, 388);
+            panel11.Location = new Point(0, 386);
             panel11.Name = "panel11";
             panel11.Size = new Size(1288, 252);
             panel11.TabIndex = 4;
@@ -2114,7 +2114,7 @@
             // 
             // btnCargarCarreras
             // 
-            btnCargarCarreras.Location = new Point(168, 11);
+            btnCargarCarreras.Location = new Point(152, 10);
             btnCargarCarreras.Name = "btnCargarCarreras";
             btnCargarCarreras.Size = new Size(168, 27);
             btnCargarCarreras.TabIndex = 9;
