@@ -341,7 +341,6 @@ BEGIN
 		E.Usuario = @Usuario AND E.Contraseña = @Contraseña
 end;
 
-
 ---------------------------------------
 
 create procedure sp_Dash_Examenes
@@ -368,9 +367,7 @@ begin
 		Id_alumno
 	desc
 end;
-
 ----------------------------------------
-
 CREATE PROCEDURE sp_Dash_Profesores
 AS
 BEGIN
@@ -413,7 +410,6 @@ BEGIN
     ORDER BY 
         a.Id_asignatura DESC;
 END;
-
 -------------------------------------------
 create procedure sp_Dash_Administrativos
 as
@@ -449,10 +445,8 @@ BEGIN
     INNER JOIN PermisosXPerfil PP ON P.Id_permisos = PP.Id_permisos
     WHERE PP.Id_perfil = @Id_perfil  --filtra por el id de perfil
 END;
+
 ------------------------------------------------------------------------------
-
----------------------------------------------
-
 
 CREATE PROCEDURE sp_AgregarProfesor
 @Nombre varchar(40),
@@ -476,9 +470,6 @@ BEGIN
 
    
 END;
-
-
-
 
 -------------------------------------------------------------------
 CREATE PROCEDURE sp_ModificarProfesor
@@ -527,7 +518,6 @@ BEGIN
 
     PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
 END;
-
 ------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE sp_EliminarProfesor
     @Id_empleado INT  -- ID del profesor que queremos eliminar
@@ -576,8 +566,7 @@ BEGIN
     VALUES (@Nombre, @Año_cursada, @Id_empleado);
 END;
 -------------------------------------------------------------------------------
-use u26;
-drop procedure sp_ModificarAsignatura;
+
 CREATE PROCEDURE sp_ModificarAsignatura
     @Id_asignatura INT,
     @Nombre VARCHAR(50),
@@ -641,7 +630,6 @@ BEGIN
 END;
 ----------------------------------------------------------------
 
-
 --PROCEDIMIENTO PARA AGREGAR ALUMNO
 CREATE PROCEDURE sp_AgregarAlumno
 @Id_perfil INT,
@@ -670,7 +658,8 @@ BEGIN
 		VALUES (@Nombre, @Apellido, @DNI, @F_nacimiento, @Direccion, @Altura, @Email, @Telefono, @Usuario, @Contraseña, @Id_perfil);
 END;
 
---PROCEDIMIENTO PARA MODIFICAR ALUMNO
+------------------PROCEDIMIENTO PARA MODIFICAR ALUMNO------------------------------------------
+
 CREATE PROCEDURE sp_ModificarAlumno
     @Id_alumno INT,
     @Nombre VARCHAR(40),
@@ -724,7 +713,6 @@ BEGIN
     DELETE FROM Alumnos
     WHERE Id_alumno = @Id_alumno;
 END;
-drop procedure sp_EliminarAlumno
 
 
 ---------------------------------------------------------------------------
