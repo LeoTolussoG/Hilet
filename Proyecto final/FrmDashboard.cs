@@ -77,7 +77,7 @@ namespace Proyecto_final
         {
             //Si el permiso para gestionar alumnos no está en la lista entonces deshabilita el boton
             if (!permisos.Contains("Gestionar Alumnos"))
-            { 
+            {
                 btnAgregarAlumno.Enabled = false;
                 btnModificarAlumno.Enabled = false;
                 btnEliminarAlumno.Enabled = false;
@@ -885,7 +885,7 @@ namespace Proyecto_final
 
             // Agregar parámetros para el procedimiento
             comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
-            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text)); 
+            comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text));
             comando.Parameters.AddWithValue("@Id_empleado", idEmpleadoProfesor);
 
             try
@@ -978,6 +978,36 @@ namespace Proyecto_final
                 // Cerrar la conexión a la base de datos
                 ConectarBDD.cerrar();
             }
+        }
+
+        private void btnCargarAlumnos_Click(object sender, EventArgs e)
+        {
+            Cargar_tabla_Alumno();
+        }
+
+        private void btnCargarProfesores_Click(object sender, EventArgs e)
+        {
+            Cargar_tabla_Empleado_Profesores();
+        }
+
+        private void btnCargarAdministrativos_Click(object sender, EventArgs e)
+        {
+            Cargar_tabla_Empleado_Administrativos();
+        }
+
+        private void btnCargarCarreras_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCargarAsignaturas_Click(object sender, EventArgs e)
+        {
+            Cargar_tabla_Asignatura();
+        }
+
+        private void btnCargarExamenes_Click(object sender, EventArgs e)
+        {
+            Cargar_tabla_Examenes();
         }
     }
 }
