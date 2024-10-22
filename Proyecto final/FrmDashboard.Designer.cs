@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -105,6 +105,7 @@
             txtApellidoAlumno = new TextBox();
             txtDNIAlumno = new TextBox();
             panel24 = new Panel();
+            btnLimpiartxtAlumnos = new Button();
             btnCargarAlumnos = new Button();
             btnBuscarAlumno = new Button();
             txtBuscarAlumno = new TextBox();
@@ -143,6 +144,7 @@
             txtApellidoProfesor = new TextBox();
             txtDniProfesor = new TextBox();
             panel8 = new Panel();
+            btnLimpiartxtProfesor = new Button();
             btnCargarProfesores = new Button();
             btnBuscarProfesor = new Button();
             txtBuscarProfesor = new TextBox();
@@ -178,6 +180,7 @@
             label17 = new Label();
             label20 = new Label();
             panel9 = new Panel();
+            btnLimpiartxtAdministrativos = new Button();
             btnCargarAdministrativos = new Button();
             button1 = new Button();
             textBox11 = new TextBox();
@@ -248,6 +251,9 @@
             btnCargarExamenes = new Button();
             tbpReporte = new TabPage();
             errorProviderDatosVacios = new ErrorProvider(components);
+            btnLimpiartxtCarreras = new Button();
+            btnLimpiartxtAsignaturas = new Button();
+            btnLimpiartxtExamenes = new Button();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel3.SuspendLayout();
@@ -433,23 +439,23 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.DimGray;
-            dataGridViewCellStyle2.SelectionBackColor = Color.CornflowerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.DimGray;
+            dataGridViewCellStyle8.SelectionBackColor = Color.CornflowerBlue;
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle8;
             dgvDashboard.EnableHeadersVisualStyles = false;
             dgvDashboard.Location = new Point(269, 197);
             dgvDashboard.Name = "dgvDashboard";
@@ -608,9 +614,9 @@
             btnDashExamenes.FlatStyle = FlatStyle.Flat;
             btnDashExamenes.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashExamenes.ForeColor = Color.White;
-            btnDashExamenes.Location = new Point(0, 52);
+            btnDashExamenes.Location = new Point(0, -3);
             btnDashExamenes.Name = "btnDashExamenes";
-            btnDashExamenes.Size = new Size(232, 105);
+            btnDashExamenes.Size = new Size(232, 109);
             btnDashExamenes.TabIndex = 8;
             btnDashExamenes.Text = "Examenes";
             btnDashExamenes.UseVisualStyleBackColor = false;
@@ -625,9 +631,9 @@
             btnDashAsignaturas.FlatStyle = FlatStyle.Flat;
             btnDashAsignaturas.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAsignaturas.ForeColor = Color.White;
-            btnDashAsignaturas.Location = new Point(0, 157);
+            btnDashAsignaturas.Location = new Point(0, 106);
             btnDashAsignaturas.Name = "btnDashAsignaturas";
-            btnDashAsignaturas.Size = new Size(232, 105);
+            btnDashAsignaturas.Size = new Size(232, 124);
             btnDashAsignaturas.TabIndex = 6;
             btnDashAsignaturas.Text = "Asignaturas";
             btnDashAsignaturas.UseVisualStyleBackColor = false;
@@ -642,9 +648,9 @@
             btnDashCarreras.FlatStyle = FlatStyle.Flat;
             btnDashCarreras.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashCarreras.ForeColor = Color.White;
-            btnDashCarreras.Location = new Point(0, 262);
+            btnDashCarreras.Location = new Point(0, 230);
             btnDashCarreras.Name = "btnDashCarreras";
-            btnDashCarreras.Size = new Size(232, 105);
+            btnDashCarreras.Size = new Size(232, 114);
             btnDashCarreras.TabIndex = 5;
             btnDashCarreras.Text = "Carreras";
             btnDashCarreras.UseVisualStyleBackColor = false;
@@ -659,7 +665,7 @@
             btnDashAdministrativos.FlatStyle = FlatStyle.Flat;
             btnDashAdministrativos.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAdministrativos.ForeColor = Color.White;
-            btnDashAdministrativos.Location = new Point(0, 367);
+            btnDashAdministrativos.Location = new Point(0, 344);
             btnDashAdministrativos.Name = "btnDashAdministrativos";
             btnDashAdministrativos.Size = new Size(232, 105);
             btnDashAdministrativos.TabIndex = 4;
@@ -676,9 +682,9 @@
             btnDashProfesores.FlatStyle = FlatStyle.Flat;
             btnDashProfesores.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashProfesores.ForeColor = Color.White;
-            btnDashProfesores.Location = new Point(0, 472);
+            btnDashProfesores.Location = new Point(0, 449);
             btnDashProfesores.Name = "btnDashProfesores";
-            btnDashProfesores.Size = new Size(232, 105);
+            btnDashProfesores.Size = new Size(232, 117);
             btnDashProfesores.TabIndex = 3;
             btnDashProfesores.Text = "Profesores";
             btnDashProfesores.UseVisualStyleBackColor = false;
@@ -693,9 +699,9 @@
             btnDashAlumnos.FlatStyle = FlatStyle.Flat;
             btnDashAlumnos.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAlumnos.ForeColor = Color.White;
-            btnDashAlumnos.Location = new Point(0, 577);
+            btnDashAlumnos.Location = new Point(0, 566);
             btnDashAlumnos.Name = "btnDashAlumnos";
-            btnDashAlumnos.Size = new Size(232, 105);
+            btnDashAlumnos.Size = new Size(232, 116);
             btnDashAlumnos.TabIndex = 2;
             btnDashAlumnos.Text = "Alumnos";
             btnDashAlumnos.UseVisualStyleBackColor = false;
@@ -1130,6 +1136,7 @@
             // panel24
             // 
             panel24.BackColor = Color.FromArgb(0, 0, 64);
+            panel24.Controls.Add(btnLimpiartxtAlumnos);
             panel24.Controls.Add(btnCargarAlumnos);
             panel24.Controls.Add(btnBuscarAlumno);
             panel24.Controls.Add(txtBuscarAlumno);
@@ -1139,11 +1146,20 @@
             panel24.Size = new Size(1282, 41);
             panel24.TabIndex = 24;
             // 
+            // btnLimpiartxtAlumnos
+            // 
+            btnLimpiartxtAlumnos.Location = new Point(184, 3);
+            btnLimpiartxtAlumnos.Name = "btnLimpiartxtAlumnos";
+            btnLimpiartxtAlumnos.Size = new Size(145, 27);
+            btnLimpiartxtAlumnos.TabIndex = 6;
+            btnLimpiartxtAlumnos.Text = "Limpiar información";
+            btnLimpiartxtAlumnos.UseVisualStyleBackColor = true;
+            // 
             // btnCargarAlumnos
             // 
-            btnCargarAlumnos.Location = new Point(115, 3);
+            btnCargarAlumnos.Location = new Point(9, 3);
             btnCargarAlumnos.Name = "btnCargarAlumnos";
-            btnCargarAlumnos.Size = new Size(168, 27);
+            btnCargarAlumnos.Size = new Size(169, 27);
             btnCargarAlumnos.TabIndex = 5;
             btnCargarAlumnos.Text = "Todos los Alumnos";
             btnCargarAlumnos.UseVisualStyleBackColor = true;
@@ -1176,11 +1192,11 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(panel6);
-            tabPage2.Location = new Point(4, 27);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1288, 640);
+            tabPage2.Size = new Size(1288, 638);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Profesor";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1194,7 +1210,7 @@
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1282, 632);
+            panel6.Size = new Size(1282, 630);
             panel6.TabIndex = 0;
             // 
             // panel30
@@ -1204,7 +1220,7 @@
             panel30.Dock = DockStyle.Fill;
             panel30.Location = new Point(0, 41);
             panel30.Name = "panel30";
-            panel30.Size = new Size(1108, 317);
+            panel30.Size = new Size(1108, 315);
             panel30.TabIndex = 3;
             // 
             // dgvProfesor
@@ -1215,7 +1231,7 @@
             dgvProfesor.Location = new Point(15, 0);
             dgvProfesor.Name = "dgvProfesor";
             dgvProfesor.RowHeadersWidth = 51;
-            dgvProfesor.Size = new Size(1093, 317);
+            dgvProfesor.Size = new Size(1093, 315);
             dgvProfesor.TabIndex = 0;
             dgvProfesor.CellClick += dgvProfesor_CellClick;
             // 
@@ -1228,7 +1244,7 @@
             panel23.Dock = DockStyle.Right;
             panel23.Location = new Point(1108, 41);
             panel23.Name = "panel23";
-            panel23.Size = new Size(174, 317);
+            panel23.Size = new Size(174, 315);
             panel23.TabIndex = 2;
             // 
             // btnAgregarProfesor
@@ -1277,7 +1293,7 @@
             panel10.Controls.Add(groupBox7);
             panel10.Controls.Add(groupBox6);
             panel10.Dock = DockStyle.Bottom;
-            panel10.Location = new Point(0, 358);
+            panel10.Location = new Point(0, 356);
             panel10.Name = "panel10";
             panel10.Size = new Size(1282, 274);
             panel10.TabIndex = 1;
@@ -1572,6 +1588,7 @@
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(0, 0, 64);
+            panel8.Controls.Add(btnLimpiartxtProfesor);
             panel8.Controls.Add(btnCargarProfesores);
             panel8.Controls.Add(btnBuscarProfesor);
             panel8.Controls.Add(txtBuscarProfesor);
@@ -1581,11 +1598,20 @@
             panel8.Size = new Size(1282, 41);
             panel8.TabIndex = 0;
             // 
+            // btnLimpiartxtProfesor
+            // 
+            btnLimpiartxtProfesor.Location = new Point(216, 8);
+            btnLimpiartxtProfesor.Name = "btnLimpiartxtProfesor";
+            btnLimpiartxtProfesor.Size = new Size(145, 27);
+            btnLimpiartxtProfesor.TabIndex = 8;
+            btnLimpiartxtProfesor.Text = "Limpiar información";
+            btnLimpiartxtProfesor.UseVisualStyleBackColor = true;
+            // 
             // btnCargarProfesores
             // 
-            btnCargarProfesores.Location = new Point(147, 3);
+            btnCargarProfesores.Location = new Point(15, 8);
             btnCargarProfesores.Name = "btnCargarProfesores";
-            btnCargarProfesores.Size = new Size(168, 27);
+            btnCargarProfesores.Size = new Size(183, 27);
             btnCargarProfesores.TabIndex = 7;
             btnCargarProfesores.Text = "Todos los Profesores";
             btnCargarProfesores.UseVisualStyleBackColor = true;
@@ -1641,14 +1667,14 @@
             // dgvAdministrativos
             // 
             dgvAdministrativos.BackgroundColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvAdministrativos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAdministrativos.EnableHeadersVisualStyles = false;
             dgvAdministrativos.Location = new Point(16, 0);
@@ -1976,6 +2002,7 @@
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(0, 0, 64);
+            panel9.Controls.Add(btnLimpiartxtAdministrativos);
             panel9.Controls.Add(btnCargarAdministrativos);
             panel9.Controls.Add(button1);
             panel9.Controls.Add(textBox11);
@@ -1986,11 +2013,22 @@
             panel9.Size = new Size(1288, 41);
             panel9.TabIndex = 3;
             // 
+            // btnLimpiartxtAdministrativos
+            // 
+            btnLimpiartxtAdministrativos.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLimpiartxtAdministrativos.Location = new Point(214, 5);
+            btnLimpiartxtAdministrativos.Name = "btnLimpiartxtAdministrativos";
+            btnLimpiartxtAdministrativos.Size = new Size(145, 27);
+            btnLimpiartxtAdministrativos.TabIndex = 7;
+            btnLimpiartxtAdministrativos.Text = "Limpiar información";
+            btnLimpiartxtAdministrativos.UseVisualStyleBackColor = true;
+            // 
             // btnCargarAdministrativos
             // 
-            btnCargarAdministrativos.Location = new Point(142, 10);
+            btnCargarAdministrativos.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCargarAdministrativos.Location = new Point(16, 5);
             btnCargarAdministrativos.Name = "btnCargarAdministrativos";
-            btnCargarAdministrativos.Size = new Size(233, 27);
+            btnCargarAdministrativos.Size = new Size(192, 27);
             btnCargarAdministrativos.TabIndex = 6;
             btnCargarAdministrativos.Text = "Todos los Administrativos";
             btnCargarAdministrativos.UseVisualStyleBackColor = true;
@@ -2023,10 +2061,10 @@
             tabPage4.Controls.Add(panel32);
             tabPage4.Controls.Add(panel14);
             tabPage4.Controls.Add(panel13);
-            tabPage4.Location = new Point(4, 27);
+            tabPage4.Location = new Point(4, 29);
             tabPage4.Margin = new Padding(3, 4, 3, 4);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(1288, 640);
+            tabPage4.Size = new Size(1288, 638);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Carreras";
             tabPage4.UseVisualStyleBackColor = true;
@@ -2038,7 +2076,7 @@
             panel33.Dock = DockStyle.Fill;
             panel33.Location = new Point(0, 41);
             panel33.Name = "panel33";
-            panel33.Size = new Size(1114, 325);
+            panel33.Size = new Size(1114, 323);
             panel33.TabIndex = 15;
             // 
             // dataGridView1
@@ -2049,7 +2087,7 @@
             dataGridView1.Location = new Point(21, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1093, 325);
+            dataGridView1.Size = new Size(1093, 323);
             dataGridView1.TabIndex = 0;
             // 
             // panel32
@@ -2061,7 +2099,7 @@
             panel32.Dock = DockStyle.Right;
             panel32.Location = new Point(1114, 41);
             panel32.Name = "panel32";
-            panel32.Size = new Size(174, 325);
+            panel32.Size = new Size(174, 323);
             panel32.TabIndex = 14;
             // 
             // button3
@@ -2103,6 +2141,7 @@
             // panel14
             // 
             panel14.BackColor = Color.FromArgb(0, 0, 64);
+            panel14.Controls.Add(btnLimpiartxtCarreras);
             panel14.Controls.Add(btnCargarCarreras);
             panel14.Controls.Add(button2);
             panel14.Controls.Add(textBox4);
@@ -2114,7 +2153,7 @@
             // 
             // btnCargarCarreras
             // 
-            btnCargarCarreras.Location = new Point(152, 10);
+            btnCargarCarreras.Location = new Point(21, 7);
             btnCargarCarreras.Name = "btnCargarCarreras";
             btnCargarCarreras.Size = new Size(168, 27);
             btnCargarCarreras.TabIndex = 9;
@@ -2150,7 +2189,7 @@
             panel13.BackColor = Color.FromArgb(0, 0, 64);
             panel13.Controls.Add(groupBox10);
             panel13.Dock = DockStyle.Bottom;
-            panel13.Location = new Point(0, 366);
+            panel13.Location = new Point(0, 364);
             panel13.Name = "panel13";
             panel13.Size = new Size(1288, 274);
             panel13.TabIndex = 12;
@@ -2238,10 +2277,10 @@
             // tabPage5
             // 
             tabPage5.Controls.Add(panel15);
-            tabPage5.Location = new Point(4, 27);
+            tabPage5.Location = new Point(4, 29);
             tabPage5.Margin = new Padding(3, 4, 3, 4);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1288, 640);
+            tabPage5.Size = new Size(1288, 638);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Asignaturas";
             tabPage5.UseVisualStyleBackColor = true;
@@ -2252,7 +2291,7 @@
             panel15.Dock = DockStyle.Fill;
             panel15.Location = new Point(0, 0);
             panel15.Name = "panel15";
-            panel15.Size = new Size(1288, 640);
+            panel15.Size = new Size(1288, 638);
             panel15.TabIndex = 0;
             // 
             // panel19
@@ -2264,7 +2303,7 @@
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(0, 0);
             panel19.Name = "panel19";
-            panel19.Size = new Size(1288, 640);
+            panel19.Size = new Size(1288, 638);
             panel19.TabIndex = 3;
             // 
             // panel31
@@ -2274,7 +2313,7 @@
             panel31.Dock = DockStyle.Fill;
             panel31.Location = new Point(0, 41);
             panel31.Name = "panel31";
-            panel31.Size = new Size(1114, 325);
+            panel31.Size = new Size(1114, 323);
             panel31.TabIndex = 4;
             // 
             // dgvAsignatura
@@ -2285,7 +2324,7 @@
             dgvAsignatura.Location = new Point(21, 0);
             dgvAsignatura.Name = "dgvAsignatura";
             dgvAsignatura.RowHeadersWidth = 51;
-            dgvAsignatura.Size = new Size(1093, 325);
+            dgvAsignatura.Size = new Size(1093, 323);
             dgvAsignatura.TabIndex = 0;
             dgvAsignatura.CellClick += dgvAsignatura_CellClick;
             // 
@@ -2298,7 +2337,7 @@
             panel17.Dock = DockStyle.Right;
             panel17.Location = new Point(1114, 41);
             panel17.Name = "panel17";
-            panel17.Size = new Size(174, 325);
+            panel17.Size = new Size(174, 323);
             panel17.TabIndex = 3;
             // 
             // btnAgregarAsignatura
@@ -2345,7 +2384,7 @@
             panel18.BackColor = Color.FromArgb(0, 0, 64);
             panel18.Controls.Add(groupBox9);
             panel18.Dock = DockStyle.Bottom;
-            panel18.Location = new Point(0, 366);
+            panel18.Location = new Point(0, 364);
             panel18.Name = "panel18";
             panel18.Size = new Size(1288, 274);
             panel18.TabIndex = 2;
@@ -2433,6 +2472,7 @@
             // panel16
             // 
             panel16.BackColor = Color.FromArgb(0, 0, 64);
+            panel16.Controls.Add(btnLimpiartxtAsignaturas);
             panel16.Controls.Add(btnCargarAsignaturas);
             panel16.Controls.Add(btnBuscarAsignatura);
             panel16.Controls.Add(txtBuscarAsignatura);
@@ -2444,9 +2484,9 @@
             // 
             // btnCargarAsignaturas
             // 
-            btnCargarAsignaturas.Location = new Point(175, 11);
+            btnCargarAsignaturas.Location = new Point(21, 8);
             btnCargarAsignaturas.Name = "btnCargarAsignaturas";
-            btnCargarAsignaturas.Size = new Size(168, 27);
+            btnCargarAsignaturas.Size = new Size(179, 27);
             btnCargarAsignaturas.TabIndex = 9;
             btnCargarAsignaturas.Text = "Todas las asignaturas";
             btnCargarAsignaturas.UseVisualStyleBackColor = true;
@@ -2482,10 +2522,10 @@
             tabPage6.Controls.Add(panel29);
             tabPage6.Controls.Add(panel28);
             tabPage6.Controls.Add(panel27);
-            tabPage6.Location = new Point(4, 27);
+            tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1288, 640);
+            tabPage6.Size = new Size(1288, 638);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Exámenes";
             // 
@@ -2508,7 +2548,7 @@
             panel29.Dock = DockStyle.Right;
             panel29.Location = new Point(1109, 44);
             panel29.Name = "panel29";
-            panel29.Size = new Size(176, 318);
+            panel29.Size = new Size(176, 316);
             panel29.TabIndex = 27;
             // 
             // button5
@@ -2553,7 +2593,7 @@
             panel28.Controls.Add(groupBox5);
             panel28.Controls.Add(groupBox4);
             panel28.Dock = DockStyle.Bottom;
-            panel28.Location = new Point(3, 362);
+            panel28.Location = new Point(3, 360);
             panel28.Name = "panel28";
             panel28.Size = new Size(1282, 275);
             panel28.TabIndex = 26;
@@ -2714,6 +2754,7 @@
             // panel27
             // 
             panel27.BackColor = Color.FromArgb(0, 0, 64);
+            panel27.Controls.Add(btnLimpiartxtExamenes);
             panel27.Controls.Add(button14);
             panel27.Controls.Add(textBox5);
             panel27.Controls.Add(btnCargarExamenes);
@@ -2748,9 +2789,9 @@
             // 
             // btnCargarExamenes
             // 
-            btnCargarExamenes.Location = new Point(149, 8);
+            btnCargarExamenes.Location = new Point(16, 7);
             btnCargarExamenes.Name = "btnCargarExamenes";
-            btnCargarExamenes.Size = new Size(168, 27);
+            btnCargarExamenes.Size = new Size(175, 27);
             btnCargarExamenes.TabIndex = 6;
             btnCargarExamenes.Text = "Todos los examenes";
             btnCargarExamenes.UseVisualStyleBackColor = true;
@@ -2768,6 +2809,36 @@
             // errorProviderDatosVacios
             // 
             errorProviderDatosVacios.ContainerControl = this;
+            // 
+            // btnLimpiartxtCarreras
+            // 
+            btnLimpiartxtCarreras.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLimpiartxtCarreras.Location = new Point(195, 8);
+            btnLimpiartxtCarreras.Name = "btnLimpiartxtCarreras";
+            btnLimpiartxtCarreras.Size = new Size(145, 27);
+            btnLimpiartxtCarreras.TabIndex = 10;
+            btnLimpiartxtCarreras.Text = "Limpiar información";
+            btnLimpiartxtCarreras.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpiartxtAsignaturas
+            // 
+            btnLimpiartxtAsignaturas.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLimpiartxtAsignaturas.Location = new Point(206, 8);
+            btnLimpiartxtAsignaturas.Name = "btnLimpiartxtAsignaturas";
+            btnLimpiartxtAsignaturas.Size = new Size(145, 27);
+            btnLimpiartxtAsignaturas.TabIndex = 10;
+            btnLimpiartxtAsignaturas.Text = "Limpiar información";
+            btnLimpiartxtAsignaturas.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpiartxtExamenes
+            // 
+            btnLimpiartxtExamenes.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLimpiartxtExamenes.Location = new Point(197, 8);
+            btnLimpiartxtExamenes.Name = "btnLimpiartxtExamenes";
+            btnLimpiartxtExamenes.Size = new Size(145, 27);
+            btnLimpiartxtExamenes.TabIndex = 11;
+            btnLimpiartxtExamenes.Text = "Limpiar información";
+            btnLimpiartxtExamenes.UseVisualStyleBackColor = true;
             // 
             // FrmDashboard
             // 
@@ -3095,5 +3166,11 @@
         private Button button14;
         private TextBox textBox5;
         private Button btnCargarExamenes;
+        private Button btnLimpiartxtAlumnos;
+        private Button btnLimpiartxtProfesor;
+        private Button btnLimpiartxtAdministrativos;
+        private Button btnLimpiartxtCarreras;
+        private Button btnLimpiartxtAsignaturas;
+        private Button btnLimpiartxtExamenes;
     }
 }
