@@ -816,6 +816,40 @@ namespace Proyecto_final
             }
         }
 
+        private void btnBuscarProfesor_Click(object sender, EventArgs e)
+        {
+            int IDProfesor;
+            if (!int.TryParse(txtBuscarProfesor.Text, out IDProfesor))
+            {
+                MessageBox.Show("Ingrese una matrícula válida");
+                return;
+            }
+
+            // Abrir la conexión a la base de datos
+            ConectarBDD.abrir();
+
+            // Consulta para obtener el profesor de la tabla empleados cuyo perfil es 2
+            string consulta = "SELECT * FROM empleados WHERE Id_empleado = @Id_empleado AND Id_perfil = 2";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.Parameters.AddWithValue("@Id_empleado", IDProfesor);
+
+            // Llenar el DataGridView con los datos del profesor
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvProfesor.DataSource = dt;
+
+            // Cerrar la conexión a la base de datos
+            ConectarBDD.cerrar();
+
+            // Verificar si se encontraron resultados
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontró ningún Profesor con ese ID.");
+            }
+
+        }
+
         //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
 
         public void Cargar_tabla_Asignatura()
@@ -980,6 +1014,8 @@ namespace Proyecto_final
             }
         }
 
+        //CARGAS de todos los registros 
+
         private void btnCargarAlumnos_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Alumno();
@@ -1008,6 +1044,42 @@ namespace Proyecto_final
         private void btnCargarExamenes_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Examenes();
+        }
+
+        private void btnBuscarAsignatura_Click(object sender, EventArgs e)
+        {
+            int IDAsignatura;
+            if (!int.TryParse(txtBuscarAsignatura.Text, out IDAsignatura))
+            {
+                MessageBox.Show("Ingrese un ID de asignatura válido");
+                return;
+            }
+
+            // Abrir la conexión a la base de datos
+            ConectarBDD.abrir();
+
+            // Consulta para obtener la asignatura asociada con su profesor en la tabla empleados
+            string consulta = @"
+            SELECT *  FROM Asignatura 
+            WHERE Id_asignatura = @Id_asignatura";
+
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.Parameters.AddWithValue("@Id_asignatura", IDAsignatura);
+
+            // Llenar el DataGridView con los datos de la asignatura y su profesor
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvAsignatura.DataSource = dt;
+
+            // Cerrar la conexión a la base de datos
+            ConectarBDD.cerrar();
+
+            // Verificar si se encontraron resultados
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontró ninguna asignatura con ese ID.");
+            }
         }
     }
 }

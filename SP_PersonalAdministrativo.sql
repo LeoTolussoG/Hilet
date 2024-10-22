@@ -58,7 +58,7 @@ begin
 	where 
 		Id_empleado = @Id_empleado
 end;
-
+---------------------------------------------------------------------------------------
 create procedure sp_Cargar_Tabla_Administrativos
 as
 begin
@@ -69,3 +69,4 @@ begin
 	where
 		Id_perfil = 3
 end;
+
