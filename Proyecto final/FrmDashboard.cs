@@ -748,6 +748,7 @@ namespace Proyecto_final
             {
                 MessageBox.Show("No se encontró una carrera con ese ID.");
             }
+
         }
 
         //PESTAÑA GESTION ACADEMICA: EXAMENES----------------------------------------------------------------------
