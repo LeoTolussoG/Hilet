@@ -573,22 +573,22 @@ namespace Proyecto_final
             errorProviderDatosVacios.Clear();
             bool valido = true;
 
-            if (cbAlumnoExamen.SelectedIndex == -1) // Validar que haya un alumno seleccionado
+            if (cbAlumnoExamen.SelectedIndex == -1) 
             {
                 errorProviderDatosVacios.SetError(cbAlumnoExamen, "Debe seleccionar un alumno");
                 valido = false;
             }
-            if (cbAsignaturaExamen.SelectedIndex == -1) // Validar que haya una asignatura seleccionada
+            if (cbAsignaturaExamen.SelectedIndex == -1) 
             {
                 errorProviderDatosVacios.SetError(cbAsignaturaExamen, "Debe seleccionar una asignatura");
                 valido = false;
             }
-            if (cbInstanciaExamen.SelectedIndex == -1) // Validar que haya una instancia seleccionada
+            if (cbInstanciaExamen.SelectedIndex == -1) 
             {
                 errorProviderDatosVacios.SetError(cbInstanciaExamen, "Debe seleccionar una instancia");
                 valido = false;
             }
-            if (cbProfesorExamen.SelectedIndex == -1) // Validar que haya un profesor seleccionado
+            if (cbProfesorExamen.SelectedIndex == -1) 
             {
                 errorProviderDatosVacios.SetError(cbProfesorExamen, "Debe seleccionar un profesor");
                 valido = false;
@@ -611,6 +611,8 @@ namespace Proyecto_final
             {
                 DataGridViewRow row = dgvExamenes.Rows[e.RowIndex];
 
+                string idExamen = row.Cells["Id_examenes"].Value.ToString();
+                MessageBox.Show("ID del Examen seleccionado: " + idExamen);
                 txtNotaExamen.Text = row.Cells["Nota"].Value.ToString();
                 dateTimeExamen.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
                 cbAlumnoExamen.SelectedItem = row.Cells["Alumno"].Value.ToString();
@@ -730,38 +732,46 @@ namespace Proyecto_final
             if (Validar_Datos_Examen()) // Reutiliza la función que valida los datos de entrada
             {
                 // Asegúrate de tener el ID del examen seleccionado
-                int idExamen = int.Parse(dgvExamenes.SelectedRows[0].Cells["Id_examenes"].Value.ToString());
-
+                int idExamen = int.Parse(dgvExamenes.CurrentRow.Cells["Id_examenes"].Value.ToString());//CurrentRow te permite acceder a la fila donde actualmente está el cursor,
+                                                                                                       //Es para hacer click en una celda y que seleccione la fila completa
                 ConectarBDD.abrir();
                 string consulta = "sp_ModificarExamen";
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                // Separar nombre y apellido del alumno seleccionado
-                string[] nombreCompletoAlumno = cbAlumnoExamen.SelectedItem.ToString().Split(' ');
-                string nombreAlumno = nombreCompletoAlumno[0] + " " + nombreCompletoAlumno[1];
-
-                // Separar nombre y apellido del profesor seleccionado
-                string[] nombreCompletoProfesor = cbProfesorExamen.SelectedItem.ToString().Split(' ');
-                string nombreProfesor = nombreCompletoProfesor[0] + " " + nombreCompletoProfesor[1];
-
-                comando.Parameters.AddWithValue("@Id_examen", idExamen);
-                comando.Parameters.AddWithValue("@Nota", txtNotaExamen.Text);
+                comando.Parameters.AddWithValue("@Id_examenes", idExamen);
+                comando.Parameters.AddWithValue("@Nota", int.Parse(txtNotaExamen.Text)); 
                 comando.Parameters.AddWithValue("@Fecha", dateTimeExamen.Value);
-                comando.Parameters.AddWithValue("@Nombre_alumno", nombreAlumno);
+                comando.Parameters.AddWithValue("@Nombre_alumno", cbAlumnoExamen.SelectedItem.ToString());
                 comando.Parameters.AddWithValue("@Asignatura", cbAsignaturaExamen.SelectedItem.ToString());
                 comando.Parameters.AddWithValue("@Instancia", cbInstanciaExamen.SelectedItem.ToString());
-                comando.Parameters.AddWithValue("@Nombre_profesor", nombreProfesor);
+                comando.Parameters.AddWithValue("@Nombre_profesor", cbProfesorExamen.SelectedItem.ToString());
 
                 comando.ExecuteNonQuery();
                 ConectarBDD.cerrar();
 
-                MessageBox.Show("Examen modificado");
+                MessageBox.Show("Exámen modificado");
                 Cargar_tabla_Examenes();
             }
+        }
+        private void btnEliminarExamen_Click(object sender, EventArgs e)
+        {
+                int idExamen = int.Parse(dgvExamenes.CurrentRow.Cells["Id_examenes"].Value.ToString());
+
+                ConectarBDD.abrir();
+                string consulta = "sp_EliminarExamen";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@Id_examenes", idExamen);
+
+                comando.ExecuteNonQuery();
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Examen eliminado");
+                Cargar_tabla_Examenes();
 
         }
-
 
         //PESTAÑA GESTION ACADEMICA: PROFESORES
 
@@ -1167,6 +1177,8 @@ namespace Proyecto_final
                 ConectarBDD.cerrar();
             }
         }
+
+        
     }
 }
 

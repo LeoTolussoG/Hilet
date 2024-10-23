@@ -2475,6 +2475,7 @@
             btnEliminarExamen.TabIndex = 2;
             btnEliminarExamen.Text = "Eliminar";
             btnEliminarExamen.UseVisualStyleBackColor = true;
+            btnEliminarExamen.Click += btnEliminarExamen_Click;
             // 
             // btnModificarExamen
             // 

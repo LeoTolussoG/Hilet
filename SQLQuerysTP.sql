@@ -731,10 +731,10 @@ CREATE PROCEDURE sp_CargarExamenes
 AS
 BEGIN
     SELECT E.Id_examenes, E.Nota, E.Fecha, 
-           CONCAT(A.Nombre, '', A.Apellido) AS Alumno, /*Concateno para que en el dataView me muestre el nombre y apellido juntos, en una misma columna*/
+           CONCAT(A.Nombre, ' ', A.Apellido) AS Alumno, /*Concateno para que en el dataView me muestre el nombre y apellido juntos, en una misma columna*/
            asg.Nombre AS Asignatura, 
            I.Descripcion AS Instancia, 
-           CONCAT (emp.Nombre, '',emp.Apellido) AS Profesor
+           CONCAT (emp.Nombre, ' ',emp.Apellido) AS Profesor
     FROM Examenes E
     LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno
     LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura
@@ -785,7 +785,7 @@ END;
 --------------------------------------------------------------------------------------------------
 /*PROCEDIMIENTO PARA MODIFICAR UN EXAMEN:*/
 CREATE PROCEDURE sp_ModificarExamen
-    @Id_examen INT,
+    @Id_examenes INT,
     @Nota INT,
     @Fecha DATE,
     @Nombre_alumno VARCHAR(50),
@@ -826,5 +826,15 @@ BEGIN
         Id_asignatura = @Id_asignatura,
         Id_instancia = @Id_instancia,
         Id_empleado = @Id_empleado
-    WHERE Id_examenes = @Id_examen;
+    WHERE Id_examenes = @Id_examenes;
+END;
+-------------------------------------------------------------------
+/*PROCEDIMIENTO PARA ELIMINAR UN EXAMEN:*/
+CREATE PROCEDURE sp_EliminarExamen
+    @Id_examenes INT
+AS
+BEGIN
+    -- Eliminar el examen por su ID
+    DELETE FROM Examenes
+    WHERE Id_examenes = @Id_examenes;
 END;
