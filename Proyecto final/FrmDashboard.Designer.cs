@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -229,15 +229,17 @@
             txtNotaExamen = new TextBox();
             dateTimeExamen = new DateTimePicker();
             groupBox4 = new GroupBox();
+            cbProfesorExamen = new ComboBox();
+            cbInstanciaExamen = new ComboBox();
+            cbAsignaturaExamen = new ComboBox();
+            cbAlumnoExamen = new ComboBox();
             label36 = new Label();
             label35 = new Label();
             label34 = new Label();
             label33 = new Label();
-            txtAlumnoExamen = new TextBox();
-            txtProfesorExamen = new TextBox();
-            txtInstanciaExamen = new TextBox();
-            txtAsignaturaExamen = new TextBox();
             panel27 = new Panel();
+            btnBuscarExamen = new Button();
+            txtBuscarExamen = new TextBox();
             tbpReporte = new TabPage();
             errorProviderDatosVacios = new ErrorProvider(components);
             panel1.SuspendLayout();
@@ -304,6 +306,7 @@
             panel28.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
+            panel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).BeginInit();
             SuspendLayout();
             // 
@@ -424,23 +427,23 @@
             // dgvDashboard
             // 
             dgvDashboard.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.DimGray;
-            dataGridViewCellStyle5.SelectionBackColor = Color.CornflowerBlue;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.CornflowerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDashboard.DefaultCellStyle = dataGridViewCellStyle2;
             dgvDashboard.EnableHeadersVisualStyles = false;
             dgvDashboard.Location = new Point(269, 197);
             dgvDashboard.Name = "dgvDashboard";
@@ -785,7 +788,7 @@
             btnAgregarAlumno.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnAgregarAlumno.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarAlumno.ForeColor = Color.FromArgb(64, 64, 64);
-            btnAgregarAlumno.Location = new Point(12, 32);
+            btnAgregarAlumno.Location = new Point(30, 35);
             btnAgregarAlumno.Name = "btnAgregarAlumno";
             btnAgregarAlumno.Size = new Size(114, 58);
             btnAgregarAlumno.TabIndex = 3;
@@ -798,7 +801,7 @@
             btnEliminarAlumno.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnEliminarAlumno.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarAlumno.ForeColor = Color.FromArgb(64, 64, 64);
-            btnEliminarAlumno.Location = new Point(12, 216);
+            btnEliminarAlumno.Location = new Point(30, 219);
             btnEliminarAlumno.Name = "btnEliminarAlumno";
             btnEliminarAlumno.Size = new Size(114, 58);
             btnEliminarAlumno.TabIndex = 2;
@@ -811,7 +814,7 @@
             btnModificarAlumno.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnModificarAlumno.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnModificarAlumno.ForeColor = Color.FromArgb(64, 64, 64);
-            btnModificarAlumno.Location = new Point(12, 126);
+            btnModificarAlumno.Location = new Point(30, 129);
             btnModificarAlumno.Name = "btnModificarAlumno";
             btnModificarAlumno.Size = new Size(114, 58);
             btnModificarAlumno.TabIndex = 1;
@@ -1610,14 +1613,14 @@
             // dgvAdministrativos
             // 
             dgvAdministrativos.BackgroundColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.GrayText;
-            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 0, 64);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.GrayText;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 0, 64);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvAdministrativos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvAdministrativos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAdministrativos.EnableHeadersVisualStyles = false;
             dgvAdministrativos.Location = new Point(16, 0);
@@ -2453,7 +2456,7 @@
             btnAgregarExamen.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnAgregarExamen.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregarExamen.ForeColor = Color.FromArgb(64, 64, 64);
-            btnAgregarExamen.Location = new Point(12, 32);
+            btnAgregarExamen.Location = new Point(30, 35);
             btnAgregarExamen.Name = "btnAgregarExamen";
             btnAgregarExamen.Size = new Size(114, 58);
             btnAgregarExamen.TabIndex = 3;
@@ -2466,7 +2469,7 @@
             btnEliminarExamen.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnEliminarExamen.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarExamen.ForeColor = Color.FromArgb(64, 64, 64);
-            btnEliminarExamen.Location = new Point(12, 216);
+            btnEliminarExamen.Location = new Point(30, 219);
             btnEliminarExamen.Name = "btnEliminarExamen";
             btnEliminarExamen.Size = new Size(114, 58);
             btnEliminarExamen.TabIndex = 2;
@@ -2478,12 +2481,13 @@
             btnModificarExamen.FlatAppearance.MouseOverBackColor = Color.Gray;
             btnModificarExamen.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnModificarExamen.ForeColor = Color.FromArgb(64, 64, 64);
-            btnModificarExamen.Location = new Point(12, 126);
+            btnModificarExamen.Location = new Point(30, 129);
             btnModificarExamen.Name = "btnModificarExamen";
             btnModificarExamen.Size = new Size(114, 58);
             btnModificarExamen.TabIndex = 1;
             btnModificarExamen.Text = "Modificar";
             btnModificarExamen.UseVisualStyleBackColor = true;
+            btnModificarExamen.Click += btnModificarExamen_Click;
             // 
             // panel28
             // 
@@ -2491,6 +2495,8 @@
             panel28.Controls.Add(groupBox5);
             panel28.Controls.Add(groupBox4);
             panel28.Dock = DockStyle.Bottom;
+            panel28.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel28.ForeColor = Color.DimGray;
             panel28.Location = new Point(3, 357);
             panel28.Name = "panel28";
             panel28.Size = new Size(1282, 275);
@@ -2506,7 +2512,7 @@
             groupBox5.ForeColor = Color.White;
             groupBox5.Location = new Point(486, 26);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(346, 227);
+            groupBox5.Size = new Size(353, 227);
             groupBox5.TabIndex = 15;
             groupBox5.TabStop = false;
             groupBox5.Text = "Información calificación";
@@ -2539,27 +2545,30 @@
             txtNotaExamen.BorderStyle = BorderStyle.None;
             txtNotaExamen.Location = new Point(191, 36);
             txtNotaExamen.Name = "txtNotaExamen";
-            txtNotaExamen.Size = new Size(120, 23);
+            txtNotaExamen.Size = new Size(137, 23);
             txtNotaExamen.TabIndex = 12;
             // 
             // dateTimeExamen
             // 
+            dateTimeExamen.CalendarFont = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimeExamen.CalendarMonthBackground = Color.White;
+            dateTimeExamen.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTimeExamen.Format = DateTimePickerFormat.Short;
             dateTimeExamen.Location = new Point(191, 79);
             dateTimeExamen.Name = "dateTimeExamen";
-            dateTimeExamen.Size = new Size(120, 30);
+            dateTimeExamen.Size = new Size(137, 28);
             dateTimeExamen.TabIndex = 13;
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(cbProfesorExamen);
+            groupBox4.Controls.Add(cbInstanciaExamen);
+            groupBox4.Controls.Add(cbAsignaturaExamen);
+            groupBox4.Controls.Add(cbAlumnoExamen);
             groupBox4.Controls.Add(label36);
             groupBox4.Controls.Add(label35);
             groupBox4.Controls.Add(label34);
             groupBox4.Controls.Add(label33);
-            groupBox4.Controls.Add(txtAlumnoExamen);
-            groupBox4.Controls.Add(txtProfesorExamen);
-            groupBox4.Controls.Add(txtInstanciaExamen);
-            groupBox4.Controls.Add(txtAsignaturaExamen);
             groupBox4.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox4.ForeColor = Color.White;
             groupBox4.Location = new Point(70, 26);
@@ -2568,6 +2577,38 @@
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
             groupBox4.Text = "Información principal";
+            // 
+            // cbProfesorExamen
+            // 
+            cbProfesorExamen.FormattingEnabled = true;
+            cbProfesorExamen.Location = new Point(169, 185);
+            cbProfesorExamen.Name = "cbProfesorExamen";
+            cbProfesorExamen.Size = new Size(151, 31);
+            cbProfesorExamen.TabIndex = 8;
+            // 
+            // cbInstanciaExamen
+            // 
+            cbInstanciaExamen.FormattingEnabled = true;
+            cbInstanciaExamen.Location = new Point(169, 132);
+            cbInstanciaExamen.Name = "cbInstanciaExamen";
+            cbInstanciaExamen.Size = new Size(151, 31);
+            cbInstanciaExamen.TabIndex = 7;
+            // 
+            // cbAsignaturaExamen
+            // 
+            cbAsignaturaExamen.FormattingEnabled = true;
+            cbAsignaturaExamen.Location = new Point(169, 83);
+            cbAsignaturaExamen.Name = "cbAsignaturaExamen";
+            cbAsignaturaExamen.Size = new Size(151, 31);
+            cbAsignaturaExamen.TabIndex = 6;
+            // 
+            // cbAlumnoExamen
+            // 
+            cbAlumnoExamen.FormattingEnabled = true;
+            cbAlumnoExamen.Location = new Point(169, 37);
+            cbAlumnoExamen.Name = "cbAlumnoExamen";
+            cbAlumnoExamen.Size = new Size(151, 31);
+            cbAlumnoExamen.TabIndex = 5;
             // 
             // label36
             // 
@@ -2613,50 +2654,39 @@
             label33.TabIndex = 4;
             label33.Text = "Profesor";
             // 
-            // txtAlumnoExamen
-            // 
-            txtAlumnoExamen.BackColor = Color.Silver;
-            txtAlumnoExamen.BorderStyle = BorderStyle.None;
-            txtAlumnoExamen.Location = new Point(169, 42);
-            txtAlumnoExamen.Name = "txtAlumnoExamen";
-            txtAlumnoExamen.Size = new Size(159, 23);
-            txtAlumnoExamen.TabIndex = 7;
-            // 
-            // txtProfesorExamen
-            // 
-            txtProfesorExamen.BackColor = Color.Silver;
-            txtProfesorExamen.BorderStyle = BorderStyle.None;
-            txtProfesorExamen.Location = new Point(167, 184);
-            txtProfesorExamen.Name = "txtProfesorExamen";
-            txtProfesorExamen.Size = new Size(159, 23);
-            txtProfesorExamen.TabIndex = 0;
-            // 
-            // txtInstanciaExamen
-            // 
-            txtInstanciaExamen.BackColor = Color.Silver;
-            txtInstanciaExamen.BorderStyle = BorderStyle.None;
-            txtInstanciaExamen.Location = new Point(167, 140);
-            txtInstanciaExamen.Name = "txtInstanciaExamen";
-            txtInstanciaExamen.Size = new Size(159, 23);
-            txtInstanciaExamen.TabIndex = 5;
-            // 
-            // txtAsignaturaExamen
-            // 
-            txtAsignaturaExamen.BackColor = Color.Silver;
-            txtAsignaturaExamen.BorderStyle = BorderStyle.None;
-            txtAsignaturaExamen.Location = new Point(167, 91);
-            txtAsignaturaExamen.Name = "txtAsignaturaExamen";
-            txtAsignaturaExamen.Size = new Size(159, 23);
-            txtAsignaturaExamen.TabIndex = 6;
-            // 
             // panel27
             // 
             panel27.BackColor = Color.FromArgb(0, 0, 64);
+            panel27.Controls.Add(btnBuscarExamen);
+            panel27.Controls.Add(txtBuscarExamen);
             panel27.Dock = DockStyle.Top;
             panel27.Location = new Point(3, 3);
             panel27.Name = "panel27";
             panel27.Size = new Size(1282, 41);
             panel27.TabIndex = 25;
+            // 
+            // btnBuscarExamen
+            // 
+            btnBuscarExamen.BackgroundImage = (Image)resources.GetObject("btnBuscarExamen.BackgroundImage");
+            btnBuscarExamen.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBuscarExamen.ForeColor = Color.FromArgb(64, 64, 64);
+            btnBuscarExamen.Location = new Point(990, 3);
+            btnBuscarExamen.Name = "btnBuscarExamen";
+            btnBuscarExamen.Size = new Size(39, 36);
+            btnBuscarExamen.TabIndex = 5;
+            btnBuscarExamen.UseVisualStyleBackColor = true;
+            // 
+            // txtBuscarExamen
+            // 
+            txtBuscarExamen.BackColor = Color.WhiteSmoke;
+            txtBuscarExamen.BorderStyle = BorderStyle.None;
+            txtBuscarExamen.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtBuscarExamen.ForeColor = Color.FromArgb(64, 64, 64);
+            txtBuscarExamen.Location = new Point(642, 12);
+            txtBuscarExamen.Name = "txtBuscarExamen";
+            txtBuscarExamen.PlaceholderText = "Ingrese la matrícula del alumno";
+            txtBuscarExamen.Size = new Size(342, 23);
+            txtBuscarExamen.TabIndex = 2;
             // 
             // tbpReporte
             // 
@@ -2774,6 +2804,8 @@
             groupBox5.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            panel27.ResumeLayout(false);
+            panel27.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).EndInit();
             ResumeLayout(false);
         }
@@ -2871,14 +2903,10 @@
         private TextBox txtNotaExamen;
         private Label label31;
         private Label label32;
-        private TextBox txtAlumnoExamen;
-        private TextBox txtAsignaturaExamen;
-        private TextBox txtInstanciaExamen;
         private Label label33;
         private Label label34;
         private Label label35;
         private Label label36;
-        private TextBox txtProfesorExamen;
         private Panel panel27;
         private DataGridView dgvExamenes;
         private Panel panel29;
@@ -2987,5 +3015,11 @@
         private Label label18;
         private Label label19;
         private Label label20;
+        private Button btnBuscarExamen;
+        private TextBox txtBuscarExamen;
+        private ComboBox cbProfesorExamen;
+        private ComboBox cbInstanciaExamen;
+        private ComboBox cbAsignaturaExamen;
+        private ComboBox cbAlumnoExamen;
     }
 }

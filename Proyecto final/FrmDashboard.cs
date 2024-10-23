@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,6 +48,10 @@ namespace Proyecto_final
             Cargar_tabla_Examenes();
             Cargar_tabla_Asignatura();
             CargarPermisos(IdPerfilUsuario);
+            Cargar_ComboBox_Alumnos();//Cargo los comboBox en la pestaña exámenes
+            Cargar_ComboBox_Profesor();
+            Cargar_ComboBox_Instancias();
+            Cargar_ComboBox_Asignatura();
         }
         //METODO PATA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
         public void CargarPermisos(int idPerfil)
@@ -563,25 +568,201 @@ namespace Proyecto_final
 
             ConectarBDD.cerrar();
         }
+        private bool Validar_Datos_Examen()
+        {
+            errorProviderDatosVacios.Clear();
+            bool valido = true;
+
+            if (cbAlumnoExamen.SelectedIndex == -1) // Validar que haya un alumno seleccionado
+            {
+                errorProviderDatosVacios.SetError(cbAlumnoExamen, "Debe seleccionar un alumno");
+                valido = false;
+            }
+            if (cbAsignaturaExamen.SelectedIndex == -1) // Validar que haya una asignatura seleccionada
+            {
+                errorProviderDatosVacios.SetError(cbAsignaturaExamen, "Debe seleccionar una asignatura");
+                valido = false;
+            }
+            if (cbInstanciaExamen.SelectedIndex == -1) // Validar que haya una instancia seleccionada
+            {
+                errorProviderDatosVacios.SetError(cbInstanciaExamen, "Debe seleccionar una instancia");
+                valido = false;
+            }
+            if (cbProfesorExamen.SelectedIndex == -1) // Validar que haya un profesor seleccionado
+            {
+                errorProviderDatosVacios.SetError(cbProfesorExamen, "Debe seleccionar un profesor");
+                valido = false;
+            }
+            if (txtNotaExamen.Text == "")
+            {
+                errorProviderDatosVacios.SetError(txtNotaExamen, "La calificación está vacía");
+                valido = false;
+            }
+            if (dateTimeExamen.Text == "")
+            {
+                errorProviderDatosVacios.SetError(dateTimeExamen, "La fecha del examen está vacía");
+                valido = false;
+            }
+            return valido;
+        }
         private void dgvExamenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-                if (e.RowIndex >= 0) 
-                {
-                    DataGridViewRow row = dgvExamenes.Rows[e.RowIndex];
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvExamenes.Rows[e.RowIndex];
 
-                    txtNotaExamen.Text = row.Cells["Nota"].Value.ToString();
-                    dateTimeExamen.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
-                    txtAlumnoExamen.Text = row.Cells["Alumno"].Value.ToString();
-                    txtAsignaturaExamen.Text = row.Cells["Asignatura"].Value.ToString();
-                    txtInstanciaExamen.Text = row.Cells["Instancia"].Value.ToString();
-                    txtProfesorExamen.Text = row.Cells["Profesor"].Value.ToString();
-                } 
+                txtNotaExamen.Text = row.Cells["Nota"].Value.ToString();
+                dateTimeExamen.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                cbAlumnoExamen.SelectedItem = row.Cells["Alumno"].Value.ToString();
+                cbAsignaturaExamen.SelectedItem = row.Cells["Asignatura"].Value.ToString();
+                cbInstanciaExamen.SelectedItem = row.Cells["Instancia"].Value.ToString();
+                cbProfesorExamen.SelectedItem = row.Cells["Profesor"].Value.ToString();
+            }
         }
+        public void Cargar_ComboBox_Alumnos()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT Nombre, Apellido FROM Alumnos";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            SqlDataReader reader = comando.ExecuteReader();
 
+            cbAlumnoExamen.Items.Clear(); // Limpia antes de agregar
+
+            while (reader.Read())
+            {
+                cbAlumnoExamen.Items.Add(reader["Nombre"].ToString() + " " + reader["Apellido"].ToString());
+            }
+
+            ConectarBDD.cerrar();
+        }
+        public void Cargar_ComboBox_Profesor()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT Nombre, Apellido FROM Empleados WHERE Id_perfil = 2";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            SqlDataReader reader = comando.ExecuteReader();
+
+            cbProfesorExamen.Items.Clear(); // Limpia antes de agregar
+
+            while (reader.Read())
+            {
+                cbProfesorExamen.Items.Add(reader["Nombre"].ToString() + " " + reader["Apellido"].ToString()); //Agrega en el comboBox
+            }
+
+            ConectarBDD.cerrar();
+        }
+        public void Cargar_ComboBox_Instancias()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT Descripcion FROM Instancias";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            SqlDataReader reader = comando.ExecuteReader();
+
+            cbInstanciaExamen.Items.Clear(); // Limpia antes de agregar
+
+            while (reader.Read())
+            {
+                cbInstanciaExamen.Items.Add(reader["Descripcion"].ToString()); //Agrega en el comboBox
+            }
+
+            ConectarBDD.cerrar();
+        }
+        public void Cargar_ComboBox_Asignatura()
+        {
+            ConectarBDD.abrir();
+            string consulta = "SELECT Nombre FROM Asignatura";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            SqlDataReader reader = comando.ExecuteReader();
+
+            cbAsignaturaExamen.Items.Clear(); // Limpia antes de agregar
+
+            while (reader.Read())
+            {
+                cbAsignaturaExamen.Items.Add(reader["Nombre"].ToString()); //Agrega en el comboBox
+            }
+
+            ConectarBDD.cerrar();
+        }
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
+            if (Validar_Datos_Examen())
+            {
+                // Esto es un array que separa el nombre y apellido del alumno seleccionado:
+                //1ro: Obtiene el valor seleccionado en el ComboBox de alumnos, que adentro tiene el nombre completo como "Juan Pérez".
+
+                //Después, usa el método "Split" para separar el nombre y apellido.(Es un método de los strings, toma un delimitador
+                //(como un espacio, una coma, etc.) y divide una cadena en partes según ese delimitador, devolviendo un array de strings.)
+
+                //Después asigna el nombre a "nombreAlumno" y el apellido a "apellidoAlumno".
+                string[] nombreCompletoAlumno = cbAlumnoExamen.SelectedItem.ToString().Split(' ');
+                string nombreAlumno = nombreCompletoAlumno[0];
+                string apellidoAlumno = nombreCompletoAlumno[1];
+
+                // Separar nombre y apellido del profesor seleccionado
+                string[] nombreCompletoProfesor = cbProfesorExamen.SelectedItem.ToString().Split(' ');
+                string nombreProfesor = nombreCompletoProfesor[0];
+                string apellidoProfesor = nombreCompletoProfesor[1];
+
+                ConectarBDD.abrir();
+                string consulta = "sp_AgregarExamen";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@Nota", txtNotaExamen.Text);
+                comando.Parameters.AddWithValue("@Fecha", dateTimeExamen.Value);
+                comando.Parameters.AddWithValue("@Nombre_alumno", nombreAlumno);
+                comando.Parameters.AddWithValue("@Apellido_alumno", apellidoAlumno);
+                comando.Parameters.AddWithValue("@Asignatura", cbAsignaturaExamen.SelectedItem.ToString());
+                comando.Parameters.AddWithValue("@Instancia", cbInstanciaExamen.SelectedItem.ToString());
+                comando.Parameters.AddWithValue("@Nombre_profesor", nombreProfesor);
+                comando.Parameters.AddWithValue("@Apellido_profesor", apellidoProfesor);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Registro Agregado!");
+
+                Cargar_tabla_Examenes();
+                ConectarBDD.cerrar();
+            }
+        }
+        private void btnModificarExamen_Click(object sender, EventArgs e)
+        {
+            if (Validar_Datos_Examen()) // Reutiliza la función que valida los datos de entrada
+            {
+                // Asegúrate de tener el ID del examen seleccionado
+                int idExamen = int.Parse(dgvExamenes.SelectedRows[0].Cells["Id_examenes"].Value.ToString());
+
+                ConectarBDD.abrir();
+                string consulta = "sp_ModificarExamen";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Separar nombre y apellido del alumno seleccionado
+                string[] nombreCompletoAlumno = cbAlumnoExamen.SelectedItem.ToString().Split(' ');
+                string nombreAlumno = nombreCompletoAlumno[0] + " " + nombreCompletoAlumno[1];
+
+                // Separar nombre y apellido del profesor seleccionado
+                string[] nombreCompletoProfesor = cbProfesorExamen.SelectedItem.ToString().Split(' ');
+                string nombreProfesor = nombreCompletoProfesor[0] + " " + nombreCompletoProfesor[1];
+
+                comando.Parameters.AddWithValue("@Id_examen", idExamen);
+                comando.Parameters.AddWithValue("@Nota", txtNotaExamen.Text);
+                comando.Parameters.AddWithValue("@Fecha", dateTimeExamen.Value);
+                comando.Parameters.AddWithValue("@Nombre_alumno", nombreAlumno);
+                comando.Parameters.AddWithValue("@Asignatura", cbAsignaturaExamen.SelectedItem.ToString());
+                comando.Parameters.AddWithValue("@Instancia", cbInstanciaExamen.SelectedItem.ToString());
+                comando.Parameters.AddWithValue("@Nombre_profesor", nombreProfesor);
+
+                comando.ExecuteNonQuery();
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Examen modificado");
+                Cargar_tabla_Examenes();
+            }
 
         }
+
+
         //PESTAÑA GESTION ACADEMICA: PROFESORES
 
         public void Cargar_tabla_Empleado_Profesores()
@@ -986,8 +1167,6 @@ namespace Proyecto_final
                 ConectarBDD.cerrar();
             }
         }
-
-        
     }
 }
 
