@@ -115,7 +115,6 @@ FOREIGN KEY (Id_empleado) REFERENCES Empleados(Id_empleado)
 
 
 
-
 --Registro de Carreras
 INSERT INTO Carreras (Nombre, Num_res, Año_PlanEstudio) VALUES
 ('Técnico Superior en Publicidad', '3805/06', 3),
