@@ -1634,6 +1634,7 @@
             btnBuscarProfesor.Size = new Size(39, 36);
             btnBuscarProfesor.TabIndex = 6;
             btnBuscarProfesor.UseVisualStyleBackColor = true;
+            btnBuscarProfesor.Click += btnBuscarProfesor_Click;
             // 
             // txtBuscarProfesor
             // 
@@ -2585,6 +2586,7 @@
             btnBuscarAsignatura.Size = new Size(39, 36);
             btnBuscarAsignatura.TabIndex = 8;
             btnBuscarAsignatura.UseVisualStyleBackColor = true;
+            btnBuscarAsignatura.Click += btnBuscarAsignatura_Click;
             // 
             // txtBuscarAsignatura
             // 
