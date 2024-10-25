@@ -2351,10 +2351,10 @@
             // tabPage5
             // 
             tabPage5.Controls.Add(panel15);
-            tabPage5.Location = new Point(4, 29);
+            tabPage5.Location = new Point(4, 27);
             tabPage5.Margin = new Padding(3, 4, 3, 4);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1288, 638);
+            tabPage5.Size = new Size(1288, 640);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Asignaturas";
             tabPage5.UseVisualStyleBackColor = true;
@@ -2365,7 +2365,7 @@
             panel15.Dock = DockStyle.Fill;
             panel15.Location = new Point(0, 0);
             panel15.Name = "panel15";
-            panel15.Size = new Size(1288, 638);
+            panel15.Size = new Size(1288, 640);
             panel15.TabIndex = 0;
             // 
             // panel19
@@ -2377,7 +2377,7 @@
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(0, 0);
             panel19.Name = "panel19";
-            panel19.Size = new Size(1288, 638);
+            panel19.Size = new Size(1288, 640);
             panel19.TabIndex = 3;
             // 
             // panel31
@@ -2387,7 +2387,7 @@
             panel31.Dock = DockStyle.Fill;
             panel31.Location = new Point(0, 41);
             panel31.Name = "panel31";
-            panel31.Size = new Size(1114, 323);
+            panel31.Size = new Size(1114, 325);
             panel31.TabIndex = 4;
             // 
             // dgvAsignatura
@@ -2398,7 +2398,7 @@
             dgvAsignatura.Location = new Point(21, 0);
             dgvAsignatura.Name = "dgvAsignatura";
             dgvAsignatura.RowHeadersWidth = 51;
-            dgvAsignatura.Size = new Size(1093, 323);
+            dgvAsignatura.Size = new Size(1093, 325);
             dgvAsignatura.TabIndex = 0;
             dgvAsignatura.CellClick += dgvAsignatura_CellClick;
             // 
@@ -2411,7 +2411,7 @@
             panel17.Dock = DockStyle.Right;
             panel17.Location = new Point(1114, 41);
             panel17.Name = "panel17";
-            panel17.Size = new Size(174, 323);
+            panel17.Size = new Size(174, 325);
             panel17.TabIndex = 3;
             // 
             // btnAgregarAsignatura
@@ -2458,7 +2458,7 @@
             panel18.BackColor = Color.FromArgb(0, 0, 64);
             panel18.Controls.Add(groupBox9);
             panel18.Dock = DockStyle.Bottom;
-            panel18.Location = new Point(0, 364);
+            panel18.Location = new Point(0, 366);
             panel18.Name = "panel18";
             panel18.Size = new Size(1288, 274);
             panel18.TabIndex = 2;
