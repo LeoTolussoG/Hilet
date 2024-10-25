@@ -2607,10 +2607,10 @@
             tabPage6.Controls.Add(panel29);
             tabPage6.Controls.Add(panel28);
             tabPage6.Controls.Add(panel27);
-            tabPage6.Location = new Point(4, 29);
+            tabPage6.Location = new Point(4, 27);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1288, 638);
+            tabPage6.Size = new Size(1288, 640);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Exámenes";
             // 
@@ -2634,7 +2634,7 @@
             panel29.Dock = DockStyle.Right;
             panel29.Location = new Point(1109, 44);
             panel29.Name = "panel29";
-            panel29.Size = new Size(176, 316);
+            panel29.Size = new Size(176, 318);
             panel29.TabIndex = 27;
             // 
             // btnAgregarExamen
@@ -2684,7 +2684,7 @@
             panel28.Dock = DockStyle.Bottom;
             panel28.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel28.ForeColor = Color.DimGray;
-            panel28.Location = new Point(3, 360);
+            panel28.Location = new Point(3, 362);
             panel28.Name = "panel28";
             panel28.Size = new Size(1282, 275);
             panel28.TabIndex = 26;
