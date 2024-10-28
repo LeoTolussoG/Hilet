@@ -11,20 +11,20 @@
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\frmdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\proyecto final\\frmdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "FrmDashboard.Designer.cs",
               "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.Designer.cs",
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.Designer.cs",
@@ -51,7 +51,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "frmLogin.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
               "RelativeDocumentMoniker": "Proyecto final\\frmLogin.cs",
@@ -63,15 +63,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "clsConexion.cs",
               "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\clsConexion.cs",
               "RelativeDocumentMoniker": "Proyecto final\\clsConexion.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\clsConexion.cs",
               "RelativeToolTip": "Proyecto final\\clsConexion.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAASwAcAAAAAAAAA",
+              "ViewState": "AQIAACkAAAAAAAAAAAAIwA8AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T16:33:39.501Z"
+              "WhenOpened": "2024-10-19T16:33:39.501Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -81,7 +82,7 @@
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.cs",
               "RelativeToolTip": "Proyecto final\\FrmDashboard.cs",
-              "ViewState": "AQIAAFMDAAAAAAAAAAAAAIgFAAAJAAAA",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAuwGUAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T15:26:22.57Z",
               "EditorCaption": ""
@@ -100,13 +101,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "frmLogin.cs",
               "DocumentMoniker": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
               "RelativeDocumentMoniker": "Proyecto final\\frmLogin.cs",
               "ToolTip": "C:\\Users\\hilet.HILET\\Documents\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
               "RelativeToolTip": "Proyecto final\\frmLogin.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAqwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T16:33:01.711Z",
               "EditorCaption": ""
