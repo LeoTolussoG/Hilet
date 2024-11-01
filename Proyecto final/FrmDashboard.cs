@@ -92,6 +92,15 @@ namespace Proyecto_final
             {
                 btnAgregarAsignatura.Enabled = false;
             }
+            if (!permisos.Contains("Gestionar Usuarios"))
+            {
+                txtUsuarioAdministrativo.ReadOnly = true;
+                txtContraseñaAdministrativo.ReadOnly = true;
+                txtUsuarioAlumno.ReadOnly = true;
+                txtContraseñaAlumno.ReadOnly = true;
+                txtUsuarioProfesor.ReadOnly = true;
+                txtContraseñaProfesor.ReadOnly = true;
+            }
         }
 
 
@@ -600,7 +609,8 @@ namespace Proyecto_final
         public void Cargar_tabla_Carreras()         //Carga de registros el datagridview de Administrativos
         {
             ConectarBDD.abrir();
-            string consulta = "sp_Cargar_Tabla_Carreras";
+            string consulta = "select * from carreras";
+            //string consulta = "sp_Cargar_Tabla_Carreras";
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
 
             DataTable dt = new DataTable();
