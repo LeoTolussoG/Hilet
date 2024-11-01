@@ -273,7 +273,7 @@ INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_em
 select * from Alumnos
 
 INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
-('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoadmin', '12345', 4),
+('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoprof', '12345', 2),
 ('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
 ('María', 'Gómez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
 ('Carlos', 'López', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
@@ -293,6 +293,12 @@ INSERT INTO Permisos (Tipo_permiso) VALUES
 ('Gestionar Exámenes'),
 ('Gestionar Usuarios');
 
+INSERT INTO Permisos (Tipo_permiso) VALUES
+('Gestionar Carreras'),
+('Gestionar Profesores'),
+('Gestionar Administrativos');
+
+
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (1, 2), -- Profesor puede gestionar alumnos
 (2, 2), -- Profesor puede gestionar asignaturas
@@ -305,7 +311,6 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (4, 4); -- Administrador puede gestionar exámenes
 
 select * from Perfiles
-
 
 --------------Procedimientos Almacenados----------------------------
 
@@ -715,4 +720,115 @@ END;
 
 
 ---------------------------------------------------------------------------
+/*PROCEDIMIENTO PARA CARGAR LA TABLA DE EXÁMENES*/
+CREATE PROCEDURE sp_CargarExamenes
+AS
+BEGIN
+    SELECT E.Id_examenes, E.Nota, E.Fecha, 
+           CONCAT(A.Nombre, ' ', A.Apellido) AS Alumno, /*Concateno para que en el dataView me muestre el nombre y apellido juntos, en una misma columna*/
+           asg.Nombre AS Asignatura, 
+           I.Descripcion AS Instancia, 
+           CONCAT (emp.Nombre, ' ',emp.Apellido) AS Profesor
+    FROM Examenes E
+    LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno
+    LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura
+    LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia
+    LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado;
+END;
+------------------------------------------------------------------------
+/*PROCEDIMIENTO PARA AGREGAR EXAMENES*/
+CREATE PROCEDURE sp_AgregarExamen
+    @Nota INT,
+    @Fecha DATE,
+    @Nombre_alumno VARCHAR(50),
+	@Apellido_alumno VARCHAR(50),
+    @Asignatura VARCHAR(50),
+    @Instancia VARCHAR(50),
+    @Nombre_profesor VARCHAR(50),
+	@Apellido_profesor VARCHAR(50)
+AS
+BEGIN
+    -- Buscar el ID del alumno por su nombre y apellido
+    DECLARE @Id_alumno INT;
+    SELECT @Id_alumno = Id_alumno
+    FROM Alumnos
+    WHERE Nombre = @Nombre_alumno AND Apellido = @Apellido_alumno;
 
+    -- Buscar el ID de la asignatura por su nombre
+    DECLARE @Id_asignatura INT;
+    SELECT @Id_asignatura = Id_asignatura
+    FROM Asignatura
+    WHERE Nombre = @Asignatura;
+
+    -- Buscar el ID de la instancia por su descripción
+    DECLARE @Id_instancia INT;
+    SELECT @Id_instancia = Id_instancia
+    FROM Instancias
+    WHERE Descripcion = @Instancia;
+
+    -- Buscar el ID del empleado (profesor) por su nombre
+    DECLARE @Id_empleado INT;
+    SELECT @Id_empleado = Id_empleado
+    FROM Empleados
+    WHERE Nombre = @Nombre_profesor AND Apellido = @Apellido_profesor;
+
+    -- Insertar los datos del examen
+    INSERT INTO Examenes (Nota, Fecha, Id_alumno, Id_asignatura, Id_instancia, Id_empleado)
+    VALUES (@Nota, @Fecha, @Id_alumno, @Id_asignatura, @Id_instancia, @Id_empleado);
+END;
+--------------------------------------------------------------------------------------------------
+/*PROCEDIMIENTO PARA MODIFICAR UN EXAMEN:*/
+CREATE PROCEDURE sp_ModificarExamen
+    @Id_examenes INT,
+    @Nota INT,
+    @Fecha DATE,
+    @Nombre_alumno VARCHAR(50),
+    @Asignatura VARCHAR(50),
+    @Instancia VARCHAR(50),
+    @Nombre_profesor VARCHAR(50)
+AS
+BEGIN
+    -- Buscar el ID del alumno por su nombre y apellido
+    DECLARE @Id_alumno INT;
+    SELECT @Id_alumno = Id_alumno
+    FROM Alumnos
+    WHERE CONCAT(Nombre, ' ', Apellido) = @Nombre_alumno;
+
+    -- Buscar el ID de la asignatura por su nombre
+    DECLARE @Id_asignatura INT;
+    SELECT @Id_asignatura = Id_asignatura
+    FROM Asignatura
+    WHERE Nombre = @Asignatura;
+
+    -- Buscar el ID de la instancia por su descripción
+    DECLARE @Id_instancia INT;
+    SELECT @Id_instancia = Id_instancia
+    FROM Instancias
+    WHERE Descripcion = @Instancia;
+
+    -- Buscar el ID del profesor por su nombre completo
+    DECLARE @Id_empleado INT;
+    SELECT @Id_empleado = Id_empleado
+    FROM Empleados
+    WHERE CONCAT(Nombre, ' ', Apellido) = @Nombre_profesor;
+
+    -- Realizar la actualización del examen
+    UPDATE Examenes
+    SET Nota = @Nota,
+        Fecha = @Fecha,
+        Id_alumno = @Id_alumno,
+        Id_asignatura = @Id_asignatura,
+        Id_instancia = @Id_instancia,
+        Id_empleado = @Id_empleado
+    WHERE Id_examenes = @Id_examenes;
+END;
+-------------------------------------------------------------------
+/*PROCEDIMIENTO PARA ELIMINAR UN EXAMEN:*/
+CREATE PROCEDURE sp_EliminarExamen
+    @Id_examenes INT
+AS
+BEGIN
+    -- Eliminar el examen por su ID
+    DELETE FROM Examenes
+    WHERE Id_examenes = @Id_examenes;
+END;
