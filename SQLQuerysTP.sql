@@ -430,9 +430,7 @@ begin
 		Id_carrera
 	desc
 end;
-=======
-        E.Usuario = @Usuario AND E.Contraseña = @Contraseña
-END;
+
 ------------------------------------------------------------------
 --PROCEDIMIENTO PARA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
 CREATE PROCEDURE sp_ObtenerPermisosPorPerfil
@@ -460,173 +458,108 @@ CREATE PROCEDURE sp_AgregarProfesor
 @Contraseña varchar(40)
 AS
 BEGIN
-    -- El Id_perfil será siempre 2 para los profesores
-    DECLARE @Id_perfil INT = 2;
-
-    -- Insertar el nuevo profesor
-    INSERT INTO Empleados(Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
-    VALUES(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, @Id_perfil);
-
-   
-END;
-
+   insert into Empleados (
+		Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil)
+	values
+		(@Nombre, @Apellido, @Dni, @Direccion_calle, @Direccion_num, @Email, @Telefono, @F_nacimiento, @Usuario, @Contraseña, 2)
+end;
 -------------------------------------------------------------------
-CREATE PROCEDURE sp_ModificarProfesor
-    @Id_empleado INT,          -- ID del profesor que queremos modificar
-    @Nombre VARCHAR(40),
-    @Apellido VARCHAR(40),
-    @Dni VARCHAR(20),
-    @Direccion_calle VARCHAR(50),
-    @Direccion_num INT,
-    @Email VARCHAR(100),
-    @Telefono VARCHAR(30),
-    @F_nacimiento DATE,
-    @Usuario VARCHAR(40),
-    @Contraseña VARCHAR(40)
-AS
-BEGIN
-    -- El Id_perfil será siempre 2 para los profesores
-    DECLARE @Id_perfil INT = 2;
-
-    -- Verificamos si el profesor existe en la tabla Empleados y pertenece al perfil 2 (profesor)
-    IF NOT EXISTS (
-        SELECT 1
-        FROM Empleados
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = @Id_perfil
-    )
-    BEGIN
-        RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
-        RETURN;  -- Terminamos la ejecución del procedimiento si no es válido
-    END
-
-    -- Si el profesor existe, realizamos la actualización
-    UPDATE Empleados
-    SET 
-        Nombre = @Nombre,
-        Apellido = @Apellido,
-        Dni = @Dni,
-        Direccion_calle = @Direccion_calle,
-        Direccion_num = @Direccion_num,
-        Email = @Email,
-        Telefono = @Telefono,
-        F_nacimiento = @F_nacimiento,
-        Usuario = @Usuario,
-        Contraseña = @Contraseña,
-        Id_perfil = @Id_perfil  -- Aseguramos que el perfil sigue siendo profesor (2)
-    WHERE Id_empleado = @Id_empleado;
-
-    PRINT 'Profesor modificado exitosamente.';  -- Mensaje de éxito
-END;
-------------------------------------------------------------------------------------------------------
-CREATE PROCEDURE sp_EliminarProfesor
-    @Id_empleado INT  -- ID del profesor que queremos eliminar
-AS
-BEGIN
-    -- Verificamos si el ID de empleado corresponde a un profesor (Id_perfil = 2)
-    IF NOT EXISTS (
-        SELECT 1
-        FROM Empleados
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
-    )
-    BEGIN
-        RAISERROR('El ID proporcionado no corresponde a un profesor existente.', 16, 1);
-        RETURN;  -- Terminamos la ejecución del procedimiento si no es válido
-    END
-
-    -- Si el profesor existe, realizamos la eliminación
-    DELETE FROM Empleados
-    WHERE Id_empleado = @Id_empleado AND Id_perfil = 2;
-
-    PRINT 'Profesor eliminado exitosamente.';  -- Mensaje de éxito
-END;
-
+create procedure sp_Modificar_Profesor
+@Nombre varchar(40),
+@Apellido varchar(40),
+@Dni varchar(20),
+@Direccion_calle varchar(50),
+@Direccion_num int,
+@Email varchar(100),
+@Telefono varchar(30),
+@F_nacimiento date,
+@Usuario varchar(40),
+@Contraseña varchar(40)
+as
+begin
+	update Empleados
+	set
+		Nombre = @Nombre, 
+		Apellido = @Apellido, 
+		Dni = @Dni, 
+		Direccion_calle = @Direccion_calle, 
+		Direccion_num = @Direccion_num, 
+		Email = @Email, 
+		Telefono = @Telefono, 
+		F_nacimiento = @F_nacimiento, 
+		Usuario = @Usuario, 
+		Contraseña = @Contraseña,
+		Id_perfil = 2;
+end;
 -------------------------------------------------------------------------------
-
+create procedure sp_EliminarProfesor
+@Id_empleado int
+as
+begin
+	delete from 
+		empleados 
+	where 
+		Id_empleado = @Id_empleado
+end;
+-------------------------------------------------------------------------------
 CREATE PROCEDURE sp_AgregarAsignatura
+
     @Nombre VARCHAR(50),
-    @Año_cursada INT,
-    @Id_empleado INT
+    @Año_cursada INT
 AS
 BEGIN
-    -- Verificar si el ID de empleado corresponde a un profesor
-    IF NOT EXISTS (
-        SELECT 1 
-        FROM Empleados 
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
-    )
-    BEGIN
-        -- Si no es un profesor, lanzar un error
-        RAISERROR('El ID de empleado no corresponde a un profesor.', 16, 1);
-        RETURN;
-    END
-
     -- Insertar la nueva asignatura
-    INSERT INTO Asignatura (Nombre, Año_cursada, Id_empleado)
-    VALUES (@Nombre, @Año_cursada, @Id_empleado);
+    INSERT INTO Asignatura (Nombre, Año_cursada)
+    VALUES (@Nombre, @Año_cursada);
 END;
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 CREATE PROCEDURE sp_ModificarAsignatura
     @Id_asignatura INT,
     @Nombre VARCHAR(50),
-    @Año_cursada INT,
-    @Id_empleado INT
+    @Año_cursada INT
 AS
 BEGIN
-    -- Verificar si el ID de asignatura existe
-    IF NOT EXISTS (
-        SELECT 1 
-        FROM Asignatura 
-        WHERE Id_asignatura = @Id_asignatura
-    )
-    BEGIN
-        -- Si no existe, lanzar un error
-        RAISERROR('El ID de asignatura no existe.', 16, 1);
-        RETURN;
-    END
-
-    -- Verificar si el ID de empleado corresponde a un profesor
-    IF NOT EXISTS (
-        SELECT 1 
-        FROM Empleados 
-        WHERE Id_empleado = @Id_empleado AND Id_perfil = 2
-    )
-    BEGIN
-        -- Si no es un profesor, lanzar un error
-        RAISERROR('El ID de empleado no corresponde a un profesor.', 16, 1);
-        RETURN;
-    END
-
-    -- Actualizar la asignatura
+    -- Actualizar solo el nombre y año de cursada de la asignatura
     UPDATE Asignatura
     SET 
         Nombre = @Nombre,
-        Año_cursada = @Año_cursada,
-        Id_empleado = @Id_empleado
+        Año_cursada = @Año_cursada
     WHERE Id_asignatura = @Id_asignatura;
 END;
+
 -----------------------------------------------------------------------------------------
+
+--CREATE PROCEDURE sp_EliminarAsignatura
+--    @Id_asignatura INT
+--AS
+--BEGIN
+--    -- Verificar si el ID de asignatura existe
+--    IF NOT EXISTS (
+--        SELECT 1 
+--        FROM Asignatura 
+--        WHERE Id_asignatura = @Id_asignatura
+--    )
+--    BEGIN
+--        -- Si no existe, lanzar un error
+--        RAISERROR('El ID de asignatura no existe.', 16, 1);
+--        RETURN;
+--    END
+
+--    -- Eliminar la asignatura
+--    DELETE FROM Asignatura
+--    WHERE Id_asignatura = @Id_asignatura;
+--END;
 
 CREATE PROCEDURE sp_EliminarAsignatura
     @Id_asignatura INT
 AS
 BEGIN
-    -- Verificar si el ID de asignatura existe
-    IF NOT EXISTS (
-        SELECT 1 
-        FROM Asignatura 
-        WHERE Id_asignatura = @Id_asignatura
-    )
-    BEGIN
-        -- Si no existe, lanzar un error
-        RAISERROR('El ID de asignatura no existe.', 16, 1);
-        RETURN;
-    END
-
     -- Eliminar la asignatura
     DELETE FROM Asignatura
     WHERE Id_asignatura = @Id_asignatura;
 END;
+
 ----------------------------------------------------------------
 
 --PROCEDIMIENTO PARA AGREGAR ALUMNO
@@ -827,3 +760,5 @@ BEGIN
     DELETE FROM Examenes
     WHERE Id_examenes = @Id_examenes;
 END;
+
+

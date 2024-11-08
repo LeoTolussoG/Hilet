@@ -6,9 +6,11 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Proyecto_final
 {
@@ -45,7 +47,7 @@ namespace Proyecto_final
             Cargar_tabla_Empleado_Profesores();
             Cargar_tabla_Empleado_Administrativos();
             Cargar_tabla_Alumno();
-            Cargar_tabla_Carreras();
+            // Cargar_tabla_Carreras();
             Cargar_tabla_Examenes();
             Cargar_tabla_Asignatura();
             CargarPermisos(IdPerfilUsuario);
@@ -777,22 +779,22 @@ namespace Proyecto_final
             errorProviderDatosVacios.Clear();
             bool valido = true;
 
-            if (cbAlumnoExamen.SelectedIndex == -1) 
+            if (cbAlumnoExamen.SelectedIndex == -1)
             {
                 errorProviderDatosVacios.SetError(cbAlumnoExamen, "Debe seleccionar un alumno");
                 valido = false;
             }
-            if (cbAsignaturaExamen.SelectedIndex == -1) 
+            if (cbAsignaturaExamen.SelectedIndex == -1)
             {
                 errorProviderDatosVacios.SetError(cbAsignaturaExamen, "Debe seleccionar una asignatura");
                 valido = false;
             }
-            if (cbInstanciaExamen.SelectedIndex == -1) 
+            if (cbInstanciaExamen.SelectedIndex == -1)
             {
                 errorProviderDatosVacios.SetError(cbInstanciaExamen, "Debe seleccionar una instancia");
                 valido = false;
             }
-            if (cbProfesorExamen.SelectedIndex == -1) 
+            if (cbProfesorExamen.SelectedIndex == -1)
             {
                 errorProviderDatosVacios.SetError(cbProfesorExamen, "Debe seleccionar un profesor");
                 valido = false;
@@ -944,7 +946,7 @@ namespace Proyecto_final
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.AddWithValue("@Id_examenes", idExamen);
-                comando.Parameters.AddWithValue("@Nota", int.Parse(txtNotaExamen.Text)); 
+                comando.Parameters.AddWithValue("@Nota", int.Parse(txtNotaExamen.Text));
                 comando.Parameters.AddWithValue("@Fecha", dateTimeExamen.Value);
                 comando.Parameters.AddWithValue("@Nombre_alumno", cbAlumnoExamen.SelectedItem.ToString());
                 comando.Parameters.AddWithValue("@Asignatura", cbAsignaturaExamen.SelectedItem.ToString());
@@ -960,20 +962,20 @@ namespace Proyecto_final
         }
         private void btnEliminarExamen_Click(object sender, EventArgs e)
         {
-                int idExamen = int.Parse(dgvExamenes.CurrentRow.Cells["Id_examenes"].Value.ToString());
+            int idExamen = int.Parse(dgvExamenes.CurrentRow.Cells["Id_examenes"].Value.ToString());
 
-                ConectarBDD.abrir();
-                string consulta = "sp_EliminarExamen";
-                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-                comando.CommandType = CommandType.StoredProcedure;
+            ConectarBDD.abrir();
+            string consulta = "sp_EliminarExamen";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@Id_examenes", idExamen);
+            comando.Parameters.AddWithValue("@Id_examenes", idExamen);
 
-                comando.ExecuteNonQuery();
-                ConectarBDD.cerrar();
+            comando.ExecuteNonQuery();
+            ConectarBDD.cerrar();
 
-                MessageBox.Show("Examen eliminado");
-                Cargar_tabla_Examenes();
+            MessageBox.Show("Examen eliminado");
+            Cargar_tabla_Examenes();
 
         }
 
@@ -1053,12 +1055,14 @@ namespace Proyecto_final
 
         }
 
+        int IdProfesor;
         private void dgvProfesor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvProfesor.Rows[e.RowIndex];
-                txtIDprofesor.Text = row.Cells["Id_empleado"].Value.ToString();
+                IdProfesor = Convert.ToInt32(row.Cells["Id_empleado"].Value);
                 txtNombreProfesor.Text = row.Cells["Nombre"].Value.ToString();
                 txtApellidoProfesor.Text = row.Cells["Apellido"].Value.ToString();
                 txtDniProfesor.Text = row.Cells["Dni"].Value.ToString();
@@ -1072,52 +1076,62 @@ namespace Proyecto_final
             }
         }
 
-        private bool ValidarIdProfesor(int idEmpleado)
-        {
-            // Abrir conexión y realizar la consulta de verificación
-            ConectarBDD.abrir();
-            string consulta = "SELECT 1 FROM Empleados WHERE Id_empleado = @Id_empleado AND Id_perfil <> 2";
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.Parameters.AddWithValue("@Id_empleado", idEmpleado);
-
-            // Si la consulta devuelve algún resultado, el ID está en uso por otro perfil
-            bool idValido = comando.ExecuteScalar() == null;
-
-            ConectarBDD.cerrar();
-            return idValido;
-        }
 
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
 
+
+            if (Validar_datos_Profesores())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_AgregarProfesor";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
+                comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
+                comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
+                comando.Parameters.AddWithValue("@F_nacimiento", dateTimePickerProfesor.Value);
+                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
+                comando.Parameters.AddWithValue("@Direccion_num", txtAlturaProfesor.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
+                comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
+                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
+
+                comando.ExecuteNonQuery();
+
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Registro Agregado!");
+
+                Cargar_tabla_Empleado_Profesores();
+
+            }
+        }
+
+        private void btnModificarProfesor_Click(object sender, EventArgs e)
+        {
+            if (IdProfesor == 0)
+            {
+                MessageBox.Show("Seleccione un profesor de la lista");
+                return;
+            }
             if (!Validar_datos_Profesores())
             {
-                MessageBox.Show("Por favor, complete todos los campos requeridos.");
-                return;
-            }
-            // Convertir el ID del profesor ingresado en el TextBox
-            if (!int.TryParse(txtIDprofesor.Text, out int idEmpleado))
-            {
-                MessageBox.Show("Por favor, ingrese un ID válido.");
                 return;
             }
 
-            // Validar que el ID no esté en uso por otro perfil
-            if (!ValidarIdProfesor(idEmpleado))
-            {
-                MessageBox.Show("El ID ingresado ya está en uso por otro perfil. Intente con otro ID.");
-                return;
-            }
-
-            // Abrir la conexión y realizar la inserción
             ConectarBDD.abrir();
-            string consulta = "sp_AgregarProfesor";
+            string consulta = "sp_Modificar_Profesor";
             SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
             comando.CommandType = CommandType.StoredProcedure;
 
+            comando.Parameters.AddWithValue("@Id_empleado", IdProfesor);
             comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
             comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
             comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
+            comando.Parameters.AddWithValue("@F_nacimiento", dateTimePickerProfesor.Value);
             comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
             comando.Parameters.AddWithValue("@Direccion_num", txtAlturaProfesor.Text);
             comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
@@ -1125,115 +1139,56 @@ namespace Proyecto_final
             comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
             comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
 
-            // Validar y agregar la fecha de nacimiento
-            if (DateTime.TryParse(dateTimePickerProfesor.Text, out DateTime fechaNacimiento))
-            {
-                comando.Parameters.AddWithValue("@F_nacimiento", fechaNacimiento);
-            }
-
-            // Ejecutar la consulta
             comando.ExecuteNonQuery();
+
             ConectarBDD.cerrar();
 
-            MessageBox.Show("Registro Agregado!");
+            MessageBox.Show("Registro Modificado!");
 
-            // Recargar la tabla de profesores
             Cargar_tabla_Empleado_Profesores();
 
-        }
 
-        private void btnModificarProfesor_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-
-            try
-            {
-                int idProfesor = Convert.ToInt32(dgvProfesor.CurrentRow.Cells["Id_empleado"].Value);
-                int.TryParse(txtDireccionProfesor.Text, out int direccionNum);
-
-                SqlCommand comando = new SqlCommand("sp_ModificarProfesor", ConectarBDD.conectarbdd)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-
-                comando.Parameters.AddWithValue("@Id_empleado", idProfesor);
-                comando.Parameters.AddWithValue("@Nombre", txtNombreProfesor.Text);
-                comando.Parameters.AddWithValue("@Apellido", txtApellidoProfesor.Text);
-                comando.Parameters.AddWithValue("@Dni", txtDniProfesor.Text);
-                comando.Parameters.AddWithValue("@Direccion_calle", txtDireccionProfesor.Text);
-                comando.Parameters.AddWithValue("@Direccion_num", direccionNum);
-                comando.Parameters.AddWithValue("@Email", txtEmailProfesor.Text);
-                comando.Parameters.AddWithValue("@Telefono", txtTelefonoProfesor.Text);
-                comando.Parameters.AddWithValue("@F_nacimiento", dateTimePickerProfesor.Value);
-                comando.Parameters.AddWithValue("@Usuario", txtUsuarioProfesor.Text);
-                comando.Parameters.AddWithValue("@Contraseña", txtContraseñaProfesor.Text);
-
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Profesor modificado exitosamente.");
-                Cargar_tabla_Empleado_Profesores();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                ConectarBDD.cerrar();
-            }
         }
 
         private void btnEliminarProfesor_Click(object sender, EventArgs e)
         {
-            try
+            if (IdProfesor == 0)
             {
-                ConectarBDD.abrir();
-                string consulta = "sp_EliminarProfesor";
-                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-                comando.CommandType = CommandType.StoredProcedure;
-
-                // Asegurarse de que el ID sea un número válido
-                if (!int.TryParse(txtIDprofesor.Text, out int idProfesor))
-                {
-                    MessageBox.Show("Por favor, ingrese un ID de profesor válido.");
-                    return;
-                }
-
-                // Agregar el parámetro correcto
-                comando.Parameters.AddWithValue("@Id_empleado", idProfesor);
-
-                // Ejecutar el comando
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Profesor eliminado exitosamente!");
-
-                // Recargar la tabla
-                Cargar_tabla_Empleado_Profesores();
+                MessageBox.Show("Seleccione un profesor de la lista");
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al eliminar el profesor: " + ex.Message);
-            }
-            finally
-            {
-                ConectarBDD.cerrar();
-            }
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Eliminar_Profesor";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+
+            comando.Parameters.AddWithValue("@Id_empleado", IdProfesor);
+
+            comando.ExecuteNonQuery();
+
+            ConectarBDD.cerrar();
+
+            MessageBox.Show("Registro Eliminado!");
+
+            Cargar_tabla_Empleado_Profesores();
         }
 
         private void btnBuscarProfesor_Click(object sender, EventArgs e)
         {
-            int IDProfesor;
-            if (!int.TryParse(txtBuscarProfesor.Text, out IDProfesor))
+            // Intentar convertir el texto de búsqueda a un entero y asignarlo a la variable de clase IdProfesor
+            if (!int.TryParse(txtBuscarProfesor.Text, out IdProfesor))
             {
                 MessageBox.Show("Ingrese una matrícula válida");
                 return;
             }
 
-            // Abrir la conexión a la base de datos
             ConectarBDD.abrir();
 
-            // Consulta para obtener el profesor de la tabla empleados cuyo perfil es 2
             string consulta = "SELECT * FROM empleados WHERE Id_empleado = @Id_empleado AND Id_perfil = 2";
             SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.Parameters.AddWithValue("@Id_empleado", IDProfesor);
+            comando.Parameters.AddWithValue("@Id_empleado", IdProfesor);
 
             // Llenar el DataGridView con los datos del profesor
             SqlDataAdapter adapter = new SqlDataAdapter(comando);
@@ -1241,7 +1196,6 @@ namespace Proyecto_final
             adapter.Fill(dt);
             dgvProfesor.DataSource = dt;
 
-            // Cerrar la conexión a la base de datos
             ConectarBDD.cerrar();
 
             // Verificar si se encontraron resultados
@@ -1249,16 +1203,16 @@ namespace Proyecto_final
             {
                 MessageBox.Show("No se encontró ningún Profesor con ese ID.");
             }
-
+            
         }
 
         //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
-
         public void Cargar_tabla_Asignatura()
         {
             ConectarBDD.abrir();
 
-            string consulta = "select * from Asignatura";
+            string consulta = "Select*from Asignatura";
+
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
 
             DataTable dt = new DataTable();
@@ -1268,7 +1222,6 @@ namespace Proyecto_final
             dgvAsignatura.DataSource = dt;
             ConectarBDD.cerrar();
         }
-
         private bool Validar_datos_Asignatura()
         {
             errorProviderDatosVacios.Clear();
@@ -1281,172 +1234,165 @@ namespace Proyecto_final
             }
             if (txtAñoCursadaAsignatura.Text == "")
             {
-                errorProviderDatosVacios.SetError(txtAñoCursadaAsignatura, "El apellido está vacío");
+                errorProviderDatosVacios.SetError(txtAñoCursadaAsignatura, "El Año está vacío");
                 valido = false;
             }
             return valido;
         }
-
+        int IdAsignatura;
         private void dgvAsignatura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvAsignatura.Rows[e.RowIndex];
-                txtIDasignatura.Text = row.Cells["Id_asignatura"].Value.ToString();
+                IdAsignatura = Convert.ToInt32(row.Cells["Id_asignatura"].Value);
                 txtNombreAsignatura.Text = row.Cells["Nombre"].Value.ToString();
                 txtAñoCursadaAsignatura.Text = row.Cells["Año_cursada"].Value.ToString();
             }
         }
-
         private void btnAgregarAsignatura_Click(object sender, EventArgs e)
         {
-            if (!Validar_datos_Asignatura())
+            if (Validar_datos_Asignatura())
+            {
+                ConectarBDD.abrir();
+                string consulta = "sp_AgregarAsignatura";
+                SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
+                comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text));
+
+                comando.ExecuteNonQuery();
+
+                ConectarBDD.cerrar();
+
+                MessageBox.Show("Asignatura Agregada!");
+
+                Cargar_tabla_Asignatura(); // Actualizar DataGridView con las asignaturas
+            }
+            else
             {
                 MessageBox.Show("Por favor, complete todos los campos requeridos.");
-                return;
             }
 
-            // Convertir el ID del profesor ingresado en el TextBox
-            if (!int.TryParse(txtIDprofesor.Text, out int idEmpleadoProfesor))
+        }
+        private void btnModificarAsignatura_Click(object sender, EventArgs e)
+        {
+            if (IdAsignatura == 0)
             {
-                MessageBox.Show("Por favor, ingrese un ID de empleado válido.");
+                MessageBox.Show("Seleccione una asignatura de la lista");
+                return;
+            }
+            if (!Validar_datos_Asignatura())
+            {
                 return;
             }
 
-            // Abrir la conexión y realizar la inserción
             ConectarBDD.abrir();
-            string consulta = "sp_AgregarAsignatura";
+            string consulta = "sp_ModificarAsignatura";
             SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
             comando.CommandType = CommandType.StoredProcedure;
 
-            // Agregar parámetros para el procedimiento
+            comando.Parameters.AddWithValue("@Id_asignatura", IdAsignatura);
             comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
             comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text));
-            comando.Parameters.AddWithValue("@Id_empleado", idEmpleadoProfesor);
 
-            try
-            {
-                // Ejecutar la consulta
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Asignatura Agregada!");
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Error al agregar asignatura: {ex.Message}");
-            }
-            finally
-            {
-                ConectarBDD.cerrar();
-            }
 
-            // Recargar la tabla de asignaturas
+            comando.ExecuteNonQuery();
+
+            ConectarBDD.cerrar();
+
+            MessageBox.Show("Registro Modificado!");
+
             Cargar_tabla_Asignatura();
+
         }
-
-        private void btnModificarAsignatura_Click(object sender, EventArgs e)
-        {
-            ConectarBDD.abrir();
-
-            try
-            {
-                // Obtener el ID de la asignatura seleccionada en el DataGridView
-                int idAsignatura = Convert.ToInt32(dgvAsignatura.CurrentRow.Cells["Id_asignatura"].Value);
-
-                // Crear el comando para ejecutar el procedimiento almacenado
-                SqlCommand comando = new SqlCommand("sp_ModificarAsignatura", ConectarBDD.conectarbdd)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-
-                // Agregar los parámetros necesarios
-                comando.Parameters.AddWithValue("@Id_asignatura", idAsignatura);
-                comando.Parameters.AddWithValue("@Nombre", txtNombreAsignatura.Text);
-                comando.Parameters.AddWithValue("@Año_cursada", Convert.ToInt32(txtAñoCursadaAsignatura.Text)); // Asegúrate de tener un TextBox para el año
-
-                // Ejecutar la consulta
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Asignatura modificada exitosamente.");
-
-                // Recargar la tabla de asignaturas
-                Cargar_tabla_Asignatura();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                ConectarBDD.cerrar();
-            }
-        }
-
         private void btnEliminarAsignatura_Click(object sender, EventArgs e)
         {
+
+            if (IdAsignatura == 0)
+            {
+                MessageBox.Show("Seleccione una asignatura de la lista");
+                return;
+            }
+
+            ConectarBDD.abrir();
+            string consulta = "sp_Eliminar_Asignatura";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+
+            comando.Parameters.AddWithValue("@Id_asignatura", IdAsignatura);
+
+            comando.ExecuteNonQuery();
+
+            ConectarBDD.cerrar();
+
+            MessageBox.Show("Registro Eliminado!");
+
+            Cargar_tabla_Asignatura();
+
+        }
+        private void btnBuscarAsignatura_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtBuscarAsignatura.Text, out IdAsignatura))
+            {
+                MessageBox.Show("Ingrese una matrícula válida");
+                return;
+            }
+
             ConectarBDD.abrir();
 
-            try
+            string consulta = @"
+            SELECT *  FROM Asignatura 
+            WHERE Id_asignatura = @Id_asignatura";
+
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.Parameters.AddWithValue("@Id_asignatura", IdAsignatura);
+
+            // Llenar el DataGridView con los datos de la asignatura y su profesor
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvAsignatura.DataSource = dt;
+
+            ConectarBDD.cerrar();
+
+            // Verificar si se encontraron resultados
+            if (dt.Rows.Count == 0)
             {
-                // Obtener el ID de la asignatura seleccionada en el DataGridView
-                int idAsignatura = Convert.ToInt32(dgvAsignatura.CurrentRow.Cells["Id_asignatura"].Value);
-
-                // Crear el comando para ejecutar el procedimiento almacenado
-                SqlCommand comando = new SqlCommand("sp_EliminarAsignatura", ConectarBDD.conectarbdd)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-
-                // Agregar el parámetro necesario
-                comando.Parameters.AddWithValue("@Id_asignatura", idAsignatura);
-
-                // Ejecutar la consulta
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Asignatura eliminada exitosamente.");
-
-                // Recargar la tabla de asignaturas
-                Cargar_tabla_Asignatura();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                // Cerrar la conexión a la base de datos
-                ConectarBDD.cerrar();
+                MessageBox.Show("No se encontró ninguna asignatura con ese ID.");
             }
         }
+
         //CARGAS de todos los registros 
 
         private void btnCargarAlumnos_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Alumno();
         }
-
         private void btnCargarProfesores_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Empleado_Profesores();
         }
-
         private void btnCargarAdministrativos_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Empleado_Administrativos();
         }
-
         private void btnCargarCarreras_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Carreras();
         }
-
         private void btnCargarAsignaturas_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Asignatura();
         }
-
         private void btnCargarExamenes_Click(object sender, EventArgs e)
         {
             Cargar_tabla_Examenes();
         }
 
+        //LIMPIA LOS TEXTBOX
         private void btnLimpiartxtAdministrativos_Click(object sender, EventArgs e)
         {
             IdAdministrativo = 0;
@@ -1470,41 +1416,29 @@ namespace Proyecto_final
             txtPlanEstudioCarrera.Clear();
             txtResolucionCarrera.Clear();
         }
-        private void btnBuscarAsignatura_Click(object sender, EventArgs e)
+
+        private void btnLimpiartxtProfesor_Click(object sender, EventArgs e)
         {
-            int IDAsignatura;
-            if (!int.TryParse(txtBuscarAsignatura.Text, out IDAsignatura))
-            {
-                MessageBox.Show("Ingrese un ID de asignatura válido");
-                return;
-            }
-
-            // Abrir la conexión a la base de datos
-            ConectarBDD.abrir();
-
-            // Consulta para obtener la asignatura asociada con su profesor en la tabla empleados
-            string consulta = @"
-            SELECT *  FROM Asignatura 
-            WHERE Id_asignatura = @Id_asignatura";
-
-            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
-            comando.Parameters.AddWithValue("@Id_asignatura", IDAsignatura);
-
-            // Llenar el DataGridView con los datos de la asignatura y su profesor
-            SqlDataAdapter adapter = new SqlDataAdapter(comando);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            dgvAsignatura.DataSource = dt;
-
-            // Cerrar la conexión a la base de datos
-            ConectarBDD.cerrar();
-
-            // Verificar si se encontraron resultados
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("No se encontró ninguna asignatura con ese ID.");
-            }
+            IdProfesor = 0;
+            txtBuscarProfesor.Clear();
+            txtNombreProfesor.Clear();
+            txtApellidoProfesor.Clear();
+            txtDniProfesor.Clear();
+            txtDireccionProfesor.Clear();
+            txtAlturaProfesor.Clear();
+            txtEmailProfesor.Clear();
+            txtTelefonoProfesor.Clear();
+            txtUsuarioProfesor.Clear();
+            txtContraseñaProfesor.Clear();
         }
+
+        private void btnLimpiartxtAsignaturas_Click(object sender, EventArgs e)
+        {
+            IdAsignatura = 0;
+            txtNombreAsignatura.Clear();
+            txtAñoCursadaAsignatura.Clear();
+        }
+
     }
 }
 
