@@ -271,7 +271,7 @@ INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_em
 (7.5, '2024-07-01', 9, 2, 3, 2); -- Pedro en Computación 2 (Final)
 
 select * from Alumnos
-
+select * from Empleados
 INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
 ('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoprof', '12345', 2),
 ('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
@@ -298,19 +298,30 @@ INSERT INTO Permisos (Tipo_permiso) VALUES
 ('Gestionar Profesores'),
 ('Gestionar Administrativos');
 
+INSERT INTO Permisos (Tipo_permiso) VALUES
+('visualizar información personal');
+
 
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
-(1, 2), -- Profesor puede gestionar alumnos
-(2, 2), -- Profesor puede gestionar asignaturas
-(3, 2), -- Profesor puede gestionar notas
-(4, 2), -- Profesor puede gestionar exámenes
-(5, 4), -- Administrador puede gestionar usuarios
-(1, 4), -- Administrador puede gestionar alumnos
-(2, 4), -- Administrador puede gestionar asignaturas
-(3, 4), -- Administrador puede gestionar notas
-(4, 4); -- Administrador puede gestionar exámenes
+(1, 2), -- Profesor no puede gestionar alumnos
+(2, 2), -- Profesor no puede gestionar asignaturas
+(5, 4); -- Administrador no puede gestionar usuarios
 
-select * from Perfiles
+INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
+(5, 2), -- Profesor no puede gestinar usuarios
+(6, 2), -- Profesor no puede gertionar carreras
+(1, 1), -- Alumno no puede gestionar alumnos
+(2, 1), -- Alumno no puede gestionar asignaturas
+(4, 1), -- Alumno no puede gestionar examenes
+(5, 1), -- Alumno no puede gestionar usuarios
+(6, 1), -- Alumno no puede gestionar carreras
+(7, 1), -- Alumno no puede gestionar profesores
+(8, 1); -- Alumno no puede gestionar administrativos
+
+INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
+(1011, 1); -- Alumno puede visualizar información personal
+
+
 
 --------------Procedimientos Almacenados----------------------------
 

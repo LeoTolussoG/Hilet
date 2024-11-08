@@ -47,7 +47,7 @@ namespace Proyecto_final
             Cargar_tabla_Empleado_Profesores();
             Cargar_tabla_Empleado_Administrativos();
             Cargar_tabla_Alumno();
-            // Cargar_tabla_Carreras();
+            Cargar_tabla_Carreras();
             Cargar_tabla_Examenes();
             Cargar_tabla_Asignatura();
             CargarPermisos(IdPerfilUsuario);
@@ -84,17 +84,27 @@ namespace Proyecto_final
         public void AplicarPermisos(List<string> permisos)
         {
             //Si el permiso para gestionar alumnos no está en la lista entonces deshabilita el boton
-            if (!permisos.Contains("Gestionar Alumnos"))
+            if (permisos.Contains("Gestionar Alumnos"))
             {
-                btnAgregarAlumno.Enabled = false;
-                btnModificarAlumno.Enabled = false;
-                btnEliminarAlumno.Enabled = false;
+                tabControl2.TabPages.Remove(tabPage1);
             }
-            if (!permisos.Contains("Gestionar Asignaturas"))
+            if (permisos.Contains("Gestionar Administrativos"))
             {
-                btnAgregarAsignatura.Enabled = false;
+                tabControl2.TabPages.Remove(tabPage3);
             }
-            if (!permisos.Contains("Gestionar Usuarios"))
+            if (permisos.Contains("Gestionar Profesores"))
+            {
+                tabControl2.TabPages.Remove(tabPage2);
+            }
+            if (permisos.Contains("Gestionar Materias"))
+            {
+                tabControl2.TabPages.Remove(tabPage4);
+            }
+            if (permisos.Contains("Gestionar Carreras"))
+            {
+                tabControl2.TabPages.Remove(tabPage5);
+            }
+            if (permisos.Contains("Gestionar Usuarios"))
             {
                 txtUsuarioAdministrativo.ReadOnly = true;
                 txtContraseñaAdministrativo.ReadOnly = true;
@@ -102,6 +112,10 @@ namespace Proyecto_final
                 txtContraseñaAlumno.ReadOnly = true;
                 txtUsuarioProfesor.ReadOnly = true;
                 txtContraseñaProfesor.ReadOnly = true;
+            }
+            if (permisos.Contains("visualizar información personal"))
+            {
+                //tabControl1.TabPages.Remove(tbpPerfil);
             }
         }
 
