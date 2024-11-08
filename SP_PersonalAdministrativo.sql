@@ -19,7 +19,10 @@ end;
 
 --------------------------------------------------------------------------------------
 
+drop procedure sp_Modificar_Administrativo
+
 create procedure sp_Modificar_Administrativo
+@Id_empleado int,
 @Nombre varchar(40),
 @Apellido varchar(40),
 @Dni varchar(20),
@@ -44,7 +47,9 @@ begin
 		F_nacimiento = @F_nacimiento, 
 		Usuario = @Usuario, 
 		Contraseña = @Contraseña,
-		Id_perfil = 3;
+		Id_perfil = 3
+	where
+		Id_empleado = @Id_empleado
 end;
 
 --------------------------------------------------------------------------------------

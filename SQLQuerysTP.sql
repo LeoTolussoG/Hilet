@@ -273,7 +273,7 @@ INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_em
 select * from Alumnos
 
 INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
-('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoadmin', '12345', 4),
+('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoprof', '12345', 2),
 ('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
 ('María', 'Gómez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),
 ('Carlos', 'López', '11223344', 'Av. Libertador', 789, 'carlos.lopez@ejemplo.com', '3333-4444', '1985-09-15', 'admin1', 'adminpass', 3),
@@ -293,6 +293,12 @@ INSERT INTO Permisos (Tipo_permiso) VALUES
 ('Gestionar Exámenes'),
 ('Gestionar Usuarios');
 
+INSERT INTO Permisos (Tipo_permiso) VALUES
+('Gestionar Carreras'),
+('Gestionar Profesores'),
+('Gestionar Administrativos');
+
+
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (1, 2), -- Profesor puede gestionar alumnos
 (2, 2), -- Profesor puede gestionar asignaturas
@@ -305,7 +311,6 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (4, 4); -- Administrador puede gestionar exámenes
 
 select * from Perfiles
-
 
 --------------Procedimientos Almacenados----------------------------
 
