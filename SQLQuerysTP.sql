@@ -777,4 +777,20 @@ BEGIN
     WHERE Id_examenes = @Id_examenes;
 END;
 
+/*PROCEDIMIENTO PARA ACTUALIZAR USUARIO Y CONTRASEÑA:*/
+CREATE PROCEDURE sp_ActualizarContraseña
+    @Usuario VARCHAR(50),  
+    @NuevaContraseña NVARCHAR(50)
+AS
+BEGIN
+    -- Actualizar la contraseña de un alumno
+    UPDATE Alumnos
+    SET Contraseña = @NuevaContraseña
+    WHERE Usuario = @Usuario;
+
+    -- Actualizar la contraseña de un empleado (administrador)
+    UPDATE Empleados
+    SET Contraseña = @NuevaContraseña
+    WHERE Usuario = @Usuario AND Id_perfil = 3;
+END;
 

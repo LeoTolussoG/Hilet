@@ -281,12 +281,13 @@ namespace Proyecto_final
             return valido;
 
         }
+        int IdAlumno;
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) //Me fijo que haya un reglon seleccionado
             {
                 DataGridViewRow row = dgvAlumnos.Rows[e.RowIndex];//asigno los valores a los textbox
-                txtIDAlumno.Text = row.Cells["Id_alumno"].Value.ToString();
+                IdAlumno = Convert.ToInt32(row.Cells["Id_alumno"].Value);
                 txtNombreAlumno.Text = row.Cells["Nombre"].Value.ToString();
                 txtApellidoAlumno.Text = row.Cells["Apellido"].Value.ToString();
                 txtDNIAlumno.Text = row.Cells["Dni"].Value.ToString();
@@ -307,7 +308,7 @@ namespace Proyecto_final
                 string consulta = "sp_AgregarAlumno";
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@Id_perfil", 1);
+
                 comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
                 comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
                 comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
@@ -336,7 +337,7 @@ namespace Proyecto_final
                 comando.CommandType = CommandType.StoredProcedure;
 
 
-                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_alumno", IdAlumno);
                 comando.Parameters.AddWithValue("@Id_perfil", 1);
                 comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
                 comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
@@ -366,7 +367,7 @@ namespace Proyecto_final
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_alumno", IdAlumno);
                 comando.Parameters.AddWithValue("@Id_perfil", 1);
 
                 comando.ExecuteNonQuery();
@@ -1227,7 +1228,7 @@ namespace Proyecto_final
             {
                 MessageBox.Show("No se encontró ningún Profesor con ese ID.");
             }
-            
+
         }
 
         //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
@@ -1463,6 +1464,27 @@ namespace Proyecto_final
             txtAñoCursadaAsignatura.Clear();
         }
 
+        private void btnLimpiartxtAlumnos_Click(object sender, EventArgs e)
+        {
+            IdProfesor = 0;
+            txtBuscarAlumno.Clear();
+            txtNombreAlumno.Clear();
+            txtApellidoAlumno.Clear();
+            txtDNIAlumno.Clear();
+            dateTimeAlumno.Value = DateTime.Now; // Para poner la fecha actual
+            txtDireccionAlumno.Clear();
+            txtAlturaAlumno.Clear();
+            txtEmailAlumno.Clear();
+            txtTelAlumno.Clear();
+            txtUsuarioAlumno.Clear();
+            txtContraseñaAlumno.Clear();
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            FrmPerfil perfilForm = new FrmPerfil (PerfilUsuario);
+            perfilForm.ShowDialog();
+        }
     }
 }
 
