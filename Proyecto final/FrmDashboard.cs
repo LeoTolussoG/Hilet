@@ -281,12 +281,13 @@ namespace Proyecto_final
             return valido;
 
         }
+        int IdAlumno;
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) //Me fijo que haya un reglon seleccionado
             {
                 DataGridViewRow row = dgvAlumnos.Rows[e.RowIndex];//asigno los valores a los textbox
-                txtIDAlumno.Text = row.Cells["Id_alumno"].Value.ToString();
+                IdAlumno = Convert.ToInt32(row.Cells["Id_alumno"].Value);
                 txtNombreAlumno.Text = row.Cells["Nombre"].Value.ToString();
                 txtApellidoAlumno.Text = row.Cells["Apellido"].Value.ToString();
                 txtDNIAlumno.Text = row.Cells["Dni"].Value.ToString();
@@ -307,7 +308,7 @@ namespace Proyecto_final
                 string consulta = "sp_AgregarAlumno";
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@Id_perfil", 1);
+
                 comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
                 comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
                 comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
@@ -336,7 +337,7 @@ namespace Proyecto_final
                 comando.CommandType = CommandType.StoredProcedure;
 
 
-                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_alumno", IdAlumno);
                 comando.Parameters.AddWithValue("@Id_perfil", 1);
                 comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
                 comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
@@ -366,7 +367,7 @@ namespace Proyecto_final
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@Id_alumno", Convert.ToInt32(txtIDAlumno.Text));
+                comando.Parameters.AddWithValue("@Id_alumno", IdAlumno);
                 comando.Parameters.AddWithValue("@Id_perfil", 1);
 
                 comando.ExecuteNonQuery();
