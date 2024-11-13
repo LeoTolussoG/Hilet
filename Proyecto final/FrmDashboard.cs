@@ -1228,7 +1228,7 @@ namespace Proyecto_final
             {
                 MessageBox.Show("No se encontró ningún Profesor con ese ID.");
             }
-            
+
         }
 
         //PESTAÑA GESTION ACADEMICA: ASIGNATURAS
@@ -1464,6 +1464,27 @@ namespace Proyecto_final
             txtAñoCursadaAsignatura.Clear();
         }
 
+        private void btnLimpiartxtAlumnos_Click(object sender, EventArgs e)
+        {
+            IdProfesor = 0;
+            txtBuscarAlumno.Clear();
+            txtNombreAlumno.Clear();
+            txtApellidoAlumno.Clear();
+            txtDNIAlumno.Clear();
+            dateTimeAlumno.Value = DateTime.Now; // Para poner la fecha actual
+            txtDireccionAlumno.Clear();
+            txtAlturaAlumno.Clear();
+            txtEmailAlumno.Clear();
+            txtTelAlumno.Clear();
+            txtUsuarioAlumno.Clear();
+            txtContraseñaAlumno.Clear();
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            FrmPerfil perfilForm = new FrmPerfil (PerfilUsuario);
+            perfilForm.ShowDialog();
+        }
     }
 }
 

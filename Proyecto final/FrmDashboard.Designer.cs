@@ -50,7 +50,6 @@
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             perfilToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesionToolStripMenuItem = new ToolStripMenuItem();
-            salirToolStripMenuItem1 = new ToolStripMenuItem();
             panel3 = new Panel();
             tabControl1 = new TabControl();
             tbpInicio = new TabPage();
@@ -355,31 +354,31 @@
             // abrirToolStripMenuItem
             // 
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(154, 26);
+            abrirToolStripMenuItem.Size = new Size(224, 26);
             abrirToolStripMenuItem.Text = "Abrir";
             // 
             // guardarToolStripMenuItem
             // 
             guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(154, 26);
+            guardarToolStripMenuItem.Size = new Size(224, 26);
             guardarToolStripMenuItem.Text = "Guardar";
             // 
             // exportarToolStripMenuItem
             // 
             exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            exportarToolStripMenuItem.Size = new Size(154, 26);
+            exportarToolStripMenuItem.Size = new Size(224, 26);
             exportarToolStripMenuItem.Text = "Exportar";
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(154, 26);
+            salirToolStripMenuItem.Size = new Size(224, 26);
             salirToolStripMenuItem.Text = "Salir";
             // 
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
-            usuarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { perfilToolStripMenuItem, cerrarSesionToolStripMenuItem, salirToolStripMenuItem1 });
+            usuarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { perfilToolStripMenuItem, cerrarSesionToolStripMenuItem });
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             usuarioToolStripMenuItem.Size = new Size(73, 24);
             usuarioToolStripMenuItem.Text = "Usuario";
@@ -387,20 +386,15 @@
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(177, 26);
+            perfilToolStripMenuItem.Size = new Size(224, 26);
             perfilToolStripMenuItem.Text = "Perfil";
+            perfilToolStripMenuItem.Click += perfilToolStripMenuItem_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(177, 26);
+            cerrarSesionToolStripMenuItem.Size = new Size(224, 26);
             cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
-            // 
-            // salirToolStripMenuItem1
-            // 
-            salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            salirToolStripMenuItem1.Size = new Size(177, 26);
-            salirToolStripMenuItem1.Text = "Salir";
             // 
             // panel3
             // 
@@ -777,7 +771,7 @@
             dgvAlumnos.AccessibleRole = AccessibleRole.None;
             dgvAlumnos.BackgroundColor = Color.White;
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlumnos.Location = new Point(9, 36);
+            dgvAlumnos.Location = new Point(16, 40);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
             dgvAlumnos.Size = new Size(1093, 314);
@@ -867,7 +861,7 @@
             label21.AutoSize = true;
             label21.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label21.ForeColor = Color.White;
-            label21.Location = new Point(45, 102);
+            label21.Location = new Point(40, 151);
             label21.Name = "label21";
             label21.Size = new Size(114, 21);
             label21.TabIndex = 18;
@@ -878,7 +872,7 @@
             txtUsuarioAlumno.BackColor = Color.Silver;
             txtUsuarioAlumno.BorderStyle = BorderStyle.None;
             txtUsuarioAlumno.ForeColor = Color.FromArgb(64, 64, 64);
-            txtUsuarioAlumno.Location = new Point(186, 42);
+            txtUsuarioAlumno.Location = new Point(201, 82);
             txtUsuarioAlumno.Name = "txtUsuarioAlumno";
             txtUsuarioAlumno.Size = new Size(177, 23);
             txtUsuarioAlumno.TabIndex = 19;
@@ -888,7 +882,7 @@
             txtContraseñaAlumno.BackColor = Color.Silver;
             txtContraseñaAlumno.BorderStyle = BorderStyle.None;
             txtContraseñaAlumno.ForeColor = Color.FromArgb(64, 64, 64);
-            txtContraseñaAlumno.Location = new Point(186, 103);
+            txtContraseñaAlumno.Location = new Point(201, 150);
             txtContraseñaAlumno.Name = "txtContraseñaAlumno";
             txtContraseñaAlumno.PasswordChar = '*';
             txtContraseñaAlumno.Size = new Size(177, 23);
@@ -899,7 +893,7 @@
             label22.AutoSize = true;
             label22.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(45, 43);
+            label22.Location = new Point(40, 80);
             label22.Name = "label22";
             label22.Size = new Size(72, 21);
             label22.TabIndex = 17;
@@ -1133,6 +1127,7 @@
             btnLimpiartxtAlumnos.TabIndex = 6;
             btnLimpiartxtAlumnos.Text = "Limpiar información";
             btnLimpiartxtAlumnos.UseVisualStyleBackColor = true;
+            btnLimpiartxtAlumnos.Click += btnLimpiartxtAlumnos_Click;
             // 
             // btnCargarAlumnos
             // 
@@ -2992,7 +2987,6 @@
         private ToolStripMenuItem usuarioToolStripMenuItem;
         private ToolStripMenuItem perfilToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
-        private ToolStripMenuItem salirToolStripMenuItem1;
         private Panel panel15;
         private Panel panel19;
         private Panel panel20;
