@@ -22,6 +22,7 @@ namespace Proyecto_final
                 FrmDashboard frmDashboard = new FrmDashboard(idPerfil, txtUsuario.Text); // Pasa el IdPerfil y el nombre de usuario al dashboard 
                 frmDashboard.Show();
                 this.Close();
+                MessageBox.Show($"{idPerfil}");
             }
             else
             {

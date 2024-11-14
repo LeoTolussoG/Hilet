@@ -323,7 +323,7 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (9, 1); -- Alumno puede visualizar información personal
-
+select * from PermisosXPerfil
 
 
 --------------Procedimientos Almacenados----------------------------

@@ -56,6 +56,33 @@ namespace Proyecto_final
             Cargar_ComboBox_Profesor();
             Cargar_ComboBox_Instancias();
             Cargar_ComboBox_Asignatura();
+
+            // cajas de texto para nombres con validación para solo escribir letras
+            txtNombreAdministrativo.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreAlumno.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreAsignatura.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreCarrera.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreProfesor.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+
+            // cajas de texto para apellidos con validación para solo escribir letras
+            txtApellidoAdministrativo.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtApellidoAlumno.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtApellidoProfesor.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+
+            // cajas de texto para DNI con validación para ingresar numeros
+            txtDniAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtDNIAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtDniProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+
+            // cajas de texto para numeros de telefono con validación para ingresar numeros
+            txtTelAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtTelefonoAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtTelefonoProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+
+            // cajas de texto para Altura de calle con validación para ingresar numeros
+            txtAlturaAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtAlturaAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtAlturaProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
         }
         //METODO PATA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
         public void CargarPermisos(int idPerfil)
@@ -120,6 +147,20 @@ namespace Proyecto_final
             }
         }
 
+        private void textBox_sinNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada si es un número
+            }
+        }
+        private void textBox_soloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada si es un número
+            }
+        }
 
         //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
         private void btnDashExamenes_Click(object sender, EventArgs e)
@@ -409,7 +450,7 @@ namespace Proyecto_final
         }
 
         //PESTAÑA GESTION ACADEMICA: ADMINISTRATIVOS --------------------------------------------------------------
-        public void Cargar_tabla_Empleado_Administrativos()         //Carga de registros el datagridview de Administrativos
+        public void Cargar_tabla_Empleado_Administrativos()    //Carga de registros el datagridview de Administrativos
         {
             ConectarBDD.abrir();
             string consulta = "sp_Cargar_Tabla_Administrativos";
@@ -423,7 +464,8 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
-        private bool Validar_Datos_Administrativo()             //Verifico que los campos cumplan con los requisitos
+        
+        private bool Validar_Datos_Administrativo()     //Verifico que los campos no queden vacios
         {
             errorProviderDatosVacios.Clear();
             bool valido = true;
