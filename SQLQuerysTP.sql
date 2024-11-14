@@ -301,6 +301,9 @@ INSERT INTO Permisos (Tipo_permiso) VALUES
 INSERT INTO Permisos (Tipo_permiso) VALUES
 ('visualizar información personal');
 
+DBCC CHECKIDENT (permisos, RESEED, 0)
+select * from Permisos
+
 
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (1, 2), -- Profesor no puede gestionar alumnos
@@ -319,7 +322,7 @@ INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
 (8, 1); -- Alumno no puede gestionar administrativos
 
 INSERT INTO PermisosXPerfil (Id_permisos, Id_perfil) VALUES
-(1011, 1); -- Alumno puede visualizar información personal
+(9, 1); -- Alumno puede visualizar información personal
 
 
 

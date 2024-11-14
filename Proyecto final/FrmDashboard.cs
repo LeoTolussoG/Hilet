@@ -36,10 +36,11 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
-        public FrmDashboard(int idPerfil) //constructor del formulario
+        public FrmDashboard(int idPerfil, string perfilusuario) //constructor del formulario
         {
             InitializeComponent();
             IdPerfilUsuario = idPerfil;//recibe el id del perfil del usuario
+            PerfilUsuario = perfilusuario; // recibe el nombre de usuario logueado
         }
         private void FrmDashboard_Load(object sender, EventArgs e) //evento que se activa cuando se abre el formulario
         {
@@ -1481,9 +1482,16 @@ namespace Proyecto_final
         }
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            FrmPerfil perfilForm = new FrmPerfil (PerfilUsuario);
+        {
+            FrmPerfil perfilForm = new FrmPerfil(PerfilUsuario);
             perfilForm.ShowDialog();
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.Show();
+            this.Close();
         }
     }
 }
