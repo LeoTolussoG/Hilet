@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -167,6 +167,7 @@ namespace Proyecto_final
         private void btnDashExamenes_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos examenes";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Examenes";
@@ -182,6 +183,7 @@ namespace Proyecto_final
         private void btnDashAlumnos_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos alumnos registrados";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Alumnos";
@@ -197,6 +199,7 @@ namespace Proyecto_final
         private void btnDashProfesores_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos Profesores registrados";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Profesores";
@@ -212,6 +215,7 @@ namespace Proyecto_final
         private void btnDashAsignaturas_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimas Asignaturas";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Asignaturas";
@@ -226,6 +230,7 @@ namespace Proyecto_final
         private void btnDashAdministrativos_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimos administrativos registrados";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Administrativos";
@@ -240,6 +245,7 @@ namespace Proyecto_final
         private void btnDashCarreras_Click(object sender, EventArgs e)
         {
             lblTituloDashboard.Text = "Ultimas carreras";
+            lblTituloDashboard.Visible = true;
 
             ConectarBDD.abrir();
             string consulta = "sp_Dash_Carreras";
@@ -361,6 +367,7 @@ namespace Proyecto_final
                 SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
                 comando.CommandType = CommandType.StoredProcedure;
 
+                comando.Parameters.AddWithValue("@Id_perfil", 1);
                 comando.Parameters.AddWithValue("@Nombre", txtNombreAlumno.Text);
                 comando.Parameters.AddWithValue("@Apellido", txtApellidoAlumno.Text);
                 comando.Parameters.AddWithValue("@Dni", txtDNIAlumno.Text);
@@ -905,7 +912,6 @@ namespace Proyecto_final
                 DataGridViewRow row = dgvExamenes.Rows[e.RowIndex];
 
                 string idExamen = row.Cells["Id_examenes"].Value.ToString();
-                MessageBox.Show("ID del Examen seleccionado: " + idExamen);
                 txtNotaExamen.Text = row.Cells["Nota"].Value.ToString();
                 dateTimeExamen.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
                 cbAlumnoExamen.SelectedItem = row.Cells["Alumno"].Value.ToString();
@@ -1033,7 +1039,7 @@ namespace Proyecto_final
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.AddWithValue("@Id_examenes", idExamen);
-                comando.Parameters.AddWithValue("@Nota", int.Parse(txtNotaExamen.Text));
+                comando.Parameters.AddWithValue("@Nota", decimal.Parse(txtNotaExamen.Text));
                 comando.Parameters.AddWithValue("@Fecha", dateTimeExamen.Value);
                 comando.Parameters.AddWithValue("@Nombre_alumno", cbAlumnoExamen.SelectedItem.ToString());
                 comando.Parameters.AddWithValue("@Asignatura", cbAsignaturaExamen.SelectedItem.ToString());
@@ -1063,7 +1069,37 @@ namespace Proyecto_final
 
             MessageBox.Show("Examen eliminado");
             Cargar_tabla_Examenes();
+        }
+        private void btnBuscarExamen_Click(object sender, EventArgs e)
+        {
+            // Verifica que el usuario ingresó un apellido
+            if (string.IsNullOrWhiteSpace(txtBuscarExamen.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el apellido del alumno.");
+                return;
+            }
 
+            string apellidoAlumno = txtBuscarExamen.Text;
+
+            ConectarBDD.abrir();
+            string consulta = "sp_BuscarExamenesPorApellido";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@Apellido_alumno", apellidoAlumno);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            dgvExamenes.DataSource = dt;
+
+            ConectarBDD.cerrar();
+
+            // Verifica si no se encontraron exámenes
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron exámenes para el alumno especificado.");
+            }
         }
 
         //PESTAÑA GESTION ACADEMICA: PROFESORES
@@ -1548,6 +1584,15 @@ namespace Proyecto_final
             txtTelAlumno.Clear();
             txtUsuarioAlumno.Clear();
             txtContraseñaAlumno.Clear();
+        }
+        private void btnLimpiartxtExamenes_Click(object sender, EventArgs e)
+        {
+            txtNotaExamen.Clear();
+            cbAlumnoExamen.SelectedIndex = -1;
+            cbAsignaturaExamen.SelectedIndex = -1;
+            cbInstanciaExamen.SelectedIndex = -1;
+            cbProfesorExamen.SelectedIndex = -1;
+            dateTimeExamen.Value = DateTime.Now;
         }
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)

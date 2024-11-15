@@ -109,7 +109,7 @@
             txtApellidoAlumno = new TextBox();
             txtDNIAlumno = new TextBox();
             panel24 = new Panel();
-            btnLimpiartxtAlumnos = new Button();
+            LimpiartxtAlumnos = new Button();
             btnCargarAlumnos = new Button();
             btnBuscarAlumno = new Button();
             txtBuscarAlumno = new TextBox();
@@ -477,6 +477,7 @@
             lblTituloDashboard.Size = new Size(53, 20);
             lblTituloDashboard.TabIndex = 2;
             lblTituloDashboard.Text = "label5";
+            lblTituloDashboard.Visible = false;
             // 
             // panel4
             // 
@@ -1121,7 +1122,7 @@
             // panel24
             // 
             panel24.BackColor = Color.FromArgb(0, 0, 64);
-            panel24.Controls.Add(btnLimpiartxtAlumnos);
+            panel24.Controls.Add(LimpiartxtAlumnos);
             panel24.Controls.Add(btnCargarAlumnos);
             panel24.Controls.Add(btnBuscarAlumno);
             panel24.Controls.Add(txtBuscarAlumno);
@@ -1131,15 +1132,15 @@
             panel24.Size = new Size(1282, 41);
             panel24.TabIndex = 24;
             // 
-            // btnLimpiartxtAlumnos
+            // LimpiartxtAlumnos
             // 
-            btnLimpiartxtAlumnos.Location = new Point(190, 8);
-            btnLimpiartxtAlumnos.Name = "btnLimpiartxtAlumnos";
-            btnLimpiartxtAlumnos.Size = new Size(163, 27);
-            btnLimpiartxtAlumnos.TabIndex = 6;
-            btnLimpiartxtAlumnos.Text = "Limpiar información";
-            btnLimpiartxtAlumnos.UseVisualStyleBackColor = true;
-            btnLimpiartxtAlumnos.Click += btnLimpiartxtAlumnos_Click;
+            LimpiartxtAlumnos.Location = new Point(190, 8);
+            LimpiartxtAlumnos.Name = "LimpiartxtAlumnos";
+            LimpiartxtAlumnos.Size = new Size(163, 27);
+            LimpiartxtAlumnos.TabIndex = 6;
+            LimpiartxtAlumnos.Text = "Limpiar información";
+            LimpiartxtAlumnos.UseVisualStyleBackColor = true;
+            LimpiartxtAlumnos.Click += btnLimpiartxtAlumnos_Click;
             // 
             // btnCargarAlumnos
             // 
@@ -2802,6 +2803,7 @@
             btnLimpiartxtExamenes.TabIndex = 11;
             btnLimpiartxtExamenes.Text = "Limpiar información";
             btnLimpiartxtExamenes.UseVisualStyleBackColor = true;
+            btnLimpiartxtExamenes.Click += btnLimpiartxtExamenes_Click;
             // 
             // btnCargarExamenes
             // 
@@ -2823,6 +2825,7 @@
             btnBuscarExamen.Size = new Size(39, 36);
             btnBuscarExamen.TabIndex = 5;
             btnBuscarExamen.UseVisualStyleBackColor = true;
+            btnBuscarExamen.Click += btnBuscarExamen_Click;
             // 
             // txtBuscarExamen
             // 
@@ -2832,7 +2835,7 @@
             txtBuscarExamen.ForeColor = Color.FromArgb(64, 64, 64);
             txtBuscarExamen.Location = new Point(642, 12);
             txtBuscarExamen.Name = "txtBuscarExamen";
-            txtBuscarExamen.PlaceholderText = "Ingrese la matrícula del alumno";
+            txtBuscarExamen.PlaceholderText = "Ingrese el apellido del alumno";
             txtBuscarExamen.Size = new Size(342, 23);
             txtBuscarExamen.TabIndex = 2;
             // 
@@ -2933,7 +2936,7 @@
             ForeColor = Color.DimGray;
             MainMenuStrip = menuStrip1;
             Name = "FrmDashboard";
-            Text = "FrmDashboard";
+            Text = "Sistema de gestion academica";
             Load += FrmDashboard_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -3237,7 +3240,7 @@
         private Button btnCargarCarreras;
         private Button btnCargarAsignaturas;
         private Button btnCargarExamenes;
-        private Button btnLimpiartxtAlumnos;
+        private Button LimpiartxtAlumnos;
         private Button btnLimpiartxtProfesor;
         private Button btnLimpiartxtAdministrativos;
         private Button btnLimpiartxtCarreras;
