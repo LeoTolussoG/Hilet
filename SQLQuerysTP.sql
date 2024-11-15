@@ -272,6 +272,7 @@ INSERT INTO Examenes (Nota, Fecha, Id_asignatura, Id_alumno, Id_instancia, Id_em
 select * from Alumnos
 select * from Empleados
 INSERT INTO Empleados (Nombre, Apellido, Dni, Direccion_calle, Direccion_num, Email, Telefono, F_nacimiento, Usuario, Contraseña, Id_perfil) VALUES
+('hilet', 'hilet', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'hilet', 'hilet', 4),
 ('Leo', 'Tolusso', '98765432', 'Calle 1', 123, 'leo_tolusso@ejemplo.com', '1234-5678', '2000-01-01', 'Leoprof', '12345', 2),
 ('Juan', 'Pérez', '12345678', 'Calle Falsa', 123, 'juan.perez@ejemplo.com', '1111-2222', '1980-05-10', 'profesor1', 'password123', 2),
 ('María', 'Gómez', '87654321', 'Av. Siempreviva', 456, 'maria.gomez@ejemplo.com', '2222-3333', '1975-07-22', 'profesor2', 'password123', 2),

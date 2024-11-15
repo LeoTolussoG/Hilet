@@ -359,14 +359,14 @@
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(180, 22);
+            perfilToolStripMenuItem.Size = new Size(142, 22);
             perfilToolStripMenuItem.Text = "Perfil";
             perfilToolStripMenuItem.Click += perfilToolStripMenuItem_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(180, 22);
+            cerrarSesionToolStripMenuItem.Size = new Size(142, 22);
             cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             cerrarSesionToolStripMenuItem.Click += cerrarSesionToolStripMenuItem_Click;
             // 
@@ -2870,7 +2870,7 @@
             // 
             txtID.Location = new Point(25, 146);
             txtID.Name = "txtID";
-            txtID.PlaceholderText = "Ingrese el ID o Nombre";
+            txtID.PlaceholderText = "Ingrese el ID";
             txtID.Size = new Size(209, 22);
             txtID.TabIndex = 1;
             // 
