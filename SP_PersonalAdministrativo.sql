@@ -68,10 +68,23 @@ create procedure sp_Cargar_Tabla_Administrativos
 as
 begin
 	select
-		*
+		Id_empleado as Nro_personal, 
+		Nombre, 
+		Apellido, 
+		Dni, 
+		Direccion_calle as domicilio, 
+		Direccion_num as Altura, 
+		Email, 
+		Telefono, 
+		F_nacimiento, 
+		Usuario as Nombre_usuario,
+		Contraseña
 	from
 		Empleados
 	where
 		Id_perfil = 3
 end;
 
+drop procedure sp_Cargar_Tabla_Administrativos
+
+use TPFinal

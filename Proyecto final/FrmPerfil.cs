@@ -15,10 +15,10 @@ namespace Proyecto_final
     {
         clsConexion ConectarBDD = new clsConexion();
         public string PerfilUsuario { get; set; }
-        public FrmPerfil(string perfil)
+        public FrmPerfil(string idperfil)
         {
             InitializeComponent();
-            PerfilUsuario = perfil;
+            PerfilUsuario = idperfil;
         }
         private void FrmPerfil_Load(object sender, EventArgs e)
         {

@@ -157,7 +157,7 @@ namespace Proyecto_final
         }
         private void textBox_soloNumeros(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar))
+            if (char.IsAsciiLetter(e.KeyChar))
             {
                 e.Handled = true; // Cancela la entrada si es un número
             }
@@ -265,6 +265,15 @@ namespace Proyecto_final
 
             dgvAlumnos.DataSource = dt;
             ConectarBDD.cerrar();
+        }
+
+        // Evento que oculta las contraseñas en el datagridview
+        private void dgvAlumnos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
         }
         private bool Validar_Datos_Alumno()             //Verifico que los campos cumplan con los requisitos
         {
@@ -465,6 +474,15 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
+        // Evento para ocultar las contraseñas en el datagridview
+        private void dgvAdministrativos_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
+
 
         private bool Validar_Datos_Administrativo()     //Verifico que los campos no queden vacios
         {
@@ -530,16 +548,16 @@ namespace Proyecto_final
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvAdministrativos.Rows[e.RowIndex];
-                IdAdministrativo = Convert.ToInt32(row.Cells["Id_empleado"].Value);
+                IdAdministrativo = Convert.ToInt32(row.Cells["Nro_Personal"].Value);
                 txtNombreAdministrativo.Text = row.Cells["Nombre"].Value.ToString();
                 txtApellidoAdministrativo.Text = row.Cells["Apellido"].Value.ToString();
                 txtDniAdministrativo.Text = row.Cells["Dni"].Value.ToString();
-                txtDireccionCalleAdministrativo.Text = row.Cells["Direccion_calle"].Value.ToString();
-                txtAlturaAdministrativo.Text = row.Cells["Direccion_num"].Value.ToString();
+                txtDireccionCalleAdministrativo.Text = row.Cells["Domicilio"].Value.ToString();
+                txtAlturaAdministrativo.Text = row.Cells["Altura"].Value.ToString();
                 txtEmailAdministrativo.Text = row.Cells["Email"].Value.ToString();
                 dtpFechaNacimientoAdministrativo.Text = row.Cells["F_nacimiento"].Value.ToString();
                 txtTelefonoAdministrativo.Text = row.Cells["Telefono"].Value.ToString();
-                txtUsuarioAdministrativo.Text = row.Cells["usuario"].Value.ToString();
+                txtUsuarioAdministrativo.Text = row.Cells["Nombre_Usuario"].Value.ToString();
                 txtContraseñaAdministrativo.Text = row.Cells["Contraseña"].Value.ToString();
             }
         }
@@ -1065,6 +1083,14 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
+        // Evento que oculta las contraseñas del datagridview
+        private void dgvProfesor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
         private bool Validar_datos_Profesores()
         {
             errorProviderDatosVacios.Clear();
