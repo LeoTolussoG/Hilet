@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,6 +56,34 @@ namespace Proyecto_final
             Cargar_ComboBox_Profesor();
             Cargar_ComboBox_Instancias();
             Cargar_ComboBox_Asignatura();
+            CargarTablaReporteAlumno();
+
+            // cajas de texto para nombres con validación para solo escribir letras
+            txtNombreAdministrativo.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreAlumno.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreAsignatura.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreCarrera.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtNombreProfesor.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+
+            // cajas de texto para apellidos con validación para solo escribir letras
+            txtApellidoAdministrativo.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtApellidoAlumno.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+            txtApellidoProfesor.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
+
+            // cajas de texto para DNI con validación para ingresar numeros
+            txtDniAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtDNIAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtDniProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+
+            // cajas de texto para numeros de telefono con validación para ingresar numeros
+            txtTelAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtTelefonoAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtTelefonoProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+
+            // cajas de texto para Altura de calle con validación para ingresar numeros
+            txtAlturaAdministrativo.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtAlturaAlumno.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
+            txtAlturaProfesor.KeyPress += new KeyPressEventHandler(textBox_soloNumeros);
         }
         //METODO PATA TENER LOS PERMISOS DE UN PERFIL ESPECIFICO
         public void CargarPermisos(int idPerfil)
@@ -120,6 +148,20 @@ namespace Proyecto_final
             }
         }
 
+        private void textBox_sinNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada si es un número
+            }
+        }
+        private void textBox_soloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsAsciiLetter(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada si es un número
+            }
+        }
 
         //PESTAÑA INICIO: MUESTRA UN ESTADO GENERAL DE LOS DATOS
         private void btnDashExamenes_Click(object sender, EventArgs e)
@@ -229,6 +271,15 @@ namespace Proyecto_final
 
             dgvAlumnos.DataSource = dt;
             ConectarBDD.cerrar();
+        }
+
+        // Evento que oculta las contraseñas en el datagridview
+        private void dgvAlumnos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
         }
         private bool Validar_Datos_Alumno()             //Verifico que los campos cumplan con los requisitos
         {
@@ -416,7 +467,7 @@ namespace Proyecto_final
         }
 
         //PESTAÑA GESTION ACADEMICA: ADMINISTRATIVOS --------------------------------------------------------------
-        public void Cargar_tabla_Empleado_Administrativos()         //Carga de registros el datagridview de Administrativos
+        public void Cargar_tabla_Empleado_Administrativos()    //Carga de registros el datagridview de Administrativos
         {
             ConectarBDD.abrir();
             string consulta = "sp_Cargar_Tabla_Administrativos";
@@ -430,7 +481,17 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
-        private bool Validar_Datos_Administrativo()             //Verifico que los campos cumplan con los requisitos
+        // Evento para ocultar las contraseñas en el datagridview
+        private void dgvAdministrativos_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
+
+
+        private bool Validar_Datos_Administrativo()     //Verifico que los campos no queden vacios
         {
             errorProviderDatosVacios.Clear();
             bool valido = true;
@@ -494,16 +555,16 @@ namespace Proyecto_final
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvAdministrativos.Rows[e.RowIndex];
-                IdAdministrativo = Convert.ToInt32(row.Cells["Id_empleado"].Value);
+                IdAdministrativo = Convert.ToInt32(row.Cells["Nro_Personal"].Value);
                 txtNombreAdministrativo.Text = row.Cells["Nombre"].Value.ToString();
                 txtApellidoAdministrativo.Text = row.Cells["Apellido"].Value.ToString();
                 txtDniAdministrativo.Text = row.Cells["Dni"].Value.ToString();
-                txtDireccionCalleAdministrativo.Text = row.Cells["Direccion_calle"].Value.ToString();
-                txtAlturaAdministrativo.Text = row.Cells["Direccion_num"].Value.ToString();
+                txtDireccionCalleAdministrativo.Text = row.Cells["Domicilio"].Value.ToString();
+                txtAlturaAdministrativo.Text = row.Cells["Altura"].Value.ToString();
                 txtEmailAdministrativo.Text = row.Cells["Email"].Value.ToString();
                 dtpFechaNacimientoAdministrativo.Text = row.Cells["F_nacimiento"].Value.ToString();
                 txtTelefonoAdministrativo.Text = row.Cells["Telefono"].Value.ToString();
-                txtUsuarioAdministrativo.Text = row.Cells["usuario"].Value.ToString();
+                txtUsuarioAdministrativo.Text = row.Cells["Nombre_Usuario"].Value.ToString();
                 txtContraseñaAdministrativo.Text = row.Cells["Contraseña"].Value.ToString();
             }
         }
@@ -1058,6 +1119,14 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
+        // Evento que oculta las contraseñas del datagridview
+        private void dgvProfesor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
         private bool Validar_datos_Profesores()
         {
             errorProviderDatosVacios.Clear();
@@ -1539,7 +1608,120 @@ namespace Proyecto_final
             this.Close();
         }
 
-        
+        //REPORTE ALUMNO 
+        public void CargarTablaReporteAlumno()
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_ObtenerDatosReporteAlumno";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvReporte.DataSource = dt;
+            ConectarBDD.cerrar();
+        }
+
+        private void GuardarcomoTXT(DataGridView dataGridView, string rutaArchivo)
+        {
+            using (StreamWriter sw = new StreamWriter(rutaArchivo))
+            {
+                for (int i = 0; i < dataGridView.Columns.Count; i++)
+                {
+                    sw.Write(dataGridView.Columns[i].HeaderText + "\t");
+                }
+                sw.WriteLine();
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    for (int i = 0; i < row.Cells.Count; i++)
+                    {
+                        sw.Write(row.Cells[i].Value + "\t");
+                    }
+                    sw.WriteLine();
+                }
+
+            }
+            MessageBox.Show("Datos guardados");
+
+        }
+
+        private void btnGuardarReporte_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo de texto (*.txt)|*.txt";
+            saveFileDialog.Title = "Guardar como TXT";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                GuardarcomoTXT(dgvReporte, saveFileDialog.FileName);
+            }
+
+        }
+
+        private void AbrirArchivo(DataGridView dataGridView, string rutaArchivo)
+        {
+            DataTable dataTable = new DataTable();
+            using (StreamReader sr = new StreamReader(rutaArchivo))
+            {
+                string[] headers = sr.ReadLine().Split('\t');
+                foreach (string header in headers)
+                {
+                    dataTable.Columns.Add(header);
+                }
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] values = line.Split('\t');
+                    dataTable.Rows.Add(values);
+                }
+            }
+            dgvReporte.DataSource = dataTable;
+        }
+
+        private void btnAbrirReporte_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivo de texto(*.txt)|*.txt";
+                openFileDialog.Title = "Abrir archivo";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaArchivo = openFileDialog.FileName;
+                    AbrirArchivo(dgvReporte, rutaArchivo);
+                }
+            }
+
+        }
+
+        private void btnBuscarIDoNombre_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_ObtenerDatosReporteAlumno";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            // Obtiene el texto del TextBox para el ID o Nombre
+            string id = txtIDoNombre.Text;
+            string nombre = txtIDoNombre.Text;
+
+            // Intenta parsear el ID como número; si falla, lo usa como nombre
+            if (int.TryParse(id, out int alumnoID))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", alumnoID);
+            }
+            else
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", DBNull.Value);
+            }
+            // Agrega el parámetro para el nombre, si es necesario
+            adapter.SelectCommand.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(nombre) ? DBNull.Value : nombre);
+
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvReporte.DataSource = dt;
+            ConectarBDD.cerrar();
+
+        }
     }
 }
 
