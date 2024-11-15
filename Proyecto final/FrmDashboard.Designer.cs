@@ -425,7 +425,7 @@
             tabControl1.Location = new Point(12, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1316, 718);
+            tabControl1.Size = new Size(1316, 704);
             tabControl1.TabIndex = 0;
             // 
             // tbpInicio
@@ -438,7 +438,7 @@
             tbpInicio.Location = new Point(4, 29);
             tbpInicio.Name = "tbpInicio";
             tbpInicio.Padding = new Padding(3);
-            tbpInicio.Size = new Size(1308, 685);
+            tbpInicio.Size = new Size(1308, 671);
             tbpInicio.TabIndex = 0;
             tbpInicio.Text = "Inicio";
             // 
@@ -609,7 +609,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(232, 679);
+            panel2.Size = new Size(232, 665);
             panel2.TabIndex = 0;
             // 
             // btnDashExamenes
@@ -621,7 +621,7 @@
             btnDashExamenes.FlatStyle = FlatStyle.Flat;
             btnDashExamenes.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashExamenes.ForeColor = Color.White;
-            btnDashExamenes.Location = new Point(0, -6);
+            btnDashExamenes.Location = new Point(0, -2);
             btnDashExamenes.Name = "btnDashExamenes";
             btnDashExamenes.Size = new Size(232, 109);
             btnDashExamenes.TabIndex = 8;
@@ -638,7 +638,7 @@
             btnDashAsignaturas.FlatStyle = FlatStyle.Flat;
             btnDashAsignaturas.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAsignaturas.ForeColor = Color.White;
-            btnDashAsignaturas.Location = new Point(0, 103);
+            btnDashAsignaturas.Location = new Point(0, 107);
             btnDashAsignaturas.Name = "btnDashAsignaturas";
             btnDashAsignaturas.Size = new Size(232, 124);
             btnDashAsignaturas.TabIndex = 6;
@@ -655,9 +655,9 @@
             btnDashCarreras.FlatStyle = FlatStyle.Flat;
             btnDashCarreras.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashCarreras.ForeColor = Color.White;
-            btnDashCarreras.Location = new Point(0, 227);
+            btnDashCarreras.Location = new Point(0, 231);
             btnDashCarreras.Name = "btnDashCarreras";
-            btnDashCarreras.Size = new Size(232, 114);
+            btnDashCarreras.Size = new Size(232, 108);
             btnDashCarreras.TabIndex = 5;
             btnDashCarreras.Text = "Carreras";
             btnDashCarreras.UseVisualStyleBackColor = false;
@@ -672,7 +672,7 @@
             btnDashAdministrativos.FlatStyle = FlatStyle.Flat;
             btnDashAdministrativos.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAdministrativos.ForeColor = Color.White;
-            btnDashAdministrativos.Location = new Point(0, 341);
+            btnDashAdministrativos.Location = new Point(0, 339);
             btnDashAdministrativos.Name = "btnDashAdministrativos";
             btnDashAdministrativos.Size = new Size(232, 105);
             btnDashAdministrativos.TabIndex = 4;
@@ -689,9 +689,9 @@
             btnDashProfesores.FlatStyle = FlatStyle.Flat;
             btnDashProfesores.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashProfesores.ForeColor = Color.White;
-            btnDashProfesores.Location = new Point(0, 446);
+            btnDashProfesores.Location = new Point(0, 444);
             btnDashProfesores.Name = "btnDashProfesores";
-            btnDashProfesores.Size = new Size(232, 117);
+            btnDashProfesores.Size = new Size(232, 111);
             btnDashProfesores.TabIndex = 3;
             btnDashProfesores.Text = "Profesores";
             btnDashProfesores.UseVisualStyleBackColor = false;
@@ -706,9 +706,9 @@
             btnDashAlumnos.FlatStyle = FlatStyle.Flat;
             btnDashAlumnos.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashAlumnos.ForeColor = Color.White;
-            btnDashAlumnos.Location = new Point(0, 563);
+            btnDashAlumnos.Location = new Point(0, 555);
             btnDashAlumnos.Name = "btnDashAlumnos";
-            btnDashAlumnos.Size = new Size(232, 116);
+            btnDashAlumnos.Size = new Size(232, 110);
             btnDashAlumnos.TabIndex = 2;
             btnDashAlumnos.Text = "Alumnos";
             btnDashAlumnos.UseVisualStyleBackColor = false;
