@@ -359,6 +359,8 @@ BEGIN
 		E.Usuario = @Usuario AND E.Contraseña = @Contraseña
 end;
 
+update empleados set Id_perfil = 4 where Usuario = 'leoadmin';
+select * from Empleados
 ---------------------------------------
 
 create procedure sp_Dash_Examenes

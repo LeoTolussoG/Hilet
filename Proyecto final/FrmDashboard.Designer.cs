@@ -386,14 +386,14 @@
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(224, 26);
+            perfilToolStripMenuItem.Size = new Size(177, 26);
             perfilToolStripMenuItem.Text = "Perfil";
             perfilToolStripMenuItem.Click += perfilToolStripMenuItem_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(224, 26);
+            cerrarSesionToolStripMenuItem.Size = new Size(177, 26);
             cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             cerrarSesionToolStripMenuItem.Click += cerrarSesionToolStripMenuItem_Click;
             // 
@@ -778,6 +778,7 @@
             dgvAlumnos.Size = new Size(1093, 314);
             dgvAlumnos.TabIndex = 27;
             dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
+            dgvAlumnos.CellFormatting += dgvAlumnos_CellFormatting;
             // 
             // panel26
             // 
@@ -1209,6 +1210,7 @@
             dgvProfesor.Size = new Size(1093, 312);
             dgvProfesor.TabIndex = 0;
             dgvProfesor.CellClick += dgvProfesor_CellClick;
+            dgvProfesor.CellFormatting += dgvProfesor_CellFormatting;
             // 
             // panel23
             // 
@@ -1657,6 +1659,7 @@
             dgvAdministrativos.Size = new Size(1097, 336);
             dgvAdministrativos.TabIndex = 6;
             dgvAdministrativos.CellClick += dgvAdministrativos_CellClick;
+            dgvAdministrativos.CellFormatting += dgvAdministrativos_CellFormatting_1;
             // 
             // panel12
             // 
@@ -2028,7 +2031,7 @@
             txtBuscarAdministrativo.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBuscarAdministrativo.Location = new Point(698, 10);
             txtBuscarAdministrativo.Name = "txtBuscarAdministrativo";
-            txtBuscarAdministrativo.PlaceholderText = "Ingrese el ID del empleado";
+            txtBuscarAdministrativo.PlaceholderText = "Ingrese el número de personal";
             txtBuscarAdministrativo.Size = new Size(286, 23);
             txtBuscarAdministrativo.TabIndex = 1;
             // 
