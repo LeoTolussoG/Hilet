@@ -80,6 +80,7 @@ Id_empleado INT,
 FOREIGN KEY (Id_empleado) REFERENCES Empleados (Id_Empleado)
 );
 
+
 --Tabla Asignatura por Carrera
 CREATE TABLE AsignaturaXCarrera(
 Id_AxC INT PRIMARY KEY IDENTITY (1,1),
@@ -814,3 +815,5 @@ begin
 			AND (a.Nombre like '%' + @Nombre + '%' OR @Nombre is null)
 			AND p.Id_perfil = 2;
 End;
+
+use TPFinal
