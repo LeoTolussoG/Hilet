@@ -7,24 +7,16 @@
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\leo_t\\onedrive\\documentos\\github\\hilet\\proyecto final\\frmperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\leo_t\\onedrive\\documentos\\github\\hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\leo_t\\onedrive\\documentos\\github\\hilet\\proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\proyecto final\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\proyecto final\\frmperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\leo_t\\onedrive\\documentos\\github\\hilet\\proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\clsconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|c:\\users\\leo_t\\onedrive\\documentos\\github\\hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|solutionrelative:proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70A187B0-4AF8-45F2-8ED5-D7343A98EA30}|Proyecto final\\Proyecto final.csproj|C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\proyecto final\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -38,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,38 +51,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FrmPerfil.cs",
-              "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmPerfil.cs",
-              "RelativeDocumentMoniker": "Proyecto final\\FrmPerfil.cs",
-              "ToolTip": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmPerfil.cs",
-              "RelativeToolTip": "Proyecto final\\FrmPerfil.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAADgvxEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T22:56:02.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FrmPerfil.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmPerfil.cs",
-              "RelativeDocumentMoniker": "Proyecto final\\FrmPerfil.cs",
-              "ToolTip": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmPerfil.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Proyecto final\\FrmPerfil.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T22:55:50.152Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "clsConexion.cs",
               "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\clsConexion.cs",
               "RelativeDocumentMoniker": "Proyecto final\\clsConexion.cs",
               "ToolTip": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\clsConexion.cs",
               "RelativeToolTip": "Proyecto final\\clsConexion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T16:33:39.501Z"
+              "WhenOpened": "2024-10-19T16:33:39.501Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -100,25 +69,26 @@
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.cs",
               "ToolTip": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.cs",
               "RelativeToolTip": "Proyecto final\\FrmDashboard.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAMwJ4AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAJ8GAAAAAAAAAAAvwKwGAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-19T15:26:22.57Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "FrmDashboard.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.cs",
               "RelativeDocumentMoniker": "Proyecto final\\FrmDashboard.cs",
               "ToolTip": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\FrmDashboard.cs [Dise\u00F1o]",
               "RelativeToolTip": "Proyecto final\\FrmDashboard.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T15:25:42.939Z"
+              "WhenOpened": "2024-10-19T15:25:42.939Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "frmLogin.cs",
               "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
               "RelativeDocumentMoniker": "Proyecto final\\frmLogin.cs",
@@ -131,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "frmLogin.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\leo_t\\OneDrive\\Documentos\\GitHub\\Hilet\\Proyecto final\\frmLogin.cs",
               "RelativeDocumentMoniker": "Proyecto final\\frmLogin.cs",
