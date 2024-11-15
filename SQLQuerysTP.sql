@@ -400,18 +400,6 @@ BEGIN
     ORDER BY e.Id_empleado DESC, a.Nombre;  -- Ordenar por Id_empleado y Asignatura
 END;
 
-/*
-create procedure sp_Dash_Profesores
-as
-begin
-	select TOP 3
-	* from Empleados
-	where Id_perfil = 2
-	order by 
-		Id_empleado
-	desc
-end;
-*/
 -------------------------------------------
 
 CREATE PROCEDURE sp_Dash_Asignaturas
@@ -549,27 +537,6 @@ END;
 
 -----------------------------------------------------------------------------------------
 
---CREATE PROCEDURE sp_EliminarAsignatura
---    @Id_asignatura INT
---AS
---BEGIN
---    -- Verificar si el ID de asignatura existe
---    IF NOT EXISTS (
---        SELECT 1 
---        FROM Asignatura 
---        WHERE Id_asignatura = @Id_asignatura
---    )
---    BEGIN
---        -- Si no existe, lanzar un error
---        RAISERROR('El ID de asignatura no existe.', 16, 1);
---        RETURN;
---    END
-
---    -- Eliminar la asignatura
---    DELETE FROM Asignatura
---    WHERE Id_asignatura = @Id_asignatura;
---END;
-
 CREATE PROCEDURE sp_EliminarAsignatura
     @Id_asignatura INT
 AS
@@ -660,10 +627,13 @@ BEGIN
         RAISERROR('El alumno no existe.', 16, 1);
         RETURN;
     END
+	DELETE FROM Examenes 
+    WHERE Id_alumno = @Id_alumno;
 
     DELETE FROM Alumnos
     WHERE Id_alumno = @Id_alumno;
 END;
+drop procedure sp_EliminarAlumno
 
 
 ---------------------------------------------------------------------------
@@ -779,8 +749,26 @@ BEGIN
     DELETE FROM Examenes
     WHERE Id_examenes = @Id_examenes;
 END;
-
-/*PROCEDIMIENTO PARA ACTUALIZAR USUARIO Y CONTRASEÑA:*/
+--------------------------------------------------------------------------------
+/*PROCEDIMIENTO PARA BUSCAR LOS EXAMNES DE UN ALUMNO*/
+CREATE PROCEDURE sp_BuscarExamenesPorApellido
+    @Apellido_alumno VARCHAR(50)
+AS
+BEGIN
+    SELECT E.Id_examenes, E.Nota, E.Fecha, 
+           CONCAT(A.Nombre, ' ', A.Apellido) AS Alumno,
+           asg.Nombre AS Asignatura,
+           I.Descripcion AS Instancia,
+           CONCAT(emp.Nombre, ' ', emp.Apellido) AS Profesor
+    FROM Examenes E
+    LEFT JOIN Alumnos A ON E.Id_alumno = A.Id_alumno
+    LEFT JOIN Asignatura asg ON E.Id_asignatura = asg.Id_asignatura
+    LEFT JOIN Instancias I ON E.Id_instancia = I.Id_instancia
+    LEFT JOIN Empleados emp ON E.Id_empleado = emp.Id_empleado
+    WHERE A.Apellido = @Apellido_alumno;
+END;
+---------------------------------------------------------------------------
+/*PROCEDIMIENTO PARA ACTUALIZAR LA CONTRASEÑA:*/
 CREATE PROCEDURE sp_ActualizarContraseña
     @Usuario VARCHAR(50),  
     @NuevaContraseña NVARCHAR(50)
