@@ -253,6 +253,13 @@
             btnBuscarExamen = new Button();
             txtBuscarExamen = new TextBox();
             tbpReporte = new TabPage();
+            btnAbrirReporte = new Button();
+            btnGuardarReporte = new Button();
+            groupBox14 = new GroupBox();
+            label8 = new Label();
+            txtIDoNombre = new TextBox();
+            btnBuscarIDoNombre = new Button();
+            dgvReporte = new DataGridView();
             errorProviderDatosVacios = new ErrorProvider(components);
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -319,6 +326,9 @@
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             panel27.SuspendLayout();
+            tbpReporte.SuspendLayout();
+            groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvReporte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).BeginInit();
             SuspendLayout();
             // 
@@ -386,14 +396,14 @@
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(224, 26);
+            perfilToolStripMenuItem.Size = new Size(177, 26);
             perfilToolStripMenuItem.Text = "Perfil";
             perfilToolStripMenuItem.Click += perfilToolStripMenuItem_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(224, 26);
+            cerrarSesionToolStripMenuItem.Size = new Size(177, 26);
             cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             cerrarSesionToolStripMenuItem.Click += cerrarSesionToolStripMenuItem_Click;
             // 
@@ -2825,12 +2835,84 @@
             // 
             // tbpReporte
             // 
+            tbpReporte.Controls.Add(btnAbrirReporte);
+            tbpReporte.Controls.Add(btnGuardarReporte);
+            tbpReporte.Controls.Add(groupBox14);
+            tbpReporte.Controls.Add(dgvReporte);
             tbpReporte.Location = new Point(4, 29);
             tbpReporte.Name = "tbpReporte";
             tbpReporte.Size = new Size(1308, 685);
             tbpReporte.TabIndex = 2;
             tbpReporte.Text = "Reporte";
             tbpReporte.UseVisualStyleBackColor = true;
+            // 
+            // btnAbrirReporte
+            // 
+            btnAbrirReporte.Location = new Point(47, 556);
+            btnAbrirReporte.Name = "btnAbrirReporte";
+            btnAbrirReporte.Size = new Size(308, 35);
+            btnAbrirReporte.TabIndex = 3;
+            btnAbrirReporte.Text = "Abrir";
+            btnAbrirReporte.UseVisualStyleBackColor = true;
+            btnAbrirReporte.Click += btnAbrirReporte_Click;
+            // 
+            // btnGuardarReporte
+            // 
+            btnGuardarReporte.Location = new Point(47, 485);
+            btnGuardarReporte.Name = "btnGuardarReporte";
+            btnGuardarReporte.Size = new Size(308, 39);
+            btnGuardarReporte.TabIndex = 2;
+            btnGuardarReporte.Text = "Guardar";
+            btnGuardarReporte.UseVisualStyleBackColor = true;
+            btnGuardarReporte.Click += btnGuardarReporte_Click;
+            // 
+            // groupBox14
+            // 
+            groupBox14.Controls.Add(label8);
+            groupBox14.Controls.Add(txtIDoNombre);
+            groupBox14.Controls.Add(btnBuscarIDoNombre);
+            groupBox14.Location = new Point(47, 108);
+            groupBox14.Name = "groupBox14";
+            groupBox14.Size = new Size(308, 310);
+            groupBox14.TabIndex = 1;
+            groupBox14.TabStop = false;
+            groupBox14.Text = "..........";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(25, 87);
+            label8.Name = "label8";
+            label8.Size = new Size(118, 20);
+            label8.TabIndex = 2;
+            label8.Text = "ID   o   Nombre";
+            // 
+            // txtIDoNombre
+            // 
+            txtIDoNombre.Location = new Point(25, 146);
+            txtIDoNombre.Name = "txtIDoNombre";
+            txtIDoNombre.PlaceholderText = "Ingrese el ID o Nombre";
+            txtIDoNombre.Size = new Size(209, 26);
+            txtIDoNombre.TabIndex = 1;
+            // 
+            // btnBuscarIDoNombre
+            // 
+            btnBuscarIDoNombre.Location = new Point(25, 212);
+            btnBuscarIDoNombre.Name = "btnBuscarIDoNombre";
+            btnBuscarIDoNombre.Size = new Size(122, 29);
+            btnBuscarIDoNombre.TabIndex = 0;
+            btnBuscarIDoNombre.Text = "Buscar";
+            btnBuscarIDoNombre.UseVisualStyleBackColor = true;
+            btnBuscarIDoNombre.Click += btnBuscarIDoNombre_Click;
+            // 
+            // dgvReporte
+            // 
+            dgvReporte.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReporte.Location = new Point(429, 71);
+            dgvReporte.Name = "dgvReporte";
+            dgvReporte.RowHeadersWidth = 51;
+            dgvReporte.Size = new Size(816, 440);
+            dgvReporte.TabIndex = 0;
             // 
             // errorProviderDatosVacios
             // 
@@ -2941,6 +3023,10 @@
             groupBox4.PerformLayout();
             panel27.ResumeLayout(false);
             panel27.PerformLayout();
+            tbpReporte.ResumeLayout(false);
+            groupBox14.ResumeLayout(false);
+            groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProviderDatosVacios).EndInit();
             ResumeLayout(false);
         }
@@ -3161,5 +3247,12 @@
         private ComboBox cbAsignaturaExamen;
         private ComboBox cbAlumnoExamen;
         private TextBox txtDireccionProfesor;
+        private Button btnAbrirReporte;
+        private Button btnGuardarReporte;
+        private GroupBox groupBox14;
+        private TextBox txtIDoNombre;
+        private Button btnBuscarIDoNombre;
+        private DataGridView dgvReporte;
+        private Label label8;
     }
 }

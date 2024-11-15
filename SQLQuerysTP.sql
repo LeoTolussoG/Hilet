@@ -797,3 +797,30 @@ BEGIN
     WHERE Usuario = @Usuario AND Id_perfil = 3;
 END;
 
+
+create procedure sp_ObtenerDatosReporteAlumno
+@Id_alumno int,
+@Nombre varchar(50)
+as
+begin
+	select a.Nombre as NombreAlumno,
+			a.Apellido as ApellidoAlumno,
+			a.Dni as DniAlumno,
+			a.Email as EmailAlumno,
+			a.Telefono as TelefonoAlumno,
+			a.F_nacimiento as FechaNacimiento,
+			asig.Nombre as Asignatura,
+			e.Nota as Calificacion,
+			p.Nombre as NombreProfesor,
+			p.Apellido as ApellidoProfesor
+		from
+			Alumnos a 
+		join AsignaturasXAlumnos axa ON a.Id_alumno = axa.Id_alumno
+		join Asignatura asig ON axa.Id_asignatura = asig.Id_asignatura
+		join Examenes e ON a.Id_alumno = e.Id_alumno AND asig.Id_asignatura = e.Id_asignatura
+		join Empleados p ON asig.Id_empleado = p.Id_empleado
+		WHERE
+			(a.Id_alumno = @Id_alumno OR @Id_alumno is null)
+			AND (a.Nombre like '%' + @Nombre + '%' OR @Nombre is null)
+			AND p.Id_perfil = 2;
+End;

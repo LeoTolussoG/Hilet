@@ -56,6 +56,7 @@ namespace Proyecto_final
             Cargar_ComboBox_Profesor();
             Cargar_ComboBox_Instancias();
             Cargar_ComboBox_Asignatura();
+            CargarTablaReporteAlumno();
 
             // cajas de texto para nombres con validación para solo escribir letras
             txtNombreAdministrativo.KeyPress += new KeyPressEventHandler(textBox_sinNumeros);
@@ -464,7 +465,7 @@ namespace Proyecto_final
             ConectarBDD.cerrar();
         }
 
-        
+
         private bool Validar_Datos_Administrativo()     //Verifico que los campos no queden vacios
         {
             errorProviderDatosVacios.Clear();
@@ -1534,6 +1535,121 @@ namespace Proyecto_final
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
             this.Close();
+        }
+
+        //REPORTE ALUMNO 
+        public void CargarTablaReporteAlumno()
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_ObtenerDatosReporteAlumno";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvReporte.DataSource = dt;
+            ConectarBDD.cerrar();
+        }
+
+        private void GuardarcomoTXT(DataGridView dataGridView, string rutaArchivo)
+        {
+            using (StreamWriter sw = new StreamWriter(rutaArchivo))
+            {
+                for (int i = 0; i < dataGridView.Columns.Count; i++)
+                {
+                    sw.Write(dataGridView.Columns[i].HeaderText + "\t");
+                }
+                sw.WriteLine();
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    for (int i = 0; i < row.Cells.Count; i++)
+                    {
+                        sw.Write(row.Cells[i].Value + "\t");
+                    }
+                    sw.WriteLine();
+                }
+
+            }
+            MessageBox.Show("Datos guardados");
+
+        }
+
+        private void btnGuardarReporte_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo de texto (*.txt)|*.txt";
+            saveFileDialog.Title = "Guardar como TXT";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                GuardarcomoTXT(dgvReporte, saveFileDialog.FileName);
+            }
+
+        }
+
+        private void AbrirArchivo(DataGridView dataGridView, string rutaArchivo)
+        {
+            DataTable dataTable = new DataTable();
+            using (StreamReader sr = new StreamReader(rutaArchivo))
+            {
+                string[] headers = sr.ReadLine().Split('\t');
+                foreach (string header in headers)
+                {
+                    dataTable.Columns.Add(header);
+                }
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] values = line.Split('\t');
+                    dataTable.Rows.Add(values);
+                }
+            }
+            dgvReporte.DataSource = dataTable;
+        }
+
+        private void btnAbrirReporte_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivo de texto(*.txt)|*.txt";
+                openFileDialog.Title = "Abrir archivo";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaArchivo = openFileDialog.FileName;
+                    AbrirArchivo(dgvReporte, rutaArchivo);
+                }
+            }
+
+        }
+
+        private void btnBuscarIDoNombre_Click(object sender, EventArgs e)
+        {
+            ConectarBDD.abrir();
+            string consulta = "sp_ObtenerDatosReporteAlumno";
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            // Obtiene el texto del TextBox para el ID o Nombre
+            string id = txtIDoNombre.Text;
+            string nombre = txtIDoNombre.Text;
+
+            // Intenta parsear el ID como número; si falla, lo usa como nombre
+            if (int.TryParse(id, out int alumnoID))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", alumnoID);
+            }
+            else
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", DBNull.Value);
+            }
+            // Agrega el parámetro para el nombre, si es necesario
+            adapter.SelectCommand.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(nombre) ? DBNull.Value : nombre);
+
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dgvReporte.DataSource = dt;
+            ConectarBDD.cerrar();
+
         }
     }
 }
