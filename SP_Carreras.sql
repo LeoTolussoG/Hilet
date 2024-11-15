@@ -1,4 +1,5 @@
 use TPFinal;
+use u26;
 create procedure sp_Cargar_Tabla_Carreras
 as
 begin

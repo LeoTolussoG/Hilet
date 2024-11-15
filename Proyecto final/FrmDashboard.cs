@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Proyecto_final
 {
@@ -278,7 +279,7 @@ namespace Proyecto_final
         {
             if (e.ColumnIndex == 10 && e.Value != null)
             {
-                e.Value = new String('*', e.Value.ToString().Length);
+                e.Value = new System.String('*', e.Value.ToString().Length);
             }
         }
         private bool Validar_Datos_Alumno()             //Verifico que los campos cumplan con los requisitos
@@ -486,7 +487,7 @@ namespace Proyecto_final
         {
             if (e.ColumnIndex == 10 && e.Value != null)
             {
-                e.Value = new String('*', e.Value.ToString().Length);
+                e.Value = new System.String('*', e.Value.ToString().Length);
             }
         }
 
@@ -1124,7 +1125,7 @@ namespace Proyecto_final
         {
             if (e.ColumnIndex == 10 && e.Value != null)
             {
-                e.Value = new String('*', e.Value.ToString().Length);
+                e.Value = new System.String('*', e.Value.ToString().Length);
             }
         }
         private bool Validar_datos_Profesores()
@@ -1611,11 +1612,15 @@ namespace Proyecto_final
         //REPORTE ALUMNO 
         public void CargarTablaReporteAlumno()
         {
+
             ConectarBDD.abrir();
-            string consulta = "sp_ObtenerDatosReporteAlumno";
+            string consulta = "sp_CargarTablaReporteAlumno";
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
+
             DataTable dt = new DataTable();
+
             adapter.Fill(dt);
+
             dgvReporte.DataSource = dt;
             ConectarBDD.cerrar();
         }
@@ -1693,33 +1698,32 @@ namespace Proyecto_final
 
         }
 
-        private void btnBuscarIDoNombre_Click(object sender, EventArgs e)
+        private void btnBuscarID_Click(object sender, EventArgs e)
         {
+            //Me fijo que el usuario ingrese un ID válido
+            int IDAlumno;
+            if (!int.TryParse(txtID.Text, out IDAlumno))
+            {
+                MessageBox.Show("Ingrese una matricula válida");
+                return;
+            }
             ConectarBDD.abrir();
-            string consulta = "sp_ObtenerDatosReporteAlumno";
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, ConectarBDD.conectarbdd);
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            string consulta = "sp_ObtenerReporteAlumno";
+            SqlCommand comando = new SqlCommand(consulta, ConectarBDD.conectarbdd);
+            comando.CommandType = CommandType.StoredProcedure;
 
-            // Obtiene el texto del TextBox para el ID o Nombre
-            string id = txtIDoNombre.Text;
-            string nombre = txtIDoNombre.Text;
+            comando.Parameters.AddWithValue("@Id_alumno", IDAlumno);
+            
+            // Obtiene el texto del TextBox para el ID 
 
-            // Intenta parsear el ID como número; si falla, lo usa como nombre
-            if (int.TryParse(id, out int alumnoID))
-            {
-                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", alumnoID);
-            }
-            else
-            {
-                adapter.SelectCommand.Parameters.AddWithValue("@Id_alumno", DBNull.Value);
-            }
-            // Agrega el parámetro para el nombre, si es necesario
-            adapter.SelectCommand.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(nombre) ? DBNull.Value : nombre);
-
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
+
             dgvReporte.DataSource = dt;
+
             ConectarBDD.cerrar();
+
 
         }
     }
